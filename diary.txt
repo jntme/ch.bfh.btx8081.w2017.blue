@@ -1,7 +1,9 @@
 Yeeeha :D
 
+"Meaningful comment"
+
+merge conflict solved
 
 somethimg new
 
 "Meaningful comment"
-
