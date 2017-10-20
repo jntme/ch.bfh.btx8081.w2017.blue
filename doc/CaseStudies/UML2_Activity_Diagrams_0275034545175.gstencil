@@ -117,7 +117,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2017-10-20 07:06:15 +0000</string>
+	<string>2017-10-20 07:21:12 +0000</string>
 	<key>Modifier</key>
 	<string>Jonathan Meier</string>
 	<key>MovementHandleVisible</key>
@@ -135,11 +135,6 @@
 			<string>float</string>
 			<string>36</string>
 		</array>
-		<key>NSHorizonalPagination</key>
-		<array>
-			<string>coded</string>
-			<string>BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU051bWJlcgCEhAdOU1ZhbHVlAISECE5TT2JqZWN0AIWEASqEhAFxlwCG</string>
-		</array>
 		<key>NSLeftMargin</key>
 		<array>
 			<string>float</string>
@@ -154,11 +149,6 @@
 		<array>
 			<string>size</string>
 			<string>{612.00001049041748, 792}</string>
-		</array>
-		<key>NSPrintReverseOrientation</key>
-		<array>
-			<string>coded</string>
-			<string>BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU051bWJlcgCEhAdOU1ZhbHVlAISECE5TT2JqZWN0AIWEASqEhAFxlwCG</string>
 		</array>
 		<key>NSRightMargin</key>
 		<array>
@@ -2130,7 +2120,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{158.53308823529392, 175.5}, {272, 35}}</string>
+					<string>{{169.875, 177.75}, {272, 35}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
