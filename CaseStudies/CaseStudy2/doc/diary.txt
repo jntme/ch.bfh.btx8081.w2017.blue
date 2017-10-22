@@ -11,4 +11,12 @@ attendance: all group members
 	- gfels6, kibup1 and mij2 will contact private contancts for interview
 	- next meeting: Tuesday 24.10.2017, 13:00 for creating interview questions
 	
-	
+
+22.10.2017 (homework)
+---------------------------
+
+attendance: ziegm1
+
+- research about topic (aboutPatients.txt)
+- preparation meeting for creating interview questions (ideasQuestionnaire.txt)
+- collection possible ideas for the web application (ideasApp.txt)
