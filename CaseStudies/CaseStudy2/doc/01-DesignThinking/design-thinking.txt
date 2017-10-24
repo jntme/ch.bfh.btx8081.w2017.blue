@@ -1,0 +1,29 @@
+first iteration
+---------------
+
+1. scoping
+Scope is the develepment of an app to support health visitors nursing patients with
+social anxieties. The app shouldn't contain any typical functionality of a Clinic Information
+System, furthermore its purpose should be only to image the treatment correlated to 
+social anxieties.
+
+2. research
+
+Actually we have little knowledge of this particular field of nursing. Thus, besides
+getting information about these kinds of disorder, we need to conduct an interview
+with a professional.
+
+For this interview, the following professionals were considered and contacted:
+
+- a friend of kibup1, Psychologist
+- an uncle of meiej3, Psychologist
+- a friend of petim1, Specialist FMH for children & youth psychiatry & psychotherapy
+- three home care institutions specialized on  social anxieties
+
+3. synthesize
+
+4. design
+
+5. prototype
+
+6. validate

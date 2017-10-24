@@ -20,8 +20,6 @@ attendance: ziegm1
 - research about topic (aboutPatients.txt)
 - preparation meeting for creating interview questions (ideasQuestionnaire.txt)
 - collection possible ideas for the web application (ideasApp.txt)
-<<<<<<< .mine
-
 
 24.10.2017 (meeting 13:00 until 14:30)
 ---------------------------
