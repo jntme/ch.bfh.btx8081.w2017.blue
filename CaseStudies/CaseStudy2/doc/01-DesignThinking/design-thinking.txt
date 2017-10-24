@@ -1,4 +1,4 @@
-first iteration
+first iteration 
 ---------------
 
 1. scoping
@@ -20,10 +20,8 @@ For this interview, the following professionals were considered and contacted:
 - a friend of petim1, Specialist FMH for children & youth psychiatry & psychotherapy
 - three home care institutions specialized on  social anxieties
 
+Questions got carried together (see Interview.txt)
+
 3. synthesize
 
-4. design
-
-5. prototype
-
-6. validate
+kybup1, meiej3, petim1 and gfels6 called and asked one of the possible interview partners each
