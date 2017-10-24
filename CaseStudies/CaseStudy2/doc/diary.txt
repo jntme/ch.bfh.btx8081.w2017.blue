@@ -25,4 +25,4 @@ attendance: ziegm1
 ---------------------------
 
 attendance: kybup1, meiej3, gfels6, odaoj1
-absence: ziegm1 (Groundwork 22.10), petim1 (sick)
+absence: ziegm1 (ground work 22.10), petim1 (sick)
