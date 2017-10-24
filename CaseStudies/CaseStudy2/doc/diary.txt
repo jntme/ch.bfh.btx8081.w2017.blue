@@ -26,3 +26,7 @@ attendance: ziegm1
 
 attendance: kybup1, meiej3, gfels6, odaoj1
 absence: ziegm1 (ground work 22.10), petim1 (sick)
+
+- interview questions finalized (Interview-process.txt)
+- interview tasks assigned
+- design-thinking process initialized (design-thinking.txt)
