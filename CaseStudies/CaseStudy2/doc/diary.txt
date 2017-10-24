@@ -20,3 +20,4 @@ attendance: ziegm1
 - research about topic (aboutPatients.txt)
 - preparation meeting for creating interview questions (ideasQuestionnaire.txt)
 - collection possible ideas for the web application (ideasApp.txt)
+
