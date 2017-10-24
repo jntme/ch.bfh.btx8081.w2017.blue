@@ -8,7 +8,7 @@ attendance: all group members
 - start Task 1 - Design Thinking
 - discussed first phase:
 	- until next Tuesday every team member will dive into the thematic of disorder
-	- gfels6, kibup1 and mij2 will contact private contancts for interview
+	- gfels6, kibup1 and meiej3 will contact private contancts for interview
 	- next meeting: Tuesday 24.10.2017, 13:00 for creating interview questions
 	
 
@@ -24,5 +24,5 @@ attendance: ziegm1
 24.10.2017 (meeting 13:00 until 14:30)
 ---------------------------
 
-attendance: kibup1, meiej3, gfels6, odaoj1
+attendance: kybup1, meiej3, gfels6, odaoj1
 absence: ziegm1 (Groundwork 22.10), petim1 (sick)
