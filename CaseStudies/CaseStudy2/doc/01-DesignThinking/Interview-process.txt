@@ -1,4 +1,3 @@
-<<<<<<< .mine
 Möglicher Interviewablauf (Semi-structured):
 
 - Kurzes Vorstellen (Person, BFH, Studiengang, Projekt)
@@ -19,12 +18,8 @@ Abschlussfrage:
 
 
 
+Fragekatalog:
 
-||||||| .r38
-=======
-
-
->>>>>>> .r40
 Was sind die (häufigsten) Probleme der Personen mit sozialer Angststörung?
 
 Welche dieser Probleme betreffen die Spitex bei der Betreuung der Patienten?
@@ -42,4 +37,3 @@ Wie wird die Spitex bereits durch die IT unterstützt? (Software und Hardware)
 (Kann aus oberer Frage folgen): Gibt es Schwierigkeiten oder Probleme mit der aktuellen IT?
 
 (Offene Frage): Welche Funktionen könnte ein App beinhalten, welches der Spitex im täglichen Einsatz hilft?
-
