@@ -1,27 +1,91 @@
-first iteration 
----------------
+first iteration (20.-25.10.2017)
+********************************
+1. SCOPING
 
-1. scoping
-Scope is the develepment of an app to support health visitors nursing patients with
+20.10.2017
+Scope is the development of an app to support health visitors nursing patients with
 social anxieties. The app shouldn't contain any typical functionality of a Clinic Information
 System, furthermore its purpose should be only to image the treatment correlated to 
 social anxieties.
 
-2. research
+2. RESEARCH
 
+24.10.2017
 Actually we have little knowledge of this particular field of nursing. Thus, besides
 getting information about these kinds of disorder, we need to conduct an interview
 with a professional.
 
 For this interview, the following professionals were considered and contacted:
-
 - a friend of kybup1, Psychologist
 - an uncle of meiej3, Psychologist
-- a friend of petim1, Specialist FMH for children & youth psychiatry & psychotherapy
-- three home care institutions specialized on  social anxieties
+- a friend of petim1, professional carer/social pedagogy
+- three home care institutions specialized on social anxieties
 
 Questions got carried together (see interview-process.txt)
 
-3. synthesize
+3. SYNTHESIZE
 
+25.-26.10.2017
 kybup1, meiej3, petim1 and gfels6 called and asked one of the possible interview partners each
+
+26.10.2017
+We documented the information of the three interviews.
+- interview_Stiftung_Schmelzi.txt (petim1)
+- ..............(kybup1)
+- ..............(meiej3)
+
+We analyzed the material of the research and the three interviews in our group.
+
+--------------------------------------------------------------------------------------------------
+
+second iteration (26.-27.10.2017)
+*********************************
+1. SCOPING
+
+26.10.2017
+We started again at the first point With our new knowledge from the interviews.
+With did brainstorming on the blackboard, collected ideas and created the idea for our project.
+(.............)
+
+2. RESEARCH
+
+27.10.2017
+After the second round of scoping, we contacted an other interview partner and asked for his
+opinion about our ideas.
+- a friend of petim1, Specialist FMH for children & youth psychiatry & psychotherapy
+
+3. SYNTHESIZE
+
+27.10.2017
+petim1 called and asked his second interview partner
+
+Documentation of the new interview.
+- .................
+
+Analysis of the new findings from the interview.
+
+
+
+--------------------------------------------------------------------------------------------------
+ALS UNTERSTÜTZUNG -> INHALTE DER FOLIEN
+
+3. SYNTHESIZE
+≥ 2 personas as target user(s) for your application
+expected result: final list of main features, i.e., (functional) user requirements
+
+4. DESIGN
+design storyboards
+≥ 2 storyboards per team member
+discuss and iterate
+make sure your storyboards are detailed enough to show the usage of a real system
+expected result: final storyboards with short description
+
+5. PROTOTYPE
+≥ 3 card-based prototypes for your most promising storyboards
+expected result: final prototypes with short description
+
+6. VALIDATE
+test your storyboards/prototypes with friends or family (i.e., outside this class)
+first define your evaluation questions
+then how you will find the answer
+
