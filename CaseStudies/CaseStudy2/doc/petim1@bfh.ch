@@ -30,3 +30,10 @@ absence: ziegm1 (ground work 22.10), petim1 (sick)
 - interview questions finalized (Interview-process.txt)
 - interview tasks assigned
 - design-thinking process initialized (design-thinking.txt)
+---------------------------
+
+attendance: petim1
+
+- interview with Fabian Schwaller, Stifung Schmelzi, Grenchen (Interview_Stiftung_Schmelzi.txt)
+
+26.10.2017 (12:55 - 13:25)
