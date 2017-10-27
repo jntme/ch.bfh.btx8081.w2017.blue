@@ -1,13 +1,16 @@
 List of main features
 
 - Patientendaten
-Verwaltung der Patienten inklusive deren Daten. Nicht editierbar, da die Patientendaten übergeben werden von einem bestehenden System
+Verwaltung der Patienten inklusive deren Daten. Personendaten, Medikation und Diagnosen nicht modifizierbar, da die 
+diese Daten von einem externen System geholt werden. Zu den Patientendaten gehört auch die Verlaufsgeschichte mit 
+der History der Aktivitäten/Expositionen, Erreichung Ziele und Kommentare der Spitex.
+
+- Ziele
+Ziele können von der Spitex in zusammenarbeit mit dem Patienten erfasst werden. Diese Ziele werden wie eine Progress-Bar
+dargestellt, welche mit den Aktivitäten und Expositionen Schritt für Schritt erfüllt werden können.
 
 - Aktivitätenkatalog
 Auflistung verschiedener Aktivitäten, welche mit dem Patient durchgeführt werden können.
 
 - Expositionstraining
 Erweiterung vom Aktivitätenkatalog mit verschiedenen Situationen, welche für die Trainings wichtig sind.
-
-- Ziele
-Zu definierende vorgegebene Ziele, welche abgeschlossen werden können.
