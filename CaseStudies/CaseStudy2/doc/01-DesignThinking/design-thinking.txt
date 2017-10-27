@@ -36,16 +36,20 @@ We documented the information of the three interviews.
 
 We analyzed the material of the research and the three interviews in our group.
 
+26.10.2017
+We did brainstroming after collecting the new infos from the intervies.
+We collected ideas and created the idea for our project on the blackboard.
+(see Folder Meeting_26.10)
+
 --------------------------------------------------------------------------------------------------
 
 second iteration (26.-27.10.2017)
 *********************************
 1. SCOPING
-
 26.10.2017
-We started again at the first point With our new knowledge from the interviews.
-With did brainstorming on the blackboard, collected ideas and created the idea for our project.
-(Meeting_26.10)
+The project scope and the things out of scope are presented in the following picture:
+IMG_20171026_155753.jpg
+Included in the project scope are the items they are red underlined.
 
 2. RESEARCH
 
@@ -70,18 +74,18 @@ Analysis of the new findings from the interview.
 ALS UNTERSTÜTZUNG -> INHALTE DER FOLIEN
 
 3. SYNTHESIZE
-≥ 2 personas as target user(s) for your application
+>= 2 personas as target user(s) for your application
 expected result: final list of main features, i.e., (functional) user requirements
 
 4. DESIGN
 design storyboards
-≥ 2 storyboards per team member
+>= 2 storyboards per team member
 discuss and iterate
 make sure your storyboards are detailed enough to show the usage of a real system
 expected result: final storyboards with short description
 
 5. PROTOTYPE
-≥ 3 card-based prototypes for your most promising storyboards
+>= 3 card-based prototypes for your most promising storyboards
 expected result: final prototypes with short description
 
 6. VALIDATE
