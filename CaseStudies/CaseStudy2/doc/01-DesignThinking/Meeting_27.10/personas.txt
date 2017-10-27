@@ -1,8 +1,8 @@
 Persona 1: Patient - Tim Bubble
 
 Tim Bubble ist 22 Jahre alt und wohnt alleine in einer 3 Zimmer Wohnung in Zollikofen.
-Seine soziale Phobie ist sehr stark ausgepr‰gt. Er getraut sich kaum bis gar nicht alleine allt‰gliche
-Situationen ausserhalb seiner Wohnung zu unternehmen. Dazu gehˆren: Einkaufen, Ausw‰rts Essen, Kino, 
+Seine soziale Phobie ist sehr stark ausgepr√§gt. Er getraut sich kaum bis gar nicht alleine allt√§gliche
+Situationen ausserhalb seiner Wohnung zu unternehmen. Dazu geh√∂ren: Einkaufen, Ausw√§rts Essen, Kino, 
 generell soziale Situationen meidet er.
 
 
@@ -10,19 +10,19 @@ Persona 2: Patient - Stefanie Stahl
 
 Stefanie Stahl ist 36 Jahre alt und wohnt zusammen mit ihrem Lebenspartner Konrad Kappel in Magglingen in
 einem alten Bauernhaus. Sie hat Probleme mit Personen, die sie nicht kennt zu interagieren. Die soziale Phobie
-ist nicht so stark ausgepr‰gt, schr‰nkt sie aber dennoch ein.
+ist nicht so stark ausgepr√§gt, schr√§nkt sie aber dennoch ein.
 
 
 Persona 3: Spitex - Barbara Hofer
 
-Barbara Hofer ist 42 Jahre alt und seit etwa 5 Jahren in der psychosozialen Spitex t‰tig. 
-Sie ist Dipl. Psychiatrie Pflegefachfrau und besucht ihre Patienten zuhause oder f¸hrt mit den Patienten
+Barbara Hofer ist 42 Jahre alt und seit etwa 5 Jahren in der psychosozialen Spitex t√§tig. 
+Sie ist Dipl. Psychiatrie Pflegefachfrau und besucht ihre Patienten zuhause oder f√§hrt mit den Patienten
 Expositionstrainings aus.
 
 
 Persona 4: Fachpersonal Psychiater - Heinz Egger
 
-Heinz Egger ist 51 Jahre alt und in der Psychiatrie t‰tig und arbeitet oft mit Menschen mit sozialer Phobie zusammen.
-Die Spitex unterst¸tzt ihn hierbei und sie halten Sitzungen zusammen um den Fortschritt zu besprechen.
+Heinz Egger ist 51 Jahre alt und in der Psychiatrie t√§tig und arbeitet oft mit Menschen mit sozialer Phobie zusammen.
+Die Spitex unterst√ºtzt ihn hierbei und sie halten Sitzungen zusammen um den Fortschritt zu besprechen.
 
 
