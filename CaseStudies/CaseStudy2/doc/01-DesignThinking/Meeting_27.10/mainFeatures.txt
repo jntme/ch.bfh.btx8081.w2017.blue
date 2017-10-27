@@ -1,0 +1,13 @@
+List of main features
+
+- Patientendaten
+Verwaltung der Patienten inklusive deren Daten. Nicht editierbar, da die Patientendaten übergeben werden von einem bestehenden System
+
+- Aktivitätenkatalog
+Auflistung verschiedener Aktivitäten, welche mit dem Patient durchgeführt werden können.
+
+- Expositionstraining
+Erweiterung vom Aktivitätenkatalog mit verschiedenen Situationen, welche für die Trainings wichtig sind.
+
+- Ziele
+Zu definierende vorgegebene Ziele, welche abgeschlossen werden können.
