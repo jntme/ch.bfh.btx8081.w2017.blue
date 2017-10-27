@@ -68,21 +68,21 @@ Documentation of the new interview.
 
 Analysis of the new findings from the interview.
 
-
-
---------------------------------------------------------------------------------------------------
-ALS UNTERSTÜTZUNG -> INHALTE DER FOLIEN
-
-3. SYNTHESIZE
->= 2 personas as target user(s) for your application
-expected result: final list of main features, i.e., (functional) user requirements
+27.10.2017
+Determine 4 personas (see ..............)
+Create the list of main features (see ...........)
 
 4. DESIGN
-design storyboards
->= 2 storyboards per team member
-discuss and iterate
-make sure your storyboards are detailed enough to show the usage of a real system
-expected result: final storyboards with short description
+
+27.10.2017
+First, each team member drew 2 storyboards for itself, then we discussed and iterated the ideas.
+Each team member drew 2 final storyboards with short description.
+(see ..........)
+
+
+
+
+
 
 5. PROTOTYPE
 >= 3 card-based prototypes for your most promising storyboards
