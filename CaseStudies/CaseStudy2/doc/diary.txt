@@ -58,14 +58,24 @@ attendance: kybup1, meiej3, gfels6, odaoj1, ziegm1, petim1
 - define main functions
 
 
-27.10.2017 (meeting 08:20 until 11:45)
+27.10.2017 (meeting 08:20 until 12:00)
 ---------------------------
 
 attendance: kybup1, meiej3, gfels6, odaoj1, ziegm1, petim1
 
-- create personas (3 persons)
-- design storyboards
-- 
+- determine 4 personas
+- create list of main features
+- design and drew storyboards
+- design 3 prototypes 
+- interview with friend of petim1 (petim1, gfels6)
 
+
+28.10.2017 (homework)
+---------------------------
+
+attendance: ziegm1
+
+- draw final version of the 3 prototypes
+- updating design-thinking.txt 
 
 
