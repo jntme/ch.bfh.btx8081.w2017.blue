@@ -7,7 +7,7 @@ Scope is the development of an app to support health visitors nursing patients w
 social anxieties. The app shouldn't contain any typical functionality of a Clinic Information
 System, furthermore its purpose should be only to image the treatment correlated to 
 social anxieties.
-
+--------------------------------------------------------------------------------------------------
 2. RESEARCH
 
 24.10.2017
@@ -21,74 +21,71 @@ For this interview, the following professionals were considered and contacted:
 - a friend of petim1, professional carer/social pedagogy
 - three home care institutions specialized on social anxieties
 
-Questions got carried together (see interview-process.txt)
-
+Questions got carried together (see interview-process.txt -> Meeting_24.10.)
+--------------------------------------------------------------------------------------------------
 3. SYNTHESIZE
 
 25.-26.10.2017
-kybup1, meiej3, petim1 and gfels6 called and asked one of the possible interview partners each
+kybup1, meiej3, petim1 and gfels6 called and asked one of the possible interview partners each.
 
 26.10.2017
 We documented the information of the three interviews.
-- interview_Stiftung_Schmelzi.txt (petim1)
-- ..............(gfels6)
-- ..............(meiej3)
+(see folder interview_results)
 
 We analyzed the material of the research and the three interviews in our group.
 
 26.10.2017
-We did brainstroming after collecting the new infos from the intervies.
+We did brainstorming after collecting the new information from the interviews.
 We collected ideas and created the idea for our project on the blackboard.
-(see Folder Meeting_26.10)
-
+(see folder Meeting_26.10)
 --------------------------------------------------------------------------------------------------
 
-second iteration (26.-27.10.2017)
+second iteration (26.-01.11.2017)
 *********************************
 1. SCOPING
+
 26.10.2017
 The project scope and the things out of scope are presented in the following picture:
-IMG_20171026_155753.jpg
+IMG_20171026_155753.jpg (see folder Meeting_26.10.)
 Included in the project scope are the items they are red underlined.
-
+--------------------------------------------------------------------------------------------------
 2. RESEARCH
 
 27.10.2017
-After the second round of scoping, we contacted an other interview partner and asked for his
-opinion about our ideas.
+An other interview get planned.
 - a friend of petim1, Specialist FMH for children & youth psychiatry & psychotherapy
 
+Questions got carried together (see 2.interview-process.txt -> Meeting_27.10.)
+--------------------------------------------------------------------------------------------------
 3. SYNTHESIZE
 
 27.10.2017
-petim1 called and asked his second interview partner
-
-Documentation of the new interview.
-- .................
+petim1 called and asked his second interview partner for his opinion about our ideas.
 
 Analysis of the new findings from the interview.
 
 27.10.2017
-Determine 4 personas (see ..............)
-Create the list of main features (see ...........)
-
+Determine 4 personas -> 2 patients, 1 spitex, 1 psychiatrist. (see personas.txt)
+Create the list of main features. (see mainFeatures.txt)
+--------------------------------------------------------------------------------------------------
 4. DESIGN
 
 27.10.2017
 First, each team member drew 2 storyboards for itself, then we discussed and iterated the ideas.
+see (Aufteilung_Stroyboards.pdf)
+
 Each team member drew 2 final storyboards with short description.
-(see ..........)
-
-
-
-
-
-
+(see storyboards.txt)
+--------------------------------------------------------------------------------------------------
 5. PROTOTYPE
->= 3 card-based prototypes for your most promising storyboards
-expected result: final prototypes with short description
 
+27.10.2017
+We were looking for the three most promising storyboards and designed 3 prototypes for it.
+(see prototypes.pdf)
+--------------------------------------------------------------------------------------------------
 6. VALIDATE
+
+30./31.10.2017
 test your storyboards/prototypes with friends or family (i.e., outside this class)
 first define your evaluation questions
 then how you will find the answer
