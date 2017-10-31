@@ -1,0 +1,11 @@
+Befragte Person:
+Borner Michael, Fachmann Betreuung Behinderte
+
+Programm scheint sehr intuitiv bedienbar. Bedienelemente und dargestellte Elemente sind klar und deutlich gekennzeichnet.
+
+Nicht für diese Teilaufgabe verwendbar, trotzdem wichtig:
+- Mehr Funktionalität
+- Sehr hoher Arbeitsaufwand für Spitex? --> Haben die genügend Kapazität?
+- Login für psychiatrische Fachperson inklusive edit - Möglichkeit, damit er "live" Einträge von Spitex anschauen kann
+  und entsprechend Kommentare abgeben. (Wichtig für Vorbereitung auf nächste Gesprächstherapie?)
+
