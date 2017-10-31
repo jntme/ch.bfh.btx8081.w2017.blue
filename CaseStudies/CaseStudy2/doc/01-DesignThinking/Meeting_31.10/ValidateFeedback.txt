@@ -1,6 +1,37 @@
-Befragte Person:
+Interview 1
+-----------
+
+Was macht das Tool deiner Meinung nach genau?
+Es unterstützt die Spitex mit einer Auswahl von Aktivitäten.
+
+Denkst du diese Funktionalitäten sind angebracht und vollständig?
+Das ist natürlich schwierig zu sagen, aber ich denke es bringt sicher einen Vorteil.
+
+Findest du die Abfolge der Schritte nachvollziehbar und intuitiv?
+So wie ich das verstanden habe, bauen sie ja auf einander auf. Macht also Sinn; die Struktur ist erkennbar.
+Ich habe mich gefragt, ob die Spitex auch selber Patienten hinzufügen kann oder nicht. 
 
 
+Denkst du, dass die Funktionalität dieses Tools sich gut in den Spitex Alltag integrieren lässt?
+Solange es so bleibt und nich viel Zeit konsumiert, sicher. Ich frage mich ob die Spitex Zeit hat genug Zeit hat,
+das alles zu erfassen.
+
+Hast du weitere Ideen, Änderungsvorschläge?
+nein keine
+
+
+Interview 2
+-----------
+
+Was macht das Tool deiner Meinung nach genau?
+Denkst du diese Funktionalitäten sind angebracht und vollständig?
+Findest du die Abfolge der Schritte nachvollziehbar und intuitiv?
+Denkst du, dass die Funktionalität dieses Tools sich gut in den Spitex Alltag integrieren lässt?
+Hast du weitere Ideen, Änderungsvorschläge?
+
+
+Interview 3
+-----------
 Befragte Person:
 Borner Michael, Fachmann Betreuung Behinderte
 
