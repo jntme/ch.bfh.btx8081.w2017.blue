@@ -88,3 +88,12 @@ attendance: petim1
 - sent in group for further processes
 
 
+31.10.2017 (meeting 13:10 until 14:30)
+---------------------------
+
+attendance: kybup1, meiej3, gfels6
+absence: ziegm1 (ground work 28.10), petim1 (ground work 30.10), odaoj1
+
+- step 6 validate 
+- preparation for presentation
+- 
