@@ -2,21 +2,21 @@ Interview 1
 -----------
 
 Was macht das Tool deiner Meinung nach genau?
-Es unterst¸tzt die Spitex mit einer Auswahl von Aktivit‰ten.
+Es unterst√ºtzt die Spitex mit einer Auswahl von Aktivit√§ten.
 
-Denkst du diese Funktionalit‰ten sind angebracht und vollst‰ndig?
-Das ist nat¸rlich schwierig zu sagen, aber ich denke es bringt sicher einen Vorteil.
+Denkst du diese Funktionalit√§ten sind angebracht und vollst√§ndig?
+Das ist nat√ºrlich schwierig zu sagen, aber ich denke es bringt sicher einen Vorteil.
 
 Findest du die Abfolge der Schritte nachvollziehbar und intuitiv?
 So wie ich das verstanden habe, bauen sie ja auf einander auf. Macht also Sinn; die Struktur ist erkennbar.
-Ich habe mich gefragt, ob die Spitex auch selber Patienten hinzuf¸gen kann oder nicht. 
+Ich habe mich gefragt, ob die Spitex auch selber Patienten hinzuf√ºgen kann oder nicht. 
 
 
-Denkst du, dass die Funktionalit‰t dieses Tools sich gut in den Spitex Alltag integrieren l‰sst?
+Denkst du, dass die Funktionalit√§t dieses Tools sich gut in den Spitex Alltag integrieren l√§sst?
 Solange es so bleibt und nich viel Zeit konsumiert, sicher. Ich frage mich ob die Spitex Zeit hat genug Zeit hat,
 das alles zu erfassen.
 
-Hast du weitere Ideen, ƒnderungsvorschl‰ge?
+Hast du weitere Ideen, √Ñnderungsvorschl√§ge?
 nein keine
 
 
@@ -24,10 +24,10 @@ Interview 2
 -----------
 
 Was macht das Tool deiner Meinung nach genau?
-Denkst du diese Funktionalit‰ten sind angebracht und vollst‰ndig?
+Denkst du diese Funktionalit√§ten sind angebracht und vollst√§ndig?
 Findest du die Abfolge der Schritte nachvollziehbar und intuitiv?
-Denkst du, dass die Funktionalit‰t dieses Tools sich gut in den Spitex Alltag integrieren l‰sst?
-Hast du weitere Ideen, ƒnderungsvorschl‰ge?
+Denkst du, dass die Funktionalit√§t dieses Tools sich gut in den Spitex Alltag integrieren l√§sst?
+Hast du weitere Ideen, √Ñnderungsvorschl√§ge?
 
 
 Interview 3
@@ -37,9 +37,9 @@ Borner Michael, Fachmann Betreuung Behinderte
 
 Programm scheint sehr intuitiv bedienbar. Bedienelemente und dargestellte Elemente sind klar und deutlich gekennzeichnet.
 
-Nicht f¸r diese Teilaufgabe verwendbar, trotzdem wichtig:
-- Mehr Funktionalit‰t
-- Sehr hoher Arbeitsaufwand f¸r Spitex? --> Haben die gen¸gend Kapazit‰t?
-- Login f¸r psychiatrische Fachperson inklusive edit - Mˆglichkeit, damit er "live" Eintr‰ge von Spitex anschauen kann
-  und entsprechend Kommentare abgeben. (Wichtig f¸r Vorbereitung auf n‰chste Gespr‰chstherapie?)
+Nicht f√ºr diese Teilaufgabe verwendbar, trotzdem wichtig:
+- Mehr Funktionalit√§t
+- Sehr hoher Arbeitsaufwand f√ºr Spitex? --> Haben die gen√ºgend Kapazit√§t?
+- Login f√ºr psychiatrische Fachperson inklusive edit - M√∂glichkeit, damit er "live" Eintr√§ge von Spitex anschauen kann
+  und entsprechend Kommentare abgeben. (Wichtig f√ºr Vorbereitung auf n√§chste Gespr√§chstherapie?)
 

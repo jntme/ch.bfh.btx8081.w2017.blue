@@ -80,13 +80,13 @@ Each team member drew 2 final storyboards with short description.
 5. PROTOTYPE
 
 27.10.2017-28.10.2017
-We were looking for the three most promising storyboards and designed 3 prototypes for it.
+We were looking for the three most promising storyboards (III, IV, VI) and designed 3 prototypes for it.
 (see prototypes.pdf)
 --------------------------------------------------------------------------------------------------
 6. VALIDATE
 
 30./31.10.2017
-test your storyboards/prototypes with friends or family (i.e., outside this class)
-first define your evaluation questions
-then how you will find the answer
+We defined validation questions to determine the quality of our prototypes (see ValidationQuestions.txt). Together we asked two 
+colleagues and a “Fachmann Betreuung Behinderte” of ours who gave us feedback
+about how they understand the prototypes and how useful the appear to be for them (see ValidateFeedback.txt).
 
