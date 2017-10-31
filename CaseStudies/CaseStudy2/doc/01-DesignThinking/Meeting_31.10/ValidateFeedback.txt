@@ -24,10 +24,24 @@ Interview 2
 -----------
 
 Was macht das Tool deiner Meinung nach genau?
+Man kann sich einloggen und sieht Patienten und kann ein neues Ziel erfassen. 
+Über dem Ziel wird ein Fortschrittsbalken angezeigt. Schlussendlich kann man Aktivitäten zum Ziel hinzufügen
+und diese dann bearbeiten.
+
 Denkst du diese Funktionalitäten sind angebracht und vollständig?
+Es ist wahrscheinlich nur ein Auschnitt aus der Spitex Tätigkeit. 
+
 Findest du die Abfolge der Schritte nachvollziehbar und intuitiv?
+Jein, die Schritte finde ich sinnvoll, jedoch beim GUI gibts paar Fragezeichen.
+Ich bin mir gewohnt, dass der Close Button oben rechts in der Leiste ist, als Beispiel.
+Zudem auf was für einem Gerät soll das denn angezeigt werden? Das ist sehr wichtig.
+
 Denkst du, dass die Funktionalität dieses Tools sich gut in den Spitex Alltag integrieren lässt?
+Wann soll die Spitex das denn ausfüllen, direkt mit dem Patienten oder danach? 
+Müsste halt direkt mit der Spitex getestet werden (prototyping)
+
 Hast du weitere Ideen, Änderungsvorschläge?
+Wieso eine Webapplication wenns auch ein App sein könnte?
 
 
 Interview 3
