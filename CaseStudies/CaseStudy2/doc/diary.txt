@@ -79,3 +79,12 @@ attendance: ziegm1
 - updating design-thinking.txt 
 
 
+30.10.2017 (homework, 30min)
+---------------------------
+
+attendance: petim1
+
+- interview to check usability of prototypes
+- sent in group for further processes
+
+
