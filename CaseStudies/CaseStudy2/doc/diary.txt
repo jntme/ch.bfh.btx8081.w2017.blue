@@ -12,7 +12,7 @@ attendance: all group members
 	- next meeting: Tuesday 24.10.2017, 13:00 for creating interview questions
 	
 
-22.10.2017 (homework)
+22.10.2017 (homework, 30min)
 ---------------------------
 
 attendance: ziegm1
@@ -70,7 +70,7 @@ attendance: kybup1, meiej3, gfels6, odaoj1, ziegm1, petim1
 - interview with friend of petim1 (petim1, gfels6)
 
 
-28.10.2017 (homework)
+28.10.2017 (homework, 45min)
 ---------------------------
 
 attendance: ziegm1
@@ -97,3 +97,11 @@ absence: ziegm1 (ground work 28.10), petim1 (ground work 30.10), odaoj1
 - step 6 validate 
 - preparation for presentation
 - 
+
+01.11.2017 (homework, 180min)
+---------------------------
+
+attendance: gfels6
+
+- updated ppt
+- collected all informations / data and created a report "Bericht_step01_blue.docx"
