@@ -96,7 +96,7 @@ absence: ziegm1 (ground work 28.10), petim1 (ground work 30.10), odaoj1
 
 - step 6 validate 
 - preparation for presentation
-- 
+
 
 01.11.2017 (homework, 180min)
 ---------------------------
@@ -105,3 +105,21 @@ attendance: gfels6
 
 - updated ppt
 - collected all informations / data and created a report "Bericht_step01_blue.docx"
+
+
+01.11.2017 (homework, 30min)
+---------------------------
+
+attendance: kybup1
+
+- correction "Bericht_step01_blue.docx"
+- Description storyboards "Bericht_step01_blue.docx"
+
+
+02.11.2017 (homework, 60min)
+---------------------------
+
+attendance: ziegm1
+
+- correction "Bericht_step01_blue.docx"
+- Description prototypes "Bericht_step01_blue.docx"
