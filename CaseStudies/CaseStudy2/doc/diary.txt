@@ -123,3 +123,11 @@ attendance: ziegm1
 
 - correction "Bericht_step01_blue.docx"
 - Description prototypes "Bericht_step01_blue.docx"
+
+
+01.11.2017 ( homework, 30 min)
+--------------------------------------------------
+attendance: odaoj1
+- Vorbereitung für die Präsentation
+-soziale phobie : Bedeutung, Probleme und Behandlungmöglichkeit 
+
