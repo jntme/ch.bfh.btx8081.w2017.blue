@@ -1,0 +1,15 @@
+For your application, design:
+1. a UML domain model covering the main classes
+  ▶ incl. association, inheritance, and aggregation relations
+  ▶ observe the general modeling guidelines and make use of Responsibility
+  Driven Design (RDD) or use CRC-Cards as a tool
+
+2. based on your domain model, create two UML sequence diagrams, one each
+for the following situations (each should be non-trivial)
+  ▶ when the user updates some specific information
+  ▶ when the system alerts the user about some specific event
+
+3. if necessary, refine your UML class model to include the attributes and
+  operations needed for your sequence diagrams.
+  Presentation of results (10 min per team): 16.11.
+    ▶ 10 points for documents
