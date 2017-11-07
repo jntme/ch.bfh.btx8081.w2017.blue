@@ -144,7 +144,27 @@ attendance: odaoj1
 attendance: kybup1, meiej3, gfels6, ziegm1, petim1, odaoj1
 
 - create uml domain model
-- distribute 10 CRC cards (homework)
+- distribute 10 CRC cards (homework):
+
+  Jonathan:
+  Note & Dangernote
+
+  Michi:
+  ActivityRecord, Activity & Objective
+
+  Säschu:
+  HealthVisitor
+
+  Phippu:
+  Patient
+
+  Jemal:
+  Diagnosis
+
+  Mänu:
+  Medication
+  Drugs
+
 - create sequenz diagram
 
 
