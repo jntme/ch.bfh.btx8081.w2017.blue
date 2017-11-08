@@ -1,0 +1,24 @@
+--------------------------------------------------------------------------------------------------------------------------
+Domain: Patient
+
+Responsibilities:										Collaborators:
+-Gets basic patient information like name,				-Contains a medication object
+birthdate, address,... from an external system			
+														-Contains a list of diagnosis objects
+-Provides basic Patient information						
+														-Contains one objective and its individual progress
+-Gets personal medication information from
+an external System										-Contains a list of notes
+
+-Gets information about individual diagnosis			-Is managed by one or more healthvisitors
+from an external system									
+														
+-Provides information about individual diagnosis		
+														
+-Creates, edits and provides notes
+
+-Chooses objectives
+
+-Completes objectives
+
+--------------------------------------------------------------------------------------------------------------------------
