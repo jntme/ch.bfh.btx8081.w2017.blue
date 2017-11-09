@@ -78,5 +78,26 @@ Responsibilities:
 Collaborators: Patient.
 -gets patient information (PID, Name, FirstName, Date of birth, Address) from the patient for patient identification.
 ---------------------------------------------------------------------------------------------------------------------------
+Class name: Medication	
+Purpose: shows the list of drugs the patient has to take.
+Responsibilities:
+	- shows current medication list
+	- shows dose rate
 
+Collaborators: 
+Patient:
+- gets patient information (PID, Name, FirstName, DateOfBirth, Address) from the patient for identification
+Drug:
+- gets available drugs (DID, Name, producer, doseRate) from drug
+Note: In future system, this list will be provided directly from the prescribed doctor.
+--------------------------------------------------------------------------------------------------------------------------
+Class name: Drug
+Purpose: provides a list of drugs used by medication.
+Responsibilities:
+	- shows list of possible drugs
+	- shows information about drug (eg. side effect, pharmacological interaction, dangers, ...)
+
+Collaborators:
+Medication:
+- gives available drugs (DID, Name, producer, doseRate) to medication
 	
