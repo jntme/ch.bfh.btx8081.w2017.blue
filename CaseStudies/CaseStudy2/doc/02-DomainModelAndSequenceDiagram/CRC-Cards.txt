@@ -101,3 +101,24 @@ Collaborators:
 Medication:
 - gives available drugs (DID, Name, producer, doseRate) to medication
 	
+--------------------------------------------------------------------------------------------------------------------------
+
+Class name:  Note
+Purpose: A note can contain text data to describe something related to a patient at a specific time.
+Responsibilities:
+  - Contains a text which is attached to specific patient.
+
+Collaborators:
+  - belongs to a patient
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Class name:  Danger Note
+Purpose: A particular note containing text data to describe a dangerous fact related to a patient.
+Responsibilities:
+  - Contains a text which is attached to specific patient.
+  - Indicates a fact about / correlated to a patient which is or could be dangerous 
+
+Collaborators:
+  - belongs to a patient
+  - extends a normal note
