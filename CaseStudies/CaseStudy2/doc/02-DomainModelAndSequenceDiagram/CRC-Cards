@@ -22,3 +22,49 @@ from an external system
 -Completes objectives
 
 --------------------------------------------------------------------------------------------------------------------------
+
+Class Name: Objective
+Purpose: Represents an overview of the objective
+Responsibilities: 
+	- the objecitve can be defined
+	- the description of the objective can be described detailed
+	- can add activities
+	- shows existing activities
+	- shows the progress of the individual activities
+	- calculates the progress of the objective
+	- shows the progress of the objective
+Collaborators:
+	- uses the class activity
+	- the class patient takes the definition of the objective and its progress
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Class Name: Activity
+Purpose: Represent an overview of the activity
+Responsibilities:
+	- the activity can be defined
+	- the description of the activity can be described detailed
+	- can add activity record
+	- shows existing activity records
+	- shows the progress of the individual activity records
+	- the progress of the activity can be adjusted manually
+	- shows the progress of the activity
+Collaborators:
+	- uses the class activity record
+	- the class objective takes the definition of the activity and its progress
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Class Name: ActivityRecord
+Purpose: Represent an overview of the activity record
+Responsibilities:
+	- shows the date of the exposition training
+	- the description of the activity record for the exposition training can be described detailed
+	- can add image documents of the exposition training
+	- the progress of the expositions training of this day can be adjusted manually
+	- shows the progress of the exposition training of this day
+Collaborators:
+	- the class activity takes the date of the activity record and  its  progress
+	
+--------------------------------------------------------------------------------------------------------------------------
+	
