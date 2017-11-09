@@ -67,4 +67,16 @@ Collaborators:
 	- the class activity takes the date of the activity record and  its  progress
 	
 --------------------------------------------------------------------------------------------------------------------------
+Class Name: Diagnosis
+Purpose: identify the current most likely health problem the patient suffers from.
+Responsibilities:
+	- shows current health problems, records risks and exposures of the patient
+-shows list of symptoms the patient reveals
+- describes behaviour of the patient
+	-responsible for gathering the information of Patient and their persistence
+
+Collaborators: Patient.
+-gets patient information (PID, Name, FirstName, Date of birth, Address) from the patient for patient identification.
+---------------------------------------------------------------------------------------------------------------------------
+
 	
