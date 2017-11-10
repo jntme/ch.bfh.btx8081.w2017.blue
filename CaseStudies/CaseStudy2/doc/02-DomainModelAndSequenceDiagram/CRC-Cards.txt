@@ -67,6 +67,7 @@ Collaborators:
 	- the class activity takes the date of the activity record and  its  progress
 	
 --------------------------------------------------------------------------------------------------------------------------
+
 Class Name: Diagnosis
 Purpose: identify the current most likely health problem the patient suffers from.
 Responsibilities:
@@ -77,7 +78,9 @@ Responsibilities:
 
 Collaborators: Patient.
 -gets patient information (PID, Name, FirstName, Date of birth, Address) from the patient for patient identification.
+
 ---------------------------------------------------------------------------------------------------------------------------
+
 Class name: Medication	
 Purpose: shows the list of drugs the patient has to take.
 Responsibilities:
@@ -90,7 +93,9 @@ Patient:
 Drug:
 - gets available drugs (DID, Name, producer, doseRate) from drug
 Note: In future system, this list will be provided directly from the prescribed doctor.
+
 --------------------------------------------------------------------------------------------------------------------------
+
 Class name: Drug
 Purpose: provides a list of drugs used by medication.
 Responsibilities:
@@ -122,3 +127,17 @@ Responsibilities:
 Collaborators:
   - belongs to a patient
   - extends a normal note
+  
+--------------------------------------------------------------------------------------------------------------------------
+ 
+Class name:  HealthVisitor
+Purpose: defined a user who works with the program
+Responsibilities:
+  - can login (authentication)
+  - has some basic informations about HealthVisitor itself (name, patients, etc.)
+  - can search patients
+  - has access to all functionalities
+
+Collaborators:
+  - has patients
+
