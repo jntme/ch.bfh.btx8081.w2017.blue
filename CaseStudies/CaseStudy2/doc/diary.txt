@@ -147,7 +147,7 @@ attendance: kybup1, meiej3, gfels6, ziegm1, petim1, odaoj1
 - distribute 10 CRC cards (homework)
 
 
-07.11.2017 - 13.11.2017 (homework)
+07.11.2017 - 13.11.2017 (homework, 30-60min)
 ---------------------------
 - meiej3:	Note, DangerNote
 - ziegm1:	ActivityRecord, Activity, Objective
@@ -157,11 +157,23 @@ attendance: kybup1, meiej3, gfels6, ziegm1, petim1, odaoj1
 - petim1:	Medication, Drugs
 
 
-14.11.2017 (meeting 13:00 until ......)
+14.11.2017 (meeting 13:00 until 15:30)
 ---------------------------
 
-attendance: kybup1, meiej3, gfels6, ziegm1, petim1, odaoj1
+attendance: kybup1, meiej3, gfels6, ziegm1, petim1
+semi-absence: odaoj1
 
-- create sequenz diagram
+- create both sequence diagram
+    1. addActivity (update) 
+    2. checkNotes (alert)
+- prepare presentation
 
 
+14.11.2017 - 15.11.2017 (homework, 30min)
+---------------------------
+
+attendance: kybup1, meiej3, gfels6, ziegm1, petim1
+
+- finish presentation (petim1)
+- update crc cards (note-meiej3, activityRecord-ziegm1)
+- modeling uml sequence diagrams (kybup1, gfels6)
