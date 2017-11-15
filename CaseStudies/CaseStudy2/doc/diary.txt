@@ -167,6 +167,7 @@ semi-absence: odaoj1
     1. addActivity (update) 
     2. checkNotes (alert)
 - prepare presentation
+- create sequence diagram
 
 
 14.11.2017 - 15.11.2017 (homework, 30min)
