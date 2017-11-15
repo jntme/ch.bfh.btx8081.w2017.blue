@@ -1,26 +1,22 @@
 --------------------------------------------------------------------------------------------------------------------------
-Domain: Patient
 
-Responsibilities:										Collaborators:
--Gets basic patient information like name,				-Contains a medication object
-birthdate, address,... from an external system			
-														-Contains a list of diagnosis objects
--Provides basic Patient information						
-														-Contains one objective and its individual progress
--Gets personal medication information from
-an external System										-Contains a list of notes
-
--Gets information about individual diagnosis			-Is managed by one or more healthvisitors
-from an external system									
-														
--Provides information about individual diagnosis		
-														
--Creates, edits and provides notes
-
--Chooses objectives
-
--Completes objectives
-
+Class Name: Patient
+Responsibilities:	
+	- Gets basic patient information like name, birthdate, address,... from an external system																
+	- Provides basic Patient information						
+	- Gets personal medication information from an external System										
+	- Gets information about individual diagnosis from an external system									
+	- Provides information about individual diagnosis		
+	- Creates, edits and provides notes
+	- Chooses objectives
+	- Completes objectives
+Collaborators:
+	- Contains a medication object
+	- Contains a list of diagnosis objects
+	- Contains one objective and its individual progress
+	- Contains a list of notes
+	- Is managed by one or more healthvisitors
+	
 --------------------------------------------------------------------------------------------------------------------------
 
 Class Name: Objective
@@ -31,11 +27,10 @@ Responsibilities:
 	- can add activities
 	- shows existing activities
 	- shows the progress of the individual activities
-	- calculates the progress of the objective
-	- shows the progress of the objective
+	- shows if the objective is achieved or not
 Collaborators:
 	- uses the class activity
-	- the class patient takes the definition of the objective and its progress
+	- the class patient takes the definition of the objective and its status
 
 --------------------------------------------------------------------------------------------------------------------------
 
@@ -64,7 +59,7 @@ Responsibilities:
 	- the progress of the expositions training of this day can be adjusted manually
 	- shows the progress of the exposition training of this day
 Collaborators:
-	- the class activity takes the date of the activity record and  its  progress
+	- the class activity takes the date of the activity record and its progress
 	
 --------------------------------------------------------------------------------------------------------------------------
 
