@@ -113,10 +113,10 @@ Collaborators:
 
 --------------------------------------------------------------------------------------------------------------------------
 
-Class name:  Danger Note
+Class name:  DangerNote
 Purpose: A particular note containing text data to describe a dangerous fact related to a patient.
 Responsibilities:
-  - Contains a text which is attached to specific patient.
+  - Contains a title (title), text (text) which is attached to specific patient (patientId).
   - Indicates a fact about / correlated to a patient which is or could be dangerous 
 
 Collaborators:
