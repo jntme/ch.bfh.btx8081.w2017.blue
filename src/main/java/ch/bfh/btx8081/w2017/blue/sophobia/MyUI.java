@@ -29,10 +29,10 @@ public class MyUI extends UI {
         final TextField name = new TextField();
         name.setCaption("Type your name here:");
 
-        Button button = new Button("Click Me");
+        Button button = new Button("Klicken sie mich hart");
         button.addClickListener(e -> {
             layout.addComponent(new Label("Thanks " + name.getValue() 
-                    + ", it works Michi!"));
+                    + ", it works my master!"));
         });
         
         layout.addComponents(name, button);
