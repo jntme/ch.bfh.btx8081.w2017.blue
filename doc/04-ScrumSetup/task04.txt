@@ -1,0 +1,15 @@
+From now on, your team will work in Scrum mode. Roles are
+- developers = you
+- Scrum master = the most experienced developer of your group
+- you may also alternate per Sprint
+- product owner = me
+
+Based on your project results so far, conduct a
+- product planning meeting, resulting in a product backlog that reflects
+	user requirements and scenarios
+	priorities defined in consensus with the product owner
+- sprint planning meeting, resulting in a first overall sprint backlog
+	translate product backlog items into low-level implementation tasks
+	plan your first sprint only
+		3 sprints in total
+- for both, use the xlstemplate provided
