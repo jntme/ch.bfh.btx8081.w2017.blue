@@ -1,0 +1,39 @@
+Möglicher Interviewablauf (Semi-structured):
+
+- Kurzes Vorstellen (Person, BFH, Studiengang, Projekt)
+- Nachfragen ob Zeit und Interesse einige Fragen (5-10min) zu beantworten.
+- Ziele des Projektes kurz erläutern und fragen ob ihre Antworten verwendet werden dürfen.
+
+Einstiegsfrage:
+- Was ist der Unterschied zu einer herkömmlichen Spitex?
+
+Frageablauf (wird aus Fragekatalog je nach Gespräch ausgewählt):
+- Arbeit mit Personen mit sozialer Angststörung
+- Wie unterstützt die Spitex dabei?
+- Welche (IT) Hilfsmittel werden verwendet?
+- Mögliche Probleme mit IT lösen?
+
+Abschlussfrage:
+- Gibt es eine Hilfestellung die sie sich in ihrer täglichen Arbeit mit Patienten wünschen?
+
+
+
+Fragekatalog:
+
+Was sind die (häufigsten) Probleme der Personen mit sozialer Angststörung?
+
+Welche dieser Probleme betreffen die Spitex bei der Betreuung der Patienten?
+
+Wie hilft die Spitex den Patienten bei diesen Problemen?
+
+Wie sieht ein möglicher Ablauf eines Besuches der Spitex aus?
+
+Wie unterstützt die Spitex den Verlauf der Erkrankung und die Behandlung?
+
+Was wird bei einem Besuch der Spitex alles Dokumentiert?
+
+Wie wird die Spitex bereits durch die IT unterstützt? (Software und Hardware)
+
+(Kann aus oberer Frage folgen): Gibt es Schwierigkeiten oder Probleme mit der aktuellen IT?
+
+(Offene Frage): Welche Funktionen könnte ein App beinhalten, welches der Spitex im täglichen Einsatz hilft?

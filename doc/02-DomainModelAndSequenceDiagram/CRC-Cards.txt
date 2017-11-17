@@ -1,0 +1,138 @@
+--------------------------------------------------------------------------------------------------------------------------
+
+Class Name: Patient
+Responsibilities:	
+	- Gets basic patient information like name, birthdate, address,... from an external system																
+	- Provides basic Patient information						
+	- Gets personal medication information from an external System										
+	- Gets information about individual diagnosis from an external system									
+	- Provides information about individual diagnosis		
+	- Creates, edits and provides notes
+	- Chooses objectives
+	- Completes objectives
+Collaborators:
+	- Contains a medication object
+	- Contains a list of diagnosis objects
+	- Contains one objective and its individual progress
+	- Contains a list of notes
+	- Is managed by one or more healthvisitors
+	
+--------------------------------------------------------------------------------------------------------------------------
+
+Class Name: Objective
+Purpose: Represents an overview of the objective
+Responsibilities: 
+	- the objecitve can be defined
+	- the description of the objective can be described detailed
+	- can add activities
+	- shows existing activities
+	- shows the progress of the individual activities
+	- shows if the objective is achieved or not
+Collaborators:
+	- uses the class activity
+	- the class patient takes the definition of the objective and its status
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Class Name: Activity
+Purpose: Represent an overview of the activity
+Responsibilities:
+	- the activity can be defined
+	- the description of the activity can be described detailed
+	- can add activity record
+	- shows existing activity records
+	- shows the progress of the individual activity records
+	- the progress of the activity can be adjusted manually
+	- shows the progress of the activity
+Collaborators:
+	- uses the class activity record
+	- the class objective takes the definition of the activity and its progress
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Class Name: ActivityRecord
+Purpose: Represent an overview of the activity record
+Responsibilities:
+	- shows the date of the exposition training
+	- the description of the activity record for the exposition training can be described detailed
+	- can add image documents of the exposition training
+	- the progress of the expositions training of this day can be adjusted manually
+	- shows the progress of the exposition training of this day
+Collaborators:
+	- the class activity takes the date of the activity record and its progress
+	
+--------------------------------------------------------------------------------------------------------------------------
+
+Class Name: Diagnosis
+Purpose: identify the current most likely health problem the patient suffers from.
+Responsibilities:
+	- shows current health problems, records risks and exposures of the patient
+-shows list of symptoms the patient reveals
+- describes behaviour of the patient
+	-responsible for gathering the information of Patient and their persistence
+
+Collaborators: Patient.
+-gets patient information (PID, Name, FirstName, Date of birth, Address) from the patient for patient identification.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+Class name: Medication	
+Purpose: shows the list of drugs the patient has to take.
+Responsibilities:
+	- shows current medication list
+	- shows dose rate
+
+Collaborators: 
+Patient:
+- gets patient information (PID, Name, FirstName, DateOfBirth, Address) from the patient for identification
+Drug:
+- gets available drugs (DID, Name, producer, doseRate) from drug
+Note: In future system, this list will be provided directly from the prescribed doctor.
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Class name: Drug
+Purpose: provides a list of drugs used by medication.
+Responsibilities:
+	- shows list of possible drugs
+	- shows information about drug (eg. side effect, pharmacological interaction, dangers, ...)
+
+Collaborators:
+Medication:
+- gives available drugs (DID, Name, producer, doseRate) to medication
+	
+--------------------------------------------------------------------------------------------------------------------------
+
+Class name:  Note
+Purpose: A note can contain text data to describe something related to a patient at a specific time.
+Responsibilities:
+  - Contains a text which is attached to specific patient.
+
+Collaborators:
+  - belongs to a patient
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Class name:  DangerNote
+Purpose: A particular note containing text data to describe a dangerous fact related to a patient.
+Responsibilities:
+  - Contains a title (title), text (text) which is attached to specific patient (patientId).
+  - Indicates a fact about / correlated to a patient which is or could be dangerous 
+
+Collaborators:
+  - belongs to a patient
+  - extends a normal note
+  
+--------------------------------------------------------------------------------------------------------------------------
+ 
+Class name:  HealthVisitor
+Purpose: defined a user who works with the program
+Responsibilities:
+  - can login (authentication)
+  - has some basic informations about HealthVisitor itself (name, patients, etc.)
+  - can search patients
+  - has access to all functionalities
+
+Collaborators:
+  - has patients
+

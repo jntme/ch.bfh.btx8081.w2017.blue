@@ -1,0 +1,59 @@
+Interview 1
+-----------
+
+Was macht das Tool deiner Meinung nach genau?
+Es unterstützt die Spitex mit einer Auswahl von Aktivitäten.
+
+Denkst du diese Funktionalitäten sind angebracht und vollständig?
+Das ist natürlich schwierig zu sagen, aber ich denke es bringt sicher einen Vorteil.
+
+Findest du die Abfolge der Schritte nachvollziehbar und intuitiv?
+So wie ich das verstanden habe, bauen sie ja auf einander auf. Macht also Sinn; die Struktur ist erkennbar.
+Ich habe mich gefragt, ob die Spitex auch selber Patienten hinzufügen kann oder nicht. 
+
+
+Denkst du, dass die Funktionalität dieses Tools sich gut in den Spitex Alltag integrieren lässt?
+Solange es so bleibt und nich viel Zeit konsumiert, sicher. Ich frage mich ob die Spitex Zeit hat genug Zeit hat,
+das alles zu erfassen.
+
+Hast du weitere Ideen, Änderungsvorschläge?
+nein keine
+
+
+Interview 2
+-----------
+
+Was macht das Tool deiner Meinung nach genau?
+Man kann sich einloggen und sieht Patienten und kann ein neues Ziel erfassen. 
+Über dem Ziel wird ein Fortschrittsbalken angezeigt. Schlussendlich kann man Aktivitäten zum Ziel hinzufügen
+und diese dann bearbeiten.
+
+Denkst du diese Funktionalitäten sind angebracht und vollständig?
+Es ist wahrscheinlich nur ein Auschnitt aus der Spitex Tätigkeit. 
+
+Findest du die Abfolge der Schritte nachvollziehbar und intuitiv?
+Jein, die Schritte finde ich sinnvoll, jedoch beim GUI gibts paar Fragezeichen.
+Ich bin mir gewohnt, dass der Close Button oben rechts in der Leiste ist, als Beispiel.
+Zudem auf was für einem Gerät soll das denn angezeigt werden? Das ist sehr wichtig.
+
+Denkst du, dass die Funktionalität dieses Tools sich gut in den Spitex Alltag integrieren lässt?
+Wann soll die Spitex das denn ausfüllen, direkt mit dem Patienten oder danach? 
+Müsste halt direkt mit der Spitex getestet werden (prototyping)
+
+Hast du weitere Ideen, Änderungsvorschläge?
+Wieso eine Webapplication wenns auch ein App sein könnte?
+
+
+Interview 3
+-----------
+Befragte Person:
+Borner Michael, Fachmann Betreuung Behinderte
+
+Programm scheint sehr intuitiv bedienbar. Bedienelemente und dargestellte Elemente sind klar und deutlich gekennzeichnet.
+
+Nicht für diese Teilaufgabe verwendbar, trotzdem wichtig:
+- Mehr Funktionalität
+- Sehr hoher Arbeitsaufwand für Spitex? --> Haben die genügend Kapazität?
+- Login für psychiatrische Fachperson inklusive edit - Möglichkeit, damit er "live" Einträge von Spitex anschauen kann
+  und entsprechend Kommentare abgeben. (Wichtig für Vorbereitung auf nächste Gesprächstherapie?)
+

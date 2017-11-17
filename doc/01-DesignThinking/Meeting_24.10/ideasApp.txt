@@ -1,0 +1,11 @@
+ideas app - Brainstorming
+----------------------------
+
+Planungshilfe Tages-/Wochenstruktur
+Übersetzungshilfe (fachspezifische Begriffe) für fremdsprachige Patienten
+Klinisches Lexikon der häufigsten Krankheitsbilder
+Medikationsplaner
+Kontakte Patient (Bezugspersonen, Ärzte, Klinik, Behörden, andere Institutionen)
+Bewältigungsstrategien (Angst, Aggression, Wahnvorstellung); z.B. Entspannungsprogramm
+diverse Anleitungen (Haushalt, Körperpflege)
+Fragebogen Lebensqualität (als Verlaufskontrolle)

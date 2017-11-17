@@ -1,0 +1,46 @@
+Möglicher Interviewablauf (Semi-structured):
+
+Stiftung Schmelzi, Grenchen
+Fabian Schwaller
+
+Abschlussfrage:
+- Gibt es eine Hilfestellung die sie sich in ihrer täglichen Arbeit mit Patienten wünschen?
+--> System direkt an Rechnungssystem gekoppelt
+
+
+
+Fragekatalog:
+
+Welche dieser Probleme betreffen die Spitex bei der Betreuung der Patienten?
+--> Betreuungsaufwand nicht definierbar. Zeit nicht abrechenbar, sehr viel Betreuungsaufwand.
+--> Pädagogische therapeutische Aufwände nicht abrechenbar. "zimmer putzen" kann man abrechen, eine Stunde gespräch aber nicht.
+
+Wie hilft die Spitex den Patienten bei diesen Problemen?
+FOLGENDE FRAGEN
+
+Wie sieht ein möglicher Ablauf eines Besuches der Spitex aus?
+--> Anmelden, Termin vereinbaren, Wohnung inspizieren (Problem von Verwahrlosen bei solchen Patienten), Unterstützung notwendig? (putzen, einkaufen), 
+--> Zusammensetzen, Administratives (Hilfe bei Briefen, Rechnungen, usw), Aufs Thema eingehen
+--> Ziele vom letzten Mal gelungen?, was ist gelungen, was nicht? alles in gespräch. Ziel für nächste Woche vereinbaren. Immer erreichbar sein für Patient.
+
+Wie unterstützt die Spitex den Verlauf der Erkrankung und die Behandlung?
+--> Sehr viel Beziehungsarbeit
+
+Was wird bei einem Besuch der Spitex alles Dokumentiert?
+--> Ganzes Gespräch (Themen, Aufwände, Erledigungen?, Zeit, Lebenspraktischer Bereich unterstützen?, Zustand von Klient)
+
+Wie wird die Spitex bereits durch die IT unterstützt? (Software und Hardware)
+--> GBM -> Kt. Solothurn keine Software im Bereich psychischer Erkrankung -> Vor allem Software von Behindertenbereich. Einstufen in Behindertensystem. 
+--> IBB = neues System
+--> System welches für tägliche Arbeit "verhebt" existiert nicht.
+
+(Kann aus oberer Frage folgen): Gibt es Schwierigkeiten oder Probleme mit der aktuellen IT?
+
+(Offene Frage): Welche Funktionen könnte ein App beinhalten, welches der Spitex im täglichen Einsatz hilft?
+--> Thema auch bei ihm aktuell. 
+--> Von Termin zu Termin rennen, dann am Abend irgendwann noch dokumentieren.
+--> Präzise Dokumentation direkt beim Besuch 
+--> Patient auswählen
+--> Pflegeaufwand deklarieren, Zeit definieren, 
+--> Zugriff auf Klientendaten, auch editierbar
+--> NICHT AUF MOBILTELEFON
