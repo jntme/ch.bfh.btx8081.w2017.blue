@@ -178,3 +178,14 @@ attendance: kybup1, meiej3, gfels6, ziegm1, petim1
 - finish presentation (petim1)
 - update crc cards (note-meiej3, activityRecord-ziegm1)
 - modeling uml sequence diagrams (kybup1, gfels6)
+
+
+17.11.2017 (meeting 10:00 until 11:55)
+---------------------------
+
+attendance: kybup1, meiej3, gfels6, odaoj1, ziegm1, petim1
+
+- Visio Class diagram (kybup1)
+- Class diagram attributes / classes (ziegm1, petim1)
+- component / deployment diagram (meiej3, gfels6)
+- researching in vaadin (odaoj1)
