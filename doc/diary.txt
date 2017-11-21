@@ -189,3 +189,17 @@ attendance: kybup1, meiej3, gfels6, odaoj1, ziegm1, petim1
 - Class diagram attributes / classes (ziegm1, petim1)
 - component / deployment diagram (meiej3, gfels6)
 - researching in vaadin (odaoj1)
+
+
+21.11.2017 (meeting 13:00 until 16:00)
+---------------------------
+
+attendance: kybup1, meiej3, gfels6, odaoj1 (left early), ziegm1, petim1
+
+- discussed uml class diagram
+- scrum: product backlog, sprint backlog
+
+homework:
+- define descriptions
+- complete presentation
+- complete all diagrams
