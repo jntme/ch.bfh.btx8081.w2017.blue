@@ -1,5 +1,7 @@
 package ch.bfh.btx8081.w2017.blue.sophobia;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
@@ -38,6 +40,12 @@ public class MyUI extends UI {
         layout.addComponents(name, button);
         
         setContent(layout);
+        
+        
+		// TODO Auto-generated method stub
+		EntityManager em = Persistence.createEntityManagerFactory("jpaexample").createEntityManager();
+		
+		em.close();
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
