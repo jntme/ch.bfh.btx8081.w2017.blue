@@ -203,3 +203,10 @@ homework:
 - define descriptions
 - complete presentation
 - complete all diagrams
+
+23.11.2017 (homework 1h 20min - 10:10 pm)
+--------------------------------
+
+attendance: meiej3
+
+- tried to set up a postgresql db in the bfh environment, got defeated by by obscure firewall behaviour :(
