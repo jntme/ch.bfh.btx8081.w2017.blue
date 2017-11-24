@@ -1,0 +1,21 @@
+Task 2: Feedback schon gegeben bei Diagrammen Inhalt
+	Listen umgesetzt
+	<<create>> bei Sequenzdiagramm
+	Unterbrechung der Aktivitätsbalken bei 
+
+8/10 Pukte
+
+Task 3:
+	Componentsdiagramm sehr high-level
+	Mit Klassendiagramm rausgeholt
+
+10/10 Punkte
+
+Task 4: 
+	Backlogs sehr gut
+	Wir habens im Griff
+
+
+10/10 Punkte
+
+Gesamt: 53/55
