@@ -1,16 +1,44 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces;
 
+import java.sql.Date;
+
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Note;
+import ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList;
+
+/**
+ * Defines the PatientInfoView methods, which the Presenter can Use.
+ * Has the goal to allow different View impls without changing the Presenter.
+ * @author kybup1
+ *
+ */
+
 public interface PatientInfoView {
 	
-	public void setBirthdate(date);
-	public void setDiagnosis(String);
-	public void setDrugs(String);
-	public void setAddress(String);
-	public void fillNoteList(NoteList);
+	public void setBirthdate(Date date);
+	public void setDiagnosis(String diagnosis);
+	public void setDrugs(String drugs);
+	public void setAddress(String address);
+	
+	/**
+	 * Fills the table on the view with the Notes given in the submitted notelist.
+	 * @param noteList
+	 */
+	public void fillNoteList(NoteList noteList);
+	/**
+	 * returns the Note which is selected by the user
+	 * @return Note
+	 */
 	public Note getSelectedNote();
 	public void addListener();
 	
-	public Interface PatientInfoClickListener{
-		public buttonClick();
+	interface PatientInfoClickListener{
+		/**
+		 * Method which has to capture clickEvents and react to them
+		 * Different Cases:
+		 * 1 Create Objective
+		 * 2 Open Objective
+		 * 
+		 */
+		void  buttonClick();
 	}
 }
