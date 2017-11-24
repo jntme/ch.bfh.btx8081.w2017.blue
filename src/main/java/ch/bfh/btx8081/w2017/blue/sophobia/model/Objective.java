@@ -45,7 +45,4 @@ public class Objective {
 	public void setComplete(boolean isComplete) {
 		this.isComplete = isComplete;
 	}
-	
-	
-	
 }
