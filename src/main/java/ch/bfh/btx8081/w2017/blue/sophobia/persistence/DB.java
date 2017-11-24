@@ -8,15 +8,6 @@ public class DB {
 	private static EntityManager em;
 	
 	static {
-		try {
-			Class.forName("org.postgresql.Driver");
-		}
-		catch(Exception e) {
-			System.err.println(e);
-			System.exit(1);
-		}
-
-
 		em = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME).createEntityManager();
 	}
 	
@@ -24,6 +15,7 @@ public class DB {
 		return em;
 	}
 	
+	//TODO: need to add this on a close event on the whole program
 	public static void close() {
 		em.close();
 	}

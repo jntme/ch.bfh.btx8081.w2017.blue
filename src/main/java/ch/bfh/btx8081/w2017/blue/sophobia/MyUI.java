@@ -18,6 +18,7 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
+import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 
 
 /**
@@ -46,18 +47,17 @@ public class MyUI extends UI {
         
         setContent(layout);
         
-//       EntityManager em = DB.getEntityManager();
+       EntityManager em = DB.getEntityManager();
 //       EntityTransaction trans = em.getTransaction();
 //       trans.begin();
-//
-//       Query q = em.createQuery("select m from Person m"); 
-//       
-//       List<Patient> patientList = q.getResultList(); 
-//       for(Patient p : patientList) {
-//    	  System.out.println(p.getPrename() + " " + p.getName()); 
-//       }
-//       
-//      DB.close(); 
+
+       Query q = em.createQuery("select m from Patient m"); 
+       
+       List<Patient> patientList = q.getResultList(); 
+       for(Patient p : patientList) {
+    	  System.out.println(p.getPrename() + " " + p.getName()); 
+       }
+
         
     }
 
