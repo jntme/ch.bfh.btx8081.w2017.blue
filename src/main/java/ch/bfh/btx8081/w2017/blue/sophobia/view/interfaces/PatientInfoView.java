@@ -14,10 +14,10 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList;
 
 public interface PatientInfoView {
 	
-	public void setBirthdate(Date date);
+	
 	public void setDiagnosis(String diagnosis);
 	public void setDrugs(String drugs);
-	public void setAddress(String address);
+	
 	
 	/**
 	 * Fills the table on the view with the Notes given in the submitted notelist.
