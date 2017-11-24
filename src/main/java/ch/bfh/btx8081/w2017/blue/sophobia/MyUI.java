@@ -18,7 +18,6 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
-import perstistence.DB;
 
 
 /**
