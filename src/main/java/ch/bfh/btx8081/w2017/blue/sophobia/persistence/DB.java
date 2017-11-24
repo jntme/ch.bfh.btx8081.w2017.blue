@@ -8,6 +8,15 @@ public class DB {
 	private static EntityManager em;
 	
 	static {
+		try {
+			Class.forName("org.postgresql.Driver");
+		}
+		catch(Exception e) {
+			System.err.println(e);
+			System.exit(1);
+		}
+
+
 		em = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME).createEntityManager();
 	}
 	

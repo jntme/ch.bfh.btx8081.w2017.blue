@@ -133,6 +133,13 @@
 				<configuration>
 					<scanIntervalSeconds>2</scanIntervalSeconds>
 				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.postgresql</groupId>
+						<artifactId>postgresql</artifactId>
+						<version>42.1.4</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>

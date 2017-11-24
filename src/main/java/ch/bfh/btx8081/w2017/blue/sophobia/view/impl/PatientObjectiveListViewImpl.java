@@ -17,7 +17,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListVi
 public class PatientObjectiveListViewImpl extends CustomComponent implements PatientObjectiveListView, ClickListener {
 
 	private Label display = new Label("0");
-	private List<PatientObjectListViewListener> listeners = new ArrayList<PatientObjectiveListViewListener>();
+	//private List<PatientObjectListViewListener> listeners = new ArrayList<PatientObjectiveListViewListener>();
 	
 	@Override
 	public void buttonClick(ClickEvent event) {

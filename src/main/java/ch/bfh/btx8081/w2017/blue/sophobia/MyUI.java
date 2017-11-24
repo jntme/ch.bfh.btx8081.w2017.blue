@@ -30,7 +30,6 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 @Theme("mytheme")
 public class MyUI extends UI {
 
-    @Override
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout layout = new VerticalLayout();
         
