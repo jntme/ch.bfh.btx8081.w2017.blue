@@ -1,7 +1,10 @@
 package ch.bfh.btx8081.w2017.blue.sophobia;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
@@ -13,6 +16,10 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
+import perstistence.DB;
+
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -41,11 +48,19 @@ public class MyUI extends UI {
         
         setContent(layout);
         
+//       EntityManager em = DB.getEntityManager();
+//       EntityTransaction trans = em.getTransaction();
+//       trans.begin();
+//
+//       Query q = em.createQuery("select m from Person m"); 
+//       
+//       List<Patient> patientList = q.getResultList(); 
+//       for(Patient p : patientList) {
+//    	  System.out.println(p.getPrename() + " " + p.getName()); 
+//       }
+//       
+//      DB.close(); 
         
-		// TODO Auto-generated method stub
-		EntityManager em = Persistence.createEntityManagerFactory("jpaexample").createEntityManager();
-		
-		em.close();
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
