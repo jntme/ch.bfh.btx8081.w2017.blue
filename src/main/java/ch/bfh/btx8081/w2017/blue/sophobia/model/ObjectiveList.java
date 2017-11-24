@@ -15,7 +15,7 @@ public class ObjectiveList {
 	
 	@OneToMany(mappedBy= "bojList")
 	private List<Objective> objectives;
-	
+
 	/**
 	 * Creates a new Objective in this List
 	 * @param name of the new objective
@@ -35,8 +35,13 @@ public class ObjectiveList {
 	public int getOlid() {
 		return olid;
 	}
-
 	public void setOlid(int olid) {
 		this.olid = olid;
+	}
+	public List<Objective> getObjectives() {
+		return objectives;
+	}
+	public void setObjectives(List<Objective> objectives) {
+		this.objectives = objectives;
 	}
 }
