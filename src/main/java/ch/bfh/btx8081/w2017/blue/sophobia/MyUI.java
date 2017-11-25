@@ -17,8 +17,11 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
+import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresenter;
+import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientObjectiveListViewImpl;
 
 
 /**
@@ -34,16 +37,14 @@ public class MyUI extends UI {
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout layout = new VerticalLayout();
         
-        final TextField name = new TextField();
-        name.setCaption("Type your name here:");
-
-        Button button = new Button("Klicken sie mich");
-        button.addClickListener(e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
-                    + ", it works my master!"));
-        });
+        ObjectiveList model = new ObjectiveList();
+		PatientObjectiveListViewImpl view = new PatientObjectiveListViewImpl();
+		
+		new PatientObjectiveListPresenter(model, view);
+		
+		layout.addComponent(view);
         
-        layout.addComponents(name, button);
+        
         
         setContent(layout);
         
