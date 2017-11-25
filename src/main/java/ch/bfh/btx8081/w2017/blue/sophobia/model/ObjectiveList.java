@@ -13,7 +13,7 @@ public class ObjectiveList {
 	
 	private int olid;
 	
-//	@OneToMany(mappedBy= "objList")
+	@OneToMany(mappedBy= "objList")
 	private List<Objective> objectives;
 
 	/**
