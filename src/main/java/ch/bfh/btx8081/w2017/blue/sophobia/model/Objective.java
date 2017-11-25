@@ -14,6 +14,7 @@ public class Objective {
 	private String description;
 	private int difficulty;
 	private boolean isComplete;
+	private int objList;
 	
 	public int getOid() {
 		return oid;
@@ -44,5 +45,11 @@ public class Objective {
 	}
 	public void setComplete(boolean isComplete) {
 		this.isComplete = isComplete;
+	}
+	public int getObjList(){
+		return objList;
+	}
+	public void setObjList(int objList){
+		this.objList = objList;
 	}
 }
