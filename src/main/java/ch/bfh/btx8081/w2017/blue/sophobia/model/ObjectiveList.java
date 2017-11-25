@@ -2,6 +2,8 @@ package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 /**
@@ -9,8 +11,10 @@ import javax.persistence.OneToMany;
  * @author kybup1
  *
  */
+@Entity
 public class ObjectiveList {
 	
+	@Id
 	private int olid;
 	
 	@OneToMany(mappedBy= "objList")

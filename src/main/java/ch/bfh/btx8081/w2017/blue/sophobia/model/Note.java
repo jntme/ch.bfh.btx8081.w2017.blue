@@ -5,6 +5,7 @@ import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * Represents notes with a title, a content and the date when their created/modified.
@@ -21,6 +22,7 @@ public class Note {
 	private String title;
 	private String content;
 	private Date date;
+	@ManyToOne
 	private int noteList;
 	
 	public int getNid() {

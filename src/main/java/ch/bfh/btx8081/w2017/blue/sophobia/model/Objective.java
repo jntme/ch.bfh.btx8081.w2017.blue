@@ -3,6 +3,7 @@ package ch.bfh.btx8081.w2017.blue.sophobia.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Objective {
@@ -14,6 +15,7 @@ public class Objective {
 	private String description;
 	private int difficulty;
 	private boolean isComplete;
+	@ManyToOne
 	private int objList;
 	
 	public int getOid() {
