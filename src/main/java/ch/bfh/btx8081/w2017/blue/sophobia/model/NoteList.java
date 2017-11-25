@@ -1,6 +1,7 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class NoteList {
 	private int nlid;
 	
 	@OneToMany(mappedBy= "noteList")
-	private List<Note> notes;
+	private List<Note> notes = new ArrayList<Note>();
 	
 	/**
 	 * Creates a new note.
@@ -66,4 +67,22 @@ public class NoteList {
 		else
 			return false;
 	}
+
+	public int getNlid() {
+		return nlid;
+	}
+
+	public void setNlid(int nlid) {
+		this.nlid = nlid;
+	}
+
+	public List<Note> getNotes() {
+		return notes;
+	}
+
+	public void setNotes(List<Note> notes) {
+		this.notes = notes;
+	}
+	
+	
 }

@@ -1,5 +1,6 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ public class ObjectiveList {
 	private int olid;
 	
 	@OneToMany(mappedBy= "objList")
-	private List<Objective> objectives;
+	private List<Objective> objectives = new ArrayList<Objective>();
 
 	/**
 	 * Creates a new Objective in this List
