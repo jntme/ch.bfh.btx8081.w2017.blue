@@ -1,13 +1,12 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
-import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
+import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.VerticalLayout;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
 
@@ -19,22 +18,17 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
 
 public class PatientViewImpl extends CustomComponent implements PatientView {
 
-	final TextField name = new TextField();
-	Button button = new Button("Click Me");
+	private Label lblStreet = new Label("Dummy Street 12");
+	private Label lblCity = new Label("Dummyhausen");
+	private Label lblZip = new Label("3000");
+	private Label lblBirthdate = new Label("01.01.1337");
+	private Label lblName = new Label("Jon Schnee");
+	private Label lblGender = new Label("male");
+	
 
 	public PatientViewImpl() {
 
-		// Test
-
-		final VerticalLayout layout = new VerticalLayout();
-
-		name.setCaption("Type your name here:");
-
-		button.addClickListener(e -> {
-			layout.addComponent(new Label("Thanks " + name.getValue() + ", it works!"));
-		});
-
-		layout.addComponents(name, button);
+		final GridLayout layout = new GridLayout(5,5);
 		
 		setCompositionRoot(layout);
 
@@ -42,14 +36,16 @@ public class PatientViewImpl extends CustomComponent implements PatientView {
 
 	@Override
 	public void setAddress(String city, String street, String zip) {
-		// TODO Auto-generated method stub
-
+		lblStreet.setValue(street);
+		lblCity.setValue(city);
+		lblZip.setValue(zip);
 	}
 
 	@Override
 	public void setBirthdate(Date date) {
-		// TODO Auto-generated method stub
-
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+		String formatedDate = formatter.format(date);
+		lblBirthdate.setValue(formatedDate);
 	}
 
 	@Override
@@ -60,13 +56,18 @@ public class PatientViewImpl extends CustomComponent implements PatientView {
 
 	@Override
 	public void setName(String name, String prename) {
-		// TODO Auto-generated method stub
+		lblName.setValue(prename + " " + name);
 
 	}
 
 	@Override
 	public void setGender(String gender) {
-		// TODO Auto-generated method stub
+		if(gender.equals("m")){
+			lblGender.setValue("Männlich");
+		}
+		else{
+			lblGender.setValue("Weiblich");
+		}
 
 	}
 
