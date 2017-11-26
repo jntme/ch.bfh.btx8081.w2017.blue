@@ -1,9 +1,5 @@
 package ch.bfh.btx8081.w2017.blue.sophobia;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
@@ -15,54 +11,60 @@ import com.vaadin.ui.VerticalLayout;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
-import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientPresenter;
+import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientInfoViewImpl;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientObjectiveListViewImpl;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientViewImpl;
 
-
 /**
- * This UI is the application entry point. A UI may either represent a browser window 
- * (or tab) or some part of an HTML page where a Vaadin application is embedded.
+ * This UI is the application entry point. A UI may either represent a browser
+ * window (or tab) or some part of an HTML page where a Vaadin application is
+ * embedded.
  * <p>
- * The UI is initialized using {@link #init(VaadinRequest)}. This method is intended to be 
- * overridden to add component to the user interface and initialize non-component functionality.
+ * The UI is initialized using {@link #init(VaadinRequest)}. This method is
+ * intended to be overridden to add component to the user interface and
+ * initialize non-component functionality.
  */
 @Theme("mytheme")
 public class MyUI extends UI {
 
-    protected void init(VaadinRequest vaadinRequest) {
-        
-    	// UI STUFF BEGIN --------------------
-    	
-    	final VerticalLayout layout = new VerticalLayout();
-        
-        ObjectiveList model = new ObjectiveList();
-		PatientObjectiveListViewImpl view = new PatientObjectiveListViewImpl();
+	protected void init(VaadinRequest vaadinRequest) {
+
+		// UI STUFF BEGIN --------------------
 		
-		new PatientObjectiveListPresenter(model, view);
+		final VerticalLayout layout = new VerticalLayout();
 		
-		
-		Patient pModel = new Patient(null, null, null, null, null, null, null, null, null, null, null, null );
+		Patient pModel = new Patient();
 		PatientViewImpl pView = new PatientViewImpl();
-		
+
 		new PatientPresenter(pModel, pView);
 		
 		
-		layout.addComponent(view);
-		layout.addComponent(pView);
-		
-                
-        setContent(layout);
-        
-        // take a look at the following class
-        HowToUseDB.howToUseDb();
-        
-    }
+		PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
 
-    @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
-    public static class MyUIServlet extends VaadinServlet {
-    }
+
+
+		ObjectiveList model = new ObjectiveList();
+		PatientObjectiveListViewImpl oView = new PatientObjectiveListViewImpl();
+
+		new PatientObjectiveListPresenter(model, oView);
+
+
+
+		layout.addComponent(pView);
+		layout.addComponent(pInfoView);
+		layout.addComponent(oView);
+
+		setContent(layout);
+
+		// take a look at the following class
+		HowToUseDB.howToUseDb();
+
+	}
+
+	@WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
+	@VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
+	public static class MyUIServlet extends VaadinServlet {
+	}
 }
