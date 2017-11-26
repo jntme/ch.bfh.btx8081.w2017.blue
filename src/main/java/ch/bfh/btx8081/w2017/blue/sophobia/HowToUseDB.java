@@ -1,7 +1,11 @@
 package ch.bfh.btx8081.w2017.blue.sophobia;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -49,13 +53,13 @@ public class HowToUseDB {
 		Query q2 = em.createQuery("select p from Patient p");
 		List<Patient> patients = q2.getResultList();
 
-		// delete all patients
-		//		if(!patients.isEmpty()) {
-		//			for(Patient p1 : patients) {
-		//				p1.delete();
-		//				System.out.println(p1.getPrename() + " deleted from DB.");
-		//			}
-		//		}
+		//		 delete all patients
+		//				if(!patients.isEmpty()) {
+		//					for(Patient p1 : patients) {
+		//						p1.delete();
+		//						System.out.println(p1.getPrename() + " deleted from DB.");
+		//					}
+		//				}
 
 		// create two new patients
 		if(patients.isEmpty()) {
@@ -63,7 +67,14 @@ public class HowToUseDB {
 			babbel.setName("Babbel");
 			babbel.setPrename("Tim");
 			babbel.setGender("m");
-			babbel.setBirthdate(new Date(1995,3,15));
+			String dateString = "15.03.1995";
+			DateFormat format = new SimpleDateFormat("dd.mm.yyyy", Locale.GERMAN);
+			try {
+				babbel.setBirthdate(format.parse(dateString));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			babbel.setStreet("Weihergasse 7");
 			babbel.setZip("3000");
 			babbel.setCity("Bern");
