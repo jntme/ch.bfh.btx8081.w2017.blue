@@ -4,11 +4,15 @@
 		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.Patient</class>
 	 	<!-- <class>ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList</class>  -->
 		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.Objective</class>
+		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList</class>
+		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.Note</class>
+		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://147.87.116.213:5432/Sophobia"/>
 			<property name="javax.persistence.jdbc.user" value="Studierende"/>
 			<property name="javax.persistence.jdbc.password" value="db-2017"/>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+<!--  		<property name="eclipselink.ddl-generation" value="create-tables" /> -->
 		</properties>
 	</persistence-unit>
 </persistence>

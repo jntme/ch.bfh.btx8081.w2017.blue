@@ -5,6 +5,7 @@ import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
@@ -23,7 +24,8 @@ public class Note {
 	private String content;
 	private Date date;
 	@ManyToOne
-	private int noteList;
+	@JoinColumn(name="notelist")
+	private NoteList noteList;
 	
 	public int getNid() {
 		return nid;
@@ -49,10 +51,12 @@ public class Note {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public int getNoteList() {
+	public NoteList getNoteList() {
 		return noteList;
 	}
-	public void setNoteList(int noteList) {
+	public void setNoteList(NoteList noteList) {
 		this.noteList = noteList;
 	}
+	
+	
 }
