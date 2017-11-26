@@ -1,9 +1,20 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.Date;
 import java.sql.Array;
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 
 
 /**
@@ -16,7 +27,8 @@ public class Patient implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer pid;
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	private int pid;
 
 	@Temporal(TemporalType.DATE)
 	private Date birthdate;
@@ -43,7 +55,40 @@ public class Patient implements Serializable {
 
 	private String zip;
 
+	private static EntityManager em = DB.getEntityManager();
+	
+	public Patient(Date birthdate, String city, Array diagnosis, Array drug, String gender, String name,
+			Array note, Array objective, byte[] picture, String prename, String street, String zip) {
+		super();
+		this.birthdate = birthdate;
+		this.city = city;
+		this.diagnosis = diagnosis;
+		this.drug = drug;
+		this.gender = gender;
+		this.name = name;
+		this.note = note;
+		this.objective = objective;
+		this.picture = picture;
+		this.prename = prename;
+		this.street = street;
+		this.zip = zip;
+	}
+	
 	public Patient() {
+		
+	}
+
+	public void persist() {
+		EntityTransaction trans = em.getTransaction();
+		trans.begin();
+		em.persist(this);
+		trans.commit();
+	}
+	
+	public void delete() {
+		em.getTransaction().begin();
+		em.remove(this);
+		em.getTransaction().commit();
 	}
 
 	public Integer getPid() {

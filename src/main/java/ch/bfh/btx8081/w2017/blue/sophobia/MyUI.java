@@ -44,7 +44,7 @@ public class MyUI extends UI {
 		new PatientObjectiveListPresenter(model, view);
 		
 		
-		Patient pModel = new Patient();
+		Patient pModel = new Patient(null, null, null, null, null, null, null, null, null, null, null, null );
 		PatientViewImpl pView = new PatientViewImpl();
 		
 		new PatientPresenter(pModel, pView);
@@ -56,24 +56,8 @@ public class MyUI extends UI {
                 
         setContent(layout);
         
-        // UI STUFF END --------------------
-        
-        
-       // DB STUFF BEGIN ----------------------
-        
-       EntityManager em = DB.getEntityManager();
-//       EntityTransaction trans = em.getTransaction();
-//       trans.begin();
-
-       Query q = em.createQuery("select m from Patient m"); 
-       
-       List<Patient> patientList = q.getResultList(); 
-       for(Patient p : patientList) {
-    	  System.out.println(p.getPrename() + " " + p.getName()); 
-       }
-       
-       // DB STUFF END ----------------------
-
+        // take a look at the following class
+        HowToUseDB.howToUseDb();
         
     }
 
