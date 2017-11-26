@@ -3,7 +3,6 @@ package ch.bfh.btx8081.w2017.blue.sophobia;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.servlet.annotation.WebServlet;
 
@@ -11,9 +10,6 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
@@ -21,7 +17,9 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresenter;
+import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientObjectiveListViewImpl;
+import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientViewImpl;
 
 
 /**
@@ -35,18 +33,33 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientObjectiveListViewImpl
 public class MyUI extends UI {
 
     protected void init(VaadinRequest vaadinRequest) {
-        final VerticalLayout layout = new VerticalLayout();
+        
+    	// UI STUFF BEGIN --------------------
+    	
+    	final VerticalLayout layout = new VerticalLayout();
         
         ObjectiveList model = new ObjectiveList();
 		PatientObjectiveListViewImpl view = new PatientObjectiveListViewImpl();
 		
 		new PatientObjectiveListPresenter(model, view);
 		
+		
+		Patient pModel = new Patient();
+		PatientViewImpl pView = new PatientViewImpl();
+		
+		new PatientPresenter(pModel, pView);
+		
+		
 		layout.addComponent(view);
-        
-        
-        
+		layout.addComponent(pView);
+		
+                
         setContent(layout);
+        
+        // UI STUFF END --------------------
+        
+        
+       // DB STUFF BEGIN ----------------------
         
        EntityManager em = DB.getEntityManager();
 //       EntityTransaction trans = em.getTransaction();
@@ -58,6 +71,8 @@ public class MyUI extends UI {
        for(Patient p : patientList) {
     	  System.out.println(p.getPrename() + " " + p.getName()); 
        }
+       
+       // DB STUFF END ----------------------
 
         
     }
