@@ -1,6 +1,7 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
 import java.sql.Date;
+import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +27,22 @@ public class Note {
 	@ManyToOne
 	@JoinColumn(name="notelist")
 	private NoteList noteList;
+	
+	public Note(){
+		
+	}
+	/**
+	 * Constructor that fills the note object with all attributes.
+	 * Takes the current system date as date attribute.
+	 * @param title
+	 * @param content
+	 */
+	public Note(String title, String content){
+		Date date = new Date(Calendar.getInstance().getTime().getTime());
+		this.title = title;
+		this.content = content;
+		this.date = date;
+	}
 	
 	public int getNid() {
 		return nid;

@@ -28,11 +28,7 @@ public class ObjectiveList {
 	 * @param  difficulty of the objective as Integer from 1 to 10
 	 */
 	public void createObj(String name, String description, int difficulty){
-		Objective obj = new Objective();
-		obj.setName(name);
-		obj.setDescription(description);
-		obj.setDifficulty(difficulty);
-		obj.setComplete(false);
+		Objective obj = new Objective(name, description, difficulty);
 		
 		objectives.add(obj);
 	}

@@ -36,22 +36,12 @@ public class NoteList {
 	 * @param content
 	 * @param danger
 	 */
-	public void createNote(String title, String content, boolean danger){
-		
-		Date date = new Date(Calendar.getInstance().getTime().getTime());
-		
+	public void createNote(String title, String content, boolean danger){		
 		if(danger){
-			DangerNote note = new DangerNote();
-			note.setTitle(title);
-			note.setContent(content);
-			note.setDate(date);
-			note.setActive(true);
+			DangerNote note = new DangerNote(title, content);
 			notes.add(note);
 		} else {
-			Note note = new Note();
-			note.setTitle(title);
-			note.setContent(content);
-			note.setDate(date);
+			Note note = new Note(title, content);
 			notes.add(note);
 		}
 	}

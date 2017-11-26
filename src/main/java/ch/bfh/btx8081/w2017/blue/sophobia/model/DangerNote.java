@@ -1,5 +1,8 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
+import java.sql.Date;
+import java.util.Calendar;
+
 import javax.persistence.Entity;
 
 /**
@@ -12,6 +15,16 @@ import javax.persistence.Entity;
 public class DangerNote extends Note {
 	
 	boolean active;
+	
+	public DangerNote(){
+		
+	}
+	public DangerNote(String title, String content){
+		super(title, content);
+		Date date = new Date(Calendar.getInstance().getTime().getTime());
+		super.setDate(date);
+		this.active = true;
+	}
 
 	public boolean isActive() {
 		return active;

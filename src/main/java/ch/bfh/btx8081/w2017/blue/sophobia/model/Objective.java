@@ -19,6 +19,15 @@ public class Objective {
 	@ManyToOne
 	@JoinColumn(name="objlist")
 	private ObjectiveList objList;
+	public Objective(){
+		
+	}
+	public Objective(String name, String description, int difficulty){
+		this.name = name;
+		this.description = description;
+		this.difficulty = difficulty;
+		this.isComplete = false;
+	}
 	
 	public int getOid() {
 		return oid;
