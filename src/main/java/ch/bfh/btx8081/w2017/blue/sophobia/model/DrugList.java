@@ -2,6 +2,8 @@ package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
 import java.util.ArrayList;
 
+import javax.persistence.*;
+
 /**
  * The class DrugList provides dummy-data for drugs to display in patient
  * information.
@@ -10,11 +12,21 @@ import java.util.ArrayList;
  * @version 1.0
  * @since 24.11.2017
  */
+@Entity
 public class DrugList {
 	// Variables for class - use
+	@Id
+	private int did;
+	
 	ArrayList<String> drugs = new ArrayList<String>();
 	ArrayList<String> mainList = new ArrayList<String>();
 	int randNo, minimum = 0, maximum = 8;
+	
+	public DrugList(){
+		initdrugs();
+	}
+	
+	
 
 	/**
 	 * The method {@code initdrugs()} fills the ArrayList with dummy-data and
@@ -45,7 +57,6 @@ public class DrugList {
 	 */
 	@Override
 	public String toString() {
-		initdrugs();
 		return mainList.toString();
 
 	}
