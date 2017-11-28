@@ -59,14 +59,16 @@ public class MyUI extends UI {
 		
 		PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
 
-
-
-		ObjectiveList model = new ObjectiveList();
+		// An objective list is created and two dummy objectives are added to the list.
+		ObjectiveList oModel = new ObjectiveList();
+		oModel.createObj("Hausarzt besuchen", "blabla", 3);
+		oModel.createObj("Einkaufen gehen", "hihihi", 5);
+		
+		// Instantiate a new PatientObjectiveListView.
 		PatientObjectiveListViewImpl oView = new PatientObjectiveListViewImpl();
 
-		new PatientObjectiveListPresenter(model, oView);
-
-
+		// Instantiate a new PatientObjectiveListPresenter
+		new PatientObjectiveListPresenter(oModel, oView);
 
 		layout.addComponent(pView);
 		layout.addComponent(pInfoView);
