@@ -13,44 +13,22 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
  *
  */
 
-public class PatientPresenter implements PatientView{
-	
+public class PatientPresenter {
+
 	private Patient model;
 	private PatientView view;
-	
-	public PatientPresenter(Patient model, PatientView view){
+
+	public PatientPresenter(Patient model, PatientView view) {
 		this.model = model;
 		this.view = view;
-	}
-
-	@Override
-	public void setAddress(String city, String street, String zip) {
-		// TODO Auto-generated method stub
 		
+		view.setName(model.getName(), model.getPrename());
+		view.setAddress(model.getCity(), model.getStreet(), model.getZip());
+		view.setBirthdate(model.getBirthdate());
+		view.setGender(model.getGender());
+		//view.setPicture(model.getPicture());
 	}
-
-	@Override
-	public void setBirthdate(Date date) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setPicture(Image image) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setName(String name, String prename) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setGender(String gender) {
-		// TODO Auto-generated method stub
-		
-	}
+	
+	
 
 }

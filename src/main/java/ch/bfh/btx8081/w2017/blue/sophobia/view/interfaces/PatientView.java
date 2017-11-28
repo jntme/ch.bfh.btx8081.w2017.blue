@@ -1,6 +1,6 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces;
 
-import java.sql.Date;
+import java.util.Date;
 
 import com.vaadin.ui.Image;
 

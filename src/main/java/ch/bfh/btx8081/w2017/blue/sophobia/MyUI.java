@@ -1,5 +1,9 @@
 package ch.bfh.btx8081.w2017.blue.sophobia;
 
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
@@ -11,6 +15,7 @@ import com.vaadin.ui.VerticalLayout;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
+import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientInfoViewImpl;
@@ -30,15 +35,25 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientViewImpl;
 public class MyUI extends UI {
 
 	protected void init(VaadinRequest vaadinRequest) {
+		
+		EntityManager em = DB.getEntityManager();
+		Query q1 = em.createQuery("select m from Patient m");
+		
+		List<Patient> patientList = q1.getResultList();
+		Patient patientZero = null;
+		if(!patientList.isEmpty()) {
+			patientZero = patientList.get(0);
+			System.out.println("MEEEIN TEST Patient: " + patientZero.getPrename()  + " " + patientZero.getName() + "; " + patientZero.getBirthdate() + "\n\n");
+		}
 
 		// UI STUFF BEGIN --------------------
 		
 		final VerticalLayout layout = new VerticalLayout();
 		
-		Patient pModel = new Patient();
+		//Patient pModel = new Patient();
 		PatientViewImpl pView = new PatientViewImpl();
 
-		new PatientPresenter(pModel, pView);
+		new PatientPresenter(patientZero, pView);
 		
 		
 		PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();

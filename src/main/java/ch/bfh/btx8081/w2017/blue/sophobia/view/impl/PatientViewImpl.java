@@ -1,7 +1,7 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
 import java.io.File;
-import java.sql.Date;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 
 import com.vaadin.server.FileResource;
