@@ -7,11 +7,13 @@ import java.util.List;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Grid.SelectionMode;
+import com.vaadin.server.Sizeable;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Panel;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
@@ -22,7 +24,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListVi
  * @author ziegm1
  *
  */
-public class PatientObjectiveListViewImpl extends CustomComponent implements PatientObjectiveListView, ClickListener {
+public class PatientObjectiveListViewImpl extends Panel implements PatientObjectiveListView, ClickListener {
 	
 	private final Label DISPLAY = new Label("Ziele");
 	private final Button BTN_ADD = new Button ("+");
@@ -38,17 +40,14 @@ public class PatientObjectiveListViewImpl extends CustomComponent implements Pat
 		layout.addComponent(DISPLAY, 0, 0);
 		layout.addComponent(BTN_ADD, 1, 1);
 		
-        grid.setSizeFull();
-        grid.setWidth("300");
-        grid.setHeight("300");
         grid.setSelectionMode(SelectionMode.SINGLE);
         
         layout.addComponent(grid, 0, 1);
 		    
-        grid.addColumn(Objective::getName).setCaption("Ziel").setExpandRatio(2); 
-        grid.addColumn(Objective::isComplete).setCaption("Status").setExpandRatio(2);
+        grid.addColumn(Objective::getName).setCaption("Ziel"); 
+        grid.addColumn(Objective::isComplete).setCaption("Status");
 				
-		setCompositionRoot(layout);
+		this.setContent(layout);
 	}
 
 	/**
