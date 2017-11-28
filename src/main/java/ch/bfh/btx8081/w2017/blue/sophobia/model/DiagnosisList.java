@@ -3,7 +3,15 @@ package ch.bfh.btx8081.w2017.blue.sophobia.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class DiagnosisList {
+	
+	@Id
+	private int diagID;
+	
 
 	/*
 	 * Contains Diagnosis list
