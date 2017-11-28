@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class DrugList {
 	//Variables for class - use
 	ArrayList<String> drugs = new ArrayList<String>();
-	int randNum, minimum = 0, maximum = 7;
+	int randNum, minimum = 0, maximum = 8;
 
 	/**
 	 * The method {@code initdrugs()} fills the arraylist with dummy-data
