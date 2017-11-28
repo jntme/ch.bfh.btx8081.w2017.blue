@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -35,17 +36,21 @@ public class Patient implements Serializable {
 
 	private String city;
 
-	private Array diagnosis;
-
-	private Array drug;
+//	@OneToOne
+//	private DiagnosisList diagnosisList;
+//
+//	@OneToOne
+//	private DrugList drugList;
 
 	private String gender;
 
 	private String name;
 
-	private Array note;
+//	@OneToOne
+//	private NoteList noteList;
 
-	private Array objective;
+//	@OneToOne
+//	private ObjectiveList objectiveList;
 
 	private byte[] picture;
 
@@ -57,23 +62,20 @@ public class Patient implements Serializable {
 
 	private static EntityManager em = DB.getEntityManager();
 	
-	public Patient(Date birthdate, String city, Array diagnosis, Array drug, String gender, String name,
-			Array note, Array objective, byte[] picture, String prename, String street, String zip) {
+	public Patient(int pid, Date birthdate, String city, String gender, String name, byte[] picture, String prename,
+			String street, String zip) {
 		super();
+		this.pid = pid;
 		this.birthdate = birthdate;
 		this.city = city;
-		this.diagnosis = diagnosis;
-		this.drug = drug;
 		this.gender = gender;
 		this.name = name;
-		this.note = note;
-		this.objective = objective;
 		this.picture = picture;
 		this.prename = prename;
 		this.street = street;
 		this.zip = zip;
 	}
-	
+
 	public Patient() {
 		
 	}
@@ -115,21 +117,6 @@ public class Patient implements Serializable {
 		this.city = city;
 	}
 
-	public Array getDiagnosis() {
-		return this.diagnosis;
-	}
-
-	public void setDiagnosis(Array diagnosis) {
-		this.diagnosis = diagnosis;
-	}
-
-	public Array getDrug() {
-		return this.drug;
-	}
-
-	public void setDrug(Array drug) {
-		this.drug = drug;
-	}
 
 	public String getGender() {
 		return this.gender;
@@ -147,25 +134,41 @@ public class Patient implements Serializable {
 		this.name = name;
 	}
 
-	public Array getNote() {
-		return this.note;
-	}
-
-	public void setNote(Array note) {
-		this.note = note;
-	}
-
-	public Array getObjective() {
-		return this.objective;
-	}
-
-	public void setObjective(Array objective) {
-		this.objective = objective;
-	}
-
 	public byte[] getPicture() {
 		return this.picture;
 	}
+
+//	public DiagnosisList getDiagnosisList() {
+//		return diagnosisList;
+//	}
+//
+//	public void setDiagnosisList(DiagnosisList diagnosisList) {
+//		this.diagnosisList = diagnosisList;
+//	}
+//
+//	public DrugList getDrugList() {
+//		return drugList;
+//	}
+//
+//	public void setDrugList(DrugList drugList) {
+//		this.drugList = drugList;
+//	}
+//
+//	public NoteList getNoteList() {
+//		return noteList;
+//	}
+//
+//	public void setNoteList(NoteList noteList) {
+//		this.noteList = noteList;
+//	}
+//
+//	public ObjectiveList getObjectiveList() {
+//		return objectiveList;
+//	}
+//
+//	public void setObjectiveList(ObjectiveList objectiveList) {
+//		this.objectiveList = objectiveList;
+//	}
 
 	public void setPicture(byte[] picture) {
 		this.picture = picture;
