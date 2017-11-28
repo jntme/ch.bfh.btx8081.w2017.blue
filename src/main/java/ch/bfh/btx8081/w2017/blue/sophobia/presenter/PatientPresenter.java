@@ -22,10 +22,10 @@ public class PatientPresenter {
 		this.model = model;
 		this.view = view;
 		
-		view.setName(model.getName(), model.getPrename());
-		view.setAddress(model.getCity(), model.getStreet(), model.getZip());
-		view.setBirthdate(model.getBirthdate());
-		view.setGender(model.getGender());
+//		view.setName(model.getName(), model.getPrename());
+//		view.setAddress(model.getCity(), model.getStreet(), model.getZip());
+//		view.setBirthdate(model.getBirthdate());
+//		view.setGender(model.getGender());
 		//view.setPicture(model.getPicture());
 	}
 	

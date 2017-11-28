@@ -52,8 +52,9 @@ public class MyUI extends UI {
 		
 		//Patient pModel = new Patient();
 		PatientViewImpl pView = new PatientViewImpl();
+		Patient pModel = new Patient();
 
-		new PatientPresenter(patientZero, pView);
+		new PatientPresenter(pModel, pView);
 		
 		
 		PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();

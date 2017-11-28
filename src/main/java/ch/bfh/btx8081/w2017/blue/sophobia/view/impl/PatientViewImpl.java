@@ -35,16 +35,16 @@ public class PatientViewImpl extends CustomComponent implements PatientView {
 
 	public PatientViewImpl() {
 
-		final GridLayout layout = new GridLayout(6,6);
+		final GridLayout layout = new GridLayout(6,4);
 		
 		lblPatientView.setStyleName("header");
-		image.setHeight("200");
-		image.setWidth("200");
+		image.setHeight("150");
+		image.setWidth("150");
 		
 		layout.setSpacing(true);
 		
 		layout.addComponent(lblPatientView,0,0,5,0);
-		layout.addComponent(image,0,1,1,4);
+		layout.addComponent(image,0,1,1,3);
 		layout.addComponent(new Label("Name:"),2,1);
 		layout.addComponent(new Label("Geschlecht:"),2,2);
 		layout.addComponent(new Label("Geburtstag:"),2,3);
