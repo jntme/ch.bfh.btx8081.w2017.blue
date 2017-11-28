@@ -2,6 +2,7 @@ package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
 import java.util.Iterator;
 
+import com.vaadin.ui.Accordion;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.Grid.SelectionMode;
@@ -9,6 +10,7 @@ import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextArea;
+import com.vaadin.ui.VerticalLayout;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Note;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList;
@@ -20,7 +22,10 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView;
  *
  */
 public class PatientInfoViewImpl extends Panel implements PatientInfoView {
-	private GridLayout grid = new GridLayout(2,7);
+	private Accordion acc = new Accordion();
+	private VerticalLayout layDrugs = new VerticalLayout();
+	private VerticalLayout layDiagnosis = new VerticalLayout();
+	private GridLayout noteGrid = new GridLayout(2,2);
 	private Label lblDiagnosis = new Label("Diagnose");
 	private Label lblDrugs = new Label("Medikation");
 	private Label lblNotes = new Label("Notizen");
@@ -32,15 +37,22 @@ public class PatientInfoViewImpl extends Panel implements PatientInfoView {
 	public PatientInfoViewImpl(){
 		txaDiagnosis.setEnabled(false);
 		txaDrugs.setEnabled(false);
-		grid.addComponent(lblDiagnosis);
-		grid.addComponent(txaDiagnosis);
-		grid.addComponent(lblDrugs);
-		grid.addComponent(txaDrugs);
-		grid.addComponent(lblNotes);
-		grid.addComponent(btnAddNote);
-		grid.addComponent(notes,0,5,1,5);
 		
-		this.setContent(grid);
+		layDrugs.addComponent(lblDrugs);
+		layDrugs.addComponent(txaDrugs);
+		
+		layDiagnosis.addComponent(lblDiagnosis);
+		layDiagnosis.addComponent(txaDiagnosis);
+		
+		noteGrid.addComponent(lblNotes);
+		noteGrid.addComponent(btnAddNote);
+		noteGrid.addComponent(notes, 0, 1, 1, 1);
+		
+		acc.addTab(layDiagnosis, "Diagnosen");
+		acc.addTab(layDrugs, "Mediaktion");
+		acc.addTab(noteGrid, "Notizen");
+		
+		this.setContent(acc);
 		
 	}
 	
