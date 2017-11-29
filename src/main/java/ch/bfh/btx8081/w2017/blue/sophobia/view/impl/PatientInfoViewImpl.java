@@ -23,12 +23,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView;
  */
 public class PatientInfoViewImpl extends Panel implements PatientInfoView {
 	private Accordion acc = new Accordion();
-	private VerticalLayout layDrugs = new VerticalLayout();
-	private VerticalLayout layDiagnosis = new VerticalLayout();
-	private GridLayout noteGrid = new GridLayout(2,2);
-	private Label lblDiagnosis = new Label("Diagnose");
-	private Label lblDrugs = new Label("Medikation");
-	private Label lblNotes = new Label("Notizen");
+	private GridLayout noteGrid = new GridLayout(3,1);
 	private TextArea txaDiagnosis = new TextArea();
 	private TextArea txaDrugs = new TextArea();
 	private Grid<Note> notes = new Grid<Note>();
@@ -38,18 +33,11 @@ public class PatientInfoViewImpl extends Panel implements PatientInfoView {
 		txaDiagnosis.setEnabled(false);
 		txaDrugs.setEnabled(false);
 		
-		layDrugs.addComponent(lblDrugs);
-		layDrugs.addComponent(txaDrugs);
+		noteGrid.addComponent(btnAddNote,2, 0,  2, 0);
+		noteGrid.addComponent(notes, 0, 0, 1, 0);
 		
-		layDiagnosis.addComponent(lblDiagnosis);
-		layDiagnosis.addComponent(txaDiagnosis);
-		
-		noteGrid.addComponent(lblNotes);
-		noteGrid.addComponent(btnAddNote);
-		noteGrid.addComponent(notes, 0, 1, 1, 1);
-		
-		acc.addTab(layDiagnosis, "Diagnosen");
-		acc.addTab(layDrugs, "Mediaktion");
+		acc.addTab(txaDiagnosis, "Diagnosen");
+		acc.addTab(txaDrugs, "Medikation");
 		acc.addTab(noteGrid, "Notizen");
 		
 		this.setContent(acc);
