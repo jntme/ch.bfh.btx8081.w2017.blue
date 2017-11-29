@@ -9,8 +9,8 @@ import javax.persistence.*;
  * information.
  *
  * @author petim1
- * @version 1.0
- * @since 24.11.2017
+ * @version 1.5
+ * @since 29.11.2017
  */
 @Entity
 public class DrugList {
@@ -18,9 +18,9 @@ public class DrugList {
 	@Id
 	private int did;
 	
-	ArrayList<String> drugs = new ArrayList<String>();
-	ArrayList<String> mainList = new ArrayList<String>();
-	int randNo, minimum = 0, maximum = 8;
+	@Transient ArrayList<String> drugs = new ArrayList<String>();
+	@Transient int randNo, minimum = 0, maximum = 8;
+	@Transient String med;
 	
 	public DrugList(){
 		initdrugs();
@@ -43,12 +43,18 @@ public class DrugList {
 		drugs.add("Medikament: Cymbalta / Wirkstoff: Duloxetin / Dosis: 60mg");
 		drugs.add("Medikament: Sertralin / Wirkstoff: Sertralin / Dosis: 50mg");
 
-		// Generate random number and add to List
-		for (int i = 0; i < 4; i++) {
-			randNo = minimum + (int) (Math.random() * maximum);
-			mainList.add(drugs.get(randNo));
-
-		}
+		
+		// Generate random number and add to String (1x)
+		randNo = minimum + (int) (Math.random() * maximum);
+		med = drugs.get(randNo);
+		
+		// Generate random number and add to String (2x)
+//		for (int i = 0; i < 3; i++) {
+//			randNo = minimum + (int) (Math.random() * maximum);
+//			med += drugs.get(randNo);
+//
+//
+//		}
 
 	}
 
@@ -57,7 +63,7 @@ public class DrugList {
 	 */
 	@Override
 	public String toString() {
-		return mainList.toString();
+		return med;
 
 	}
 }
