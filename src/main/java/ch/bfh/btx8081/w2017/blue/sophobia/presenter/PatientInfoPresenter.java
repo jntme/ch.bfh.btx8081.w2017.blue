@@ -5,6 +5,10 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView.PatientInfoClickListener;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListView;
+
+import java.util.ArrayList;
+
+import ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 /**
  * @author odaoj1
@@ -13,26 +17,30 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 
 public class PatientInfoPresenter implements PatientInfoClickListener{
 
-private Patient model;
-private PatientInfoView view;
+private Patient pat;
+private PatientInfoView patView;
 
-public void initPatientview(){
+public PatientInfoPresenter(Patient pat, PatientInfoView patview){
+	this.pat = pat;
+	this.patView = patview;
+	initPatInfoView();
+}
+
+private void initPatInfoView(){
 
 }
-public void initObjListPresenter(){
 
+public void openNote(){
+	//ArrayList<NoteList> notesList = pat.getNoteList();
 }
-public void initPatInfoPresenter(){
 
-}
-private void checkDangerNotes(){
-
-}
 @Override
 public void buttonClick() {
 	// TODO Auto-generated method stub
 
 }
+
+
 
 
 }
