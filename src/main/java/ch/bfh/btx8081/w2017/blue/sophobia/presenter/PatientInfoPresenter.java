@@ -12,6 +12,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 
 /**
+ * Acts beteween Patient View interface and Patient Model
  * @author odaoj1
  *
  */
