@@ -3,6 +3,7 @@ package ch.bfh.btx8081.w2017.blue.sophobia.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -18,7 +19,7 @@ public class ObjectiveList {
 	@Id
 	private int olid;
 	
-	@OneToMany(mappedBy= "objList")
+	@OneToMany(mappedBy= "objList", cascade = CascadeType.ALL)
 	private List<Objective> objectives = new ArrayList<Objective>();
 
 	/**

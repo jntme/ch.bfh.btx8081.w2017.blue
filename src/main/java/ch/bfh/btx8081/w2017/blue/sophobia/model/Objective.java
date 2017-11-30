@@ -16,8 +16,8 @@ public class Objective {
 	private String description;
 	private int difficulty;
 	private boolean isComplete;
+
 	@ManyToOne
-	@JoinColumn(name="objlist")
 	private ObjectiveList objList;
 	public Objective(){
 		

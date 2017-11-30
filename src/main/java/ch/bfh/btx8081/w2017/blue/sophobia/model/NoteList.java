@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ public class NoteList {
 	@GeneratedValue
 	private int nlid;
 	
-	@OneToMany(mappedBy= "noteList")
+	@OneToMany(mappedBy= "noteList", cascade = CascadeType.ALL)
 	private List<Note> notes = new ArrayList<Note>();
 	
 	/**

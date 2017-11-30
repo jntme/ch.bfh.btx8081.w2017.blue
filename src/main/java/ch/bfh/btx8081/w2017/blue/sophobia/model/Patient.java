@@ -37,20 +37,20 @@ public class Patient implements Serializable {
 	private Date birthdate;
 	private String city;
 
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.ALL)
 	private DiagnosisList diagnosisList;
 
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.ALL)
 	private DrugList drugList;
 
 	private String gender;
 
 	private String name;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private NoteList noteList;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private ObjectiveList objectiveList;
 
 	private byte[] picture;
