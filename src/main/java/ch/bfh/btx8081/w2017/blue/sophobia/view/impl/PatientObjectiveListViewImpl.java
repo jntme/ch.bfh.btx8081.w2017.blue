@@ -30,6 +30,7 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 	private final Label DISPLAY = new Label("Ziele");
 	private final Button BTN_ADD = new Button("Ziel hinzufügen");
 	private final Button BTN_CHANGE = new Button("Status verändern");
+	private final Button BTN_SELECT = new Button("Ziel öffnen");
 	private List<PatientObjectiveListViewListener> listeners = new ArrayList<PatientObjectiveListViewListener>();
 	private Grid<Objective> grid = new Grid<>();
 	
@@ -43,6 +44,7 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 		
 		VerticalLayout vertical = new VerticalLayout ();
 		vertical.addComponent(BTN_ADD);
+		vertical.addComponent(BTN_SELECT);
 		vertical.addComponent(BTN_CHANGE);
 		layout.addComponent(vertical, 1, 1);
 
