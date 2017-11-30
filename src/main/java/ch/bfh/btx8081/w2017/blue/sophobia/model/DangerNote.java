@@ -3,6 +3,7 @@ package ch.bfh.btx8081.w2017.blue.sophobia.model;
 import java.sql.Date;
 import java.util.Calendar;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 /**
@@ -12,6 +13,7 @@ import javax.persistence.Entity;
  *
  */
 @Entity
+@DiscriminatorValue("d")
 public class DangerNote extends Note {
 	
 	boolean active;

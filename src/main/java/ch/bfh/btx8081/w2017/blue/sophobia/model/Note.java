@@ -3,9 +3,11 @@ package ch.bfh.btx8081.w2017.blue.sophobia.model;
 import java.sql.Date;
 import java.util.Calendar;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -16,6 +18,8 @@ import javax.persistence.ManyToOne;
  */
 
 @Entity
+@Inheritance
+@DiscriminatorColumn(name="note_type")
 public class Note {
 	
 	@Id
