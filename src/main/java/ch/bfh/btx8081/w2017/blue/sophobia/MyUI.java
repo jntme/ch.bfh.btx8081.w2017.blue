@@ -36,6 +36,9 @@ public class MyUI extends UI {
 
 	protected void init(VaadinRequest vaadinRequest) {
 		
+		// take a look at the following class
+		HowToUseDB.howToUseDb();
+		
 		EntityManager em = DB.getEntityManager();
 		Query q1 = em.createQuery("select m from Patient m");
 		
@@ -49,26 +52,27 @@ public class MyUI extends UI {
 		// UI STUFF BEGIN --------------------
 		
 		final VerticalLayout layout = new VerticalLayout();
+		layout.setStyleName("dafuq");
 		
 		//Patient pModel = new Patient();
 		PatientViewImpl pView = new PatientViewImpl();
 		Patient pModel = new Patient();
 
-		new PatientPresenter(pModel, pView);
+		new PatientPresenter(patientZero, pView);
 		
 		
 		PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
 
 		// An objective list is created and two dummy objectives are added to the list.
-		ObjectiveList oModel = new ObjectiveList();
-		oModel.createObj("Hausarzt besuchen", "blabla", 3);
-		oModel.createObj("Einkaufen gehen", "hihihi", 5);
+		//ObjectiveList oModel = new ObjectiveList();
+		//oModel.createObj("Hausarzt besuchen", "blabla", 3);
+		//oModel.createObj("Einkaufen gehen", "hihihi", 5);
 		
 		// Instantiate a new PatientObjectiveListView.
 		PatientObjectiveListViewImpl oView = new PatientObjectiveListViewImpl();
 
 		// Instantiate a new PatientObjectiveListPresenter
-		new PatientObjectiveListPresenter(oModel, oView);
+		//new PatientObjectiveListPresenter(oModel, oView);
 
 		layout.addComponent(pView);
 		layout.addComponent(pInfoView);
@@ -76,8 +80,7 @@ public class MyUI extends UI {
 
 		setContent(layout);
 
-		// take a look at the following class
-		HowToUseDB.howToUseDb();
+
 
 	}
 

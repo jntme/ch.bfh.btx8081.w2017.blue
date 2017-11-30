@@ -20,6 +20,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.DiagnosisList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.DrugList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Note;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList;
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
@@ -111,11 +112,27 @@ public class HowToUseDB {
 			notel.createNote("Aufräumen", "Wenn mal jemand Zeit hat, sollte man bei Tim zuhause mal wieder aufräumen", false);
 			notel.createNote("manchmal Aggro", "Tim kann manchmal sehr aggressiv sein, wenn er mit der Situation überfordert ist.", true);
 			notel.createNote("Note3", "Hier steht ein anderer, nicht allzuwichtiger Text", false);
+			
+			//WORKAROUND!!!!!!
+			List<Note> tryHard1 = notel.getNotes();
+			tryHard1.get(0).setNoteList(notel);
+			tryHard1.get(1).setNoteList(notel);
+			tryHard1.get(2).setNoteList(notel);
+			//WORKAROUND END!!!!!
+			
 			babbel.setNoteList(notel);
 			
 			ObjectiveList objl = new ObjectiveList();
 			objl.createObj("Einkaufen", "Kann alleine Einkaufen gehen", 9001);
 			objl.createObj("Aufräumen", "Kann Wohnung alleine sauber halten.", 10000);
+			
+			//WORKAROUND!!!!!!
+			List<Objective> tryHard2 = objl.getObjectives();
+			tryHard2.get(0).setObjList(objl);
+			tryHard2.get(1).setObjList(objl);
+			//WORKAROUND END!!!!!
+			
+			
 			babbel.setObjectiveList(objl);
 
 			babbel.persist();

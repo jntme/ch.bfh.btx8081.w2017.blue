@@ -1,6 +1,7 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListView;
 
 /**
@@ -10,14 +11,14 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListVi
  */
 public class PatientObjectiveListPresenter implements PatientObjectiveListView.PatientObjectiveListViewListener{
 	
-	private ObjectiveList model;
+	private Patient model;
 	private PatientObjectiveListView view;
 	
-	public PatientObjectiveListPresenter(ObjectiveList model, PatientObjectiveListView view) {
+	public PatientObjectiveListPresenter(Patient model, PatientObjectiveListView view) {
 		this.model = model;
 		this.view = view;
 		
-		view.fillObjectiveList(model);
+		view.fillObjectiveList(model.getObjectiveList());
 		
 		view.addListener(this);
 	}
