@@ -5,6 +5,7 @@
 		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.Objective</class>
 		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList</class>
 		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.Note</class>
+		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.DangerNote</class>
 		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList</class>
 		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.DrugList</class>
 		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.DiagnosisList</class>
