@@ -5,6 +5,8 @@ import java.sql.Date;
 import com.vaadin.ui.Image;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
+import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientInfoViewImpl;
+import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientObjectiveListViewImpl;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
 
 /**
@@ -17,6 +19,7 @@ public class PatientPresenter {
 
 	private Patient model;
 	private PatientView view;
+	
 
 	public PatientPresenter(Patient model, PatientView view) {
 		this.model = model;
@@ -27,7 +30,21 @@ public class PatientPresenter {
 //		view.setBirthdate(model.getBirthdate());
 //		view.setGender(model.getGender());
 		//view.setPicture(model.getPicture());
+		
+		
+		
+		// PHIIIIIIIIL Zwei Zeilen auskommentieren falls Patient Model ready
+//		PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
+//		new PatientInfoPresenter(model, pInfoView);
+		
+		
+		
+		// MICHÄÄÄÄÄÄÄÄÄÄ Zwei Zeilen auskommentieren falls Patient Model ready
+//		PatientObjectiveListViewImpl oView = new PatientObjectiveListViewImpl();
+//		new PatientObjectiveListPresenter(model, oView);
 	}
+	
+	
 	
 	
 
