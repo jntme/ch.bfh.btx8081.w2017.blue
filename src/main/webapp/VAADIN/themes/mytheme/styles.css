@@ -14779,3 +14779,19 @@ div.v-layout.v-horizontal.v-widget {
 	width: 19px;
 	overflow: hidden;
 }
+
+.mytheme .v-verticallayout-dafuq {
+	position: absolute;
+	left: 50%;
+	margin-left: -400px;
+	max-width: 800px;
+	min-width: 650px;
+	border-color: #e3e3e3;
+	border-width: 20px;
+	border-style: groove;
+	top: 5px;
+}
+
+.mytheme .v-label-header {
+	font-size: 50px;
+}
