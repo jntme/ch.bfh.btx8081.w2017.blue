@@ -20,7 +20,7 @@ public class DrugList {
 	private int did;
 	
 	@Transient ArrayList<String> drugs = new ArrayList<String>();
-	@Transient int randNo, minimum = 0, maximum = 8;
+	@Transient int randNo, minimum = 0, maximum = 6;
 
 	private String med;
 	
@@ -37,13 +37,13 @@ public class DrugList {
 	 */
 	public void initdrugs() {
 		drugs.add("Medikament: Citalopram / Wirkstoff: Citalopram  / Dosis: 40mg");
-		drugs.add("Medikament: Cipralex / Wirkstoff: Escitalopram / Dosis: 10mg");
 		drugs.add("Medikament: Cipralex / Wirkstoff: Escitalopram / Dosis: 20mg");
-		drugs.add("Medikament: Lyrica / Wirkstoff: Pregabalin / Dosis: 150mg");
 		drugs.add("Medikament: Lyrica / Wirkstoff: Pregabalin / Dosis: 300mg");
-		drugs.add("Medikament: Cymbalta / Wirkstoff: Duloxetin / Dosis: 30mg");
 		drugs.add("Medikament: Cymbalta / Wirkstoff: Duloxetin / Dosis: 60mg");
 		drugs.add("Medikament: Sertralin / Wirkstoff: Sertralin / Dosis: 50mg");
+		drugs.add("Medikament: EFEXOR ER / Wirkstoff: Venlafaxin / Dosis: 150mg");
+		drugs.add("Medikament: Escitalopram / Wirkstoff: Escitalopram / Dosis: 20mg");
+		
 
 		
 		// Generate random number and add to String (1x)
@@ -65,7 +65,7 @@ public class DrugList {
 	 */
 	@Override
 	public String toString() {
-		return med;
+		return this.med;
 
 	}
 }

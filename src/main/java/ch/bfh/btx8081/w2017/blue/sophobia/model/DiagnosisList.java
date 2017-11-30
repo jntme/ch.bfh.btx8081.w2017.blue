@@ -21,9 +21,7 @@ public class DiagnosisList {
 	 */
 
 	private ArrayList<String> diagnosisList = new ArrayList<>(
-			Arrays.asList("Social Anxiety", "Fear public performan",
-					"Diminished interest or loss of pleasure in almost all activities",
-					"Psychomotor agitation or retardation ", " Feelings of worthlessness"));
+			Arrays.asList("Social Anxiety Disorder A", "Persistent Depressive Disorder,"));
 
 	//Can we add a method? is it toString method?
 //	public String getDiagnosis(){
@@ -35,18 +33,18 @@ public class DiagnosisList {
 //	}
 
 	//Example
-	public ArrayList<String> getDiagnosisList(){
-		Random random = new Random();
-		int sizeArray = diagnosisList.size();
-
-		ArrayList<String> arl = new ArrayList();
-		for(int i = 0; i<=4;i++){
-			int randNum = random.nextInt(sizeArray);
-			String element = diagnosisList.get(randNum);
-			arl.add(element);
-		}
-		return arl;
-	}
+//	public ArrayList<String> getDiagnosisList(){
+//		Random random = new Random();
+//		int sizeArray = diagnosisList.size();
+//
+//		ArrayList<String> arl = new ArrayList();
+//		for(int i = 0; i<=4;i++){
+//			int randNum = random.nextInt(sizeArray);
+//			String element = diagnosisList.get(randNum);
+//			arl.add(element);
+//		}
+//		return arl;
+//	}
 
 	// Displays the list of patient's diagnosis.
 	public String toString() {
