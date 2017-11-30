@@ -14,6 +14,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 
@@ -36,21 +37,21 @@ public class Patient implements Serializable {
 
 	private String city;
 
-//	@OneToOne
-//	private DiagnosisList diagnosisList;
-//
-//	@OneToOne
-//	private DrugList drugList;
+	@OneToOne
+	private DiagnosisList diagnosisList;
+
+	@OneToOne
+	private DrugList drugList;
 
 	private String gender;
 
 	private String name;
 
-//	@OneToOne
-//	private NoteList noteList;
+	@OneToOne
+	private NoteList noteList;
 
-//	@OneToOne
-//	private ObjectiveList objectiveList;
+	@OneToOne
+	private ObjectiveList objectiveList;
 
 	private byte[] picture;
 
@@ -60,8 +61,6 @@ public class Patient implements Serializable {
 
 	private String zip;
 
-	private static EntityManager em = DB.getEntityManager();
-	
 	public Patient(int pid, Date birthdate, String city, String gender, String name, byte[] picture, String prename,
 			String street, String zip) {
 		super();
@@ -81,6 +80,7 @@ public class Patient implements Serializable {
 	}
 
 	public void persist() {
+		EntityManager em = DB.getEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		trans.begin();
 		em.persist(this);
@@ -88,6 +88,8 @@ public class Patient implements Serializable {
 	}
 	
 	public void delete() {
+		EntityManager em = DB.getEntityManager();
+		EntityTransaction trans = em.getTransaction();
 		em.getTransaction().begin();
 		em.remove(this);
 		em.getTransaction().commit();
@@ -138,37 +140,37 @@ public class Patient implements Serializable {
 		return this.picture;
 	}
 
-//	public DiagnosisList getDiagnosisList() {
-//		return diagnosisList;
-//	}
-//
-//	public void setDiagnosisList(DiagnosisList diagnosisList) {
-//		this.diagnosisList = diagnosisList;
-//	}
-//
-//	public DrugList getDrugList() {
-//		return drugList;
-//	}
-//
-//	public void setDrugList(DrugList drugList) {
-//		this.drugList = drugList;
-//	}
-//
-//	public NoteList getNoteList() {
-//		return noteList;
-//	}
-//
-//	public void setNoteList(NoteList noteList) {
-//		this.noteList = noteList;
-//	}
-//
-//	public ObjectiveList getObjectiveList() {
-//		return objectiveList;
-//	}
-//
-//	public void setObjectiveList(ObjectiveList objectiveList) {
-//		this.objectiveList = objectiveList;
-//	}
+	public DiagnosisList getDiagnosisList() {
+		return diagnosisList;
+	}
+
+	public void setDiagnosisList(DiagnosisList diagnosisList) {
+		this.diagnosisList = diagnosisList;
+	}
+
+	public DrugList getDrugList() {
+		return drugList;
+	}
+
+	public void setDrugList(DrugList drugList) {
+		this.drugList = drugList;
+	}
+
+	public NoteList getNoteList() {
+		return noteList;
+	}
+
+	public void setNoteList(NoteList noteList) {
+		this.noteList = noteList;
+	}
+
+	public ObjectiveList getObjectiveList() {
+		return objectiveList;
+	}
+
+	public void setObjectiveList(ObjectiveList objectiveList) {
+		this.objectiveList = objectiveList;
+	}
 
 	public void setPicture(byte[] picture) {
 		this.picture = picture;

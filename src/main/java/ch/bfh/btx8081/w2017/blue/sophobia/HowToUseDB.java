@@ -1,6 +1,5 @@
 package ch.bfh.btx8081.w2017.blue.sophobia;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,9 +14,13 @@ import java.util.Locale;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import com.vaadin.server.FileResource;
 import com.vaadin.server.VaadinService;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.model.DiagnosisList;
+import ch.bfh.btx8081.w2017.blue.sophobia.model.DrugList;
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Note;
+import ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList;
+import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 
@@ -96,27 +99,22 @@ public class HowToUseDB {
 				e.printStackTrace();
 			}
 
+			DiagnosisList dl = new DiagnosisList();
+			babbel.setDiagnosisList(dl);
 
-			//			DiagnosisList dl = new DiagnosisList();
-			//			babbel.setDiagnosisList(dl);
-
-			//			DrugList drugl = new DrugList();
-			//			drugl.initdrugs();
-			//			babbel.setDrugList(drugl);
-			//			
-			//			NoteList notel = new NoteList();
-			//			
-			//			notel.createNote("Aufräumen", "Wenn mal jemand Zeit hat, sollte man bei Tim zuhause mal wieder aufräumen", false);
-			//			notel.createNote("manchmal Aggro", "Tim kann manchmal sehr aggressiv sein, wenn er mit der Situation überfordert ist.", true);
-			//			notel.createNote("Note3", "Hier steht ein anderer, nicht allzuwichtiger Text", false);
-			//			
-			//			ObjectiveList objl = new ObjectiveList();
-			//			objl.createObj("Einkaufen", "Kann alleine Einkaufen gehen", 9001);
-			//			objl.createObj("Aufräumen", "Kann Wohnung alleine sauber halten.", 10000);
-
-			//			Note note1 = new Note("Aufräumen", "Wenn mal jemand Zeit hat, sollte man bei Tim zuhause mal wieder aufräumen", false);
-			//			Note note2 = new Note("manchmal Aggro", "Tim kann manchmal sehr aggressiv sein, wenn er mit der Situation überfordert ist.", true);
-			//			Note note3 = new Note("Note3", "Hier steht ein anderer, nicht allzuwichtiger Text", false);
+			DrugList drugl = new DrugList();
+			drugl.initdrugs();
+			babbel.setDrugList(drugl);
+			
+			NoteList notel = new NoteList();
+			
+			notel.createNote("Aufräumen", "Wenn mal jemand Zeit hat, sollte man bei Tim zuhause mal wieder aufräumen", false);
+			notel.createNote("manchmal Aggro", "Tim kann manchmal sehr aggressiv sein, wenn er mit der Situation überfordert ist.", true);
+			notel.createNote("Note3", "Hier steht ein anderer, nicht allzuwichtiger Text", false);
+			
+			ObjectiveList objl = new ObjectiveList();
+			objl.createObj("Einkaufen", "Kann alleine Einkaufen gehen", 9001);
+			objl.createObj("Aufräumen", "Kann Wohnung alleine sauber halten.", 10000);
 
 			babbel.persist();
 

@@ -20,7 +20,8 @@ public class DrugList {
 	
 	@Transient ArrayList<String> drugs = new ArrayList<String>();
 	@Transient int randNo, minimum = 0, maximum = 8;
-	@Transient String med;
+
+	private String med;
 	
 	public DrugList(){
 		initdrugs();
@@ -46,7 +47,7 @@ public class DrugList {
 		
 		// Generate random number and add to String (1x)
 		randNo = minimum + (int) (Math.random() * maximum);
-		med = drugs.get(randNo);
+		this.med = drugs.get(randNo);
 		
 		// Generate random number and add to String (2x)
 //		for (int i = 0; i < 3; i++) {
