@@ -99,8 +99,8 @@ public class HowToUseDB {
 				e.printStackTrace();
 			}
 
-			DiagnosisList dl = new DiagnosisList();
-			babbel.setDiagnosisList(dl);
+//			DiagnosisList dl = new DiagnosisList();
+//			babbel.setDiagnosisList(dl);
 
 			DrugList drugl = new DrugList();
 			drugl.initdrugs();

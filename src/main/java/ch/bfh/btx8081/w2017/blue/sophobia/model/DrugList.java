@@ -16,6 +16,7 @@ import javax.persistence.*;
 public class DrugList {
 	// Variables for class - use
 	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int did;
 	
 	@Transient ArrayList<String> drugs = new ArrayList<String>();

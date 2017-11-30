@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Array;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -40,7 +41,7 @@ public class Patient implements Serializable {
 	@OneToOne
 	private DiagnosisList diagnosisList;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private DrugList drugList;
 
 	private String gender;
