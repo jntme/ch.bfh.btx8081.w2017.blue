@@ -35,10 +35,9 @@ public class Patient implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	private Date birthdate;
-
 	private String city;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private DiagnosisList diagnosisList;
 
 	@OneToOne(cascade = CascadeType.PERSIST)

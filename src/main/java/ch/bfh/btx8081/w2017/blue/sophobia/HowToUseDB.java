@@ -99,8 +99,8 @@ public class HowToUseDB {
 				e.printStackTrace();
 			}
 
-//			DiagnosisList dl = new DiagnosisList();
-//			babbel.setDiagnosisList(dl);
+			DiagnosisList dl = new DiagnosisList();
+			babbel.setDiagnosisList(dl);
 
 			DrugList drugl = new DrugList();
 			drugl.initdrugs();
@@ -111,10 +111,12 @@ public class HowToUseDB {
 			notel.createNote("Aufräumen", "Wenn mal jemand Zeit hat, sollte man bei Tim zuhause mal wieder aufräumen", false);
 			notel.createNote("manchmal Aggro", "Tim kann manchmal sehr aggressiv sein, wenn er mit der Situation überfordert ist.", true);
 			notel.createNote("Note3", "Hier steht ein anderer, nicht allzuwichtiger Text", false);
+			babbel.setNoteList(notel);
 			
 			ObjectiveList objl = new ObjectiveList();
 			objl.createObj("Einkaufen", "Kann alleine Einkaufen gehen", 9001);
 			objl.createObj("Aufräumen", "Kann Wohnung alleine sauber halten.", 10000);
+			babbel.setObjectiveList(objl);
 
 			babbel.persist();
 
