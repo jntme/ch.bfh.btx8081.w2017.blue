@@ -14,6 +14,7 @@ import com.vaadin.ui.Grid;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
+import com.vaadin.ui.VerticalLayout;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
@@ -27,7 +28,8 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListVi
 public class PatientObjectiveListViewImpl extends Panel implements PatientObjectiveListView, ClickListener {
 	
 	private final Label DISPLAY = new Label("Ziele");
-	private final Button BTN_ADD = new Button ("+");
+	private final Button BTN_ADD = new Button("Ziel hinzufügen");
+	private final Button BTN_CHANGE = new Button("Status verändern");
 	private List<PatientObjectiveListViewListener> listeners = new ArrayList<PatientObjectiveListViewListener>();
 	private Grid<Objective> grid = new Grid<>();
 	
@@ -38,7 +40,13 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 		GridLayout layout = new GridLayout(2,2);
 		
 		layout.addComponent(DISPLAY, 0, 0);
-		layout.addComponent(BTN_ADD, 1, 1);
+		
+		VerticalLayout vertical = new VerticalLayout ();
+		vertical.addComponent(BTN_ADD);
+		vertical.addComponent(BTN_CHANGE);
+		layout.addComponent(vertical, 1, 1);
+
+		
 		
         grid.setSelectionMode(SelectionMode.SINGLE);
         
