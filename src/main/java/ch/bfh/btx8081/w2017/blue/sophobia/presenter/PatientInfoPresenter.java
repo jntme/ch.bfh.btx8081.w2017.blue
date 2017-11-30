@@ -12,7 +12,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 
 /**
- * Acts beteween Patient View interface and Patient Model
+ * Acts between Patient View interface and Patient Model
  * @author odaoj1
  *
  */
@@ -28,9 +28,8 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 		initPatInfoView();
 	}
 	/**
-	 * initializes Patient view
+	 * Initialises Patient view
 	 *
-	 * @author odaoj1
 	 *
 	 */
 	private void initPatInfoView() {
@@ -38,8 +37,6 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 	}
 	/**
 	 * opens the List of Patient Notes
-	 *
-	 * @author odaoj1
 	 *
 	 */
 	public void openNote() {
