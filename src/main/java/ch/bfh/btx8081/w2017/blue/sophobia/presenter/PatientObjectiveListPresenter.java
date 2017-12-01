@@ -26,7 +26,6 @@ public class PatientObjectiveListPresenter implements PatientObjectiveListView.P
 	@Override
 	public void buttonClick(char operation) {
 		// TODO Auto-generated method stub
-		
 	}
 
 }

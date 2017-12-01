@@ -8,12 +8,8 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.icons.VaadinIcons;
-import com.vaadin.server.Sizeable;
-import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Grid;
-import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
@@ -52,7 +48,6 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 		btnDelete = new Button(VaadinIcons.TRASH);
 		
 		hLayout1.addComponents(DISPLAY, btnAdd, btnDelete);
-		
 		
 		grid.setSelectionMode(SelectionMode.SINGLE);
 		hLayout2.addComponent(grid);   
@@ -99,7 +94,5 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 		}
 		
 	}
-
-	
 
 }
