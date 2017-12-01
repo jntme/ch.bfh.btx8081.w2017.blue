@@ -40,8 +40,8 @@ public class PatientPresenter {
 		
 		
 		// MICHÄÄÄÄÄÄÄÄÄÄ Zwei Zeilen auskommentieren falls Patient Model ready
-		PatientObjectiveListViewImpl oView = new PatientObjectiveListViewImpl();
-		new PatientObjectiveListPresenter(model, oView);
+//		PatientObjectiveListViewImpl oView = new PatientObjectiveListViewImpl();
+//		new PatientObjectiveListPresenter(model, oView);
 	}
 	
 	
