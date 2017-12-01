@@ -14,6 +14,7 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.GridLayout;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
@@ -40,28 +41,25 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 	 * Constructor creates a new grid for viewing the object list as a table and adds some formatting.
 	 */
 	public PatientObjectiveListViewImpl() {
-		GridLayout layout = new GridLayout(2,2);
+		VerticalLayout vLayout = new VerticalLayout();
+		HorizontalLayout hLayout1 = new HorizontalLayout();
+		HorizontalLayout hLayout2 = new HorizontalLayout();
 		
-		layout.addComponent(DISPLAY, 0, 0);
+		vLayout.addComponent(hLayout1);
+		vLayout.addComponent(hLayout2);
 		
 		btnAdd = new Button(VaadinIcons.PLUS_CIRCLE);
 		btnDelete = new Button(VaadinIcons.TRASH);
 		
-		VerticalLayout vertical = new VerticalLayout ();
-		vertical.addComponent(btnAdd);
-		vertical.addComponent(btnDelete);
-		layout.addComponent(vertical, 1, 1);
-
+		hLayout1.addComponents(DISPLAY, btnAdd, btnDelete);
 		
 		
-        grid.setSelectionMode(SelectionMode.SINGLE);
-        
-        layout.addComponent(grid, 0, 1);
-		    
+		grid.setSelectionMode(SelectionMode.SINGLE);
+		hLayout2.addComponent(grid);   
         grid.addColumn(Objective::getName).setCaption("Ziel"); 
         grid.addColumn(Objective::isComplete).setCaption("Status");
 				
-		this.setContent(layout);
+		this.setContent(vLayout);
 	}
 
 	/**
