@@ -28,9 +28,9 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListVi
 public class PatientObjectiveListViewImpl extends Panel implements PatientObjectiveListView, ClickListener {
 	
 	private final Label DISPLAY = new Label("Ziele");
-	private final Button BTN_ADD = new Button("Ziel hinzufügen");
-	private final Button BTN_CHANGE = new Button("Status verändern");
-	private final Button BTN_SELECT = new Button("Ziel öffnen");
+	private final Button BTN_ADD = new Button("+");
+	private final Button BTN_DELETE = new Button("delete");
+	
 	private List<PatientObjectiveListViewListener> listeners = new ArrayList<PatientObjectiveListViewListener>();
 	private Grid<Objective> grid = new Grid<>();
 	
@@ -44,8 +44,7 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 		
 		VerticalLayout vertical = new VerticalLayout ();
 		vertical.addComponent(BTN_ADD);
-		vertical.addComponent(BTN_SELECT);
-		vertical.addComponent(BTN_CHANGE);
+		vertical.addComponent(BTN_DELETE);
 		layout.addComponent(vertical, 1, 1);
 
 		
