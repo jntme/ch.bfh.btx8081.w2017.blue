@@ -10,44 +10,43 @@ import java.util.ArrayList;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
-
 /**
- * Acts between Patient View interface and Patient Model
- * @author odaoj1
+ * This class 
+ * @author odaoj1, kybup1
  *
  */
 
-	public class PatientInfoPresenter implements PatientInfoClickListener {
+public class PatientInfoPresenter implements PatientInfoClickListener{
 
 	private Patient pat;
-	private PatientInfoView patView;
+	private PatientInfoView patInfoView;
 
-	public PatientInfoPresenter(Patient pat, PatientInfoView patview) {
-		this.pat = pat;
-		this.patView = patview;
-		initPatInfoView();
+	public PatientInfoPresenter(Patient pat1, PatientInfoView patInfoView1){
+		this.pat = pat1;
+		this.patInfoView = patInfoView1;
+		//patInfoView.setDiagnosis(pat.getDiagnosisList().toString());
+		patInfoView.setDrugs(pat.getDrugList().toString());
+		patInfoView.fillNoteList(pat.getNoteList());
 	}
-	/**
-	 * Initialises Patient view
-	 *
-	 *
-	 */
-	private void initPatInfoView() {
 
+	public void initPatInfoView(){
+		//patInfoView.setDiagnosis(pat.getDiagnosisList().toString());
+		patInfoView.setDrugs(pat.getDrugList().toString());
+		patInfoView.fillNoteList(pat.getNoteList());
 	}
-	/**
-	 * opens the List of Patient Notes
-	 *
-	 */
-	public void openNote() {
-		NoteList noteList = pat.getNoteList();
-		System.out.println(noteList.toString());
+	
+
+	public void openNote(){
+		//ArrayList<NoteList> notesList = pat.getNoteList();
 	}
 
 	@Override
 	public void buttonClick() {
 		// TODO Auto-generated method stub
-
+		
 	}
+
+
+
 
 }
