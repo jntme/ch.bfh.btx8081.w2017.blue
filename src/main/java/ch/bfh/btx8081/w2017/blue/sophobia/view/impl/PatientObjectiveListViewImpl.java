@@ -7,7 +7,9 @@ import java.util.List;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Grid.SelectionMode;
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.Sizeable;
+import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Grid;
@@ -28,8 +30,8 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListVi
 public class PatientObjectiveListViewImpl extends Panel implements PatientObjectiveListView, ClickListener {
 	
 	private final Label DISPLAY = new Label("Ziele");
-	private final Button BTN_ADD = new Button("+");
-	private final Button BTN_DELETE = new Button("delete");
+	private Button btnDelete;
+	private Button btnAdd;
 	
 	private List<PatientObjectiveListViewListener> listeners = new ArrayList<PatientObjectiveListViewListener>();
 	private Grid<Objective> grid = new Grid<>();
@@ -42,9 +44,12 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 		
 		layout.addComponent(DISPLAY, 0, 0);
 		
+		btnAdd = new Button(VaadinIcons.PLUS_CIRCLE);
+		btnDelete = new Button(VaadinIcons.TRASH);
+		
 		VerticalLayout vertical = new VerticalLayout ();
-		vertical.addComponent(BTN_ADD);
-		vertical.addComponent(BTN_DELETE);
+		vertical.addComponent(btnAdd);
+		vertical.addComponent(btnDelete);
 		layout.addComponent(vertical, 1, 1);
 
 		
