@@ -2,8 +2,10 @@ package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
 import java.util.Iterator;
 
+import com.vaadin.shared.ui.ValueChangeMode;
 import com.vaadin.ui.Accordion;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.GridLayout;
@@ -21,27 +23,23 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView;
  * @author kybup1
  *
  */
-public class PatientInfoViewImpl extends Panel implements PatientInfoView {
+public class PatientInfoViewImpl extends CustomComponent implements PatientInfoView {
 	private Accordion acc = new Accordion();
 	private GridLayout noteGrid = new GridLayout(3,1);
 	private TextArea txaDiagnosis = new TextArea();
-	private TextArea txaDrugs = new TextArea();
+	private Label txaDrugs = new Label();
 	private Grid<Note> notes = new Grid<Note>();
 	private Button btnAddNote = new Button("+");
 	
 	public PatientInfoViewImpl(){
+		this.setCompositionRoot(acc);
 		txaDiagnosis.setEnabled(false);
-		txaDrugs.setEnabled(false);
-		
 		noteGrid.addComponent(btnAddNote,2, 0,  2, 0);
 		noteGrid.addComponent(notes, 0, 0, 1, 0);
 		
 		acc.addTab(txaDiagnosis, "Diagnosen");
 		acc.addTab(txaDrugs, "Medikation");
 		acc.addTab(noteGrid, "Notizen");
-		
-		this.setContent(acc);
-		
 	}
 	
 	/**
@@ -59,6 +57,7 @@ public class PatientInfoViewImpl extends Panel implements PatientInfoView {
 	 */
 	@Override
 	public void setDrugs(String drugs) {
+		System.out.println(drugs);
 		txaDrugs.setValue(drugs);
 	}
 	
