@@ -16,6 +16,7 @@ import com.vaadin.ui.VerticalLayout;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
+import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientInfoPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientInfoViewImpl;
@@ -63,6 +64,7 @@ public class MyUI extends UI {
 
 		// Instantiate a new PatientObjectiveListPresenter
 		new PatientObjectiveListPresenter(patientZero, oView);
+		new PatientInfoPresenter(patientZero, pInfoView);
 
 		layout.addComponent(pView);
 		layout.addComponent(pInfoView);

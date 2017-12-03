@@ -24,7 +24,7 @@ public class PatientInfoPresenter implements PatientInfoClickListener{
 	public PatientInfoPresenter(Patient pat1, PatientInfoView patInfoView1){
 		this.pat = pat1;
 		this.patInfoView = patInfoView1;
-		//patInfoView.setDiagnosis(pat.getDiagnosisList().toString());
+		patInfoView.setDiagnosis(pat.getDiagnosisList().toString());
 		patInfoView.setDrugs(pat.getDrugList().toString());
 		patInfoView.fillNoteList(pat.getNoteList());
 	}
