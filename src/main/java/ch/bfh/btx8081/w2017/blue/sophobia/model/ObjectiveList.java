@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +23,7 @@ public class ObjectiveList {
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int olid;
 	
-	@OneToMany(mappedBy= "objList", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy= "objList", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Objective> objectives = new ArrayList<Objective>();
 
 	/**
