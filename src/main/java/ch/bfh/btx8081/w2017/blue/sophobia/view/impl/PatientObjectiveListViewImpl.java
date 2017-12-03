@@ -63,7 +63,6 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 	@Override
 	public void fillObjectiveList(ObjectiveList objectiveList) {
 		grid.setItems(objectiveList.getObjectives());
-		System.out.println(objectiveList.getObjectives().get(0).getName());
 	}
 	
 	/**

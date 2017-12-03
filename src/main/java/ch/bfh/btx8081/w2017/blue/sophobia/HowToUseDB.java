@@ -43,22 +43,22 @@ public class HowToUseDB {
 		Query q1 = em.createQuery("select m from Patient m"); // this is JPQL language! -> take a look at the slides if you don't remember how to do it :)
 
 		//get the first entry of the list
-		List<Patient> patientList = q1.getResultList();
-		Patient p = null;
-		if(!patientList.isEmpty()) {
-			p = patientList.get(0);
-
-			System.out.println("Patient: " + p.getPrename()  + " " + p.getName() + "; " + p.getBirthdate() + "\n\n");
-		}
+//		List<Patient> patientList = q1.getResultList();
+//		Patient p = null;
+//		if(!patientList.isEmpty()) {
+//			p = patientList.get(0);
+//
+//			System.out.println("Patient: " + p.getPrename()  + " " + p.getName() + "; " + p.getBirthdate() + "\n\n");
+//		}
 
 
 		//do something with the full list
-		if(!patientList.isEmpty()) {
-			for(Patient pat : patientList) {
-
-				System.out.println("Patient: " + pat.getPrename()  + " " + pat.getName() + "; " + pat.getBirthdate());
-			}
-		}
+//		if(!patientList.isEmpty()) {
+//			for(Patient pat : patientList) {
+//
+//				System.out.println("Patient: " + pat.getPrename()  + " " + pat.getName() + "; " + pat.getBirthdate());
+//			}
+//		}
 
 		// HOW TO PERSIST SOMETHING IN THE DB
 
@@ -148,7 +148,7 @@ public class HowToUseDB {
 
 			vader.persist();
 
-			System.out.println("Added Tim & Vader!");
+			System.out.println("Added Tim & Vader as Patients!");
 		}
 
 	}

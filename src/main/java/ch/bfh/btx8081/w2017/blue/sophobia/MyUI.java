@@ -35,43 +35,33 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientViewImpl;
 public class MyUI extends UI {
 
 	protected void init(VaadinRequest vaadinRequest) {
-		
+
 		// take a look at the following class
 		HowToUseDB.howToUseDb();
-		
+
 		EntityManager em = DB.getEntityManager();
 		Query q1 = em.createQuery("select m from Patient m");
-		
+
 		List<Patient> patientList = q1.getResultList();
 		Patient patientZero = null;
-		if(!patientList.isEmpty()) {
+		if (!patientList.isEmpty()) {
 			patientZero = patientList.get(0);
-			System.out.println("MEEEIN TEST Patient: " + patientZero.getPrename()  + " " + patientZero.getName() + "; " + patientZero.getBirthdate() + "\n\n");
 		}
 
 		// UI STUFF BEGIN --------------------
-		
-		final VerticalLayout layout = new VerticalLayout();
-		layout.setStyleName("dafuq");
-		
-		//Patient pModel = new Patient();
-		PatientViewImpl pView = new PatientViewImpl();
-		Patient pModel = new Patient();
 
+		final VerticalLayout layout = new VerticalLayout();
+		layout.setStyleName("firstContainer");
+
+		PatientViewImpl pView = new PatientViewImpl();
 		new PatientPresenter(patientZero, pView);
-		
-		
+
 		PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
 
-		// An objective list is created and two dummy objectives are added to the list.
-		//ObjectiveList oModel = new ObjectiveList();
-		//oModel.createObj("Hausarzt besuchen", "blabla", 3);
-		//oModel.createObj("Einkaufen gehen", "hihihi", 5);
-		
 		// Instantiate a new PatientObjectiveListView.
 		PatientObjectiveListViewImpl oView = new PatientObjectiveListViewImpl();
 
-		 //Instantiate a new PatientObjectiveListPresenter
+		// Instantiate a new PatientObjectiveListPresenter
 		new PatientObjectiveListPresenter(patientZero, oView);
 
 		layout.addComponent(pView);
@@ -79,8 +69,6 @@ public class MyUI extends UI {
 		layout.addComponent(oView);
 
 		setContent(layout);
-
-
 
 	}
 
