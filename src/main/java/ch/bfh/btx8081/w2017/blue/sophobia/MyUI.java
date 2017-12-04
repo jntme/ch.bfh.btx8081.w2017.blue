@@ -57,18 +57,7 @@ public class MyUI extends UI {
 		PatientViewImpl pView = new PatientViewImpl();
 		new PatientPresenter(patientZero, pView);
 
-		PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
-
-		// Instantiate a new PatientObjectiveListView.
-		PatientObjectiveListViewImpl oView = new PatientObjectiveListViewImpl();
-
-		// Instantiate a new PatientObjectiveListPresenter
-		new PatientObjectiveListPresenter(patientZero, oView);
-		new PatientInfoPresenter(patientZero, pInfoView);
-
 		layout.addComponent(pView);
-		layout.addComponent(pInfoView);
-		layout.addComponent(oView);
 
 		setContent(layout);
 

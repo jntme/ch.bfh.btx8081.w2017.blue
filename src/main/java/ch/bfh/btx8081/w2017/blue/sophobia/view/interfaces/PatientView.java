@@ -4,6 +4,8 @@ import java.util.Date;
 
 import com.vaadin.ui.Image;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
+
 /**
  * Defines the PatientInfoView methods, which the Presenter can Use.
  * Has the goal to allow different View impls without changing the Presenter.
@@ -18,6 +20,8 @@ public interface PatientView {
 	public void setPicture(Image image);
 	public void setName(String name, String prename);
 	public void setGender(String gender);
+	public void setPresenter(Patient model);
+	public void setTitle(String name, String prename);
 	
 
 }
