@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Note;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList;
+import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView.PatientInfoClickListener;
 
 /**
  * Defines the PatientInfoView methods, which the Presenter can Use.
@@ -29,16 +30,18 @@ public interface PatientInfoView {
 	 * @return Note
 	 */
 	public Note getSelectedNote();
-	public void addListener();
+	public void addListener(PatientInfoClickListener listener);
 	
 	interface PatientInfoClickListener{
 		/**
-		 * Method which has to capture clickEvents and react to them
+		 * Method which has to capture clickEvents and forward them
 		 * Different Cases:
-		 * 1 Create Objective
-		 * 2 Open Objective
+		 * 1 Create Note
+		 * 2 Delete Note
+		 * 3 Open Note
 		 * 
 		 */
-		void  buttonClick();
+		void  buttonClick(int i);
 	}
+
 }

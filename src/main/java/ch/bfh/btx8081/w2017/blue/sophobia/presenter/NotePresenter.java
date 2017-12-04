@@ -1,5 +1,7 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
+import com.vaadin.ui.UI;
+
 import ch.bfh.btx8081.w2017.blue.sophobia.model.DangerNote;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Note;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
@@ -43,6 +45,7 @@ public class NotePresenter implements NoteClickListener {
 		} else {
 			noteView.setDanger(false);
 		}
+		UI.getCurrent().addWindow(noteView);
 	}
 	
 	/**
@@ -56,11 +59,12 @@ public class NotePresenter implements NoteClickListener {
 		newNote = true;
 		
 		noteView.enableDanger();
+		UI.getCurrent().addWindow(noteView);
 	}
 	
 	@Override
-	public void buttonClick() {
-		// TODO Auto-generated method stub
+	public void buttonClick(boolean newN) {
+	
 
 	}
 

@@ -1,5 +1,8 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
+import java.util.ArrayList;
+
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.CustomComponent;
@@ -7,6 +10,7 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
@@ -23,6 +27,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.NoteView;
  */
 
 public class NoteViewImpl extends Window implements NoteView {
+	ArrayList<NoteClickListener> listeners = new ArrayList<NoteClickListener>();
 //	Components:
 	Label lblTitle = new Label("Titel");
 	Label lblContent = new Label("Inhalt");
@@ -30,8 +35,8 @@ public class NoteViewImpl extends Window implements NoteView {
 	TextArea txaContent = new TextArea();
 	CheckBox chkDanger = new CheckBox("Wichtig");
 	CheckBox chkActive = new CheckBox("Aktiv");
-	Button btnSave = new Button("Speichern");
-	Button btnCancel = new Button("Abbrechen");
+	Button btnSave = new Button(VaadinIcons.FILE_REFRESH);
+	Button btnCancel = new Button(VaadinIcons.FILE_REMOVE);
 // 	Layouts:
 	VerticalLayout vLay = new VerticalLayout();
 	HorizontalLayout chkHLay = new HorizontalLayout();
@@ -52,12 +57,19 @@ public class NoteViewImpl extends Window implements NoteView {
 	@Override
 	public void setTitle(String title) {
 		txfTitle.setValue(title);
-
 	}
-
+	@Override
+	public String getTitle(){
+		return txfTitle.getValue();
+	}
+	
 	@Override
 	public void setContent(String content) {
 		txaContent.setValue(content);
+	}
+	@Override
+	public String getNoteContent(){
+		return txaContent.getValue();
 	}
 	
 	@Override
@@ -69,15 +81,27 @@ public class NoteViewImpl extends Window implements NoteView {
 	public void setDanger(boolean danger) {
 		chkDanger.setValue(danger);
 	}
+	@Override
+	public boolean getDanger(){
+		return chkDanger.getValue();
+	}
 	
 	@Override
 	public void enableActive(){
 		chkActive.setVisible(true);
 	}
-	
 	@Override
 	public void setActive(boolean active){
 		chkActive.setValue(active);
+	}
+	@Override
+	public boolean getActive(){
+		return chkActive.getValue();
+	}
+	
+	@Override
+	public void addListener(NoteClickListener listener) {
+		listeners.add(listener);
 	}
 
 }

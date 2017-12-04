@@ -1,6 +1,7 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
+import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.NoteViewImpl;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView.PatientInfoClickListener;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
@@ -8,6 +9,9 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListVi
 
 import java.util.ArrayList;
 
+import com.vaadin.ui.UI;
+
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Note;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 /**
@@ -24,6 +28,7 @@ public class PatientInfoPresenter implements PatientInfoClickListener{
 	public PatientInfoPresenter(Patient pat1, PatientInfoView patInfoView1){
 		this.pat = pat1;
 		this.patInfoView = patInfoView1;
+		patInfoView.addListener(this);
 		patInfoView.setDiagnosis(pat.getDiagnosisList().toString());
 		patInfoView.setDrugs(pat.getDrugList().toString());
 		patInfoView.fillNoteList(pat.getNoteList());
@@ -34,19 +39,33 @@ public class PatientInfoPresenter implements PatientInfoClickListener{
 		patInfoView.setDrugs(pat.getDrugList().toString());
 		patInfoView.fillNoteList(pat.getNoteList());
 	}
-	
-
-	public void openNote(){
-		//ArrayList<NoteList> notesList = pat.getNoteList();
-	}
 
 	@Override
-	public void buttonClick() {
-		// TODO Auto-generated method stub
-		
+	public void buttonClick(int i) {
+		switch (i) {
+		case 1:
+			createNote();
+			break;
+		case 2:
+			deleteNote();
+			break;
+		case 3:
+			openNote();
+			break;
+		}
 	}
-
-
-
-
+	private void createNote(){
+		NoteViewImpl noteView = new NoteViewImpl();
+		new NotePresenter(pat, noteView);
+	}
+	private void deleteNote(){
+		Note note = patInfoView.getSelectedNote();
+		pat.getNoteList().getNotes().remove(note);
+		pat.persist();
+	}
+	private void openNote(){
+		Note selectedN = patInfoView.getSelectedNote();
+		NoteViewImpl noteView = new NoteViewImpl();
+		new NotePresenter(pat, selectedN, noteView);
+	}
 }

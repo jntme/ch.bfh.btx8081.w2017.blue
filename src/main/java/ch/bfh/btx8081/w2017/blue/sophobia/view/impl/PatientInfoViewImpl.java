@@ -1,18 +1,21 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.vaadin.shared.ui.ValueChangeMode;
+import com.vaadin.event.MouseEvents.DoubleClickListener;
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.Accordion;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Grid;
+import com.vaadin.ui.Grid.ItemClick;
 import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextArea;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.components.grid.ItemClickListener;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Note;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList;
@@ -25,20 +28,27 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView;
  * @author kybup1
  *
  */
-public class PatientInfoViewImpl extends CustomComponent implements PatientInfoView {
+public class PatientInfoViewImpl extends CustomComponent implements PatientInfoView, ClickListener, ItemClickListener<Note>{
 	private Accordion acc = new Accordion();
 	private GridLayout noteGrid = new GridLayout(3, 1);
 	private TextArea txaDiagnosis = new TextArea();
 	private Label txaDrugs = new Label();
 	private Grid<Note> notes = new Grid<Note>();
-	private Button btnAddNote = new Button("+");
+	private Button btnAddNote = new Button(VaadinIcons.PLUS_CIRCLE);
+	private Button btnDeleteNote = new Button(VaadinIcons.TRASH);
+	private ArrayList<PatientInfoClickListener> listeners = new ArrayList<>();
+	
 
 	public PatientInfoViewImpl() {
 		this.setCompositionRoot(acc);
 		txaDiagnosis.setEnabled(false);
 		noteGrid.addComponent(btnAddNote, 2, 0, 2, 0);
 		noteGrid.addComponent(notes, 0, 0, 1, 0);
-
+		
+		btnDeleteNote.addClickListener(this);
+		btnAddNote.addClickListener(this);
+		notes.addItemClickListener(this);
+		
 		acc.addTab(txaDiagnosis, "Diagnosen");
 		acc.addTab(txaDrugs, "Medikation");
 		acc.addTab(noteGrid, "Notizen");
@@ -89,13 +99,35 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 	 */
 	@Override
 	public Note getSelectedNote() {
-		Iterator<Note> itr = notes.getSelectedItems().iterator();
-		return itr.next();
+		System.out.println(notes.getSelectedItems().iterator().hasNext());
+		return notes.getSelectedItems().iterator().next();
 	}
 
 	@Override
-	public void addListener() {
-
+	public void addListener(PatientInfoClickListener listener) {
+		listeners.add(listener);
 	}
 
+	@Override
+	public void buttonClick(com.vaadin.ui.Button.ClickEvent event) {
+		for(PatientInfoClickListener listener : listeners){
+			if(event.getButton().getIcon().equals(VaadinIcons.PLUS_CIRCLE)){
+				listener.buttonClick(1);
+			}
+			else if (event.getButton().getIcon().equals(VaadinIcons.TRASH)){
+				listener.buttonClick(2);
+			}
+		}
+	}
+
+	@Override
+	public void itemClick(ItemClick<Note> event) {
+		if(event.getMouseEventDetails().isDoubleClick()){
+			for(PatientInfoClickListener listener : listeners){
+				notes.select(event.getItem());
+				listener.buttonClick(3);
+			}
+		}
+		
+	}
 }
