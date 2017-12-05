@@ -28,7 +28,6 @@ public class DiagnosisList {
 			Arrays.asList("Social Anxiety Disorder A", "Persistent Depressive Disorder,"));
 
 
-
 	/**
 	 * generates the random list of patient Diagnosis from the existing Array list of Diagnosis
 	 */
@@ -37,7 +36,7 @@ public class DiagnosisList {
 		int sizeArray = diagnosisList.size();
 
 		ArrayList<String> arl = new ArrayList();
-		for(int i = 0; i<=4;i++){
+		for(int i = 0; i< 2;i++){
 			int randNum = random.nextInt(sizeArray);
 			String element = diagnosisList.get(randNum);
 			arl.add(element);
@@ -48,7 +47,9 @@ public class DiagnosisList {
  * Displays the list of patient's diagnosis
  */	
 	public String toString() {
-		return this.diagnosisList.toString();
+		//return this.diagnosisList.toString();¨
+	return	getDiagnosisList().toString();
+		
 	}
 
 }
