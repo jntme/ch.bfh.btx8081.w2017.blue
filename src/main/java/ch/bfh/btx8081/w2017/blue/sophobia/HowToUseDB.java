@@ -114,10 +114,10 @@ public class HowToUseDB {
 			notel.createNote("Note3", "Hier steht ein anderer, nicht allzuwichtiger Text", false);
 			
 			//WORKAROUND!!!!!!
-			List<Note> tryHard1 = notel.getNotes();
-			tryHard1.get(0).setNoteList(notel);
-			tryHard1.get(1).setNoteList(notel);
-			tryHard1.get(2).setNoteList(notel);
+//			List<Note> tryHard1 = notel.getNotes();
+//			tryHard1.get(0).setNoteList(notel);
+//			tryHard1.get(1).setNoteList(notel);
+//			tryHard1.get(2).setNoteList(notel);
 			//WORKAROUND END!!!!!
 			
 			babbel.setNoteList(notel);
@@ -127,9 +127,9 @@ public class HowToUseDB {
 			objl.createObj("Aufräumen", "Kann Wohnung alleine sauber halten.", 10000);
 			
 			//WORKAROUND!!!!!!
-			List<Objective> tryHard2 = objl.getObjectives();
-			tryHard2.get(0).setObjList(objl);
-			tryHard2.get(1).setObjList(objl);
+//			List<Objective> tryHard2 = objl.getObjectives();
+//			tryHard2.get(0).setObjList(objl);
+//			tryHard2.get(1).setObjList(objl);
 			//WORKAROUND END!!!!!
 			
 			

@@ -17,8 +17,6 @@ public class Objective {
 	private int difficulty;
 	private boolean isComplete;
 
-	@ManyToOne
-	private ObjectiveList objList;
 	public Objective(){
 		
 	}
@@ -59,12 +57,5 @@ public class Objective {
 	public void setComplete(boolean isComplete) {
 		this.isComplete = isComplete;
 	}
-	public ObjectiveList getObjList() {
-		return objList;
-	}
-	public void setObjList(ObjectiveList objList) {
-		this.objList = objList;
-	}
-	
 	
 }

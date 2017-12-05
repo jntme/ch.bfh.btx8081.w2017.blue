@@ -23,7 +23,7 @@ public class ObjectiveList {
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int olid;
 	
-	@OneToMany(mappedBy= "objList", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
 	private List<Objective> objectives = new ArrayList<Objective>();
 
 	/**

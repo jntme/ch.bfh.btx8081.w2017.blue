@@ -28,9 +28,6 @@ public class Note {
 	private String title;
 	private String content;
 	private Date date;
-	@ManyToOne
-	@JoinColumn(name="notelist")
-	private NoteList noteList;
 	
 	public Note(){
 		
@@ -71,12 +68,6 @@ public class Note {
 	}
 	public void setDate(Date date) {
 		this.date = date;
-	}
-	public NoteList getNoteList() {
-		return noteList;
-	}
-	public void setNoteList(NoteList noteList) {
-		this.noteList = noteList;
 	}
 	
 	

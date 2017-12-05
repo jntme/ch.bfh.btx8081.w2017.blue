@@ -25,7 +25,7 @@ public class NoteList {
 	@GeneratedValue
 	private int nlid;
 	
-	@OneToMany(mappedBy= "noteList", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
 	private List<Note> notes = new ArrayList<Note>();
 	
 	/**
