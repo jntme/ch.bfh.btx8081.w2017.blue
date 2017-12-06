@@ -43,7 +43,7 @@ public class PatientViewImpl extends VerticalLayout implements PatientView {
 	PatientObjectiveListViewImpl oView = new PatientObjectiveListViewImpl();
 	PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
 	final GridLayout layout = new GridLayout(2, 1);
-	final Window subWindow = new Window("Sub-window");
+	final Window subWindow = new Window("Patienteninformation");
 	final GridLayout popUpLayout = new GridLayout(6, 6);
 
 	String basepath = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
@@ -55,6 +55,8 @@ public class PatientViewImpl extends VerticalLayout implements PatientView {
 		this.setStyleName("noPadding");
 
 		lblTitle.setStyleName("header");
+		subWindow.setStyleName("addPadding");
+		subWindow.setDraggable(false);
 		image.setHeight("150");
 		image.setWidth("150");
 

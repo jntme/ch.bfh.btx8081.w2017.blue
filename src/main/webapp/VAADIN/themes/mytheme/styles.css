@@ -14799,3 +14799,7 @@ div.v-layout.v-horizontal.v-widget {
 .mytheme .v-verticallayout-noPadding {
 	padding: 0 !important;
 }
+
+.mytheme .addPadding {
+	padding: 10px !important;
+}
