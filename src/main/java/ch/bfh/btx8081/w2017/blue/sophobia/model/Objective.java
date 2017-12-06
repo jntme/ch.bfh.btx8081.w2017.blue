@@ -3,8 +3,8 @@ package ch.bfh.btx8081.w2017.blue.sophobia.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Objective {
@@ -17,6 +17,10 @@ public class Objective {
 	private int difficulty;
 	private boolean isComplete;
 
+	
+	@OneToOne
+	private  ActivityList actList;
+	
 	public Objective(){
 		
 	}
@@ -57,5 +61,14 @@ public class Objective {
 	public void setComplete(boolean isComplete) {
 		this.isComplete = isComplete;
 	}
+	
+	
+//	public ActivityList getActList(){
+//		return actList;
+//	}	
+//	public void setActList(ActivityList actList){
+//		this.actList = actList;
+//	}
+	
 	
 }

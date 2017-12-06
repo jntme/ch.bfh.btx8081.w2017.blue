@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class ActivityList {
@@ -19,6 +20,8 @@ public class ActivityList {
 	
 	@OneToMany(mappedBy= "actList", cascade = CascadeType.ALL)
 	private List<Activity> activities = new ArrayList<Activity>();
+	
+	@OneToOne
 	
 	public void createAct(String name, String description){
 		Activity act = new Activity(name, description);
