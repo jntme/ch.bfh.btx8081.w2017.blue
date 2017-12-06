@@ -25,18 +25,21 @@ public class DiagnosisList {
 	 */
 
 	private ArrayList<String> diagnosisList = new ArrayList<>(
-			Arrays.asList("Social Anxiety Disorder A", "Persistent Depressive Disorder,"));
+			Arrays.asList("Social Anxiety Disorder A",
+					"Persistent Depressive Disorder",
+					"Feeling that your mind has gone blank",
+					"Dizziness and lightheadedness"));
 
 
 	/**
 	 * generates the random list of patient Diagnosis from the existing Array list of Diagnosis
 	 */
-	public ArrayList<String> getDiagnosisList(){
+	public ArrayList<String> getDiagnosisList(int numElement){
 		Random random = new Random();
 		int sizeArray = diagnosisList.size();
 
 		ArrayList<String> arl = new ArrayList();
-		for(int i = 0; i< 2;i++){
+		for(int i = 0; i< numElement;i++){
 			int randNum = random.nextInt(sizeArray);
 			String element = diagnosisList.get(randNum);
 			arl.add(element);
@@ -46,10 +49,23 @@ public class DiagnosisList {
 /**
  * Displays the list of patient's diagnosis
  */	
-	public String toString() {
+	/*public String toString() {
 		//return this.diagnosisList.toString();¨
-	return	getDiagnosisList().toString();
+	return	getDiagnosisList(3).toString();
 		
+	}
+	*/
+	public String toString() {
+		String text ="";
+		ArrayList<String> diagnosisList = getDiagnosisList(3);
+		
+		for (int i=0; i< diagnosisList.size(); i++) {
+			if(i != 0){
+				text += ", ";
+			}
+			text += diagnosisList.get(i);
+		}
+		return text;
 	}
 
 }
