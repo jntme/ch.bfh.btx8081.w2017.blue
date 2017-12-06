@@ -21,7 +21,7 @@ public class ActivityList {
 	@OneToMany(mappedBy= "actList", cascade = CascadeType.ALL)
 	private List<Activity> activities = new ArrayList<Activity>();
 	
-	@OneToOne
+//	@OneToOne
 	
 	public void createAct(String name, String description){
 		Activity act = new Activity(name, description);

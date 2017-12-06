@@ -18,8 +18,8 @@ public class Objective {
 	private boolean isComplete;
 
 	
-	@OneToOne
-	private  ActivityList actList;
+	//@OneToOne
+	//private  ActivityList actList;
 	
 	public Objective(){
 		
