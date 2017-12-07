@@ -33,6 +33,7 @@ public class NotePresenter implements NoteClickListener {
 		pat = pat1;
 		note = note1;
 		noteView = view1;
+		noteView.addListener(this);
 		newNote = false;
 		
 		noteView.setTitle(note.getTitle());
@@ -56,6 +57,7 @@ public class NotePresenter implements NoteClickListener {
 	public NotePresenter(Patient pat1, NoteViewImpl view1) {
 		pat = pat1;
 		noteView = view1;
+		noteView.addListener(this);
 		newNote = true;
 		
 		noteView.enableDanger();
@@ -63,9 +65,28 @@ public class NotePresenter implements NoteClickListener {
 	}
 	
 	@Override
-	public void buttonClick(boolean newN) {
+	public void buttonClick() {
+		if(newNote){
+			createNote();
+		} else {
+			updateNote();
+		}
 	
-
 	}
-
+	
+	private void updateNote(){
+		note.setTitle(noteView.getTitle());
+		note.setContent(noteView.getNoteContent());
+		if(DangerNote.class.isInstance(note)){
+			DangerNote dNote = (DangerNote) note;
+			dNote.setActive(dNote.isActive());
+		}
+		pat.persist();
+	}
+	private void createNote(){
+		pat.getNoteList().createNote(noteView.getTitle(), 
+				noteView.getNoteContent(), 
+				noteView.getDanger());
+		pat.persist();
+	}
 }

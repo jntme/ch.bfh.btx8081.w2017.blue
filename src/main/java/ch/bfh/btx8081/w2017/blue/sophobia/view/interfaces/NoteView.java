@@ -31,11 +31,9 @@ public interface NoteView {
 	interface NoteClickListener{
 		
 		/**
-		 * This method is called when the Save button is pressed and has to decide
-		 * if a new Note will be persistet or if an existing will be manipulated
-		 * @param true = new Note to persist, false = existing Note to update
+		 * This method is called when the Save button is pressed
 		 */
-		public void buttonClick(boolean newN);
+		public void buttonClick();
 	}
 
 }

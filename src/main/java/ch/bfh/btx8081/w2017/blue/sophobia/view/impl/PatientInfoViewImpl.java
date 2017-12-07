@@ -30,7 +30,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView;
  */
 public class PatientInfoViewImpl extends CustomComponent implements PatientInfoView, ClickListener, ItemClickListener<Note>{
 	private Accordion acc = new Accordion();
-	private GridLayout noteGrid = new GridLayout(3, 1);
+	private GridLayout noteGrid = new GridLayout(3, 2);
 	private TextArea txaDiagnosis = new TextArea();
 	private Label txaDrugs = new Label();
 	private Grid<Note> notes = new Grid<Note>();
@@ -42,8 +42,9 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 	public PatientInfoViewImpl() {
 		this.setCompositionRoot(acc);
 		txaDiagnosis.setEnabled(false);
-		noteGrid.addComponent(btnAddNote, 2, 0, 2, 0);
-		noteGrid.addComponent(notes, 0, 0, 1, 0);
+		noteGrid.addComponent(btnAddNote,0,0,0,0);
+		noteGrid.addComponent(btnDeleteNote,1,0,1,0);
+		noteGrid.addComponent(notes, 0, 1, 2, 1);
 		
 		btnDeleteNote.addClickListener(this);
 		btnAddNote.addClickListener(this);
@@ -99,7 +100,6 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 	 */
 	@Override
 	public Note getSelectedNote() {
-		System.out.println(notes.getSelectedItems().iterator().hasNext());
 		return notes.getSelectedItems().iterator().next();
 	}
 
@@ -128,6 +128,5 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 				listener.buttonClick(3);
 			}
 		}
-		
 	}
 }

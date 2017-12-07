@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.HorizontalLayout;
@@ -16,6 +18,7 @@ import com.vaadin.ui.Window;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.NoteView;
 
+
 /**
  * This class implements the view in which a note can be edited or created.
  * The appearance of the view can differ between thre stages:
@@ -26,7 +29,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.NoteView;
  *
  */
 
-public class NoteViewImpl extends Window implements NoteView {
+public class NoteViewImpl extends Window implements NoteView, ClickListener {
 	ArrayList<NoteClickListener> listeners = new ArrayList<NoteClickListener>();
 //	Components:
 	Label lblTitle = new Label("Titel");
@@ -35,14 +38,16 @@ public class NoteViewImpl extends Window implements NoteView {
 	TextArea txaContent = new TextArea();
 	CheckBox chkDanger = new CheckBox("Wichtig");
 	CheckBox chkActive = new CheckBox("Aktiv");
-	Button btnSave = new Button(VaadinIcons.FILE_REFRESH);
-	Button btnCancel = new Button(VaadinIcons.FILE_REMOVE);
+	Button btnSave = new Button(VaadinIcons.CHECK);
+	Button btnCancel = new Button(VaadinIcons.CLOSE_BIG);
 // 	Layouts:
 	VerticalLayout vLay = new VerticalLayout();
 	HorizontalLayout chkHLay = new HorizontalLayout();
 	HorizontalLayout btnHLay = new HorizontalLayout();
 	
 	public NoteViewImpl(){
+		btnSave.addClickListener(this);
+		btnCancel.addClickListener(this);
 		chkDanger.setEnabled(false);
 		chkActive.setVisible(false);
 		chkHLay.addComponents(chkDanger, chkActive);
@@ -102,6 +107,18 @@ public class NoteViewImpl extends Window implements NoteView {
 	@Override
 	public void addListener(NoteClickListener listener) {
 		listeners.add(listener);
+	}
+
+	@Override
+	public void buttonClick(ClickEvent event) {
+		if(event.getButton().getIcon().equals(VaadinIcons.CHECK)){
+			for(NoteClickListener listener : listeners){
+				listener.buttonClick();
+			}
+		} else if(event.getButton().getIcon().equals(VaadinIcons.CLOSE_BIG)){
+			
+		}
+		this.close();
 	}
 
 }
