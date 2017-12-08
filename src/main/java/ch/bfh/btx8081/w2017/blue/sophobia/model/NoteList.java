@@ -25,7 +25,7 @@ public class NoteList {
 	@GeneratedValue
 	private int nlid;
 	
-	@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Note> notes = new ArrayList<Note>();
 	
 	/**
@@ -49,7 +49,7 @@ public class NoteList {
 	}
 	
 	/**
-	 * Chechs if a given note is a DangerNote and returns a boolean
+	 * Checks if a given note is a DangerNote and returns a boolean
 	 * @param note
 	 * @return boolean, true = is a DangerNote
 	 */

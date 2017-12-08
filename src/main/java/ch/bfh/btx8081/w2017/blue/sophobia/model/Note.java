@@ -5,11 +5,15 @@ import java.util.Calendar;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 
 /**
  * Represents notes with a title, a content and the date when their created/modified.
@@ -32,6 +36,22 @@ public class Note {
 	public Note(){
 		
 	}
+	
+	public void persist() {
+		EntityManager em = DB.getEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		trans.begin();
+		em.persist(this);
+		trans.commit();
+	}
+	public void delete() {
+		EntityManager em = DB.getEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		em.getTransaction().begin();
+		em.remove(this);
+		em.getTransaction().commit();
+	}
+	
 	/**
 	 * Constructor that fills the note object with all attributes.
 	 * Takes the current system date as date attribute.
