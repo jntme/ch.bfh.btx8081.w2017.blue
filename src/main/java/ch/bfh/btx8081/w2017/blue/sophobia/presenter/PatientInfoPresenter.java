@@ -61,7 +61,6 @@ public class PatientInfoPresenter implements PatientInfoClickListener{
 	private void deleteNote(){
 		Note note = patInfoView.getSelectedNote();
 		pat.getNoteList().getNotes().remove(note);
-		pat.persist();
 		note.delete();
 	}
 	private void openNote(){
