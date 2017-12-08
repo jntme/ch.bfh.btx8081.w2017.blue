@@ -27,7 +27,7 @@ public class DiagnosisList {
 	private ArrayList<String> diagnosisList = new ArrayList<>(
 			Arrays.asList("Social Anxiety Disorder A",
 					"Persistent Depressive Disorder",
-					"Feeling that your mind has gone blank",
+					"Feeling that mind has gone blank",
 					"Dizziness and lightheadedness"));
 
 
@@ -55,6 +55,9 @@ public class DiagnosisList {
 		
 	}
 	*/
+	/**
+	 * Displays the list of patient's diagnosis
+	 */
 	public String toString() {
 		String text ="";
 		ArrayList<String> diagnosisList = getDiagnosisList(3);
