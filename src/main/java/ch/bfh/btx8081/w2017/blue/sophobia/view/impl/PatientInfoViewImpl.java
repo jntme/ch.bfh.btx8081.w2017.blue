@@ -42,6 +42,8 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 	public PatientInfoViewImpl() {
 		this.setCompositionRoot(acc);
 		txaDiagnosis.setEnabled(false);
+		txaDiagnosis.setRows(3);//---------- just a textField of 3 rows.
+		txaDiagnosis.setSizeFull();//------- I added this to extend the text area to the right.
 		noteGrid.addComponent(btnAddNote,0,0,0,0);
 		noteGrid.addComponent(btnDeleteNote,1,0,1,0);
 		noteGrid.addComponent(notes, 0, 1, 2, 1);
