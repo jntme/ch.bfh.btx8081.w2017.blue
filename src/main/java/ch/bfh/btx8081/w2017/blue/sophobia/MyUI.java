@@ -13,14 +13,9 @@ import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
-import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
-import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientInfoPresenter;
-import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientPresenter;
-import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientInfoViewImpl;
-import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientObjectiveListViewImpl;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientViewImpl;
 
 /**
