@@ -1,40 +1,61 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.VerticalLayout;
 
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Button.ClickListener;
-import com.vaadin.ui.CustomComponent;
-
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
+import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ActivityListPresenter;
+import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ObjectivePresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ObjectiveView;
 
 /**
  * Implements the GUI elements from the part Objective
- * @author petim1 (ziegm1)
+ * @author ziegm1
  *
  */
-public class ObjectiveViewImpl extends CustomComponent implements ObjectiveView, ClickListener {
+public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView {
 
-	private List<ObjectiveViewListener> listeners = new ArrayList<ObjectiveViewListener>();
+	private Label lblName = new Label();
+	ActivityListViewImpl aView = new ActivityListViewImpl();
+	final VerticalLayout layout = new VerticalLayout();
+	private ObjectivePresenter objectivePresenter;
 	
-	/**
-	 * Listener for event handling
-	 */
-	@Override
-	public void addListener(ObjectiveViewListener listener) {
-		listeners.add(listener);	
+	public ObjectiveViewImpl() {
+		
+		this.setStyleName("noPadding");
+		
+		lblName.setStyleName("header");
+		
+		layout.addComponent(lblName);
+		
+		this.addComponent(layout);
 	}
-	
-	/**
-	 * Event handler
-	 */
+
 	@Override
-	public void buttonClick(ClickEvent event) {
-		for(ObjectiveViewListener listener : listeners) {
-			listener.buttonClick(event.getButton().getCaption().charAt(0));
-		}
+	public void setOid(int oid) {
+		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
+	public void setDifficulty(int difficulty) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setIscomplete(String iscomplete) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setName(String name) {
+		lblName.setValue(name);
+	}
+	
+	@Override
+	public void setPresenter(ObjectivePresenter presenter) {
+		this.objectivePresenter = presenter;
+	}
 }

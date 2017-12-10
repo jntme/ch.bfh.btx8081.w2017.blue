@@ -22,6 +22,7 @@ import com.vaadin.ui.Window;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientInfoPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresenter;
+import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
 
 /**
@@ -29,9 +30,11 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
  * @author gfels6
  *
  */
-
 public class PatientViewImpl extends VerticalLayout implements PatientView {
 
+	// ziegm1: passed mainLayout into the views for being able to trigger page changes
+	private VerticalLayout mainLayout;
+	
 	private Label lblStreet = new Label("Dummy Street 12");
 	private Label lblCity = new Label("Dummyhausen");
 	private Label lblZip = new Label("3000");
@@ -40,9 +43,9 @@ public class PatientViewImpl extends VerticalLayout implements PatientView {
 	private Label lblGender = new Label("Männlich");
 	private Label lblTitle = new Label("Jon Schnee");
 	private Button btnShowContact = new Button(VaadinIcons.INFO_CIRCLE);
-	PatientObjectiveListViewImpl oView = new PatientObjectiveListViewImpl();
+	private final PatientObjectiveListViewImpl oView;
 	PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
-	final GridLayout layout = new GridLayout(2, 1);
+	final GridLayout gridLayout = new GridLayout(2, 1);
 	final Window subWindow = new Window("Patienteninformation");
 	final GridLayout popUpLayout = new GridLayout(6, 6);
 
@@ -50,8 +53,16 @@ public class PatientViewImpl extends VerticalLayout implements PatientView {
 	FileResource resource = new FileResource(new File(basepath + "/WEB-INF/images/dummyUserPic.jpg"));
 	Image image = new Image(null, resource);
 
-	public PatientViewImpl() {
-
+	// ziegm1: store into instance variable, because otherwise it gets lost
+	private PatientInfoPresenter patientInfoPresenter;
+	
+	public PatientViewImpl(VerticalLayout mainLayout) {
+		// ziegm1: moved initialization into the constructor, so that mainLayout can be passed
+		// into the PatientObjectiveListViewImpl
+		this.mainLayout = mainLayout;
+		this.oView = new PatientObjectiveListViewImpl(mainLayout);
+		new PatientObjectiveListPresenter(oView, mainLayout);
+		
 		this.setStyleName("noPadding");
 
 		lblTitle.setStyleName("header");
@@ -60,7 +71,7 @@ public class PatientViewImpl extends VerticalLayout implements PatientView {
 		image.setHeight("150");
 		image.setWidth("150");
 
-		layout.setSpacing(true);
+		gridLayout.setSpacing(true);
 		
 		popUpLayout.setSpacing(true);
 		popUpLayout.addComponent(image, 0, 1, 1, 3);
@@ -92,12 +103,12 @@ public class PatientViewImpl extends VerticalLayout implements PatientView {
 			}
 		});
 
-		layout.addComponent(lblTitle, 0, 0);
-		layout.addComponent(btnShowContact, 1, 0);
+		gridLayout.addComponent(lblTitle, 0, 0);
+		gridLayout.addComponent(btnShowContact, 1, 0);
 
-		layout.setComponentAlignment(btnShowContact, Alignment.MIDDLE_CENTER);
+		gridLayout.setComponentAlignment(btnShowContact, Alignment.MIDDLE_CENTER);
 
-		this.addComponent(layout);
+		this.addComponent(gridLayout);
 		this.addComponent(pInfoView);
 		this.addComponent(oView);
 
@@ -141,9 +152,8 @@ public class PatientViewImpl extends VerticalLayout implements PatientView {
 
 	@Override
 	public void setPresenter(Patient model) {
-		new PatientObjectiveListPresenter(model, oView);
-		new PatientInfoPresenter(model, pInfoView);
-
+		patientInfoPresenter = new PatientInfoPresenter(model, pInfoView);
+		// ziegm1: removed patientObjectiveListPresenter, it is now bound to its own view
 	}
 
 	@Override

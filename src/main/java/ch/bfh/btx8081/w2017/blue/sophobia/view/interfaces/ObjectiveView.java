@@ -1,17 +1,20 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
+import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ObjectivePresenter;
+
 /**
  * Defines the behavior of the Objective
- * @author petim1 (ziegm1)
+ * @author ziegm1
  *
  */
 public interface ObjectiveView {
 	
-	// Listener for the event handling
-	interface ObjectiveViewListener {
-		void buttonClick(char operation);
-	}
+	public void setOid(int oid);
+	public void setDescription(String description);
+	public void setDifficulty(int difficulty);
+	public void setIscomplete(String iscomplete);
+	public void setName(String name);
+	public void setPresenter(ObjectivePresenter presenter);
 	
-	public void addListener(ObjectiveViewListener listener);
-
 }

@@ -1,12 +1,12 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
-import java.sql.Date;
+import java.util.List;
 
-import com.vaadin.ui.Image;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
-import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientInfoViewImpl;
-import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientObjectiveListViewImpl;
+import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
 
 /**
@@ -14,16 +14,14 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
  * @author gfels6
  *
  */
-
 public class PatientPresenter {
 
 	private Patient model;
 	private PatientView view;
 	
-
-	public PatientPresenter(Patient model, PatientView view) {
-		this.model = model;
+	public PatientPresenter(PatientView view) {
 		this.view = view;
+		model = initializePatient();
 		
 		view.setTitle(model.getName(), model.getPrename());
 		view.setName(model.getName(), model.getPrename());
@@ -34,20 +32,19 @@ public class PatientPresenter {
 		
 		view.setPresenter(model);
 		
-		
-		// PHIIIIIIIIL Zwei Zeilen auskommentieren falls Patient Model ready
-//		PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
-//		new PatientInfoPresenter(model, pInfoView);
-		
-		
-		
-		// MICHÄÄÄÄÄÄÄÄÄÄ Zwei Zeilen auskommentieren falls Patient Model ready
-//		PatientObjectiveListViewImpl oView = new PatientObjectiveListViewImpl();
-//		new PatientObjectiveListPresenter(model, oView);
 	}
 	
-	
-	
-	
-
+	// ziegm1: moved from MyUI into the Presenter
+	private Patient initializePatient() {
+		EntityManager em = DB.getEntityManager();
+		
+		Query q1 = em.createQuery("select m from Patient m");
+		
+		List<Patient> patientList = q1.getResultList();
+		if (!patientList.isEmpty()) {
+			return patientList.get(0);
+		}
+		
+		return null;
+	}
 }

@@ -1,9 +1,5 @@
 package ch.bfh.btx8081.w2017.blue.sophobia;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
@@ -13,8 +9,6 @@ import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
-import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
-import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientViewImpl;
 
@@ -35,27 +29,34 @@ public class MyUI extends UI {
 		// take a look at the following class
 		HowToUseDB.howToUseDb();
 
-		EntityManager em = DB.getEntityManager();
-		Query q1 = em.createQuery("select m from Patient m");
+		// ziegm1:
+		// moved into the PatientPresenter and PatientObjectiveListPresenter
+		// in MyUI not longer required
+//		EntityManager em = DB.getEntityManager();
+//		Query q1 = em.createQuery("select m from Patient m");
+//		
+//		List<Patient> patientList = q1.getResultList();
+//		Patient patientZero = null;
+//		if (!patientList.isEmpty()) {
+//			patientZero = patientList.get(0);
+//		}
+		
+		
+		initViewAndPresenter();
+	}
 
-		List<Patient> patientList = q1.getResultList();
-		Patient patientZero = null;
-		if (!patientList.isEmpty()) {
-			patientZero = patientList.get(0);
-		}
-
-		// UI STUFF BEGIN --------------------
-
-		final VerticalLayout layout = new VerticalLayout();
-		layout.setStyleName("firstContainer");
-
-		PatientViewImpl pView = new PatientViewImpl();
-		new PatientPresenter(patientZero, pView);
-
-		layout.addComponent(pView);
-
-		setContent(layout);
-
+	// ziegm1:
+	// Create initViewAndPresenter() as referred to Mister Vogel
+	private void initViewAndPresenter() {
+		final VerticalLayout mainLayout = new VerticalLayout();
+		mainLayout.setStyleName("firstContainer");
+		
+		PatientViewImpl pView = new PatientViewImpl(mainLayout);
+		new PatientPresenter(pView);
+		
+		mainLayout.addComponent(pView);
+		
+		setContent(mainLayout);
 	}
 
 	@WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
