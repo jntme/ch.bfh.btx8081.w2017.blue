@@ -1,7 +1,7 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
 import java.io.Serializable;
-import java.sql.Array;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -15,7 +15,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 
@@ -198,6 +197,12 @@ public class Patient implements Serializable {
 
 	public void setZip(String zip) {
 		this.zip = zip;
+	}
+	
+	public String getFormattedBirthdate() {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+		String formatedDate = formatter.format(this.birthdate);		
+		return formatedDate;
 	}
 
 }

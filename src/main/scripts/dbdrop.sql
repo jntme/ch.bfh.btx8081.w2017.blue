@@ -1,0 +1,13 @@
+drop table patient;
+drop table activitylist_activity;
+drop table activity;
+drop table diagnosislist;
+drop table druglist;
+drop table notelist_note;
+drop table notelist;
+drop table note;
+drop table objectivelist_objective;
+drop table objective;
+drop table activitylist;
+drop table objectivelist;
+drop table sequence;
