@@ -24,13 +24,12 @@ public class PatientPresenter {
 		model = initializePatient();
 		
 		view.setTitle(model.getName(), model.getPrename());
-		view.setName(model.getName(), model.getPrename());
-		view.setAddress(model.getCity(), model.getStreet(), model.getZip());
-		view.setBirthdate(model.getBirthdate());
-		view.setGender(model.getGender());
+
 		//view.setPicture(model.getPicture());
 		
 		view.setPresenter(model);
+		
+		
 		
 	}
 	

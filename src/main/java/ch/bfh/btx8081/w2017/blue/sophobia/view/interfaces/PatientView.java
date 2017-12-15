@@ -15,11 +15,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 
 public interface PatientView {
 	
-	public void setAddress(String city, String street, String zip);
-	public void setBirthdate(Date date);
-	public void setPicture(Image image);
-	public void setName(String name, String prename);
-	public void setGender(String gender);
+
 	public void setPresenter(Patient model);
 	public void setTitle(String name, String prename);
 	
