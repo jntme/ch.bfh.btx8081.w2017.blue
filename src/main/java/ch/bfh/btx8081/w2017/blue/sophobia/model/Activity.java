@@ -16,9 +16,6 @@ public class Activity {
 	private String description;
 	private boolean isComplete;
 
-	@ManyToOne
-	private ActivityList actList;
-
 	public Activity() {
 
 	}

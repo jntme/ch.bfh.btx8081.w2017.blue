@@ -16,9 +16,9 @@ import javax.persistence.Query;
 
 import com.vaadin.server.VaadinService;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.DiagnosisList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.DrugList;
-import ch.bfh.btx8081.w2017.blue.sophobia.model.Note;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
@@ -134,6 +134,16 @@ public class HowToUseDB {
 			
 			
 			babbel.setObjectiveList(objl);
+			
+			ActivityList actl = new ActivityList();
+			actl.createAct("Peinliche Situation", "Wasserglas im Restaurant umschütten");
+			actl.createAct("Fragen", "Nach einer anderen Schuhgrösse im Shop fragen");
+			
+			//babbel.setActivityList(actl);
+			
+			//Objective obj = new Objective();
+			//obj.setActList(actl);
+			//objl.getOlid();
 
 			babbel.persist();
 

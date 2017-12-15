@@ -16,9 +16,10 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ObjectiveView;
 public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView {
 
 	private Label lblName = new Label();
-	ActivityListViewImpl aView = new ActivityListViewImpl();
+	//ActivityListViewImpl aView = new ActivityListViewImpl();
 	final VerticalLayout layout = new VerticalLayout();
 	private ObjectivePresenter objectivePresenter;
+	private final ActivityListViewImpl aView;
 	
 	public ObjectiveViewImpl() {
 		
@@ -29,6 +30,8 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView {
 		layout.addComponent(lblName);
 		
 		this.addComponent(layout);
+		this.aView = new ActivityListViewImpl();
+		this.addComponent(aView);
 	}
 
 	@Override
