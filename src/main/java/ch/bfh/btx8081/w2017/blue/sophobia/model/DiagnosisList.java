@@ -64,7 +64,6 @@ public class DiagnosisList {
 		int sizeArray2 = (diagnosisList2.size());
 	
 			
-
 		ArrayList<String> arl2 = new ArrayList();
 		for(int i = 0; i< numElement;i++){
 			int randNum = random2.nextInt(sizeArray2);
@@ -88,7 +87,8 @@ public class DiagnosisList {
 	 */
 	public String toString() {
 		String text ="";
-		ArrayList<String> diagnosisList = getDiagnosisList(3);
+		ArrayList<String> diagnosisList = getDiagnosisList(2);
+		ArrayList<String> diagnosisList2 = getDiagnosisList(1);
 		
 		for (int i=0; i< diagnosisList.size(); i++) {
 			if(i != 0){
