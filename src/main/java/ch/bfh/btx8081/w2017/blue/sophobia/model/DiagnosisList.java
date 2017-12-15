@@ -25,9 +25,7 @@ public class DiagnosisList {
 	 */
 
 	private ArrayList<String> diagnosisList = new ArrayList<>(
-			Arrays.asList("Social Anxiety Disorder A",
-					"Persistent Depressive Disorder",
-					"Feeling that mind has gone blank",
+			Arrays.asList("Feeling that mind has gone blank",
 					"Dizziness and lightheadedness"));
 	
 
@@ -58,10 +56,13 @@ public class DiagnosisList {
 	*/
 	/**
 	 * Displays the list of patient's diagnosis
+	 * The two major diagnosis will be appearing always.
+	 * One other accompanying diagnosis follows these two.
 	 */
 	public String toString() {
+		String text0 = "Social Anxiety Disorder A, Persistent Depressive Disorder";
 		String text ="";
-		ArrayList<String> diagnosisList = getDiagnosisList(3);
+		ArrayList<String> diagnosisList = getDiagnosisList(1);
 		
 		for (int i=0; i< diagnosisList.size(); i++) {
 			if(i != 0){
@@ -69,7 +70,7 @@ public class DiagnosisList {
 			}
 			text += diagnosisList.get(i);
 		}
-		return text;
+		return text0 + "," +text ;
 	}
 
 }
