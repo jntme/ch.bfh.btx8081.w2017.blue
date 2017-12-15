@@ -24,32 +24,21 @@ public class DiagnosisList {
 	 * Contains Diagnosis list
 	 */
 
-//	private ArrayList<String> diagnosisList = new ArrayList<>(
-//			Arrays.asList("Social Anxiety Disorder A",
-//					"Persistent Depressive Disorder",
-//					"Feeling that mind has gone blank",
-//					"Dizziness and lightheadedness"));
-	
-	// These are the main Diagnosis(should always be there)in  patients with Sophobia.
-	
 	private ArrayList<String> diagnosisList = new ArrayList<>(
 			Arrays.asList("Social Anxiety Disorder A",
-					"Persistent Depressive Disorder"
-					));
-		// these are accompanying Diagnosis should come up alternately
-	private ArrayList<String> diagnosisList2 = new ArrayList<>(
-			Arrays.asList("Feeling that mind has gone blank",
-							"Dizziness and lightheadedness"
-					));
+					"Persistent Depressive Disorder",
+					"Feeling that mind has gone blank",
+					"Dizziness and lightheadedness"));
 	
-			
+
 	/**
 	 * generates the random list of patient Diagnosis from the existing Array list of Diagnosis
 	 */
 	public ArrayList<String> getDiagnosisList(int numElement){
 		Random random = new Random();
-		int sizeArray = (diagnosisList.size());
+		int sizeArray = diagnosisList.size();
 	
+
 		ArrayList<String> arl = new ArrayList();
 		for(int i = 0; i< numElement;i++){
 			int randNum = random.nextInt(sizeArray);
@@ -58,21 +47,6 @@ public class DiagnosisList {
 		}
 		return arl;
 	}
-	
-	public ArrayList<String> getVariableDiagnosisList(int numElement){
-		Random random2 = new Random();
-		int sizeArray2 = (diagnosisList2.size());
-	
-			
-		ArrayList<String> arl2 = new ArrayList();
-		for(int i = 0; i< numElement;i++){
-			int randNum = random2.nextInt(sizeArray2);
-			String element = diagnosisList2.get(randNum);
-			arl2.add(element);
-		}
-		return arl2;
-	}
-	//----------------------------------------------------------------------------
 /**
  * Displays the list of patient's diagnosis
  */	
@@ -87,23 +61,15 @@ public class DiagnosisList {
 	 */
 	public String toString() {
 		String text ="";
-		ArrayList<String> diagnosisList = getDiagnosisList(2);
-		ArrayList<String> diagnosisList2 = getDiagnosisList(1);
+		ArrayList<String> diagnosisList = getDiagnosisList(3);
 		
 		for (int i=0; i< diagnosisList.size(); i++) {
 			if(i != 0){
 				text += ", ";
 			}
 			text += diagnosisList.get(i);
-		for (int j=0; j< diagnosisList2.size(); i++) {
-				if(i != 0){
-					text = ", "+ text;
-				}
-				text += diagnosisList.get(j);
 		}
-		
+		return text;
 	}
-return text;
-}
-}
 
+}
