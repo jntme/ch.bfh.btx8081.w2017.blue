@@ -40,8 +40,12 @@ public class MyUI extends UI {
 		
 		PatientViewImpl pView = new PatientViewImpl(mainLayout);
 		new PatientPresenter(pView);
-		
 		mainLayout.addComponent(pView);
+		
+		// Comment the 3 lines over it and uncomment the 3 lines above to see the SelectPatientView
+//		SelectPatientViewImpl pSelect = new SelectPatientViewImpl();
+//		new SelectPatientPresenter(pSelect);
+//		mainLayout.addComponent(pSelect);
 		
 		setContent(mainLayout);
 	}
