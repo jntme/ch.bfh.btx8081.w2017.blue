@@ -1,29 +1,24 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import com.vaadin.icons.VaadinIcons;
-import com.vaadin.server.FileResource;
-import com.vaadin.server.VaadinService;
+import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.GridLayout;
-import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.PopupView;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Window;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.NavigationUI;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientContactPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientInfoPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresenter;
-import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
 
 /**
@@ -31,7 +26,8 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
  * @author gfels6
  *
  */
-public class PatientViewImpl extends VerticalLayout implements PatientView {
+public class PatientViewImpl extends VerticalLayout implements PatientView, View {
+	private NavigationUI navUI = null;
 
 	// ziegm1: passed mainLayout into the views for being able to trigger page changes
 	private VerticalLayout mainLayout;
@@ -41,17 +37,16 @@ public class PatientViewImpl extends VerticalLayout implements PatientView {
 	private final PatientObjectiveListViewImpl oView;
 	PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
 	PatientContactViewImpl pContactView = new PatientContactViewImpl();
-	final GridLayout gridLayout = new GridLayout(2, 1);
-	
-	
-//	final Window subWindow = new Window("Patienteninformation");
-	
-
+	final GridLayout gridLayout = new GridLayout(5, 6);
 
 	// ziegm1: store into instance variable, because otherwise it gets lost
 	private PatientInfoPresenter patientInfoPresenter;
 	
-	public PatientViewImpl(VerticalLayout mainLayout) {
+	public PatientViewImpl(NavigationUI navUI) {
+		
+		// the reference back to the navigation to communicate with the other view components
+		this.navUI = navUI;
+		
 		// ziegm1: moved initialization into the constructor, so that mainLayout can be passed
 		// into the PatientObjectiveListViewImpl
 		this.mainLayout = mainLayout;
@@ -66,6 +61,16 @@ public class PatientViewImpl extends VerticalLayout implements PatientView {
 
 		gridLayout.setSpacing(true);
 		
+
+        Button button = new Button("Go to Main View",
+                new Button.ClickListener() {
+            @Override
+            public void buttonClick(ClickEvent event) {
+                navUI.getNavigator().navigateTo(NavigationUI.OBJECTIVEVIEW);
+            }
+        });	
+        
+        gridLayout.addComponent(button, 1, 1);
 
 
 		btnShowContact.addClickListener(new ClickListener() {
@@ -107,4 +112,8 @@ public class PatientViewImpl extends VerticalLayout implements PatientView {
 
 	}
 
+    @Override
+    public void enter(ViewChangeEvent event) {
+        Notification.show("Welcome to the Animal Farm 1");
+    }
 }

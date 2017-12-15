@@ -16,34 +16,22 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
  */
 public class PatientPresenter {
 
-	private Patient model;
+	private Patient model = null;
 	private PatientView view;
 	
 	public PatientPresenter(PatientView view) {
 		this.view = view;
-		model = initializePatient();
-		
+	}
+	
+	public void displayPatient(Patient patient) {
+		this.model = patient;
+
 		view.setTitle(model.getName(), model.getPrename());
 
 		//view.setPicture(model.getPicture());
 		
 		view.setPresenter(model);
 		
-		
-		
 	}
 	
-	// ziegm1: moved from MyUI into the Presenter
-	private Patient initializePatient() {
-		EntityManager em = DB.getEntityManager();
-		
-		Query q1 = em.createQuery("select m from Patient m");
-		
-		List<Patient> patientList = q1.getResultList();
-		if (!patientList.isEmpty()) {
-			return patientList.get(0);
-		}
-		
-		return null;
-	}
 }
