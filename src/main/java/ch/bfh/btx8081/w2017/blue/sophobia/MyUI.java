@@ -28,19 +28,6 @@ public class MyUI extends UI {
 
 		// take a look at the following class
 		HowToUseDB.howToUseDb();
-
-		// ziegm1:
-		// moved into the PatientPresenter and PatientObjectiveListPresenter
-		// in MyUI not longer required
-//		EntityManager em = DB.getEntityManager();
-//		Query q1 = em.createQuery("select m from Patient m");
-//		
-//		List<Patient> patientList = q1.getResultList();
-//		Patient patientZero = null;
-//		if (!patientList.isEmpty()) {
-//			patientZero = patientList.get(0);
-//		}
-		
 		
 		initViewAndPresenter();
 	}
