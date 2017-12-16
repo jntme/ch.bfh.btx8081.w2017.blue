@@ -4,24 +4,23 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Button.ClickListener;
-import com.vaadin.ui.Grid.ItemClick;
-import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Grid;
+import com.vaadin.ui.Grid.ItemClick;
+import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.components.grid.ItemClickListener;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.NavigationUI;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
-import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ObjectivePresenter;
-import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientInfoPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListView;
 
@@ -31,6 +30,9 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListVi
  *
  */
 public class PatientObjectiveListViewImpl extends Panel implements PatientObjectiveListView, ClickListener {
+
+	private NavigationUI navUI = null;
+	private Patient patient = null;
 	
 	private final Label DISPLAY = new Label("Ziele");
 	private Button btnDelete;
@@ -43,7 +45,10 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 	/**
 	 * Constructor creates a new grid for viewing the object list as a table and adds some formatting.
 	 */
-	public PatientObjectiveListViewImpl() {
+	public PatientObjectiveListViewImpl(NavigationUI navUI) {
+		this.navUI = navUI;
+		this.patient = patient;
+
 		VerticalLayout vLayout = new VerticalLayout();
 		HorizontalLayout hLayout1 = new HorizontalLayout();
 		HorizontalLayout hLayout2 = new HorizontalLayout();
@@ -66,7 +71,7 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 
             public void itemClick(ItemClick<Objective> event) {
                 if (event.getMouseEventDetails().isDoubleClick()) {
-            		patientObjectiveListPresenter.loadObjectiveView(event.getItem());
+                	navUI.getNavigator().navigateTo(NavigationUI.OBJECTIVEVIEW + "/" + patient.getPid() + "/" + event.getItem().getOid());
                 }
             }
         });
@@ -82,6 +87,11 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 		grid.setItems(objectiveList.getObjectives());
 	}
 	
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+		fillObjectiveList(patient.getObjectiveList());
+	}
+
 	/**
 	 * Returns the objectives which are currently selected in the view
 	 * @return currently selected objectives

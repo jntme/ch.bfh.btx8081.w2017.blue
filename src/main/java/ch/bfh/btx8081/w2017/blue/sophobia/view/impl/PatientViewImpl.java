@@ -24,6 +24,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
 public class PatientViewImpl extends VerticalLayout implements PatientView, View {
 	private NavigationUI navUI = null;
 	private PatientViewListener listener = null;
+	private Patient patient = null;
 
 	// ziegm1: passed mainLayout into the views for being able to trigger page
 	// changes
@@ -31,6 +32,8 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 
 	private Label lblTitle = new Label("Jon Schnee");
 	private Button btnShowContact = new Button(VaadinIcons.INFO_CIRCLE);
+	
+	//todo: naming should be specific and clear!
 	private PatientObjectiveListViewImpl oView;
 	private PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
 	private PatientContactViewImpl pContactView = new PatientContactViewImpl();
@@ -42,7 +45,7 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 		// view components
 		this.navUI = navUI;
 
-		this.oView = new PatientObjectiveListViewImpl();
+		this.oView = new PatientObjectiveListViewImpl(navUI);
 		new PatientObjectiveListPresenter(oView, mainLayout);
 
 		this.setStyleName("noPadding");
@@ -90,8 +93,6 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 
 	@Override
 	public void enter(ViewChangeEvent event) {
-		String test = event.getParameters();
-		System.out.println(test);
 		if (event.getParameters() == null || event.getParameters().isEmpty()) {
 			patientNotFound();
 		} else {
@@ -107,6 +108,10 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 	@Override
 	public void patientNotFound() {
 		this.navUI.getNavigator().navigateTo(NavigationUI.SELECTPATIENTVIEW);
-		
+	}
+	
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+		this.oView.setPatient(patient);
 	}
 }

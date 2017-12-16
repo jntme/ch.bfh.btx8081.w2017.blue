@@ -15,6 +15,12 @@ public interface ObjectiveView {
 	public void setDifficulty(int difficulty);
 	public void setIscomplete(String iscomplete);
 	public void setName(String name);
-	public void setPresenter(ObjectivePresenter presenter);
+
+	interface ObjectiveViewListener {
+		public void requestObjectiveWithPatientAndId(int pid, int oid);
+	}
+	
+	public void setListener(ObjectiveViewListener listener);
+	public void patientAndObjectiveNotFound();
 	
 }

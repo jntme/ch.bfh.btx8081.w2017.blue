@@ -36,9 +36,18 @@ public class PatientPresenter implements PatientView.PatientViewListener{
 
 	@Override
 	public void requestPatientWithId(String patientId) {
+		
+		
+		
 		Patient p = DB.getPatient(patientId);
 		if(p != null) {
 			this.displayPatient(p);
+
+		//todo
+		//not nice! should be revised and changed soon
+			
+		view.setPatient(p);
+
 		} else {
 			view.patientNotFound();
 		}

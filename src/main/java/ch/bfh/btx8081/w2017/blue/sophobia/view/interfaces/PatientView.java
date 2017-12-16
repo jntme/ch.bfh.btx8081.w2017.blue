@@ -19,6 +19,7 @@ public interface PatientView {
 	public void setPresenter(Patient model);
 
 	public void setTitle(String name, String prename);
+	public void setPatient(Patient patient);
 	
 	// gets triggered, if a patient was required which does not exist
 	public void patientNotFound();
