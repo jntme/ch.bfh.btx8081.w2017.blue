@@ -33,21 +33,12 @@ public class PatientObjectiveListPresenter implements PatientObjectiveListView.P
 		view.fillObjectiveList(model.getObjectiveList());
 		
 		view.addListener(this);
-		
 		view.setPresenter(this);
 	}
 
 	@Override
 	public void buttonClick(char operation) {
 		// TODO Auto-generated method stub
-	}
-	
-	public void loadObjectiveView(Objective objective) {
-		ObjectiveViewImpl oView = new ObjectiveViewImpl();
-		new ObjectivePresenter(oView);
-		
-		mainLayout.removeAllComponents();
-		mainLayout.addComponent(oView);
 	}
 
 	// moved from MyUI into Presenter

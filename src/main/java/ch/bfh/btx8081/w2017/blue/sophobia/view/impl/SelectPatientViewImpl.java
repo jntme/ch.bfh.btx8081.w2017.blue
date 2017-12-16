@@ -46,8 +46,7 @@ public class SelectPatientViewImpl extends VerticalLayout implements SelectPatie
 		grid.addItemClickListener(new ItemClickListener<Patient>() {
 			@Override
 			public void itemClick(ItemClick<Patient> event) {
-				navUI.getPatientPresenter().displayPatient(event.getItem());
-				navUI.getNavigator().navigateTo(NavigationUI.PATIENTVIEW);
+				navUI.getNavigator().navigateTo(NavigationUI.PATIENTVIEW + "/" + event.getItem().getPid().toString());
 			}
 		});
 		

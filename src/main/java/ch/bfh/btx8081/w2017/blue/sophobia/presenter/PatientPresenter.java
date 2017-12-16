@@ -14,13 +14,14 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
  * @author gfels6
  *
  */
-public class PatientPresenter {
+public class PatientPresenter implements PatientView.PatientViewListener{
 
 	private Patient model = null;
 	private PatientView view;
 	
 	public PatientPresenter(PatientView view) {
 		this.view = view;
+		view.setListener(this);
 	}
 	
 	public void displayPatient(Patient patient) {
@@ -31,7 +32,15 @@ public class PatientPresenter {
 		//view.setPicture(model.getPicture());
 		
 		view.setPresenter(model);
-		
 	}
-	
+
+	@Override
+	public void requestPatientWithId(String patientId) {
+		Patient p = DB.getPatient(patientId);
+		if(p != null) {
+			this.displayPatient(p);
+		} else {
+			view.patientNotFound();
+		}
+	}
 }

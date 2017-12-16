@@ -38,14 +38,12 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 	
 	private List<PatientObjectiveListViewListener> listeners = new ArrayList<PatientObjectiveListViewListener>();
 	private Grid<Objective> grid = new Grid<>();
-	private final VerticalLayout mainLayout;
 	private PatientObjectiveListPresenter patientObjectiveListPresenter;
 	
 	/**
 	 * Constructor creates a new grid for viewing the object list as a table and adds some formatting.
 	 */
-	public PatientObjectiveListViewImpl(VerticalLayout mainLayout) {
-		this.mainLayout = mainLayout;
+	public PatientObjectiveListViewImpl() {
 		VerticalLayout vLayout = new VerticalLayout();
 		HorizontalLayout hLayout1 = new HorizontalLayout();
 		HorizontalLayout hLayout2 = new HorizontalLayout();

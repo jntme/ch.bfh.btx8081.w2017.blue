@@ -31,6 +31,10 @@
 
 @import "../valo/valo.scss";
 
+body {
+	background-color: dimgrey;
+}
+
 @mixin mytheme {
   @include valo;
 

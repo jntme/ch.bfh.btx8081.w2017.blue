@@ -21,59 +21,37 @@ import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientInfoPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
 
-/**
- * 
- * @author gfels6
- *
- */
 public class PatientViewImpl extends VerticalLayout implements PatientView, View {
 	private NavigationUI navUI = null;
+	private PatientViewListener listener = null;
 
-	// ziegm1: passed mainLayout into the views for being able to trigger page changes
+	// ziegm1: passed mainLayout into the views for being able to trigger page
+	// changes
 	private VerticalLayout mainLayout;
-	
+
 	private Label lblTitle = new Label("Jon Schnee");
 	private Button btnShowContact = new Button(VaadinIcons.INFO_CIRCLE);
-	private final PatientObjectiveListViewImpl oView;
-	PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
-	PatientContactViewImpl pContactView = new PatientContactViewImpl();
-	final GridLayout gridLayout = new GridLayout(5, 6);
+	private PatientObjectiveListViewImpl oView;
+	private PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
+	private PatientContactViewImpl pContactView = new PatientContactViewImpl();
+	private GridLayout gridLayout = new GridLayout(5, 6);
 
-	// ziegm1: store into instance variable, because otherwise it gets lost
-	private PatientInfoPresenter patientInfoPresenter;
-	
 	public PatientViewImpl(NavigationUI navUI) {
-		
-		// the reference back to the navigation to communicate with the other view components
+
+		// the reference back to the navigation to communicate with the other
+		// view components
 		this.navUI = navUI;
-		
-		// ziegm1: moved initialization into the constructor, so that mainLayout can be passed
-		// into the PatientObjectiveListViewImpl
-		this.mainLayout = mainLayout;
-		this.oView = new PatientObjectiveListViewImpl(mainLayout);
+
+		this.oView = new PatientObjectiveListViewImpl();
 		new PatientObjectiveListPresenter(oView, mainLayout);
-		
+
 		this.setStyleName("noPadding");
 
 		lblTitle.setStyleName("header");
 
-
-
 		gridLayout.setSpacing(true);
-		
 
-        Button button = new Button("Go to Main View",
-                new Button.ClickListener() {
-            @Override
-            public void buttonClick(ClickEvent event) {
-                navUI.getNavigator().navigateTo(NavigationUI.OBJECTIVEVIEW);
-            }
-        });	
-        
-        gridLayout.addComponent(button, 1, 1);
-
-
-		btnShowContact.addClickListener(new ClickListener() {
+		this.btnShowContact.addClickListener(new ClickListener() {
 
 			private static final long serialVersionUID = -1610492227149824003L;
 
@@ -94,16 +72,14 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 		this.addComponent(gridLayout);
 		this.addComponent(pInfoView);
 		this.addComponent(oView);
-
 	}
-
-
 
 	@Override
 	public void setPresenter(Patient model) {
 		new PatientInfoPresenter(model, pInfoView);
 		new PatientContactPresenter(model, pContactView);
-		// ziegm1: removed patientObjectiveListPresenter, it is now bound to its own view
+		// ziegm1: removed patientObjectiveListPresenter, it is now bound to its
+		// own view
 	}
 
 	@Override
@@ -112,8 +88,25 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 
 	}
 
-    @Override
-    public void enter(ViewChangeEvent event) {
-        Notification.show("Welcome to the Animal Farm 1");
-    }
+	@Override
+	public void enter(ViewChangeEvent event) {
+		String test = event.getParameters();
+		System.out.println(test);
+		if (event.getParameters() == null || event.getParameters().isEmpty()) {
+			patientNotFound();
+		} else {
+			listener.requestPatientWithId(event.getParameters());
+		}
+	}
+
+	@Override
+	public void setListener(PatientViewListener listener) {
+		this.listener = listener;
+	}
+
+	@Override
+	public void patientNotFound() {
+		this.navUI.getNavigator().navigateTo(NavigationUI.SELECTPATIENTVIEW);
+		
+	}
 }
