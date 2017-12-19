@@ -26,10 +26,6 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 	private PatientViewListener listener = null;
 	private Patient patient = null;
 
-	// ziegm1: passed mainLayout into the views for being able to trigger page
-	// changes
-	private VerticalLayout mainLayout;
-
 	private Label lblTitle = new Label("Jon Schnee");
 	private Button btnShowContact = new Button(VaadinIcons.INFO_CIRCLE);
 	
@@ -46,7 +42,6 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 		this.navUI = navUI;
 
 		this.oView = new PatientObjectiveListViewImpl(navUI);
-		new PatientObjectiveListPresenter(oView, mainLayout);
 
 		this.setStyleName("noPadding");
 
@@ -81,8 +76,7 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 	public void setPresenter(Patient model) {
 		new PatientInfoPresenter(model, pInfoView);
 		new PatientContactPresenter(model, pContactView);
-		// ziegm1: removed patientObjectiveListPresenter, it is now bound to its
-		// own view
+        new PatientObjectiveListPresenter(model, oView);
 	}
 
 	@Override

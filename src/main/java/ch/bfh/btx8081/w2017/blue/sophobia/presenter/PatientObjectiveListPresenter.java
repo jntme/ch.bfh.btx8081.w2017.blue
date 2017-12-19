@@ -22,13 +22,11 @@ public class PatientObjectiveListPresenter implements PatientObjectiveListView.P
 	
 	private Patient model;
 	private PatientObjectiveListView view;
-	private VerticalLayout mainLayout;
-	
-	public PatientObjectiveListPresenter(PatientObjectiveListView view, VerticalLayout mainLayout) {
+
+    public PatientObjectiveListPresenter(Patient model, PatientObjectiveListView view) {
 		this.view = view;
-		this.mainLayout = mainLayout;
-		
-		model = initializePatient();
+
+        this.model = model;
 		
 		view.fillObjectiveList(model.getObjectiveList());
 		
@@ -39,18 +37,5 @@ public class PatientObjectiveListPresenter implements PatientObjectiveListView.P
 	@Override
 	public void buttonClick(char operation) {
 		// TODO Auto-generated method stub
-	}
-
-	// moved from MyUI into Presenter
-	private Patient initializePatient() {
-		EntityManager em = DB.getEntityManager();
-		Query q1 = em.createQuery("select m from Patient m");
-		
-		List<Patient> patientList = q1.getResultList();
-		if (!patientList.isEmpty()) {
-			return patientList.get(0);
-		}
-		
-		return null;
 	}
 }

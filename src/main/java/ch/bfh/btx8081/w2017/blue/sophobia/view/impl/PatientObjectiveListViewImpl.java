@@ -71,6 +71,7 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 
             public void itemClick(ItemClick<Objective> event) {
                 if (event.getMouseEventDetails().isDoubleClick()) {
+					System.out.println(NavigationUI.OBJECTIVEVIEW + "/" + patient.getPid() + "/" + event.getItem().getOid());
                 	navUI.getNavigator().navigateTo(NavigationUI.OBJECTIVEVIEW + "/" + patient.getPid() + "/" + event.getItem().getOid());
                 }
             }

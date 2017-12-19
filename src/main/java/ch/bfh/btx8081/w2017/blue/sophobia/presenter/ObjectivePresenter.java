@@ -32,28 +32,37 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener {
 		view.setName(model.getName());
 	}
 
-	@Override
-	public void requestObjectiveWithPatientAndId(int pid, int oid) {
-		Patient p = DB.getPatient(Integer.toString(pid));
-		Objective objective = null;
+    /**
+     * Requests an Object with a specific id and oid and returns it
+     *
+     * @param pid
+     * @param oid
+     */
+    @Override
+    public void requestObjectiveWithPatientAndId(int pid, int oid) {
+        Patient p = DB.getPatient(Integer.toString(pid));
+        Objective objective = null;
 
-		if (p != null) {
-			List<Objective> objList = p.getObjectiveList().getObjectives();
-			
-			for(Objective obj : objList) {
-				if (obj.getOid() == oid)
-					objective = obj;
-				break;
-			}
+        if (p != null) {
+            List<Objective> objList = p.getObjectiveList().getObjectives();
 
-			if (objective != null) {
-				this.displayObjective(objective);
-				return;
-			}
-		}
-		
-		view.patientAndObjectiveNotFound();
+            // look for objective
+            for(Objective obj : objList) {
+                if (obj.getOid() == oid) {
+                    objective = obj;
+                    break;
+                }
+            }
 
-	}
+            // if found, display it
+            if (objective != null) {
+                this.displayObjective(objective);
+                return; // do not continue, if found & set
+            }
+        }
+
+        view.patientAndObjectiveNotFound();
+
+    }
 
 }
