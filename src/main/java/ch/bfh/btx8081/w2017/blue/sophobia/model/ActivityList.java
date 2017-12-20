@@ -11,6 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+/**
+ * Manages all Activities for an Object
+ *
+ * @author petim1
+ * @version 1.5
+ * @since 07.12.2017
+ */
 @Entity
 public class ActivityList {
 
@@ -21,6 +28,11 @@ public class ActivityList {
 	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private List<Activity> activities = new ArrayList<Activity>();
 
+	/**
+	 * Creates a new Activity in this list
+	 * @param name is the name of the activity
+	 * @param description describes the activity
+	 */
 	public void createAct(String name, String description) {
 		Activity act = new Activity(name, description);
 

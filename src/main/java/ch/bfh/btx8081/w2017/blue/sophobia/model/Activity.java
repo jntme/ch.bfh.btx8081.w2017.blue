@@ -6,6 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+/**
+ * The class Activity 
+ *
+ * @author petim1
+ * @version 1.5
+ * @since 07.12.2017
+ */
 @Entity
 public class Activity {
 
