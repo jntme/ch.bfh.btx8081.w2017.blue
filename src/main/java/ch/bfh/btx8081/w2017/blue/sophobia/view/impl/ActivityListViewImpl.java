@@ -1,14 +1,13 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Button.ClickListener;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.HorizontalLayout;
@@ -18,13 +17,11 @@ import com.vaadin.ui.VerticalLayout;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Activity;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityList;
-import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ActivityListView;
-import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListView.PatientObjectiveListViewListener;
 
 public class ActivityListViewImpl extends Panel implements ActivityListView, ClickListener {
 	
-	private final Label header = new Label("Ziele");
+	private final Label header = new Label("Aktivitäten");
 	private Button bDelete = new Button(VaadinIcons.PLUS_CIRCLE);
 	private Button bAdd = new Button(VaadinIcons.TRASH);
 	

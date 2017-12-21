@@ -2,9 +2,6 @@ package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
@@ -30,6 +27,7 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener {
 		this.model = objective;
 
 		view.setName(model.getName());
+		view.setDescription(model.getDescription());
 	}
 
     /**

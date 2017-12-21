@@ -2,12 +2,12 @@ package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.Notification;
+import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.NavigationUI;
-import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ObjectivePresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ObjectiveView;
 
 /**
@@ -22,8 +22,11 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
 	private ObjectiveViewListener listener = null;
 
 	private Label lblName = new Label();
+	private Label lblDescritpion = new Label("Beschreibung: ");
+	private TextArea taDescription = new TextArea();
 	// ActivityListViewImpl aView = new ActivityListViewImpl();
 	final VerticalLayout layout = new VerticalLayout();
+	final HorizontalLayout hLayout = new HorizontalLayout();
 	private final ActivityListViewImpl aView;
 
 	public ObjectiveViewImpl(NavigationUI navUI) {
@@ -36,8 +39,12 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
 		this.setStyleName("noPadding");
 
 		lblName.setStyleName("header");
+		
 
 		layout.addComponent(lblName);
+		
+		hLayout.addComponents(lblDescritpion, taDescription);
+		layout.addComponent(hLayout);
 
 		this.addComponent(layout);
 		this.aView = new ActivityListViewImpl();
@@ -65,6 +72,11 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
 	@Override
 	public void setName(String name) {
 		lblName.setValue(name);
+	}
+	
+	@Override
+	public void setDescription(String description) {
+		taDescription.setValue(description);
 	}
 
 	@Override
