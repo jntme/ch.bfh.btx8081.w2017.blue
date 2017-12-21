@@ -108,4 +108,16 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 		this.patient = patient;
 		this.oView.setPatient(patient);
 	}
+
+	/**
+	 * Clears the view, so a next
+	 */
+	@Override
+	public void clearView() {
+
+	    this.lblTitle.setValue("");
+	    this.oView.clearView();
+	    this.pInfoView.clearView();
+//	    this.pContactView.clearView();
+	}
 }

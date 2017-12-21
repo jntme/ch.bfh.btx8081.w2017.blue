@@ -90,8 +90,9 @@ public class PatientContactViewImpl extends Window implements PatientContactView
 		}
 
 	}
-	
-	
-	
 
+	@Override
+	public void clearView() {
+		// todo
+	}
 }

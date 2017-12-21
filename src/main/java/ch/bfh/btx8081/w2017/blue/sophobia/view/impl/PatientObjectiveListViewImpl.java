@@ -111,6 +111,7 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 		listeners.add(listener);
 	}
 
+
 	/**
 	 * Event handler
 	 */
@@ -126,6 +127,11 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 	public void setPresenter(PatientObjectiveListPresenter presenter) {
 		patientObjectiveListPresenter = presenter;
 	}
-	
 
+	@Override
+	public void clearView() {
+	    patient = null;
+	    Objective emptyList = new Objective();
+	    grid.setItems(emptyList);
+	}
 }

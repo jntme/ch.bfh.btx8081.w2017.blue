@@ -11,5 +11,6 @@ public interface PatientContactView {
 	public void setPicture(Image image);
 	public void setName(String name, String prename);
 	public void setGender(String gender);
+	public void clearView();
 
 }

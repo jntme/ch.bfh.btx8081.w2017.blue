@@ -29,4 +29,5 @@ public interface PatientView {
 	}
 	
 	public void setListener(PatientViewListener listener);
+	public void clearView();
 }

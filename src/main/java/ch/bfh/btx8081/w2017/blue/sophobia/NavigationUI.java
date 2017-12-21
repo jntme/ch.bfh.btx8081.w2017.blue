@@ -43,6 +43,9 @@ public class NavigationUI extends UI {
 	protected void init(VaadinRequest vaadinRequest) {
 		getPage().setTitle("Sophobia - finally free.");
 
+        // take a look at the following class
+		HowToUseDB.howToUseDb();
+
 		// Create a navigator to control the views
 		navigator = new Navigator(this, this);
 
@@ -60,9 +63,6 @@ public class NavigationUI extends UI {
 		ObjectiveViewImpl objViewImpl = new ObjectiveViewImpl(this);
 		this.objPresenter = new ObjectivePresenter(objViewImpl);
 		navigator.addView(OBJECTIVEVIEW, objViewImpl);
-
-		// take a look at the following class
-		// HowToUseDB.howToUseDb();
 	}
 
 	public Navigator getNavigator() {

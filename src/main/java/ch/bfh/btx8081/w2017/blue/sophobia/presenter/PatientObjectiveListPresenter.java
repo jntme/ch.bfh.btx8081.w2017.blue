@@ -27,7 +27,7 @@ public class PatientObjectiveListPresenter implements PatientObjectiveListView.P
 		this.view = view;
 
         this.model = model;
-		
+
 		view.fillObjectiveList(model.getObjectiveList());
 		
 		view.addListener(this);

@@ -40,17 +40,17 @@ public class Patient implements Serializable {
 	private DiagnosisList diagnosisList;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	private DrugList drugList;
+	private DrugList drugList = new DrugList();
 
 	private String gender;
 
 	private String name;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	private NoteList noteList;
+	private NoteList noteList = new NoteList();
 
 	@OneToOne(cascade = CascadeType.ALL)
-	private ObjectiveList objectiveList;
+	private ObjectiveList objectiveList = new ObjectiveList();
 
 	private byte[] picture;
 

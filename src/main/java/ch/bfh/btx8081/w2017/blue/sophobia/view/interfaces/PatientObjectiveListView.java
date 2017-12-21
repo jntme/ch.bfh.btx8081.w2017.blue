@@ -23,5 +23,6 @@ public interface PatientObjectiveListView {
 	}
 	
 	public void addListener(PatientObjectiveListViewListener listener);
+	public void clearView();
 	
 }
