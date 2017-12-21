@@ -31,6 +31,7 @@ public interface PatientInfoView {
 	 */
 	public Note getSelectedNote();
 	public void addListener(PatientInfoClickListener listener);
+	public void clearView();
 	
 	interface PatientInfoClickListener{
 		/**

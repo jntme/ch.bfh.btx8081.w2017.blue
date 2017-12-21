@@ -36,7 +36,7 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 	private Grid<Note> notes = new Grid<Note>();
 	private Button btnAddNote = new Button(VaadinIcons.PLUS_CIRCLE);
 	private Button btnDeleteNote = new Button(VaadinIcons.TRASH);
-	private ArrayList<PatientInfoClickListener> listeners = new ArrayList<>();
+	private PatientInfoClickListener listener;
 	
 
 	public PatientInfoViewImpl() {
@@ -107,28 +107,32 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 
 	@Override
 	public void addListener(PatientInfoClickListener listener) {
-		listeners.add(listener);
+		this.listener = listener;
 	}
 
 	@Override
 	public void buttonClick(com.vaadin.ui.Button.ClickEvent event) {
-		for(PatientInfoClickListener listener : listeners){
-			if(event.getButton().getIcon().equals(VaadinIcons.PLUS_CIRCLE)){
-				listener.buttonClick(1);
-			}
-			else if (event.getButton().getIcon().equals(VaadinIcons.TRASH)){
-				listener.buttonClick(2);
-			}
+		
+		if(event.getButton().getIcon().equals(VaadinIcons.PLUS_CIRCLE)){
+			listener.buttonClick(1);
+		}
+		else if (event.getButton().getIcon().equals(VaadinIcons.TRASH)){
+			listener.buttonClick(2);
 		}
 	}
 
 	@Override
 	public void itemClick(ItemClick<Note> event) {
 		if(event.getMouseEventDetails().isDoubleClick()){
-			for(PatientInfoClickListener listener : listeners){
 				notes.select(event.getItem());
 				listener.buttonClick(3);
-			}
 		}
+	}
+
+	@Override
+	public void clearView() {
+		txaDiagnosis.setValue("");
+		txaDrugs.setValue("");
+		notes.removeAllColumns();
 	}
 }
