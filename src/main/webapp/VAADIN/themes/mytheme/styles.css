@@ -14784,7 +14784,7 @@ body {
 	overflow: hidden;
 }
 
-.mytheme .v-verticallayout-firstContainer {
+.mytheme .containerStyle {
 	position: absolute;
 	left: 50%;
 	margin-left: -400px;

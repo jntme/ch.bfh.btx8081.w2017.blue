@@ -20,6 +20,7 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
 	private NavigationUI navUI = null;
 
 	private ObjectiveViewListener listener = null;
+	
 
 	private Label lblName = new Label();
 	private Label lblDescritpion = new Label("Beschreibung: ");
@@ -36,7 +37,7 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
 		this.navUI = navUI;
 		this.listener = null;
 
-		this.setStyleName("noPadding");
+		this.addStyleName("containerStyle"); 
 
 		lblName.setStyleName("header");
 		

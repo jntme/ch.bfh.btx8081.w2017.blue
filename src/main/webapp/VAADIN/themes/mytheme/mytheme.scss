@@ -38,7 +38,8 @@ body {
 @mixin mytheme {
   @include valo;
 
-    .v-verticallayout-firstContainer {
+  
+.containerStyle {
 	position: absolute; 
 	left: 50%; 
 	margin-left: -400px;

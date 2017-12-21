@@ -31,7 +31,7 @@ public class SelectPatientViewImpl extends VerticalLayout implements SelectPatie
 		// the reference back to the navigation to communicate with the other view components
 		this.navUI = navUI;
 
-		this.setStyleName("noPadding");
+		this.addStyleName("containerStyle"); 
 		this.addComponent(lblTitle);
 		this.addComponent(grid);
 		lblTitle.setStyleName("header");
