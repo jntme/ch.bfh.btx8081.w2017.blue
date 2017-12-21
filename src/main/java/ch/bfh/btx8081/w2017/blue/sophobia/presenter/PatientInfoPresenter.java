@@ -30,10 +30,18 @@ public class PatientInfoPresenter implements PatientInfoClickListener{
 		this.patInfoView = patInfoView1;
 		patInfoView.addListener(this);
 
-		//TODO fix this, so it checks if diganosislist is empty before converting it to a string
-		patInfoView.setDiagnosis(pat.getDiagnosisList().toString());
-
-		patInfoView.setDrugs(pat.getDrugList().toString());
+		try {
+			patInfoView.setDiagnosis(pat.getDiagnosisList().toString());
+		} catch (NullPointerException e) {
+			patInfoView.setDiagnosis("Not available");
+		}
+		
+		try {
+			patInfoView.setDrugs(pat.getDrugList().toString());
+		} catch (NullPointerException e) {
+			patInfoView.setDrugs("Not available");
+		}
+		
 		patInfoView.fillNoteList(pat.getNoteList());
 	}
 
