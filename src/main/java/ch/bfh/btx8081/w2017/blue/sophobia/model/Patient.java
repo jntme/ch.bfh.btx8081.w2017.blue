@@ -86,7 +86,7 @@ public class Patient implements Serializable {
 		trans.commit();
 	}
 	
-	public void delete() {
+	private void delete() {
 		EntityManager em = DB.getEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		em.getTransaction().begin();
