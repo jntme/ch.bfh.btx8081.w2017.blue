@@ -26,112 +26,121 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListVi
 
 /**
  * Implements the GUI elements from the part PatientObjectiveList
- * @author ziegm1
  *
+ * @author ziegm1
  */
 public class PatientObjectiveListViewImpl extends Panel implements PatientObjectiveListView, ClickListener {
 
-	private NavigationUI navUI = null;
-	private Patient patient = null;
-	
-	private final Label DISPLAY = new Label("Ziele");
-	private Button btnDelete;
-	private Button btnAdd;
-	
-	private List<PatientObjectiveListViewListener> listeners = new ArrayList<PatientObjectiveListViewListener>();
-	private Grid<Objective> grid = new Grid<>();
-	private PatientObjectiveListPresenter patientObjectiveListPresenter;
-	
-	/**
-	 * Constructor creates a new grid for viewing the object list as a table and adds some formatting.
-	 */
-	public PatientObjectiveListViewImpl(NavigationUI navUI) {
-		this.navUI = navUI;
-		this.patient = patient;
+    private NavigationUI navUI = null;
+    private Patient patient = null;
 
-		VerticalLayout vLayout = new VerticalLayout();
-		HorizontalLayout hLayout1 = new HorizontalLayout();
-		HorizontalLayout hLayout2 = new HorizontalLayout();
-		
-		vLayout.addComponent(hLayout1);
-		vLayout.addComponent(hLayout2);
-		
-		btnAdd = new Button(VaadinIcons.PLUS_CIRCLE);
-		btnDelete = new Button(VaadinIcons.TRASH);
-		
-		hLayout1.addComponents(DISPLAY, btnAdd, btnDelete);
-		
-		grid.setSelectionMode(SelectionMode.SINGLE);
-		hLayout2.addComponent(grid);   
-        grid.addColumn(Objective::getName).setCaption("Ziel"); 
+    private final Label DISPLAY = new Label("Ziele");
+    private Button btnDelete;
+    private Button btnAdd;
+
+    private List<PatientObjectiveListViewListener> listeners = new ArrayList<PatientObjectiveListViewListener>();
+    private Grid<Objective> grid = new Grid<>();
+    private PatientObjectiveListPresenter patientObjectiveListPresenter;
+
+    /**
+     * Constructor creates a new grid for viewing the object list as a table and adds some formatting.
+     */
+    public PatientObjectiveListViewImpl(NavigationUI navUI) {
+        this.navUI = navUI;
+        this.patient = patient;
+
+        VerticalLayout vLayout = new VerticalLayout();
+        HorizontalLayout hLayout1 = new HorizontalLayout();
+        HorizontalLayout hLayout2 = new HorizontalLayout();
+
+        vLayout.addComponent(hLayout1);
+        vLayout.addComponent(hLayout2);
+
+        btnAdd = new Button(VaadinIcons.PLUS_CIRCLE);
+        btnDelete = new Button(VaadinIcons.TRASH);
+
+        hLayout1.addComponents(DISPLAY, btnAdd, btnDelete);
+
+        grid.setSelectionMode(SelectionMode.SINGLE);
+        hLayout2.addComponent(grid);
+        grid.addColumn(Objective::getName).setCaption("Ziel");
         grid.addColumn(Objective::isComplete).setCaption("Status");
-        
+
         grid.addItemClickListener(new ItemClickListener<Objective>() {
             private static final long serialVersionUID = 2068314108919135281L;
 
             public void itemClick(ItemClick<Objective> event) {
                 if (event.getMouseEventDetails().isDoubleClick()) {
-					System.out.println(NavigationUI.OBJECTIVEVIEW + "/" + patient.getPid() + "/" + event.getItem().getOid());
-                	navUI.getNavigator().navigateTo(NavigationUI.OBJECTIVEVIEW + "/" + patient.getPid() + "/" + event.getItem().getOid());
+                    System.out.println(NavigationUI.OBJECTIVEVIEW + "/" + patient.getPid() + "/" + event.getItem().getOid());
+                    navUI.getNavigator().navigateTo(NavigationUI.OBJECTIVEVIEW + "/" + patient.getPid() + "/" + event.getItem().getOid());
                 }
             }
         });
-				
-		this.setContent(vLayout);
-	}
 
-	/**
-	 * Adds all the items of an object list to the grid
-	 */
-	@Override
-	public void fillObjectiveList(ObjectiveList objectiveList) {
-		grid.setItems(objectiveList.getObjectives());
-	}
-	
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-		fillObjectiveList(patient.getObjectiveList());
-	}
-
-	/**
-	 * Returns the objectives which are currently selected in the view
-	 * @return currently selected objectives
-	 */	
-	@Override
-	public Objective getSelectedObjective() {
-		Iterator<Objective> itr = grid.getSelectedItems().iterator();
-		return itr.next();
-	}
-
-	/**
-	 * Listener for event handling
-	 */
-	@Override
-	public void addListener(PatientObjectiveListViewListener listener) {
-		listeners.add(listener);
-	}
+        btnAdd.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(ClickEvent event) {
+                navUI.getNavigator().navigateTo(NavigationUI.OBJECTIVEVIEW + "/" + patient.getPid() + "/" + NavigationUI.NEW);
+            }
+        });
 
 
-	/**
-	 * Event handler
-	 */
-	@Override
-	public void buttonClick(ClickEvent event) {
-		for(PatientObjectiveListViewListener listener : listeners) {
-			listener.buttonClick(event.getButton().getCaption().charAt(0));
-		}
-		
-	}
-	
-	@Override
-	public void setPresenter(PatientObjectiveListPresenter presenter) {
-		patientObjectiveListPresenter = presenter;
-	}
+        this.setContent(vLayout);
+    }
 
-	@Override
-	public void clearView() {
-	    patient = null;
-	    Objective emptyList = new Objective();
-	    grid.setItems(emptyList);
-	}
+    /**
+     * Adds all the items of an object list to the grid
+     */
+    @Override
+    public void fillObjectiveList(ObjectiveList objectiveList) {
+        grid.setItems(objectiveList.getObjectives());
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+        fillObjectiveList(patient.getObjectiveList());
+    }
+
+    /**
+     * Returns the objectives which are currently selected in the view
+     *
+     * @return currently selected objectives
+     */
+    @Override
+    public Objective getSelectedObjective() {
+        Iterator<Objective> itr = grid.getSelectedItems().iterator();
+        return itr.next();
+    }
+
+    /**
+     * Listener for event handling
+     */
+    @Override
+    public void addListener(PatientObjectiveListViewListener listener) {
+        listeners.add(listener);
+    }
+
+
+    /**
+     * Event handler
+     */
+    @Override
+    public void buttonClick(ClickEvent event) {
+        for (PatientObjectiveListViewListener listener : listeners) {
+            listener.buttonClick(event.getButton().getCaption().charAt(0));
+        }
+
+    }
+
+    @Override
+    public void setPresenter(PatientObjectiveListPresenter presenter) {
+        patientObjectiveListPresenter = presenter;
+    }
+
+    @Override
+    public void clearView() {
+        patient = null;
+        Objective emptyList = new Objective();
+        grid.setItems(emptyList);
+    }
 }

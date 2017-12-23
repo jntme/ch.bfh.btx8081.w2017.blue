@@ -9,7 +9,9 @@ public interface ActivityListView {
 
 	public Activity getSelectedActivity();
 
-	// Listener for the event handling
+    public void clearView();
+
+    // Listener for the event handling
 	interface ActivityListViewListener {
 		void buttonClick(char operation);
 	}

@@ -15,8 +15,9 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ObjectiveView;
  */
 public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener {
 
-	private Objective model;
-	private ObjectiveView view;
+	private Objective model = null;
+	private ObjectiveView view = null;
+	private Patient patient = null;
 
 	public ObjectivePresenter(ObjectiveView view) {
 		this.view = view;
@@ -33,16 +34,16 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener {
     /**
      * Requests an Object with a specific id and oid and returns it
      *
-     * @param pid
-     * @param oid
+     * @param pid: the patient id
+     * @param oid: the objecitve id
      */
     @Override
     public void requestObjectiveWithPatientAndId(int pid, int oid) {
-        Patient p = DB.getPatient(Integer.toString(pid));
+        this.patient = DB.getPatient(Integer.toString(pid));
         Objective objective = null;
 
-        if (p != null) {
-            List<Objective> objList = p.getObjectiveList().getObjectives();
+        if (this.patient != null) {
+            List<Objective> objList = this.patient.getObjectiveList().getObjectives();
 
             // look for objective
             for(Objective obj : objList) {
@@ -63,4 +64,15 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener {
 
     }
 
+    /**
+     * Prepares the presenter for a new Objective. saves the pid on this for later use.
+     *
+     * @param pid: the corresponding patient id
+     */
+    @Override
+    public void initNewObjective(int pid) {
+        this.patient = DB.getPatient(Integer.toString(pid));
+
+        displayObjective(new Objective());
+    }
 }

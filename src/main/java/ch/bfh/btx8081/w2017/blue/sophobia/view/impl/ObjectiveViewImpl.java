@@ -10,111 +10,121 @@ import com.vaadin.ui.VerticalLayout;
 import ch.bfh.btx8081.w2017.blue.sophobia.NavigationUI;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ObjectiveView;
 
+import javax.naming.InitialContext;
+
 /**
  * Implements the GUI elements from the part Objective
- * 
- * @author ziegm1
  *
+ * @author ziegm1
  */
 public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, View {
-	private NavigationUI navUI = null;
+    private NavigationUI navUI = null;
 
-	private ObjectiveViewListener listener = null;
-	
+    private ObjectiveViewListener listener = null;
+    private Label lblName = new Label();
+    private Label lblDescritpion = new Label("Beschreibung: ");
+    private TextArea taDescription = new TextArea();
+    final VerticalLayout layout = new VerticalLayout();
+    final HorizontalLayout hLayout = new HorizontalLayout();
+    private final ActivityListViewImpl aView = new ActivityListViewImpl();
 
-	private Label lblName = new Label();
-	private Label lblDescritpion = new Label("Beschreibung: ");
-	private TextArea taDescription = new TextArea();
-	// ActivityListViewImpl aView = new ActivityListViewImpl();
-	final VerticalLayout layout = new VerticalLayout();
-	final HorizontalLayout hLayout = new HorizontalLayout();
-	private final ActivityListViewImpl aView;
+    public ObjectiveViewImpl(NavigationUI navUI) {
 
-	public ObjectiveViewImpl(NavigationUI navUI) {
+        // the reference back to the navigation to communicate with the other
+        // view components
+        this.navUI = navUI;
+        this.listener = null;
 
-		// the reference back to the navigation to communicate with the other
-		// view components
-		this.navUI = navUI;
-		this.listener = null;
+        this.addStyleName("containerStyle");
 
-		this.addStyleName("containerStyle"); 
+        lblName.setStyleName("header");
 
-		lblName.setStyleName("header");
-		
 
-		layout.addComponent(lblName);
-		
-		hLayout.addComponents(lblDescritpion, taDescription);
-		layout.addComponent(hLayout);
+        layout.addComponent(lblName);
 
-		this.addComponent(layout);
-		this.aView = new ActivityListViewImpl();
-		this.addComponent(aView);
-	}
+        hLayout.addComponents(lblDescritpion, taDescription);
+        layout.addComponent(hLayout);
 
-	@Override
-	public void setOid(int oid) {
-		// TODO Auto-generated method stub
+        this.addComponent(layout);
+        this.addComponent(aView);
+    }
 
-	}
+    @Override
+    public void setOid(int oid) {
+        // TODO Auto-generated method stub
 
-	@Override
-	public void setDifficulty(int difficulty) {
-		// TODO Auto-generated method stub
+    }
 
-	}
+    @Override
+    public void setDifficulty(int difficulty) {
+        // TODO Auto-generated method stub
 
-	@Override
-	public void setIscomplete(String iscomplete) {
-		// TODO Auto-generated method stub
+    }
 
-	}
+    @Override
+    public void setIscomplete(String iscomplete) {
+        // TODO Auto-generated method stub
 
-	@Override
-	public void setName(String name) {
-		lblName.setValue(name);
-	}
-	
-	@Override
-	public void setDescription(String description) {
-		taDescription.setValue(description);
-	}
+    }
 
-	@Override
-	public void enter(ViewChangeEvent event) {
+    @Override
+    public void setName(String name) {
+        lblName.setValue(name);
+    }
 
-		if (event.getParameters() == null || event.getParameters().isEmpty()) {
-			this.patientAndObjectiveNotFound();
-		} else {
+    @Override
+    public void setDescription(String description) {
+        taDescription.setValue(description);
+    }
 
-			String parameter = event.getParameters();
+    @Override
+    public void enter(ViewChangeEvent event) {
 
-			String[] params = parameter.split("/");
-			if (params.length != 2) {
-				this.patientAndObjectiveNotFound();
-			} else {
-				int pid = -1;
-				int oid = -1;
+        if (event.getParameters() == null || event.getParameters().isEmpty()) {
+            this.patientAndObjectiveNotFound();
+        } else {
 
-				try {
-					pid = Integer.parseInt(params[0]);
-					oid = Integer.parseInt(params[1]);
-				} catch (NumberFormatException ex) {
-					this.patientAndObjectiveNotFound();
-				}
+            String parameter = event.getParameters();
 
-				listener.requestObjectiveWithPatientAndId(pid, oid);
-			}
-		}
-	}
 
-	@Override
-	public void patientAndObjectiveNotFound() {
-		this.navUI.getNavigator().navigateTo(NavigationUI.SELECTPATIENTVIEW);
-	}
+            String[] params = parameter.split("/");
+            if (params.length != 2) {
+                this.patientAndObjectiveNotFound();
+            }
+            // if a new objective is getting added
+            else if (params[1].equals(NavigationUI.NEW)) {
+                listener.initNewObjective(Integer.parseInt(params[0])); // todo this whole else if needs to be reviewed and rewritten.
+            } else {
+                int pid = -1;
+                int oid = -1;
 
-	@Override
-	public void setListener(ObjectiveViewListener listener) {
-		this.listener = listener;
-	}
+                try {
+                    pid = Integer.parseInt(params[0]);
+                    oid = Integer.parseInt(params[1]);
+                } catch (NumberFormatException ex) {
+                    this.patientAndObjectiveNotFound();
+                }
+
+                listener.requestObjectiveWithPatientAndId(pid, oid);
+            }
+        }
+    }
+
+    @Override
+    public void patientAndObjectiveNotFound() {
+        this.navUI.getNavigator().navigateTo(NavigationUI.SELECTPATIENTVIEW);
+    }
+
+    @Override
+    public void clearView() {
+        lblName.setValue("");
+        taDescription.setValue("");
+
+        aView.clearView();
+    }
+
+    @Override
+    public void setListener(ObjectiveViewListener listener) {
+        this.listener = listener;
+    }
 }

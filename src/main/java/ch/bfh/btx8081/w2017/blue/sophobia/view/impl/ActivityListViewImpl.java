@@ -46,10 +46,7 @@ public class ActivityListViewImpl extends Panel implements ActivityListView, Cli
 		grid.addColumn(Activity::getComplete).setCaption("Status");
 		
 		this.setContent(vLayout);
-		
-		
-		
-		
+
 	}
 	@Override
 	public void fillActivityList(ActivityList activityList) {
@@ -61,6 +58,11 @@ public class ActivityListViewImpl extends Panel implements ActivityListView, Cli
 	public Activity getSelectedActivity() {
 		Iterator<Activity> itr = grid.getSelectedItems().iterator();
 		return itr.next();
+	}
+
+	@Override
+	public void clearView() {
+		this.grid.setItems(new ArrayList<>());
 	}
 
 	@Override

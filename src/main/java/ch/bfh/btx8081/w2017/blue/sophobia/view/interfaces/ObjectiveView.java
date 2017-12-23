@@ -18,9 +18,11 @@ public interface ObjectiveView {
 
 	interface ObjectiveViewListener {
 		public void requestObjectiveWithPatientAndId(int pid, int oid);
+		void initNewObjective(int pid);
 	}
 	
 	public void setListener(ObjectiveViewListener listener);
 	public void patientAndObjectiveNotFound();
+	public void clearView();
 	
 }

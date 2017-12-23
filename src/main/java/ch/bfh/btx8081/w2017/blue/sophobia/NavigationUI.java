@@ -36,6 +36,9 @@ public class NavigationUI extends UI {
 	public static final String PATIENTVIEW = "patient";
 	public static final String OBJECTIVEVIEW = "objective";
 
+	// these strings are for special navigation purposes
+	public static final String NEW = "new";
+
 	private SelectPatientPresenter selectPatientPresenter = null;
 	private PatientPresenter patientPresenter = null;
 	private ObjectivePresenter objPresenter = null;

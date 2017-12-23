@@ -35,7 +35,7 @@ public class DiagnosisList {
 	public ArrayList<String> getDiagnosisList(int numElement){
 		Random random = new Random();
 		int sizeArray = diagnosisList.size();
-	
+
 
 		ArrayList<String> arl = new ArrayList();
 		for(int i = 0; i< numElement;i++){
