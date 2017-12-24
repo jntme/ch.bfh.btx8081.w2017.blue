@@ -124,6 +124,24 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
         }
     }
 
+    /**
+     * Adjusts the view for a new objective.
+     * (renames button to 'add', disables aView (...)
+     */
+    private void setViewOnNewObjective() {
+        this.saveButton.setCaption("Add");
+        this.aView.setEnabled(false);
+    }
+
+    /**
+     * Does the opposite of setViewOnExistingObjective()
+     *
+     */
+    private void setViewOnExistingObjective() {
+        this.saveButton.setCaption("Save");
+        this.aView.setEnabled(true);
+    }
+
     @Override
     public void setDifficulty(int difficulty) {
         this.difficultySlider.setValue((double) difficulty);
@@ -146,8 +164,7 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
      */
     @Override
     public void addedObjective() {
-        this.saveButton.setCaption("Save");
-        this.aView.setEnabled(true);
+        setViewOnExistingObjective();
 
         navUI.getNavigator().navigateTo(NavigationUI.OBJECTIVEVIEW + "/" +
                 this.presenter.getPatient().getPid() + "/" + this.presenter.getModel().getOid());
@@ -181,8 +198,7 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
             else if (params[1].equals(NavigationUI.NEW)) {
 
                 presenter.initNewObjective(Integer.parseInt(params[0]));
-                this.saveButton.setCaption("Add");
-                this.aView.setEnabled(false);
+                setViewOnNewObjective();
             } else {
                 int pid = -1;
                 int oid = -1;
@@ -194,6 +210,7 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
                     this.patientAndObjectiveNotFound();
                 }
 
+                setViewOnExistingObjective();
                 presenter.requestObjectiveWithPatientAndId(pid, oid);
             }
         }
