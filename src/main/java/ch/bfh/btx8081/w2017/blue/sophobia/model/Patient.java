@@ -38,6 +38,9 @@ public class Patient implements Serializable {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private DiagnosisList diagnosisList;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private PatientHistoryList patientHistoryList;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private DrugList drugList = new DrugList();
@@ -145,6 +148,13 @@ public class Patient implements Serializable {
 
 	public void setDiagnosisList(DiagnosisList diagnosisList) {
 		this.diagnosisList = diagnosisList;
+	}
+	public PatientHistoryList getPatientHistoryList() {
+		return patientHistoryList;
+	}
+
+	public void setPatientHistory(PatientHistoryList history) {
+		this.patientHistoryList = history;
 	}
 
 	public DrugList getDrugList() {
