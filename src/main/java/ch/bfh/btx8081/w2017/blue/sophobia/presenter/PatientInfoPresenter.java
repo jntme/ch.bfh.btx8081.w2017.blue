@@ -53,6 +53,7 @@ public class PatientInfoPresenter implements PatientInfoClickListener{
 	public void initPatInfoView(){
 		patInfoView.setDiagnosis(pat.getDiagnosisList().toString());
 		patInfoView.setDrugs(pat.getDrugList().toString());
+		patInfoView.setPatientHistory(pat.getPatientHistoryList().toString());
 		patInfoView.fillNoteList(pat.getNoteList());
 	}
 
