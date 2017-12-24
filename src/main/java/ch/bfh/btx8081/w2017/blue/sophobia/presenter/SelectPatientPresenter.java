@@ -4,29 +4,25 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.SelectPatientView;
-import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.SelectPatientView.SelectPatientClickListener;;
+import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.SelectPatientView.SelectPatientClickListener;
 
 public class SelectPatientPresenter implements SelectPatientClickListener{
 
-	private List<Patient> model;
-	private SelectPatientView view;
-
 	public SelectPatientPresenter(SelectPatientView view) {
-		this.view = view;
-		model = initializePatients();
+		List<Patient> model = initializePatients();
 
 		view.fillObjectiveList(model);
-
 	}
 
 	private List<Patient> initializePatients() {
 		EntityManager em = DB.getEntityManager();
 
-		Query q1 = em.createQuery("select m from Patient m");
+		TypedQuery<Patient> q1 = em.createQuery("select m from Patient m", Patient.class);
 
 		List<Patient> patientList = q1.getResultList();
 		if (!patientList.isEmpty()) {

@@ -24,7 +24,7 @@ public class ObjectiveList {
 	private int olid;
 	
 	@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
-	private List<Objective> objectives = new ArrayList<Objective>();
+	private List<Objective> objectives = new ArrayList<>();
 
 	/**
 	 * Creates a new Objective in this List
@@ -49,5 +49,9 @@ public class ObjectiveList {
 	}
 	public void setObjectives(List<Objective> objectives) {
 		this.objectives = objectives;
+	}
+
+	public void addObjective(Objective objective) {
+		this.objectives.add(objective);
 	}
 }

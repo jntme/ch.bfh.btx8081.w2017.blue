@@ -1,6 +1,7 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ObjectivePresenter;
 
 /**
@@ -10,19 +11,29 @@ import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ObjectivePresenter;
  */
 public interface ObjectiveView {
 	
-	public void setOid(int oid);
-	public void setDescription(String description);
-	public void setDifficulty(int difficulty);
-	public void setIscomplete(String iscomplete);
-	public void setName(String name);
+	void setDescription(String description);
+	void setDifficulty(int difficulty);
+	void setIscomplete(String isComplete);
+	void setName(String name);
 
-	interface ObjectiveViewListener {
-		public void requestObjectiveWithPatientAndId(int pid, int oid);
+    void addedObjective();
+
+    interface ObjectiveViewListener {
+		void requestObjectiveWithPatientAndId(int pid, int oid);
 		void initNewObjective(int pid);
-	}
+
+		void setObjectiveName(String value);
+		void setObjectiveDescription(String value);
+		void setObjectiveDifficulty(int value);
+
+        void save();
+
+        Objective getModel();
+
+        Patient getPatient();
+    }
 	
-	public void setListener(ObjectiveViewListener listener);
-	public void patientAndObjectiveNotFound();
-	public void clearView();
-	
+	void setPresenter(ObjectiveViewListener presenter);
+	void patientAndObjectiveNotFound();
+	void clearView();
 }

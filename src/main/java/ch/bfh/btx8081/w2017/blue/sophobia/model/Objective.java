@@ -1,20 +1,28 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
+import lombok.ToString;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
+@ToString
 public class Objective {
-	
+
 	@Id
 	@GeneratedValue
 	private int oid;
-	private String name;
-	private String description;
-	private int difficulty;
-	private boolean isComplete;
+
+	private String name  = "";
+	private String description = "";
+
+	private int difficulty = 5;
+	private boolean isComplete = false;
 
 	
 	@OneToOne
@@ -27,7 +35,6 @@ public class Objective {
 		this.name = name;
 		this.description = description;
 		this.difficulty = difficulty;
-		this.isComplete = false;
 	}
 	
 	public int getOid() {

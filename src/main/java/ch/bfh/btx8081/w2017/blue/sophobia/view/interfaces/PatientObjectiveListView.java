@@ -12,9 +12,9 @@ import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresente
  */
 public interface PatientObjectiveListView {
 	
-	public void fillObjectiveList(ObjectiveList objectiveList);
-	public Objective getSelectedObjective();
-	public void setPresenter(PatientObjectiveListPresenter presenter);
+	void fillObjectiveList(ObjectiveList objectiveList);
+	Objective getSelectedObjective();
+	void setPresenter(PatientObjectiveListPresenter presenter);
 	
 	// Listener for the event handling
 	interface PatientObjectiveListViewListener {
@@ -22,7 +22,7 @@ public interface PatientObjectiveListView {
 		
 	}
 	
-	public void addListener(PatientObjectiveListViewListener listener);
-	public void clearView();
+	void addListener(PatientObjectiveListViewListener listener);
+	void clearView();
 	
 }

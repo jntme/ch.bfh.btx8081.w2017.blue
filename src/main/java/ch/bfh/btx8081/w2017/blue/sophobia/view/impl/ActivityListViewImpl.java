@@ -25,7 +25,7 @@ public class ActivityListViewImpl extends Panel implements ActivityListView, Cli
 	private Button bDelete = new Button(VaadinIcons.PLUS_CIRCLE);
 	private Button bAdd = new Button(VaadinIcons.TRASH);
 	
-	private List<ActivityListViewListener> listeners = new ArrayList<ActivityListViewListener>();
+	private List<ActivityListViewListener> listeners = new ArrayList<>();
 	private Grid<Activity> grid = new Grid<>();
 
 	
@@ -77,6 +77,11 @@ public class ActivityListViewImpl extends Panel implements ActivityListView, Cli
 			listener.buttonClick(event.getButton().getCaption().charAt(0));
 		}
 		
+	}
+
+	@Override
+	public void setIsEnabled(boolean isEnabled) {
+		this.setEnabled(isEnabled);
 	}
 
 }

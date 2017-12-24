@@ -1,16 +1,14 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
+import com.vaadin.data.Binder;
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.TextArea;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.*;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.NavigationUI;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ObjectiveView;
-
-import javax.naming.InitialContext;
 
 /**
  * Implements the GUI elements from the part Objective
@@ -18,47 +16,117 @@ import javax.naming.InitialContext;
  * @author ziegm1
  */
 public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, View {
-    private NavigationUI navUI = null;
+    private NavigationUI navUI;
 
-    private ObjectiveViewListener listener = null;
+    private ObjectiveViewListener presenter;
     private Label lblName = new Label();
-    private Label lblDescritpion = new Label("Beschreibung: ");
-    private TextArea taDescription = new TextArea();
-    final VerticalLayout layout = new VerticalLayout();
-    final HorizontalLayout hLayout = new HorizontalLayout();
+    private final VerticalLayout layout = new VerticalLayout();
     private final ActivityListViewImpl aView = new ActivityListViewImpl();
+
+    private FormLayout form = new FormLayout();
+    private TextField nameTextField = new TextField("Name");
+    private Slider difficultySlider = new Slider("Difficulty");
+    private TextArea descriptionArea = new TextArea("Description");
+
+    private Button saveButton = new Button("Save");
 
     public ObjectiveViewImpl(NavigationUI navUI) {
 
         // the reference back to the navigation to communicate with the other
         // view components
         this.navUI = navUI;
-        this.listener = null;
+        this.presenter = null;
 
         this.addStyleName("containerStyle");
 
         lblName.setStyleName("header");
 
-
         layout.addComponent(lblName);
 
-        hLayout.addComponents(lblDescritpion, taDescription);
-        layout.addComponent(hLayout);
+        setupForm();
+
+        setupSaveButton();
 
         this.addComponent(layout);
         this.addComponent(aView);
     }
 
-    @Override
-    public void setOid(int oid) {
-        // TODO Auto-generated method stub
+    /**
+     * building the form for the objective
+     * with the fields Name, description etc.
+     */
+    private void setupForm() {
 
+        form.setWidth(100.0f, Unit.PERCENTAGE);
+
+        setupNameTextField();
+
+        setupDescriptionArea();
+
+        setupSlider();
+
+        layout.addComponent(form);
+    }
+
+    private void setupNameTextField() {
+        nameTextField.setIcon(VaadinIcons.USER);
+        nameTextField.setRequiredIndicatorVisible(true);
+        nameTextField.setWidth(100.0f, Unit.PERCENTAGE);
+
+        nameTextField.addValueChangeListener(event -> {
+            this.presenter.setObjectiveName(event.getValue());
+            this.lblName.setValue(event.getValue());
+
+            validateForm();
+        });
+
+        form.addComponent(nameTextField);
+    }
+
+    private void setupDescriptionArea() {
+        // the textarea for description
+        descriptionArea.setIcon(VaadinIcons.COMMENT);
+        descriptionArea.setRequiredIndicatorVisible(true);
+        descriptionArea.setWidth(100.0f, Unit.PERCENTAGE);
+
+        descriptionArea.addValueChangeListener(event -> this.presenter.setObjectiveDescription(event.getValue()));
+
+        form.addComponent(descriptionArea);
+    }
+
+
+    private void setupSlider() {
+        difficultySlider.setMin(1);
+        difficultySlider.setMax(10);
+        difficultySlider.setValue(5.0);
+        difficultySlider.setIcon(VaadinIcons.HAMMER);
+        difficultySlider.setWidth(100.0f, Unit.PERCENTAGE);
+        form.addComponent(difficultySlider);
+
+        difficultySlider.addValueChangeListener(event -> this.presenter.setObjectiveDifficulty(event.getValue().intValue()));
+    }
+
+    private void setupSaveButton() {
+
+        saveButton.addClickListener(event -> this.presenter.save());
+
+        layout.addComponent(saveButton);
+        layout.setComponentAlignment(saveButton, Alignment.MIDDLE_RIGHT);
+    }
+
+    // validates the form on empty and wrong occurences
+    private void validateForm() {
+        if (this.nameTextField.getValue().length() >= 1) {
+            saveButton.setEnabled(true);
+        }
+        else {
+            saveButton.setEnabled(false);
+        }
     }
 
     @Override
     public void setDifficulty(int difficulty) {
-        // TODO Auto-generated method stub
-
+        this.difficultySlider.setValue((double) difficulty);
     }
 
     @Override
@@ -70,11 +138,27 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
     @Override
     public void setName(String name) {
         lblName.setValue(name);
+        nameTextField.setValue(name);
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void addedObjective() {
+        this.saveButton.setCaption("Save");
+        this.aView.setEnabled(true);
+
+        navUI.getNavigator().navigateTo(NavigationUI.OBJECTIVEVIEW + "/" +
+                this.presenter.getPatient().getPid() + "/" + this.presenter.getModel().getOid());
+
+        Notification notification = new Notification("New Objective added!", "Successful");
+        notification.show(navUI.getPage());
     }
 
     @Override
     public void setDescription(String description) {
-        taDescription.setValue(description);
+        descriptionArea.setValue(description);
     }
 
     @Override
@@ -88,12 +172,17 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
 
 
             String[] params = parameter.split("/");
+
+            // todo this whole else if needs to be reviewed and rewritten.
             if (params.length != 2) {
                 this.patientAndObjectiveNotFound();
             }
             // if a new objective is getting added
             else if (params[1].equals(NavigationUI.NEW)) {
-                listener.initNewObjective(Integer.parseInt(params[0])); // todo this whole else if needs to be reviewed and rewritten.
+
+                presenter.initNewObjective(Integer.parseInt(params[0]));
+                this.saveButton.setCaption("Add");
+                this.aView.setEnabled(false);
             } else {
                 int pid = -1;
                 int oid = -1;
@@ -105,7 +194,7 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
                     this.patientAndObjectiveNotFound();
                 }
 
-                listener.requestObjectiveWithPatientAndId(pid, oid);
+                presenter.requestObjectiveWithPatientAndId(pid, oid);
             }
         }
     }
@@ -118,13 +207,13 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
     @Override
     public void clearView() {
         lblName.setValue("");
-        taDescription.setValue("");
+        descriptionArea.setValue("");
 
         aView.clearView();
     }
 
     @Override
-    public void setListener(ObjectiveViewListener listener) {
-        this.listener = listener;
+    public void setPresenter(ObjectiveViewListener presenter) {
+        this.presenter = presenter;
     }
 }

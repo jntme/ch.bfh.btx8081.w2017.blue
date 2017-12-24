@@ -6,11 +6,11 @@ import com.vaadin.ui.Image;
 
 public interface PatientContactView {
 	
-	public void setAddress(String city, String street, String zip);
-	public void setBirthdate(Date date);
-	public void setPicture(Image image);
-	public void setName(String name, String prename);
-	public void setGender(String gender);
-	public void clearView();
+	void setAddress(String city, String street, String zip);
+	void setBirthdate(Date date);
+	void setPicture(Image image);
+	void setName(String name, String prename);
+	void setGender(String gender);
+	void clearView();
 
 }

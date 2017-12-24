@@ -26,7 +26,7 @@ public class NoteList {
 	private int nlid;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	private List<Note> notes = new ArrayList<Note>();
+	private List<Note> notes = new ArrayList<>();
 	
 	/**
 	 * Creates a new note.
@@ -34,9 +34,6 @@ public class NoteList {
 	 * Depending on the value of the boolean a different kind of note will be created
 	 * true = DangerNote, false=Note
 	 * Furthermore the Systemtime is captured and saved 
-	 * @param title
-	 * @param content
-	 * @param danger
 	 */
 	public void createNote(String title, String content, boolean danger){		
 		if(danger){
@@ -50,14 +47,11 @@ public class NoteList {
 	
 	/**
 	 * Checks if a given note is a DangerNote and returns a boolean
-	 * @param note
+	 * @param note a note
 	 * @return boolean, true = is a DangerNote
 	 */
 	public boolean isDangerNote(Note note){
-		if (DangerNote.class.isInstance(note))
-			return true;
-		else
-			return false;
+        return DangerNote.class.isInstance(note);
 	}
 
 	public int getNlid() {

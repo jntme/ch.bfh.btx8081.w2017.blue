@@ -16,22 +16,21 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView.Patien
 public interface PatientInfoView {
 	
 	
-	public void setDiagnosis(String diagnosis);
-	public void setDrugs(String drugs);
+	void setDiagnosis(String diagnosis);
+	void setDrugs(String drugs);
 	
 	
 	/**
 	 * Fills the table on the view with the Notes given in the submitted notelist.
-	 * @param noteList
 	 */
-	public void fillNoteList(NoteList noteList);
+    void fillNoteList(NoteList noteList);
 	/**
 	 * returns the Note which is selected by the user
 	 * @return Note
 	 */
-	public Note getSelectedNote();
-	public void addListener(PatientInfoClickListener listener);
-	public void clearView();
+    Note getSelectedNote();
+	void addListener(PatientInfoClickListener listener);
+	void clearView();
 	
 	interface PatientInfoClickListener{
 		/**

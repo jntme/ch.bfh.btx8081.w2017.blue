@@ -9,27 +9,28 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ObjectiveView;
 
 /**
  * Delegates the data from the model to the view
- * 
- * @author ziegm1
  *
+ * @author ziegm1
  */
 public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener {
 
-	private Objective model = null;
-	private ObjectiveView view = null;
-	private Patient patient = null;
+    private Objective model = null;
+    private ObjectiveView view;
+    private Patient patient = null;
+    private boolean isNewObjective = false;
 
-	public ObjectivePresenter(ObjectiveView view) {
-		this.view = view;
-		view.setListener(this);
-	}
+    public ObjectivePresenter(ObjectiveView view) {
+        this.view = view;
+        view.setPresenter(this);
+    }
 
-	public void displayObjective(Objective objective) {
-		this.model = objective;
+    public void setObjective(Objective objective) {
+        this.model = objective;
 
-		view.setName(model.getName());
-		view.setDescription(model.getDescription());
-	}
+        view.setName(model.getName());
+        view.setDescription(model.getDescription());
+        view.setDifficulty(model.getDifficulty());
+    }
 
     /**
      * Requests an Object with a specific id and oid and returns it
@@ -46,7 +47,7 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener {
             List<Objective> objList = this.patient.getObjectiveList().getObjectives();
 
             // look for objective
-            for(Objective obj : objList) {
+            for (Objective obj : objList) {
                 if (obj.getOid() == oid) {
                     objective = obj;
                     break;
@@ -55,7 +56,8 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener {
 
             // if found, display it
             if (objective != null) {
-                this.displayObjective(objective);
+                this.setObjective(objective);
+                this.isNewObjective = false;
                 return; // do not continue, if found & set
             }
         }
@@ -72,7 +74,50 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener {
     @Override
     public void initNewObjective(int pid) {
         this.patient = DB.getPatient(Integer.toString(pid));
+        this.isNewObjective = true;
+        setObjective(new Objective());
+    }
 
-        displayObjective(new Objective());
+    @Override
+    public void setObjectiveName(String value) {
+        this.model.setName(value);
+    }
+
+    @Override
+    public void setObjectiveDescription(String value) {
+        this.model.setDescription(value);
+    }
+
+    @Override
+    public void setObjectiveDifficulty(int value) {
+        this.model.setDifficulty(value);
+    }
+
+    /**
+     * Gets called, if the current state of the objective should be saved (can be new or already existing)
+     */
+    @Override
+    public void save() {
+        if (this.isNewObjective) {
+            this.patient.getObjectiveList().addObjective(this.model);
+            System.out.println("Persisting new Objective: " + this.model.toString());
+            this.patient.persist();
+            this.isNewObjective = false;
+
+            this.view.addedObjective();
+        } else {
+            this.patient.persist();
+            System.out.println("Persisting old objective: " + this.model.toString() + "on patient " + this.patient.toString());
+        }
+    }
+
+    @Override
+    public Objective getModel() {
+       return this.model;
+    }
+
+    @Override
+    public Patient getPatient() {
+        return this.patient;
     }
 }

@@ -16,18 +16,18 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 
 public interface PatientView {
 
-	public void setPresenter(Patient model);
+	void setPresenter(Patient model);
 
-	public void setTitle(String name, String prename);
-	public void setPatient(Patient patient);
+	void setTitle(String name, String prename);
+	void setPatient(Patient patient);
 	
 	// gets triggered, if a patient was required which does not exist
-	public void patientNotFound();
+    void patientNotFound();
 
 	interface PatientViewListener {
-		public void requestPatientWithId(String patientId);
+		void requestPatientWithId(String patientId);
 	}
 	
-	public void setListener(PatientViewListener listener);
-	public void clearView();
+	void setListener(PatientViewListener listener);
+	void clearView();
 }

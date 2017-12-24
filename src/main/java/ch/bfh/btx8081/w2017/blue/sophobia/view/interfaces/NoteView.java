@@ -9,31 +9,31 @@ package ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces;
 
 public interface NoteView {
 	
-	public void setTitle(String title);
-	public String getTitle();
-	public void setContent(String content);
-	public String getNoteContent();
+	void setTitle(String title);
+	String getTitle();
+	void setContent(String content);
+	String getNoteContent();
 	/**
 	 * Enables the checkbox for DangerNote
 	 */
-	public void enableDanger();
-	public void setDanger(boolean danger);
-	public boolean getDanger();
+    void enableDanger();
+	void setDanger(boolean danger);
+	boolean getDanger();
 	/**
 	 * Makes the checkbox to change the active status in a DangerNote visible
 	 */
-	public void enableActive();
-	public void setActive(boolean active);
-	public boolean getActive();
+    void enableActive();
+	void setActive(boolean active);
+	boolean getActive();
 	
-	public void addListener(NoteClickListener listener);
+	void addListener(NoteClickListener listener);
 	
 	interface NoteClickListener{
 		
 		/**
 		 * This method is called when the Save button is pressed
 		 */
-		public void buttonClick();
+        void buttonClick();
 	}
 
 }
