@@ -41,12 +41,17 @@ public class PatientInfoPresenter implements PatientInfoClickListener{
 		} catch (NullPointerException e) {
 			patInfoView.setDrugs("Not available");
 		}
+		try {
+			patInfoView.setPatientHistory(pat.getPatientHistoryList().toString());
+		} catch (NullPointerException e) {
+			patInfoView.setPatientHistory("Not available");
+		}
 		
 		patInfoView.fillNoteList(pat.getNoteList());
 	}
 
 	public void initPatInfoView(){
-		//patInfoView.setDiagnosis(pat.getDiagnosisList().toString());
+		patInfoView.setDiagnosis(pat.getDiagnosisList().toString());
 		patInfoView.setDrugs(pat.getDrugList().toString());
 		patInfoView.fillNoteList(pat.getNoteList());
 	}
