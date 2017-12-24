@@ -18,6 +18,7 @@ public interface PatientInfoView {
 	
 	void setDiagnosis(String diagnosis);
 	void setDrugs(String drugs);
+	public void setPatientHistory(String history);
 	
 	
 	/**
