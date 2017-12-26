@@ -41,11 +41,11 @@ public class PatientInfoPresenter implements PatientInfoClickListener{
 		} catch (NullPointerException e) {
 			patInfoView.setDrugs("Not available");
 		}
-		try {
-			patInfoView.setPatientHistory(pat.getPatientHistoryList().toString());
-		} catch (NullPointerException e) {
-			patInfoView.setPatientHistory("Not available");
-		}
+//		try {
+//		patInfoView.setPatientHistory(pat.getPatientHistoryList().toString());
+//		} catch (NullPointerException e) {
+//			patInfoView.setPatientHistory("Not available");
+//		}
 		
 		patInfoView.fillNoteList(pat.getNoteList());
 	}
@@ -53,7 +53,7 @@ public class PatientInfoPresenter implements PatientInfoClickListener{
 	public void initPatInfoView(){
 		patInfoView.setDiagnosis(pat.getDiagnosisList().toString());
 		patInfoView.setDrugs(pat.getDrugList().toString());
-		patInfoView.setPatientHistory(pat.getPatientHistoryList().toString());
+	//	patInfoView.setPatientHistory(pat.getPatientHistoryList().toString());
 		patInfoView.fillNoteList(pat.getNoteList());
 	}
 
