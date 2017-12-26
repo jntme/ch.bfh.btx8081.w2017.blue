@@ -139,4 +139,9 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 		txaDrugs.setValue("");
 		notes.removeAllColumns();
 	}
+
+	@Override
+	public void setPatientHistory(String history) {
+			txaPatientHistory.setValue(history);
+	}
 }
