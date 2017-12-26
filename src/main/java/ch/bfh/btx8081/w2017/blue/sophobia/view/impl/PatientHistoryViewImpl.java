@@ -13,4 +13,8 @@ public class PatientHistoryViewImpl  extends Window implements PatientHistoryVie
 		
 	}
 
-}
+	
+		
+	}
+
+
