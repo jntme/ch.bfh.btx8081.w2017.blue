@@ -5,16 +5,11 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.vaadin.icons.VaadinIcons;
-import com.vaadin.ui.Button;
+import com.vaadin.ui.*;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
-import com.vaadin.ui.Grid;
 import com.vaadin.ui.Grid.ItemClick;
 import com.vaadin.ui.Grid.SelectionMode;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.Panel;
-import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.components.grid.ItemClickListener;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.NavigationUI;
@@ -62,9 +57,13 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
         hLayout1.addComponents(DISPLAY, btnAdd, btnDelete);
 
         grid.setSelectionMode(SelectionMode.SINGLE);
+        grid.setWidth(100.0f, Unit.PERCENTAGE);
+
+        hLayout2.setWidth(100.0f, Unit.PERCENTAGE);
         hLayout2.addComponent(grid);
         grid.addColumn(Objective::getName).setCaption("Ziel");
-        grid.addColumn(Objective::isComplete).setCaption("Status");
+        grid.addColumn(Objective::getDifficulty).setCaption("Schwierigkeit");
+        grid.addColumn(Objective::getDescription).setCaption("Beschreibung");
 
         grid.addItemClickListener(new ItemClickListener<Objective>() {
             private static final long serialVersionUID = 2068314108919135281L;
@@ -82,6 +81,12 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
             public void buttonClick(ClickEvent event) {
                 navUI.getNavigator().navigateTo(NavigationUI.OBJECTIVEVIEW + "/" + patient.getPid() + "/" + NavigationUI.NEW);
             }
+        });
+
+        btnDelete.addClickListener(event -> {
+            grid.getSelectedItems().forEach(objective -> objective.delete());
+            grid.getSelectedItems().forEach(objective -> grid.getSelectedItems().remove(objective));
+            Notification notification = new Notification("Deleted successful.", "deletion");
         });
 
 

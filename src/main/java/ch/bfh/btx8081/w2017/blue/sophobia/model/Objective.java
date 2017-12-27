@@ -1,17 +1,10 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
-import lombok.ToString;
+import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
 
 @Entity
-@ToString
 public class Objective {
 
 	@Id
@@ -75,6 +68,12 @@ public class Objective {
 	public void setActList(ActivityList actList){
 		this.actList = actList;
 	}
-	
-	
+
+    public void delete() {
+        EntityManager em = DB.getEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        em.getTransaction().begin();
+        em.remove(this);
+        em.getTransaction().commit();
+    }
 }
