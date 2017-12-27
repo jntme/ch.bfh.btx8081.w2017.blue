@@ -59,6 +59,13 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 		acc.addTab(txaDiagnosis, "Diagnosen");
 		acc.addTab(txaDrugs, "Medikation");
 		acc.addTab(noteGrid, "Notizen");
+
+		noteGrid.setSizeFull();
+		notes.setSizeFull();
+		notes.addColumn(Note::getTitle).setCaption("Titel");
+		notes.addColumn(Note::getContent).setCaption("Inhalt");
+		notes.addColumn(Note::getDate).setCaption("Erstellt");
+
 	}
 
 	/**
@@ -90,10 +97,6 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 	@Override
 	public void fillNoteList(NoteList noteList) {
 
-		notes.addColumn(Note::getTitle).setCaption("Titel");
-		notes.addColumn(Note::getContent).setCaption("Inhalt");
-		notes.addColumn(Note::getDate).setCaption("Erstellt");
-
 		notes.setItems(noteList.getNotes());
 
 		notes.setSelectionMode(SelectionMode.SINGLE);
@@ -116,13 +119,18 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 
 	@Override
 	public void buttonClick(com.vaadin.ui.Button.ClickEvent event) {
-		
+
+
 		if(event.getButton().getIcon().equals(VaadinIcons.PLUS_CIRCLE)){
+			// for adding a note
 			listener.buttonClick(1);
 		}
 		else if (event.getButton().getIcon().equals(VaadinIcons.TRASH)){
+			// for deleting a note
 			listener.buttonClick(2);
 		}
+
+        this.notes.clearSortOrder();
 	}
 
 	@Override

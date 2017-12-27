@@ -120,5 +120,4 @@ public class NoteViewImpl extends Window implements NoteView, ClickListener {
 		}
 		this.close();
 	}
-
 }
