@@ -24,7 +24,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListVi
  *
  * @author ziegm1
  */
-public class PatientObjectiveListViewImpl extends Panel implements PatientObjectiveListView, ClickListener {
+public class PatientObjectiveListViewImpl extends Panel implements PatientObjectiveListView {
 
     private NavigationUI navUI = null;
     private Patient patient = null;
@@ -33,7 +33,7 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
     private Button btnDelete;
     private Button btnAdd;
 
-    private List<PatientObjectiveListViewListener> listeners = new ArrayList<PatientObjectiveListViewListener>();
+    private PatientObjectiveListViewListener presenter = null;
     private Grid<Objective> grid = new Grid<>();
     private PatientObjectiveListPresenter patientObjectiveListPresenter;
 
@@ -84,9 +84,12 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
         });
 
         btnDelete.addClickListener(event -> {
-            grid.getSelectedItems().forEach(objective -> objective.delete());
+            grid.getSelectedItems().forEach(objective -> this.presenter.deleteObjective(objective));
             grid.getSelectedItems().forEach(objective -> grid.getSelectedItems().remove(objective));
+            grid.clearSortOrder();
             Notification notification = new Notification("Deleted successful.", "deletion");
+            notification.setDelayMsec(1000);
+            notification.show(navUI.getPage());
         });
 
 
@@ -121,20 +124,8 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
      * Listener for event handling
      */
     @Override
-    public void addListener(PatientObjectiveListViewListener listener) {
-        listeners.add(listener);
-    }
-
-
-    /**
-     * Event handler
-     */
-    @Override
-    public void buttonClick(ClickEvent event) {
-        for (PatientObjectiveListViewListener listener : listeners) {
-            listener.buttonClick(event.getButton().getCaption().charAt(0));
-        }
-
+    public void addListener(PatientObjectiveListViewListener presenter) {
+        this.presenter = presenter;
     }
 
     @Override

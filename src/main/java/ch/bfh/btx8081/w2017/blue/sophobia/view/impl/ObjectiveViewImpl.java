@@ -170,6 +170,7 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
                 this.presenter.getPatient().getPid() + "/" + this.presenter.getModel().getOid());
 
         Notification notification = new Notification("New Objective added!", "Successful");
+        notification.setDelayMsec(1000);
         notification.show(navUI.getPage());
     }
 

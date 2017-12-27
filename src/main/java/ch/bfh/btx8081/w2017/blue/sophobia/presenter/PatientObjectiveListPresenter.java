@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 import com.vaadin.ui.VerticalLayout;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
@@ -35,7 +36,7 @@ public class PatientObjectiveListPresenter implements PatientObjectiveListView.P
 	}
 
 	@Override
-	public void buttonClick(char operation) {
-		// TODO Auto-generated method stub
+	public void deleteObjective(Objective objective) {
+    	this.model.getObjectiveList().removeObjective(objective);
 	}
 }

@@ -54,4 +54,9 @@ public class ObjectiveList {
 	public void addObjective(Objective objective) {
 		this.objectives.add(objective);
 	}
+
+    public void removeObjective(Objective objective) {
+		objectives.remove(objective);
+		objective.delete();
+    }
 }

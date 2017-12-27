@@ -38,9 +38,13 @@ public class ActivityListViewImpl extends Panel implements ActivityListView, Cli
 		vLayout.addComponent(hLayout2);
 		
 		hLayout1.addComponents(header, bAdd, bDelete);
-		
+
 		grid.setSelectionMode(SelectionMode.SINGLE);
+		grid.setWidth(100.0f, Unit.PERCENTAGE);
+
+		hLayout2.setWidth(100.0f, Unit.PERCENTAGE);
 		hLayout2.addComponent(grid);
+
 		grid.addColumn(Activity::getName).setCaption("Aktivität");
 		grid.addColumn(Activity::getDescription).setCaption("Beschreibung");
 		grid.addColumn(Activity::getComplete).setCaption("Status");

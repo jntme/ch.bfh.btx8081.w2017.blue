@@ -18,8 +18,7 @@ public interface PatientObjectiveListView {
 	
 	// Listener for the event handling
 	interface PatientObjectiveListViewListener {
-		void buttonClick(char operation);
-		
+		void deleteObjective(Objective objective);
 	}
 	
 	void addListener(PatientObjectiveListViewListener listener);
