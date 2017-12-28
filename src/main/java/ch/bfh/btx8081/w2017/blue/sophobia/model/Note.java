@@ -46,7 +46,7 @@ public class Note {
 	}
 	public void delete() {
 		EntityManager em = DB.getEntityManager();
-		EntityTransaction trans = em.getTransaction();
+		// not used? EntityTransaction trans = em.getTransaction();
 		em.getTransaction().begin();
 		em.remove(this);
 		em.getTransaction().commit();

@@ -16,7 +16,12 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ObjectiveView;
  * @author ziegm1
  */
 public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, View {
-    private NavigationUI navUI;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 298168717435855242L;
+
+	private NavigationUI navUI;
 
     private ObjectiveViewListener presenter;
     private Label lblName = new Label();

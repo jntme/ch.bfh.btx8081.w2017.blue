@@ -69,6 +69,9 @@ public class PatientInfoPresenter implements PatientInfoClickListener{
 		case 3:
 			openNote();
 			break;
+		default:
+			//do nothing
+			break;
 		}
 	}
 	private void createNote(){

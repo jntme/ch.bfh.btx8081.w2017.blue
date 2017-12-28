@@ -20,6 +20,11 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.SelectPatientView;
 
 public class SelectPatientViewImpl extends VerticalLayout implements SelectPatientView, ClickListener, View {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8987109623796160883L;
+
 	private NavigationUI navUI = null;
 
 	ArrayList<SelectPatientClickListener> listeners = new ArrayList<SelectPatientClickListener>();

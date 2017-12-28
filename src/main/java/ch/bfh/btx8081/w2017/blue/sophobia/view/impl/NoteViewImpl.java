@@ -115,9 +115,12 @@ public class NoteViewImpl extends Window implements NoteView, ClickListener {
 			for(NoteClickListener listener : listeners){
 				listener.buttonClick();
 			}
-		} else if(event.getButton().getIcon().equals(VaadinIcons.CLOSE_BIG)){
+		} 
+		/*
+		 * found by FindBug - does nothing - kybup1 
+		else if(event.getButton().getIcon().equals(VaadinIcons.CLOSE_BIG)){
 			
-		}
+		} */
 		this.close();
 	}
 }

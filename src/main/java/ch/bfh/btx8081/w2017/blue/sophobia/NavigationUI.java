@@ -27,6 +27,8 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.SelectPatientViewImpl;
 @Theme("mytheme")
 public class NavigationUI extends UI {
 
+	private static final long serialVersionUID = -7908495433511088212L;
+
 	private Navigator navigator = null;
 
 	// these strings provide the URI for a configured view
@@ -87,5 +89,10 @@ public class NavigationUI extends UI {
 	@WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
 	@VaadinServletConfiguration(ui = NavigationUI.class, productionMode = false)
 	public static class MyUIServlet extends VaadinServlet {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -9075165526789382344L;
 	}
 }

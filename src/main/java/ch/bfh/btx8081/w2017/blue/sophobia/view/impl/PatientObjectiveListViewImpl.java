@@ -1,15 +1,18 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import com.vaadin.icons.VaadinIcons;
-import com.vaadin.ui.*;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Grid;
 import com.vaadin.ui.Grid.ItemClick;
 import com.vaadin.ui.Grid.SelectionMode;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.Panel;
+import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.components.grid.ItemClickListener;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.NavigationUI;
@@ -42,6 +45,8 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
      */
     public PatientObjectiveListViewImpl(NavigationUI navUI) {
         this.navUI = navUI;
+        
+        // does this make sense? FindBugs - Scariest Treffer
         this.patient = patient;
 
         VerticalLayout vLayout = new VerticalLayout();
@@ -77,7 +82,8 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
         });
 
         btnAdd.addClickListener(new Button.ClickListener() {
-            @Override
+
+			@Override
             public void buttonClick(ClickEvent event) {
                 navUI.getNavigator().navigateTo(NavigationUI.OBJECTIVEVIEW + "/" + patient.getPid() + "/" + NavigationUI.NEW);
             }

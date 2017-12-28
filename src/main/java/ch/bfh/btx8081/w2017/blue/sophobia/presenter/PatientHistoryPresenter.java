@@ -10,7 +10,7 @@ public class PatientHistoryPresenter {
 	 * @author jemal
 	 */
 
-	private ArrayList<String> PatientHistoryList = new ArrayList<>(
+	private ArrayList<String> patientHistoryList = new ArrayList<>(
 			Arrays.asList("12.12.2017: added Medication   sertraline",
 					"10.12.2017 :had  the first cognitive-behavioral therapy (CBT)",     
 					"11.11.2017 :  had diagnosis Examination with  Spitex, Diagnosed with Dression",
@@ -25,16 +25,16 @@ public class PatientHistoryPresenter {
 	 */
 	public ArrayList<String> getPatientHistory(int numElement){
 		Random random = new Random();
-		int sizeArray = PatientHistoryList.size();
+		int sizeArray = patientHistoryList.size();
 
 
-		ArrayList<String> phl = new ArrayList();
+		ArrayList<String> phl = new ArrayList<String>();
 		for(int i = 0; i< numElement;i++){
 			int rdmPhl = random.nextInt(sizeArray);
-			String element = PatientHistoryList.get(rdmPhl);
+			String element = patientHistoryList.get(rdmPhl);
 			phl.add(element);
 		}
-		return PatientHistoryList;
+		return patientHistoryList;
 	}
 /**
  * Displays the list of patient's histories
@@ -52,16 +52,16 @@ public class PatientHistoryPresenter {
 	 */
 	public String toString() {
 		String text0 = "Social Anxiety Disorder A, Persistent Depressive Disorder";
-		String text ="";
-		ArrayList<String> PatientHistoryList = getPatientHistory(1);
+		StringBuffer buf = new StringBuffer();
+		ArrayList<String> patientHistoryList = getPatientHistory(1);
 		
-		for (int i=0; i< PatientHistoryList.size(); i++) {
+		for (int i=0; i< patientHistoryList.size(); i++) {
 			if(i != 0){
-				text += ", ";
+				buf.append(", ");
 			}
-			text += PatientHistoryList.get(i);
+			buf.append(patientHistoryList.get(i));
 		}
-		return text0 + "," +text ;
+		return text0 + "," + buf.toString();
 	}
 
 }

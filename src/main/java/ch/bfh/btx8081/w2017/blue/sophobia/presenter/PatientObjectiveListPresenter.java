@@ -1,17 +1,7 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-
-import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
-import com.vaadin.ui.VerticalLayout;
-
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
-import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
-import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.ObjectiveViewImpl;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListView;
 
 /**
@@ -26,7 +16,6 @@ public class PatientObjectiveListPresenter implements PatientObjectiveListView.P
 
     public PatientObjectiveListPresenter(Patient model, PatientObjectiveListView view) {
 		this.view = view;
-
         this.model = model;
 
 		view.fillObjectiveList(model.getObjectiveList());

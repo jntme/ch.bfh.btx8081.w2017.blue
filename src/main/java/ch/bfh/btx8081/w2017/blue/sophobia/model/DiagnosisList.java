@@ -37,7 +37,7 @@ public class DiagnosisList {
 		int sizeArray = diagnosisList.size();
 
 
-		ArrayList<String> arl = new ArrayList();
+		ArrayList<String> arl = new ArrayList<String>();
 		for(int i = 0; i< numElement;i++){
 			int randNum = random.nextInt(sizeArray);
 			String element = diagnosisList.get(randNum);
@@ -61,16 +61,16 @@ public class DiagnosisList {
 	 */
 	public String toString() {
 		String text0 = "Social Anxiety Disorder A, Persistent Depressive Disorder";
-		String text ="";
+		StringBuffer buf = new StringBuffer();
 		ArrayList<String> diagnosisList = getDiagnosisList(1);
 		
 		for (int i=0; i< diagnosisList.size(); i++) {
 			if(i != 0){
-				text += ", ";
+				buf.append(", ");
 			}
-			text += diagnosisList.get(i);
+			buf.append(diagnosisList.get(i));
 		}
-		return text0 + "," +text ;
+		return text0 + "," + buf.toString();
 	}
 
 }

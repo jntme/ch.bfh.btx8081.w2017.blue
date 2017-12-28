@@ -22,14 +22,18 @@ import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresente
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
 
 public class PatientViewImpl extends VerticalLayout implements PatientView, View {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2452620374969048563L;
 	private NavigationUI navUI = null;
 	private PatientViewListener listener = null;
 	private Patient patient = null;
 
 	private Label lblTitle = new Label("");
 	private Button btnShowContact = new Button(VaadinIcons.INFO_CIRCLE);
-	
-	//todo: naming should be specific and clear!
+
+	// todo: naming should be specific and clear!
 	private PatientObjectiveListViewImpl oView;
 	private PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
 	private PatientContactViewImpl pContactView = new PatientContactViewImpl();
@@ -43,7 +47,7 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 
 		this.oView = new PatientObjectiveListViewImpl(navUI);
 
-		this.addStyleName("containerStyle"); 
+		this.addStyleName("containerStyle");
 
 		lblTitle.setStyleName("header");
 
@@ -76,7 +80,7 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 	public void setPresenter(Patient model) {
 		new PatientInfoPresenter(model, pInfoView);
 		new PatientContactPresenter(model, pContactView);
-        new PatientObjectiveListPresenter(model, oView);
+		new PatientObjectiveListPresenter(model, oView);
 	}
 
 	@Override
@@ -103,7 +107,7 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 	public void patientNotFound() {
 		this.navUI.getNavigator().navigateTo(NavigationUI.SELECTPATIENTVIEW);
 	}
-	
+
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 		this.oView.setPatient(patient);
@@ -115,9 +119,9 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 	@Override
 	public void clearView() {
 
-	    this.lblTitle.setValue("");
-	    this.oView.clearView();
-	    this.pInfoView.clearView();
-//	    this.pContactView.clearView();
+		this.lblTitle.setValue("");
+		this.oView.clearView();
+		this.pInfoView.clearView();
+		// this.pContactView.clearView();
 	}
 }
