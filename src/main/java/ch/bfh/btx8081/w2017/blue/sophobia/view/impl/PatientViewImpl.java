@@ -47,9 +47,8 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 
 		this.oView = new PatientObjectiveListViewImpl(navUI);
 
-		this.addStyleName("containerStyle");
-
 		lblTitle.setStyleName("header");
+		this.addStyleName("noPadding");
 
 		gridLayout.setSpacing(true);
 

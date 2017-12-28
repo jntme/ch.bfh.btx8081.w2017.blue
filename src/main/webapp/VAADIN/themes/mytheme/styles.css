@@ -14794,13 +14794,14 @@ body {
 	border-width: 20px;
 	border-style: groove;
 	top: 5px;
+	height: auto !important;
 }
 
 .mytheme .v-label-header {
 	font-size: 50px;
 }
 
-.mytheme .v-verticallayout-noPadding {
+.mytheme .noPadding {
 	padding: 0 !important;
 }
 

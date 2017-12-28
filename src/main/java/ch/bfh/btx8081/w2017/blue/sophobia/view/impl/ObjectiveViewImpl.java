@@ -25,7 +25,6 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
 
     private ObjectiveViewListener presenter;
     private Label lblName = new Label();
-    private final VerticalLayout layout = new VerticalLayout();
     private final ActivityListViewImpl aView = new ActivityListViewImpl();
 
     private FormLayout form = new FormLayout();
@@ -42,17 +41,15 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
         this.navUI = navUI;
         this.presenter = null;
 
-        this.addStyleName("containerStyle");
-
         lblName.setStyleName("header");
+        this.addStyleName("noPadding");
 
-        layout.addComponent(lblName);
+        this.addComponent(lblName);
 
         setupForm();
 
         setupSaveButton();
 
-        this.addComponent(layout);
         this.addComponent(aView);
     }
 
@@ -70,7 +67,7 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
 
         setupSlider();
 
-        layout.addComponent(form);
+        this.addComponent(form);
     }
 
     private void setupNameTextField() {
@@ -115,8 +112,8 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
 
         saveButton.addClickListener(event -> this.presenter.save());
 
-        layout.addComponent(saveButton);
-        layout.setComponentAlignment(saveButton, Alignment.MIDDLE_RIGHT);
+        this.addComponent(saveButton);
+        this.setComponentAlignment(saveButton, Alignment.MIDDLE_RIGHT);
     }
 
     // validates the form on empty and wrong occurences

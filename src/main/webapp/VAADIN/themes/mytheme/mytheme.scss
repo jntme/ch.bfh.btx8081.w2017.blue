@@ -52,6 +52,7 @@ body {
 	border-width: 20px;
 	border-style: groove;
 	top: 5px;
+	height: auto !important;
 	
 }
 
@@ -59,7 +60,7 @@ body {
  	font-size: 50px;
  	}
  
- .v-verticallayout-noPadding {
+ .noPadding {
 	padding: 0 !important;
 }
 
