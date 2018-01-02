@@ -2,7 +2,6 @@ package ch.bfh.btx8081.w2017.blue.sophobia;
 
 import javax.servlet.annotation.WebServlet;
 
-import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.icons.VaadinIcons;
@@ -10,14 +9,16 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ActivityPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ObjectivePresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.SelectPatientPresenter;
+import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.ActivityViewImpl;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.ObjectiveViewImpl;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientViewImpl;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.SelectPatientViewImpl;
@@ -45,6 +46,7 @@ public class NavigationUI extends UI {
 	public static final String SELECTPATIENTVIEW = "selectPatient";
 	public static final String PATIENTVIEW = "patient";
 	public static final String OBJECTIVEVIEW = "objective";
+	public static final String ACTIVITYVIEW = "activity";
 
 	// these strings are for special navigation purposes
 	public static final String NEW = "new";
@@ -52,6 +54,7 @@ public class NavigationUI extends UI {
 	private SelectPatientPresenter selectPatientPresenter = null;
 	private PatientPresenter patientPresenter = null;
 	private ObjectivePresenter objPresenter = null;
+	private ActivityPresenter actPresenter = null;
 
 	protected void init(VaadinRequest vaadinRequest) {
 		
@@ -90,6 +93,10 @@ public class NavigationUI extends UI {
 		this.objPresenter = new ObjectivePresenter(objViewImpl);
 		navigator.addView(OBJECTIVEVIEW, objViewImpl);
 		
+		ActivityViewImpl actViewImpl = new ActivityViewImpl(this);
+		this.actPresenter = new ActivityPresenter(actViewImpl);
+		navigator.addView(ACTIVITYVIEW, actViewImpl);
+		
 		
 		this.btnHome.addClickListener(new ClickListener() {
 			private static final long serialVersionUID = -6917620301709928610L;
@@ -115,6 +122,10 @@ public class NavigationUI extends UI {
 
 	public ObjectivePresenter getObjPresenter() {
 		return objPresenter;
+	}
+	
+	public ActivityPresenter getActPresenter() {
+		return actPresenter;
 	}
 
 	@WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

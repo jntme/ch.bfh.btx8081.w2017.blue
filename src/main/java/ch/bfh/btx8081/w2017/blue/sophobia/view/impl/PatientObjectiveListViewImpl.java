@@ -46,9 +46,6 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
     public PatientObjectiveListViewImpl(NavigationUI navUI) {
         this.navUI = navUI;
         
-        // does this make sense? FindBugs - Scariest Treffer
-        this.patient = patient;
-
         VerticalLayout vLayout = new VerticalLayout();
         HorizontalLayout hLayout1 = new HorizontalLayout();
         HorizontalLayout hLayout2 = new HorizontalLayout();

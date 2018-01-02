@@ -2,7 +2,6 @@ package ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
-import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ObjectivePresenter;
 
 /**
  * Defines the behavior of the Objective
@@ -37,4 +36,5 @@ public interface ObjectiveView {
 	void setPresenter(ObjectiveViewListener presenter);
 	void patientAndObjectiveNotFound();
 	void clearView();
+	void sendToActivityList(Patient patient, Objective model);
 }

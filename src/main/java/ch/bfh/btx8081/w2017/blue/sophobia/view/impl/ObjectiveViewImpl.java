@@ -15,6 +15,7 @@ import com.vaadin.ui.VerticalLayout;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.NavigationUI;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ActivityListPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ObjectiveView;
 
@@ -33,7 +34,7 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
 
     private ObjectiveViewListener presenter;
     private Label lblName = new Label();
-    private final ActivityListViewImpl aView = new ActivityListViewImpl();
+    private final ActivityListViewImpl aView;
 
     private FormLayout form = new FormLayout();
     private TextField nameTextField = new TextField("Name");
@@ -48,6 +49,7 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
         // view components
         this.navUI = navUI;
         this.presenter = null;
+        this.aView = new ActivityListViewImpl(navUI);
         
         lblName.setStyleName("header");
         this.addStyleName("noPadding");
@@ -249,6 +251,13 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
 	public void setSubPresenter(Objective model) {
 
 		   new ActivityListPresenter(model, aView);
+		
+	}
+
+	@Override
+	public void sendToActivityList(Patient patient, Objective model) {
+
+		this.aView.setPatientAndObjective(patient, model);
 		
 	}
 }
