@@ -2,6 +2,7 @@ package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
 import java.util.List;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
@@ -18,6 +19,7 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener {
 	private ObjectiveView view;
 	private Patient patient = null;
 	private boolean isNewObjective = false;
+	private ActivityList actList;
 
 	public ObjectivePresenter(ObjectiveView view) {
 		this.view = view;
@@ -83,7 +85,10 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener {
 	public void initNewObjective(int pid) {
 		this.patient = DB.getPatient(Integer.toString(pid));
 		this.isNewObjective = true;
-		setObjective(new Objective());
+		ActivityList actList = new ActivityList();
+		Objective newObj = new Objective();
+		newObj.setActList(actList);
+		setObjective(newObj);
 	}
 
 	@Override

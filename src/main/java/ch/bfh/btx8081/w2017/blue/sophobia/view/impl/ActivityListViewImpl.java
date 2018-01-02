@@ -106,14 +106,6 @@ public class ActivityListViewImpl extends Panel implements ActivityListView, Cli
 
 	}
 
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-	}
-
-	public void setObjective(Objective objective) {
-		this.objective = objective;
-	}
-
 	@Override
 	public void setIsEnabled(boolean isEnabled) {
 		this.setEnabled(isEnabled);
