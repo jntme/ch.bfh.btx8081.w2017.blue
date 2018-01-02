@@ -22,8 +22,8 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ActivityListView;
 public class ActivityListViewImpl extends Panel implements ActivityListView, ClickListener {
 	
 	private final Label header = new Label("Aktivitäten");
-	private Button bDelete = new Button(VaadinIcons.PLUS_CIRCLE);
-	private Button bAdd = new Button(VaadinIcons.TRASH);
+	private Button bAdd = new Button(VaadinIcons.PLUS_CIRCLE);
+	private Button bDelete = new Button(VaadinIcons.TRASH);
 	
 	private List<ActivityListViewListener> listeners = new ArrayList<>();
 	private Grid<Activity> grid = new Grid<>();
