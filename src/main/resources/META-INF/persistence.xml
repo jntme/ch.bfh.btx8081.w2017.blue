@@ -11,6 +11,8 @@
 		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.DiagnosisList</class>
 		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityList</class>
 		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.Activity</class>
+		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityRecordList</class>
+		<class>ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityRecord</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://147.87.116.213:5432/Sophobia2"/>
 			<property name="javax.persistence.jdbc.user" value="Studierende"/>

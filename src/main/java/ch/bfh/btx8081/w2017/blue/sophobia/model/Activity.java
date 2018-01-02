@@ -22,6 +22,9 @@ public class Activity {
 	private String description;
 	private boolean isComplete;
 
+//	@OneToOne
+//	private ActivityRecordList activityRecordList;
+	
 	public Activity() {
 
 	}
@@ -63,5 +66,14 @@ public class Activity {
 	public void setComplete(boolean isComplete) {
 		this.isComplete = isComplete;
 	}
+	
+	
+//	public ActivityRecordList getActivityRecordList() {
+//		return activityRecordList;
+//	}
+//	
+//	public void setActivityRecordList(ActivityRecordList activityRecordList) {
+//		this.activityRecordList = activityRecordList;
+//	}
 
 }
