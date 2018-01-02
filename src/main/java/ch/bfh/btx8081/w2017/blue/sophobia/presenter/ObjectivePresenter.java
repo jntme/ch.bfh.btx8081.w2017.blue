@@ -30,6 +30,8 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener {
         view.setName(model.getName());
         view.setDescription(model.getDescription());
         view.setDifficulty(model.getDifficulty());
+        view.setSubPresenter(model);
+        
     }
 
     /**

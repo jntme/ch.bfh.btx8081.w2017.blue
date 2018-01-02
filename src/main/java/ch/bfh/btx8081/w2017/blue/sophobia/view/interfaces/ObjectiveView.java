@@ -14,6 +14,7 @@ public interface ObjectiveView {
 	void setDescription(String description);
 	void setDifficulty(int difficulty);
 	void setIscomplete(String isComplete);
+	void setSubPresenter(Objective model);
 	void setName(String name);
 
     void addedObjective();

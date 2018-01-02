@@ -1,13 +1,21 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
-import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
-import com.vaadin.data.Binder;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
-import com.vaadin.ui.*;
+import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.FormLayout;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.Slider;
+import com.vaadin.ui.TextArea;
+import com.vaadin.ui.TextField;
+import com.vaadin.ui.VerticalLayout;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.NavigationUI;
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
+import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ActivityListPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ObjectiveView;
 
 /**
@@ -40,7 +48,7 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
         // view components
         this.navUI = navUI;
         this.presenter = null;
-
+        
         lblName.setStyleName("header");
         this.addStyleName("noPadding");
 
@@ -236,4 +244,11 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
     public void setPresenter(ObjectiveViewListener presenter) {
         this.presenter = presenter;
     }
+
+	@Override
+	public void setSubPresenter(Objective model) {
+
+		   new ActivityListPresenter(model, aView);
+		
+	}
 }

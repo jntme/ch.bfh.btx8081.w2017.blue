@@ -1,4 +1,7 @@
 drop table patient;
+drop table activityrecordlist_activityrecord;
+drop table activityrecordlist;
+drop table activityrecord;
 drop table activitylist_activity;
 drop table activity;
 drop table diagnosislist;

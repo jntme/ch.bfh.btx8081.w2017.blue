@@ -76,7 +76,7 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 	}
 
 	@Override
-	public void setPresenter(Patient model) {
+	public void setSubPresenter(Patient model) {
 		new PatientInfoPresenter(model, pInfoView);
 		new PatientContactPresenter(model, pContactView);
 		new PatientObjectiveListPresenter(model, oView);

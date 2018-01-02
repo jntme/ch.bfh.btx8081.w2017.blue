@@ -16,7 +16,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 
 public interface PatientView {
 
-	void setPresenter(Patient model);
+	void setSubPresenter(Patient model);
 
 	void setTitle(String name, String prename);
 	void setPatient(Patient patient);

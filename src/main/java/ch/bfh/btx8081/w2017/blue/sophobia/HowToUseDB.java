@@ -123,8 +123,8 @@ public class HowToUseDB {
 			babbel.setNoteList(notel);
 			
 			ObjectiveList objl = new ObjectiveList();
-			objl.createObj("Einkaufen", "Kann alleine Einkaufen gehen", 9001);
-			objl.createObj("Aufräumen", "Kann Wohnung alleine sauber halten.", 10000);
+			objl.createObj("Einkaufen", "Kann alleine Einkaufen gehen", 9);
+			objl.createObj("Aufräumen", "Kann Wohnung alleine sauber halten.", 10);
 			
 			//WORKAROUND!!!!!!
 //			List<Objective> tryHard2 = objl.getObjectives();
@@ -135,9 +135,19 @@ public class HowToUseDB {
 			
 			babbel.setObjectiveList(objl);
 			
-			ActivityList actl = new ActivityList();
-			actl.createAct("Peinliche Situation", "Wasserglas im Restaurant umschütten");
-			actl.createAct("Fragen", "Nach einer anderen Schuhgrösse im Shop fragen");
+			ActivityList actl1 = new ActivityList();
+			
+			actl1.createAct("Peinliche Situation", "Wasserglas im Restaurant umschütten");
+			actl1.createAct("Fragen", "Nach einer anderen Schuhgrösse im Shop fragen");
+			
+			objl.getObjectives().get(0).setActList(actl1);
+			
+			ActivityList actl2 = new ActivityList();
+			
+			actl2.createAct("Irgwass machen", "MACH WAS!!!!!!");
+			actl2.createAct("Test", "Dies ist ein Test");
+			
+			objl.getObjectives().get(1).setActList(actl2);
 			
 			//babbel.setActivityList(actl);
 			

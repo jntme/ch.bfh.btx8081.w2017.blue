@@ -18,7 +18,7 @@ public class Objective {
 	private boolean isComplete = false;
 
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private  ActivityList actList;
 	
 	public Objective(){

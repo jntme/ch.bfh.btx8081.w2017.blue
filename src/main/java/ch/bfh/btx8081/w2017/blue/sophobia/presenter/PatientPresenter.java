@@ -31,7 +31,7 @@ public class PatientPresenter implements PatientView.PatientViewListener{
 
 		//view.setPicture(model.getPicture());
 		
-		view.setPresenter(model);
+		view.setSubPresenter(model);
 	}
 
 	@Override
