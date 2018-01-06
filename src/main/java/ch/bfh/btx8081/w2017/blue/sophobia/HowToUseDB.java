@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -149,11 +150,16 @@ public class HowToUseDB {
 			
 			objl.getObjectives().get(1).setActList(actl2);
 			
+			
 			ActivityRecordList actRecList1 = new ActivityRecordList();
-			actRecList1.createActivityRecord(new Date(), 5, "Als wir heute im Shop waren, getraute sich der Patient nach einer anderen Schuhgrösse zu fragen");
+			
+			Instant instant1 = Instant.parse("2017-12-03T10:15:30.00Z");
+			actRecList1.createActivityRecord(Date.from(instant1), 2, "Tim konnte nicht nachfragen, er musste den Shop verlassen");
+			
+			Instant instant2 = Instant.parse("2017-12-10T10:15:30.00Z");
+			actRecList1.createActivityRecord(Date.from(instant2), 5, "Als wir heute im Shop waren, getraute sich Tim nach einer anderen Schuhgrösse zu fragen");
+			
 			actl1.getActivities().get(1).setActRecList(actRecList1);
-			
-			
 			
 			babbel.persist();
 
