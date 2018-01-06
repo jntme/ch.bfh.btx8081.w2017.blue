@@ -1,6 +1,8 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Activity;
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 
 public interface ActivityView {
 	
@@ -17,4 +19,5 @@ public interface ActivityView {
 	void setPresenter(ActivityViewListener presenter);
 	void patientAndObjectiveNotFound();
 
+	void sendToActivityRecordList(Patient patient, Objective model, Activity activity);
 }

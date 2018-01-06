@@ -13,17 +13,24 @@ import com.vaadin.ui.VerticalLayout;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.NavigationUI;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Activity;
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
+import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ActivityRecordListPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ActivityView;
 
 public class ActivityViewImpl extends VerticalLayout implements ActivityView, View {
 	private static final long serialVersionUID = 5021837901974634127L;
 	
 	private NavigationUI navUI;
+	
 	private ActivityViewListener presenter;
 	private Label lblName = new Label();
+	private final ActivityRecordListViewImpl aView;
+	
 	private FormLayout form = new FormLayout();
 	private TextField nameTextField = new TextField("Name");
 	private TextArea descriptionArea = new TextArea("Description");
+	
 	private Button saveButton = new Button("Save");
 
 	public ActivityViewImpl(NavigationUI navUI) {
@@ -32,6 +39,7 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
 		// view components
 		this.navUI = navUI;
 		this.presenter = null;
+		this.aView = new ActivityRecordListViewImpl(navUI);
 
 		lblName.setStyleName("header");
 		this.addStyleName("noPadding");
@@ -52,6 +60,8 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
 		this.addComponent(form);
 		this.addComponent(saveButton);
 		this.setComponentAlignment(saveButton, Alignment.MIDDLE_RIGHT);
+		
+		this.addComponent(aView);
 	}
 
 	@Override
@@ -67,8 +77,7 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
 
 	@Override
 	public void setSubPresenter(Activity model) {
-		// TODO Auto-generated method stub
-
+		new ActivityRecordListPresenter(model, aView);
 	}
 
 	@Override
@@ -80,7 +89,6 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
 	@Override
 	public void clearView() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -125,6 +133,13 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
 	public void setPresenter(ActivityViewListener presenter) {
 		this.presenter = presenter;
 
+	}
+	
+	@Override
+	public void sendToActivityRecordList(Patient patient, Objective model, Activity activity) {
+
+		this.aView.setPatientAndObjectiveAndActivity(patient, model, activity);
+		
 	}
 
 }

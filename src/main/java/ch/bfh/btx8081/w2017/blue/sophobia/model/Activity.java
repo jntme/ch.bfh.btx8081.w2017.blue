@@ -1,9 +1,11 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  * The class Activity 
@@ -22,8 +24,8 @@ public class Activity {
 	private String description;
 	private boolean isComplete;
 
-//	@OneToOne
-//	private ActivityRecordList activityRecordList;
+	@OneToOne(cascade = CascadeType.ALL)
+	private ActivityRecordList activityRecordList;
 	
 	public Activity() {
 
@@ -68,12 +70,12 @@ public class Activity {
 	}
 	
 	
-//	public ActivityRecordList getActivityRecordList() {
-//		return activityRecordList;
-//	}
-//	
-//	public void setActivityRecordList(ActivityRecordList activityRecordList) {
-//		this.activityRecordList = activityRecordList;
-//	}
+	public ActivityRecordList getActRecList() {
+		return activityRecordList;
+	}
+	
+	public void setActRecList(ActivityRecordList activityRecordList) {
+		this.activityRecordList = activityRecordList;
+	}
 
 }

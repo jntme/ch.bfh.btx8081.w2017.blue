@@ -3,6 +3,7 @@ package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 import java.util.List;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Activity;
+import ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityRecordList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
@@ -14,6 +15,7 @@ public class ActivityPresenter implements ActivityView.ActivityViewListener{
     private ActivityView view;
     private Patient patient = null;
     private boolean isNewActivity = false;
+    private ActivityRecordList actRecList;
 	
     public ActivityPresenter(ActivityView view) {
         this.view = view;

@@ -17,6 +17,7 @@ import javax.persistence.Query;
 import com.vaadin.server.VaadinService;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityList;
+import ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityRecordList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.DiagnosisList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.DrugList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList;
@@ -148,15 +149,12 @@ public class HowToUseDB {
 			
 			objl.getObjectives().get(1).setActList(actl2);
 			
-			//babbel.setActivityList(actl);
+			ActivityRecordList actRecList1 = new ActivityRecordList();
+			actRecList1.createActivityRecord(new Date(), 5, "Als wir heute im Shop waren, getraute sich der Patient nach einer anderen Schuhgrösse zu fragen");
+			actl1.getActivities().get(1).setActRecList(actRecList1);
 			
-			//Objective obj = new Objective();
-			//obj.setActList(actl);
-			//objl.getOlid();
 			
-//			ActivityRecordList actRecList = new ActivityRecordList();
-//			actRecList.createActivityRecord(, 5);
-
+			
 			babbel.persist();
 
 			Patient vader = new Patient();
