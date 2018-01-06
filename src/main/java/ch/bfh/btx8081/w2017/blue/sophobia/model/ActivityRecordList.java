@@ -32,9 +32,10 @@ public class ActivityRecordList {
 	 * Creates a new activity record in this list
 	 * @param date
 	 * @param success
+	 * @param description
 	 */
-	public void createActivityRecord(Date date, int success) {
-		ActivityRecord activityRecord = new ActivityRecord(date, success);
+	public void createActivityRecord(Date date, int success, String description) {
+		ActivityRecord activityRecord = new ActivityRecord(date, success, description);
 		
 		activityRecords.add(activityRecord);
 	}

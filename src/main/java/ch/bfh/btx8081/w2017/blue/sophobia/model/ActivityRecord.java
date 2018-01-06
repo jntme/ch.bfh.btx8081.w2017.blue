@@ -28,14 +28,16 @@ public class ActivityRecord {
 	private Date date;
 	
 	private int success;
+	private String description;
 	
 	public ActivityRecord() {
 		
 	}
 	
-	public ActivityRecord(Date date, int success) {
+	public ActivityRecord(Date date, int success, String description) {
 		this.date = date;
 		this.success = success;
+		this.description = description;
 	}
 	
 	public int getArId() {
@@ -62,11 +64,21 @@ public class ActivityRecord {
 		this.success = success;
 	}
 	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	public void delete() {
 		EntityManager em = DB.getEntityManager();
 		em.getTransaction().begin();
 		em.remove(this);
 		em.getTransaction().commit();
 	}
+
+	
 	
 }

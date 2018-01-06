@@ -20,7 +20,6 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.DiagnosisList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.DrugList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList;
-import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
@@ -154,6 +153,9 @@ public class HowToUseDB {
 			//Objective obj = new Objective();
 			//obj.setActList(actl);
 			//objl.getOlid();
+			
+//			ActivityRecordList actRecList = new ActivityRecordList();
+//			actRecList.createActivityRecord(, 5);
 
 			babbel.persist();
 
