@@ -14,11 +14,14 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Grid;
+import com.vaadin.ui.Grid.ItemClick;
 import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.components.grid.ItemClickListener;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.NavigationUI;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Activity;
@@ -26,6 +29,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityRecord;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityRecordList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
+import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ActivityRecordListPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ActivityRecordListView;
 
 /**
@@ -41,9 +45,11 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
 	private Button bAdd = new Button(VaadinIcons.PLUS_CIRCLE);
 	private Button bDelete = new Button(VaadinIcons.TRASH);
 
+	private ActivityRecordListViewListener presenter = null;
 	private List<ActivityRecordListViewListener> listeners = new ArrayList<>();
 	private Grid<ActivityRecord> grid = new Grid<>();
-
+	private ActivityRecordListPresenter activityRecordListPresenter;
+	
 	private Patient patient = null;
 	private Objective objective = null;
 	private Activity activity = null;
@@ -74,17 +80,28 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
 		grid.addColumn(activityRecordDate).setCaption("Datum");
 		grid.addColumn(ActivityRecord::getSuccess).setCaption("Erfolg");
 
-		// Vorbereitung für Phil
-//		grid.addItemClickListener(new ItemClickListener<ActivityRecord>() {
-//			private static final long serialVersionUID = -9107765887521817876L;
-//
-//			public void itemClick(ItemClick<ActivityRecord> event) {
+		
+		grid.addItemClickListener(new ItemClickListener<ActivityRecord>() {
+			private static final long serialVersionUID = -9107765887521817876L;
+
+			public void itemClick(ItemClick<ActivityRecord> event) {
 //				if (event.getMouseEventDetails().isDoubleClick()) {
 //					navUI.getNavigator().navigateTo(NavigationUI.ACTIVITYRECORDVIEW + "/" + patient.getPid() + "/" + objective.getOid() + "/" + activity.getAid() + "/" + event.getItem().getArId());
 //				}
-//			}
-//		});
+			}
+		});
 
+		
+		bDelete.addClickListener(event -> {
+            grid.getSelectedItems().forEach(activityRecord -> this.presenter.deleteActivityRecord(activityRecord));
+            grid.getSelectedItems().forEach(activityRecord -> grid.getSelectedItems().remove(activityRecord));
+            grid.clearSortOrder();
+            Notification notification = new Notification("Deleted successful.", "deletion");
+            notification.setDelayMsec(1000);
+            notification.show(navUI.getPage());
+        });
+		
+		
 		this.setContent(vLayout);
 
 	}
@@ -107,23 +124,27 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
 	}
 
 	@Override
-	public void addListener(ActivityRecordListViewListener listener) {
-		listeners.add(listener);
-
+	public void addListener(ActivityRecordListViewListener presenter) {
+		this.presenter = presenter;
 	}
 
+	@Override
+	public void setPresenter(ActivityRecordListPresenter presenter) {
+		activityRecordListPresenter = presenter;
+	}
+	
 	@Override
 	public void buttonClick(ClickEvent event) {
-		for (ActivityRecordListViewListener listener : listeners) {
-			listener.buttonClick(event.getButton().getCaption().charAt(0));
-		}
+//		for (ActivityRecordListViewListener listener : listeners) {
+//			listener.buttonClick(event.getButton().getCaption().charAt(0));
+//		}
 
 	}
 
-	@Override
-	public void setIsEnabled(boolean isEnabled) {
-		this.setEnabled(isEnabled);
-	}
+//	@Override
+//	public void setIsEnabled(boolean isEnabled) {
+//		this.setEnabled(isEnabled);
+//	}
 
 	public void setPatientAndObjectiveAndActivity(Patient patient, Objective model, Activity activity) {
 		this.patient = patient;
@@ -131,4 +152,5 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
 		this.activity = activity;
 	}
 
+	
 }
