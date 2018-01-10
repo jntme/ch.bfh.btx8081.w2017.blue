@@ -15,6 +15,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 
@@ -39,8 +40,8 @@ public class Patient implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL)
 	private DiagnosisList diagnosisList;
 	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	private PatientHistoryList patientHistoryList;
+	@Transient
+	private PatientHistory history = new PatientHistory();
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private DrugList drugList = new DrugList();
@@ -149,13 +150,13 @@ public class Patient implements Serializable {
 	public void setDiagnosisList(DiagnosisList diagnosisList) {
 		this.diagnosisList = diagnosisList;
 	}
-//	public PatientHistoryList getPatientHistoryList() {
-//		return patientHistoryList;
-//	}
+	public PatientHistory getHistory() {
+		return history;
+	}
 
-//	public void setPatientHistory(PatientHistoryList history) {
-//		this.patientHistoryList = history;
-//	}
+	public void setHistory(PatientHistory history) {
+		this.history = history;
+	}
 
 	public DrugList getDrugList() {
 		return drugList;

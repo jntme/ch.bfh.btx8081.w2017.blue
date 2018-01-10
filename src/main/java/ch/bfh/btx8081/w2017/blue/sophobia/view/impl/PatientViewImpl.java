@@ -17,6 +17,7 @@ import com.vaadin.ui.VerticalLayout;
 import ch.bfh.btx8081.w2017.blue.sophobia.NavigationUI;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientContactPresenter;
+import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientHistoryPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientInfoPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
@@ -35,6 +36,7 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 
 	// todo: naming should be specific and clear!
 	private PatientObjectiveListViewImpl oView;
+	private PatientHistoryViewImpl pHistory = new PatientHistoryViewImpl();
 	private PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
 	private PatientContactViewImpl pContactView = new PatientContactViewImpl();
 	private GridLayout gridLayout = new GridLayout(5, 6);
@@ -71,12 +73,14 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 		gridLayout.setComponentAlignment(btnShowContact, Alignment.MIDDLE_CENTER);
 
 		this.addComponent(gridLayout);
+		this.addComponent(pHistory);
 		this.addComponent(pInfoView);
 		this.addComponent(oView);
 	}
 
 	@Override
 	public void setSubPresenter(Patient model) {
+		new PatientHistoryPresenter(model, pHistory);
 		new PatientInfoPresenter(model, pInfoView);
 		new PatientContactPresenter(model, pContactView);
 		new PatientObjectiveListPresenter(model, oView);
@@ -120,6 +124,7 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 
 		this.lblTitle.setValue("");
 		this.oView.clearView();
+		this.pHistory.clearView();
 		this.pInfoView.clearView();
 		// this.pContactView.clearView();
 	}

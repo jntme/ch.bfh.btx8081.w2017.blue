@@ -28,10 +28,17 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView;
  * @author kybup1
  *
  */
+
 public class PatientInfoViewImpl extends CustomComponent implements PatientInfoView, ClickListener, ItemClickListener<Note>{
+	
 	private Accordion acc = new Accordion();
-	private GridLayout noteGrid = new GridLayout(3, 2);
-	private TextArea txaPatientHistory = new TextArea();// Patient History intended to impart here
+	
+	//private Accordion accP = new Accordion();
+	
+	
+	
+	
+	private GridLayout noteGrid = new GridLayout(4, 2);
 	private TextArea txaDiagnosis = new TextArea();
 	private Label txaDrugs = new Label();
 	private Grid<Note> notes = new Grid<Note>();
@@ -39,15 +46,16 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 	private Button btnDeleteNote = new Button(VaadinIcons.TRASH);
 	private PatientInfoClickListener listener;
 	
+	
 
 	public PatientInfoViewImpl() {
 		this.setCompositionRoot(acc);
+
+		
 		txaDiagnosis.setEnabled(false);
 		txaDiagnosis.setRows(3);//---------- just a textField of 3 rows.
 		txaDiagnosis.setSizeFull();//------- I added this to extend the text area to the right.
-		txaPatientHistory.setEnabled(false);
-		txaPatientHistory.setRows(2);
-		txaPatientHistory.setSizeFull();//--------------for patient history
+
 		noteGrid.addComponent(btnAddNote,0,0,0,0);
 		noteGrid.addComponent(btnDeleteNote,1,0,1,0);
 		noteGrid.addComponent(notes, 0, 1, 2, 1);
@@ -55,7 +63,6 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 		btnDeleteNote.addClickListener(this);
 		btnAddNote.addClickListener(this);
 		notes.addItemClickListener(this);
-		acc.addTab(txaPatientHistory,"Patient History");
 		acc.addTab(txaDiagnosis, "Diagnosen");
 		acc.addTab(txaDrugs, "Medikation");
 		acc.addTab(noteGrid, "Notizen");
@@ -66,7 +73,7 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 		notes.addColumn(Note::getContent).setCaption("Inhalt");
 		notes.addColumn(Note::getDate).setCaption("Erstellt");
 
-	}
+		}
 
 	/**
 	 * Sets the content in the diagnosis field
@@ -146,10 +153,5 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 		txaDiagnosis.setValue("");
 		txaDrugs.setValue("");
 		notes.removeAllColumns();
-	}
-
-	@Override
-	public void setPatientHistory(String history) {
-			txaPatientHistory.setValue(history);
 	}
 }
