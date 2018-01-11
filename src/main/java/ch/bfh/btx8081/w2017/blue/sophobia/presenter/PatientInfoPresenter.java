@@ -7,7 +7,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView.Patien
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Note;
 /**
- * This class 
+ *  
  * @author odaoj1, kybup1
  *
  */

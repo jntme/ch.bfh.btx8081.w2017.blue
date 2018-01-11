@@ -2,7 +2,10 @@ package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientHistoryView;
-
+/**
+ *  Patient history  presenter
+ * @author Jemal Oda
+ */
 public class PatientHistoryPresenter {
 	
 	private Patient pat;
