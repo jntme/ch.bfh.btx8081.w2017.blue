@@ -11,6 +11,11 @@ import com.vaadin.ui.components.grid.ItemClickListener;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Note;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientHistoryView;
 
+/**
+ * implements/Displays   Patient history  list
+ * @author Jemal Oda
+ */
+
 public class PatientHistoryViewImpl  extends CustomComponent implements PatientHistoryView{
 
 	private Accordion acc = new Accordion();
