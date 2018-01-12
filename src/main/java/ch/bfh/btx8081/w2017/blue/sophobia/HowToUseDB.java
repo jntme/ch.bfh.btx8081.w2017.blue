@@ -28,7 +28,8 @@ import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 
 /**
  * This is a test class with the purpose to show the team how to use DB.class
- * and how we handle DB requests and persistence.
+ * and how we handle DB requests and persistence. It also adds dummy data to
+ * the tool so there is initial data to display and process.
  * 
  * @author jntme
  */
@@ -238,7 +239,7 @@ public class HowToUseDB {
 			actRecList1.createActivityRecord(Date.from(instant3), 2, "Frage bezüglich dem zusätzlichen Leiden wurde nicht gestellt. Patientin zu verängstigt");
 			Instant instant4 = Instant.parse("2017-12-10T10:15:30.00Z");
 			actRecList1.createActivityRecord(Date.from(instant4), 6, "Telefonat und zusätzlichen Termin wegen Kopfschmerzen vereinbart (mit Hilfe!).");
-			actl2.getActivities().get(5).setActRecList(actRecList2);
+			actl2.getActivities().get(4).setActRecList(actRecList2);
 			
 			zimmermann.persist();
 

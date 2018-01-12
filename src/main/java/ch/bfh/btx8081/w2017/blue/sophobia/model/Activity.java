@@ -25,7 +25,7 @@ public class Activity {
 	private boolean isComplete;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	private ActivityRecordList activityRecordList;
+	private ActivityRecordList activityRecordList = new ActivityRecordList();
 	
 	public Activity() {
 
