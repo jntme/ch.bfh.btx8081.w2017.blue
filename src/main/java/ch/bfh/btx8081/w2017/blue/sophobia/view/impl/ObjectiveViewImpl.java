@@ -38,10 +38,10 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
 
     private FormLayout form = new FormLayout();
     private TextField nameTextField = new TextField("Name");
-    private Slider difficultySlider = new Slider("Difficulty");
-    private TextArea descriptionArea = new TextArea("Description");
+    private Slider difficultySlider = new Slider("Schwierigkeit");
+    private TextArea descriptionArea = new TextArea("Beschreibung");
 
-    private Button saveButton = new Button("Save");
+    private Button saveButton = new Button(VaadinIcons.CHECK);
 
     public ObjectiveViewImpl(NavigationUI navUI) {
 

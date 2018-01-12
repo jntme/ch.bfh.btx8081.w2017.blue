@@ -29,9 +29,9 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
 	
 	private FormLayout form = new FormLayout();
 	private TextField nameTextField = new TextField("Name");
-	private TextArea descriptionArea = new TextArea("Description");
+	private TextArea descriptionArea = new TextArea("Beschreibung");
 	
-	private Button saveButton = new Button("Save");
+	private Button saveButton = new Button(VaadinIcons.CHECK);
 
 	public ActivityViewImpl(NavigationUI navUI) {
 
