@@ -28,13 +28,15 @@ public class PatientHistory {
 	public ArrayList<String> initPatientHistory(int numElement){
 		
 		ArrayList<String> historyDummyList = new ArrayList<>(
-				Arrays.asList("12.12.2017: added Medication   sertraline",
-						"10.12.2017 :had  the first cognitive-behavioral therapy (CBT)",     
-						"11.11.2017 :  had diagnosis Examination with  Spitex, Diagnosed with Depression",
-						"08.06.2017   family report for Medical consultation Telephone conversation report",
-						"15.03.2017   was not able to shop ,Confined to home for 48hours",
-						"25.02.2017  slept too long,did not cook or clean house for 2 days"
+				Arrays.asList(
+						"12.12.2017: Medikamentenwechsel",
+						"10.12.2017: Erste Kognitive Verhaltenstherapie (CBT)",     
+						"11.11.2017: Arztbesuch mit Spitex",
+						"08.06.2017: Spitalbesuch wegen Suizidversuch",
+						"15.03.2017: Psychische Krise",
+						"25.02.2017: Niedergeschlagen, keine Aktivitäten seit zwei Tagen"
 						));
+
 		
 		Random random = new Random();
 		int sizeArray = historyDummyList .size();
