@@ -1,11 +1,8 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
+
+import javax.persistence.*;
 
 /**
  * The class Activity 
@@ -20,9 +17,10 @@ public class Activity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int aid;
-	private String name;
-	private String description;
-	private boolean isComplete;
+
+	private String name = "";
+	private String description = "";
+	private boolean isComplete = false;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private ActivityRecordList activityRecordList = new ActivityRecordList();
@@ -76,6 +74,13 @@ public class Activity {
 	
 	public void setActRecList(ActivityRecordList activityRecordList) {
 		this.activityRecordList = activityRecordList;
+	}
+
+	public void delete() {
+		EntityManager em = DB.getEntityManager();
+		em.getTransaction().begin();
+		em.remove(this);
+		em.getTransaction().commit();
 	}
 
 }

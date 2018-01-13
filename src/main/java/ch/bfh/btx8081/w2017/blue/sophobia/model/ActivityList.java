@@ -54,4 +54,11 @@ public class ActivityList {
 	public void setActivities(List<Activity> activities) {
 		this.activities = activities;
 	}
+
+	public void addActivity(Activity activity) { this.activities.add(activity); }
+
+	public void removeActivity(Activity activity) {
+		this.activities.remove(activity);
+		activity.delete();
+	}
 }

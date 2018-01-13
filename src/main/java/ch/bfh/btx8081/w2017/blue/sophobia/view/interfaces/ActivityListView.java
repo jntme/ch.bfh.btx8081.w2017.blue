@@ -13,10 +13,10 @@ public interface ActivityListView {
 
 	void setIsEnabled(boolean isEnabled);
 
+	void setPresenter(ActivityListViewListener listener);
+
 	// Listener for the event handling
 	interface ActivityListViewListener {
-		void buttonClick(char operation);
+		void deleteActivity(Activity activity);
 	}
-
-	void addListener(ActivityListViewListener listener);
 }

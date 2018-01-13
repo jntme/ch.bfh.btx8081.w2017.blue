@@ -22,7 +22,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ObjectiveView;
 /**
  * Implements the GUI elements from the part Objective
  *
- * @author ziegm1
+ * @author jntme, ziegm1
  */
 public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, View {
     /**

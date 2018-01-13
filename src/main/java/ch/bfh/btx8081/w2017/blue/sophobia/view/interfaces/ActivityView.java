@@ -10,13 +10,25 @@ public interface ActivityView {
 	void setIscomplete(String isComplete);
 	void setSubPresenter(Activity model);
 	void setName(String name);
+
+	void addedActivity();
+
 	void clearView();
 	
+	void setPresenter(ActivityViewListener presenter);
 	 interface ActivityViewListener {
 		 void requestActivity(int pid, int oid, int aid);
-	 }
-	
-	void setPresenter(ActivityViewListener presenter);
+         void initNewActivity(int pid, int oid);
+
+         void setActivityName(String value);
+         void setActivityDescription(String value);
+
+         void save();
+
+		 Patient getPatient();
+		 Objective getObjective();
+		 Activity getModel();
+     }
 	void patientAndObjectiveNotFound();
 
 	void sendToActivityRecordList(Patient patient, Objective model, Activity activity);

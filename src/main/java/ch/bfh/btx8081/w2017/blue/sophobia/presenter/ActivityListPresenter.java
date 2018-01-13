@@ -1,5 +1,6 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Activity;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ActivityListView;
@@ -15,12 +16,11 @@ public class ActivityListPresenter implements ActivityListView.ActivityListViewL
 		
 		view.fillActivityList(model.getActList());
 		
-		view.addListener(this);
+		view.setPresenter(this);
 	}
 
 	@Override
-	public void buttonClick(char operation) {
-		// TODO Auto-generated method stub
+	public void deleteActivity(Activity activity) {
+		this.model.getActList().removeActivity(activity);
 	}
-
 }

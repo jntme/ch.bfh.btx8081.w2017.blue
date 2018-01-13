@@ -69,9 +69,16 @@ public class Objective {
 		this.actList = actList;
 	}
 
+	public void persist() {
+		EntityManager em = DB.getEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		trans.begin();
+		em.persist(this);
+		trans.commit();
+	}
+
     public void delete() {
         EntityManager em = DB.getEntityManager();
-        // not used? EntityTransaction trans = em.getTransaction();
         em.getTransaction().begin();
         em.remove(this);
         em.getTransaction().commit();
