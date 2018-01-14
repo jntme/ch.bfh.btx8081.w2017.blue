@@ -29,8 +29,9 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListVi
  */
 public class PatientObjectiveListViewImpl extends Panel implements PatientObjectiveListView {
 
-    private NavigationUI navUI = null;
-    private Patient patient = null;
+    private static final long serialVersionUID = 84052613008053572L;
+
+	private Patient patient = null;
 
     private final Label DISPLAY = new Label("Ziele");
     private Button btnDelete;
@@ -38,14 +39,11 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 
     private PatientObjectiveListViewListener presenter = null;
     private Grid<Objective> grid = new Grid<>();
-    private PatientObjectiveListPresenter patientObjectiveListPresenter;
-
+    
     /**
      * Constructor creates a new grid for viewing the object list as a table and adds some formatting.
      */
     public PatientObjectiveListViewImpl(NavigationUI navUI) {
-        this.navUI = navUI;
-        
         VerticalLayout vLayout = new VerticalLayout();
         HorizontalLayout hLayout1 = new HorizontalLayout();
         HorizontalLayout hLayout2 = new HorizontalLayout();
@@ -79,6 +77,7 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
         });
 
         btnAdd.addClickListener(new Button.ClickListener() {
+        	private static final long serialVersionUID = 8269978402173622033L;
 
 			@Override
             public void buttonClick(ClickEvent event) {
@@ -133,7 +132,6 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
 
     @Override
     public void setPresenter(PatientObjectiveListPresenter presenter) {
-        patientObjectiveListPresenter = presenter;
     }
 
     @Override

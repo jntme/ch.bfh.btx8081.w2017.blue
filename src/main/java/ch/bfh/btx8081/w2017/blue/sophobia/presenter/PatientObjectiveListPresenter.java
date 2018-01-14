@@ -12,10 +12,8 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListVi
 public class PatientObjectiveListPresenter implements PatientObjectiveListView.PatientObjectiveListViewListener{
 	
 	private Patient model;
-	private PatientObjectiveListView view;
 
     public PatientObjectiveListPresenter(Patient model, PatientObjectiveListView view) {
-		this.view = view;
         this.model = model;
 
 		view.fillObjectiveList(model.getObjectiveList());

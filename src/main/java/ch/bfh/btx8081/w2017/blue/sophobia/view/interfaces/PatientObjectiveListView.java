@@ -2,7 +2,6 @@ package ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ObjectiveList;
-import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresenter;
 
 /**
