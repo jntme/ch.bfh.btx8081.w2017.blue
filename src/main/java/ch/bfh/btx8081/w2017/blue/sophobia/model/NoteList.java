@@ -1,8 +1,7 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
-import java.sql.Date;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.rmi.CORBA.UtilDelegate;
 
 /**
  * Manages all notes for a patient
@@ -19,8 +17,10 @@ import javax.rmi.CORBA.UtilDelegate;
  *
  */
 @Entity
-public class NoteList {
+public class NoteList implements Serializable {
 	
+	private static final long serialVersionUID = -4360081192053724870L;
+
 	@Id
 	@GeneratedValue
 	private int nlid;

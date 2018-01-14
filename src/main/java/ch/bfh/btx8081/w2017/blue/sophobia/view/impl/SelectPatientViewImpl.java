@@ -9,33 +9,23 @@ import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.Grid.ItemClick;
 import com.vaadin.ui.Grid.SelectionMode;
-import com.vaadin.ui.components.grid.ItemClickListener;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.components.grid.ItemClickListener;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.NavigationUI;
-import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.SelectPatientView;
 
 public class SelectPatientViewImpl extends VerticalLayout implements SelectPatientView, ClickListener, View {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8987109623796160883L;
-
-	private NavigationUI navUI = null;
 
 	ArrayList<SelectPatientClickListener> listeners = new ArrayList<SelectPatientClickListener>();
 	private Grid<Patient> grid = new Grid<>();
 	private Label lblTitle = new Label("Patientenauswahl");
 
 	public SelectPatientViewImpl(NavigationUI navUI) {
-
-		// the reference back to the navigation to communicate with the other view components
-		this.navUI = navUI;
-		
 		this.addStyleName("noPadding");
 
 		this.addComponent(lblTitle);
@@ -52,6 +42,8 @@ public class SelectPatientViewImpl extends VerticalLayout implements SelectPatie
 		
 		// if someone clicks on an item in the grid, it should forward the patient to the PatientPresenter.
 		grid.addItemClickListener(new ItemClickListener<Patient>() {
+			private static final long serialVersionUID = -1899074000682972066L;
+
 			@Override
 			public void itemClick(ItemClick<Patient> event) {
 				navUI.getNavigator().navigateTo(NavigationUI.PATIENTVIEW + "/" + event.getItem().getPid().toString());
@@ -62,9 +54,7 @@ public class SelectPatientViewImpl extends VerticalLayout implements SelectPatie
 
 	@Override
 	public void fillObjectiveList(List<Patient> patientList) {
-
 		grid.setItems(patientList);
-
 	}
 
 	@Override
@@ -74,8 +64,6 @@ public class SelectPatientViewImpl extends VerticalLayout implements SelectPatie
 
 	@Override
 	public void buttonClick(ClickEvent event) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

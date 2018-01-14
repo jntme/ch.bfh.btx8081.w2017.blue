@@ -1,9 +1,9 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
@@ -11,7 +11,9 @@ import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.SelectPatientView;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.SelectPatientView.SelectPatientClickListener;
 
-public class SelectPatientPresenter implements SelectPatientClickListener{
+public class SelectPatientPresenter implements SelectPatientClickListener, Serializable {
+
+	private static final long serialVersionUID = 4423698583918640850L;
 
 	public SelectPatientPresenter(SelectPatientView view) {
 		List<Patient> model = initializePatients();
@@ -33,9 +35,6 @@ public class SelectPatientPresenter implements SelectPatientClickListener{
 	}
 
 	@Override
-	public void buttonClick() {
-		// TODO Auto-generated method stub
-		
+	public void buttonClick() {	
 	}
-
 }

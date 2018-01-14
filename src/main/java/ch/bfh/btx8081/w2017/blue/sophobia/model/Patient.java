@@ -27,7 +27,8 @@ import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 @Entity
 @NamedQuery(name="Patient.findAll", query="SELECT p FROM Patient p")
 public class Patient implements Serializable {
-	private static final long serialVersionUID = 1L;
+	
+	private static final long serialVersionUID = -4821852383079861366L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)

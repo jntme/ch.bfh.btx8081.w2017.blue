@@ -1,5 +1,6 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,7 +19,9 @@ import javax.persistence.OneToMany;
  *
  */
 @Entity
-public class ActivityRecordList {
+public class ActivityRecordList implements Serializable {
+
+	private static final long serialVersionUID = -415499546716909188L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
@@ -26,7 +29,6 @@ public class ActivityRecordList {
 	
 	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private List<ActivityRecord> activityRecords = new ArrayList<ActivityRecord>();
-	
 	
 	/**
 	 * Creates a new activity record in this list

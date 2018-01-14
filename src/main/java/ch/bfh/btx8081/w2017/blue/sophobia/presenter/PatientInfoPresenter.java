@@ -1,18 +1,21 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
+import java.io.Serializable;
+
+import ch.bfh.btx8081.w2017.blue.sophobia.model.Note;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.NoteViewImpl;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView.PatientInfoClickListener;
-
-import ch.bfh.btx8081.w2017.blue.sophobia.model.Note;
 /**
  *  
  * @author odaoj1, kybup1
  *
  */
 
-public class PatientInfoPresenter implements PatientInfoClickListener{
+public class PatientInfoPresenter implements PatientInfoClickListener, Serializable {
+
+	private static final long serialVersionUID = -6591787045742214931L;
 
 	private Patient pat;
 	private PatientInfoView patInfoView;

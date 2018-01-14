@@ -87,12 +87,6 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
     }
 
 	@Override
-	public void setIscomplete(String isComplete) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void setDescription(String description) {
 		descriptionArea.setValue(description);
 	}

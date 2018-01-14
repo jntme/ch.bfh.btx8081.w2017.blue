@@ -1,5 +1,6 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,9 @@ import javax.persistence.OneToMany;
  * @since 07.12.2017
  */
 @Entity
-public class ActivityList {
+public class ActivityList implements Serializable {
+
+	private static final long serialVersionUID = -575968600997966395L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)

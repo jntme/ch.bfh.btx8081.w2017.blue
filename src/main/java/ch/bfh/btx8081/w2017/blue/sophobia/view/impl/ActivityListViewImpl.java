@@ -2,14 +2,18 @@ package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import com.vaadin.icons.VaadinIcons;
-import com.vaadin.ui.*;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Grid;
 import com.vaadin.ui.Grid.ItemClick;
 import com.vaadin.ui.Grid.SelectionMode;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.Panel;
+import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.components.grid.ItemClickListener;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.NavigationUI;
@@ -22,8 +26,6 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ActivityListView;
 public class ActivityListViewImpl extends Panel implements ActivityListView {
 	private static final long serialVersionUID = -3140144466857083444L;
 
-	private NavigationUI navUI = null;
-
 	private final Label header = new Label("Aktivitäten");
 	private Button btnAdd = new Button(VaadinIcons.PLUS_CIRCLE);
 	private Button btnDelete = new Button(VaadinIcons.TRASH);
@@ -35,8 +37,6 @@ public class ActivityListViewImpl extends Panel implements ActivityListView {
 	private Objective objective = null;
 
 	public ActivityListViewImpl(NavigationUI navUI) {
-		this.navUI = navUI;
-
 		VerticalLayout vLayout = new VerticalLayout();
 		HorizontalLayout hLayout1 = new HorizontalLayout();
 		HorizontalLayout hLayout2 = new HorizontalLayout();
@@ -68,6 +68,7 @@ public class ActivityListViewImpl extends Panel implements ActivityListView {
 
 		// the add button click event handler
 		btnAdd.addClickListener(new Button.ClickListener() {
+			private static final long serialVersionUID = -2508810912500404099L;
 
 			@Override
 			public void buttonClick(ClickEvent event) {

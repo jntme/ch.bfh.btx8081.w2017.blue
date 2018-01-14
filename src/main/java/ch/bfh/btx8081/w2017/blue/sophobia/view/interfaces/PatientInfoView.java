@@ -1,10 +1,7 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces;
 
-import java.sql.Date;
-
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Note;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.NoteList;
-import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView.PatientInfoClickListener;
 
 /**
  * Defines the PatientInfoView methods, which the Presenter can Use.
@@ -12,18 +9,16 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView.Patien
  * @author kybup1
  *
  */
-
 public interface PatientInfoView {
-	
 	
 	void setDiagnosis(String diagnosis);
 	void setDrugs(String drugs);
-	
 	
 	/**
 	 * Fills the table on the view with the Notes given in the submitted notelist.
 	 */
     void fillNoteList(NoteList noteList);
+    
 	/**
 	 * returns the Note which is selected by the user
 	 * @return Note
@@ -43,5 +38,4 @@ public interface PatientInfoView {
 		 */
 		void  buttonClick(int i);
 	}
-
 }

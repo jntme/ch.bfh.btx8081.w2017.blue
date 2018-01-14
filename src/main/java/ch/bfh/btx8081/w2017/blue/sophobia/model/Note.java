@@ -1,5 +1,6 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Calendar;
 
@@ -10,8 +11,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 
@@ -24,7 +23,9 @@ import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 @Entity
 @Inheritance
 @DiscriminatorColumn(name="note_type")
-public class Note {
+public class Note implements Serializable {
+	
+	private static final long serialVersionUID = -3291282125469189415L;
 	
 	@Id
 	@GeneratedValue

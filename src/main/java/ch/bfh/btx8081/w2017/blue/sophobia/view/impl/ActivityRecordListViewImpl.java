@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Locale;
 
 import com.vaadin.data.ValueProvider;
@@ -39,24 +38,14 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ActivityRecordListView
 public class ActivityRecordListViewImpl extends Panel implements ActivityRecordListView, ClickListener {
 	private static final long serialVersionUID = -3140144466857083444L;
 
-	private NavigationUI navUI = null;
-
 	private final Label header = new Label("Verlaufsdokumentation");
 	private Button bAdd = new Button(VaadinIcons.PLUS_CIRCLE);
 	private Button bDelete = new Button(VaadinIcons.TRASH);
 
 	private ActivityRecordListViewListener presenter = null;
-	private List<ActivityRecordListViewListener> listeners = new ArrayList<>();
 	private Grid<ActivityRecord> grid = new Grid<>();
-	private ActivityRecordListPresenter activityRecordListPresenter;
 	
-	private Patient patient = null;
-	private Objective objective = null;
-	private Activity activity = null;
-
 	public ActivityRecordListViewImpl(NavigationUI navUI) {
-		this.navUI = navUI;
-
 		VerticalLayout vLayout = new VerticalLayout();
 		HorizontalLayout hLayout1 = new HorizontalLayout();
 		HorizontalLayout hLayout2 = new HorizontalLayout();
@@ -130,7 +119,6 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
 
 	@Override
 	public void setPresenter(ActivityRecordListPresenter presenter) {
-		activityRecordListPresenter = presenter;
 	}
 	
 	@Override
@@ -147,9 +135,6 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
 //	}
 
 	public void setPatientAndObjectiveAndActivity(Patient patient, Objective model, Activity activity) {
-		this.patient = patient;
-		this.objective = model;
-		this.activity = activity;
 	}
 
 	

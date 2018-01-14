@@ -1,7 +1,6 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
 import com.vaadin.icons.VaadinIcons;
-import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.Alignment;
@@ -10,7 +9,6 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
@@ -23,14 +21,11 @@ import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresente
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
 
 public class PatientViewImpl extends VerticalLayout implements PatientView, View {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 2452620374969048563L;
+
 	private NavigationUI navUI = null;
 	private PatientViewListener listener = null;
-	private Patient patient = null;
-
 	private Label lblTitle = new Label("");
 	private Button btnShowContact = new Button(VaadinIcons.INFO_CIRCLE);
 
@@ -55,7 +50,6 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 		gridLayout.setSpacing(true);
 
 		this.btnShowContact.addClickListener(new ClickListener() {
-
 			private static final long serialVersionUID = -1610492227149824003L;
 
 			@Override
@@ -112,7 +106,6 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 	}
 
 	public void setPatient(Patient patient) {
-		this.patient = patient;
 		this.oView.setPatient(patient);
 	}
 

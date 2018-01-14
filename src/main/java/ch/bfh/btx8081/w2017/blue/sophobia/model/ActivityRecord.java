@@ -1,5 +1,6 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -18,8 +19,10 @@ import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
  *
  */
 @Entity
-public class ActivityRecord {
+public class ActivityRecord implements Serializable {
 	
+	private static final long serialVersionUID = 3634336996507717961L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int arId;

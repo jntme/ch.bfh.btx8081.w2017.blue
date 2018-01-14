@@ -1,9 +1,6 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import java.io.Serializable;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
@@ -14,8 +11,10 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
  * @author gfels6
  *
  */
-public class PatientPresenter implements PatientView.PatientViewListener{
+public class PatientPresenter implements PatientView.PatientViewListener, Serializable {
 
+	private static final long serialVersionUID = -1115951198091997322L;
+	
 	private Patient model = null;
 	private PatientView view;
 	

@@ -1,5 +1,6 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Calendar;
 
@@ -14,7 +15,9 @@ import javax.persistence.Entity;
  */
 @Entity
 @DiscriminatorValue("d")
-public class DangerNote extends Note {
+public class DangerNote extends Note implements Serializable  {
+	
+	private static final long serialVersionUID = 658270098333780763L;
 	
 	boolean active;
 	

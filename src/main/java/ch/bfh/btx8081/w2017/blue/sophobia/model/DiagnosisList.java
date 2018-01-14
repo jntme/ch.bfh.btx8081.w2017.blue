@@ -1,5 +1,6 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -14,7 +15,9 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class DiagnosisList {
+public class DiagnosisList implements Serializable {
+
+	private static final long serialVersionUID = -7448485478047526501L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)

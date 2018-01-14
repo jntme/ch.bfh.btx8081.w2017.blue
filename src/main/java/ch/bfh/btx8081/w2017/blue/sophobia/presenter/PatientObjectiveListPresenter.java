@@ -1,5 +1,7 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
+import java.io.Serializable;
+
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListView;
@@ -9,7 +11,9 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListVi
  * @author ziegm1
  *
  */
-public class PatientObjectiveListPresenter implements PatientObjectiveListView.PatientObjectiveListViewListener{
+public class PatientObjectiveListPresenter implements PatientObjectiveListView.PatientObjectiveListViewListener, Serializable {
+	
+	private static final long serialVersionUID = 5588706514516096460L;
 	
 	private Patient model;
 

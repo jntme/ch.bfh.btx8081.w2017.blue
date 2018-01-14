@@ -15,6 +15,8 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientContactView;
 
 public class PatientContactViewImpl extends Window implements PatientContactView{
 	
+	private static final long serialVersionUID = -7218135020495638066L;
+	
 	private Label lblStreet = new Label("Dummy Street 12");
 	private Label lblCity = new Label("Dummyhausen");
 	private Label lblZip = new Label("3000");

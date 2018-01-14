@@ -25,9 +25,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ObjectiveView;
  * @author jntme, ziegm1
  */
 public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, View {
-    /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 298168717435855242L;
 
 	private NavigationUI navUI;
@@ -48,6 +46,7 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
         // the reference back to the navigation to communicate with the other
         // view components
         this.navUI = navUI;
+        
         this.presenter = null;
         this.aView = new ActivityListViewImpl(navUI);
         
@@ -68,15 +67,10 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
      * with the fields Name, description etc.
      */
     private void setupForm() {
-
         form.setWidth(100.0f, Unit.PERCENTAGE);
-
         setupNameTextField();
-
         setupDescriptionArea();
-
         setupSlider();
-
         this.addComponent(form);
     }
 
@@ -96,17 +90,16 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
     }
 
     private void setupDescriptionArea() {
-        // the textarea for description
         descriptionArea.setIcon(VaadinIcons.COMMENT);
         descriptionArea.setRequiredIndicatorVisible(true);
         descriptionArea.setWidth(100.0f, Unit.PERCENTAGE);
-
         descriptionArea.addValueChangeListener(event -> this.presenter.setObjectiveDescription(event.getValue()));
-
         form.addComponent(descriptionArea);
     }
 
-
+    /**
+     * The slider for selecting the difficulty of an objective
+     */
     private void setupSlider() {
         difficultySlider.setMin(1);
         difficultySlider.setMax(10);
@@ -114,41 +107,35 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
         difficultySlider.setIcon(VaadinIcons.HAMMER);
         difficultySlider.setWidth(100.0f, Unit.PERCENTAGE);
         form.addComponent(difficultySlider);
-
         difficultySlider.addValueChangeListener(event -> this.presenter.setObjectiveDifficulty(event.getValue().intValue()));
     }
 
     private void setupSaveButton() {
-
         saveButton.addClickListener(event -> this.presenter.save());
-
         this.addComponent(saveButton);
         this.setComponentAlignment(saveButton, Alignment.MIDDLE_RIGHT);
     }
-
-    // validates the form on empty and wrong occurences
+ 
+    /**
+     * validates the form for empty and wrong occurrences
+     */
     private void validateForm() {
         if (this.nameTextField.getValue().length() >= 1) {
             saveButton.setEnabled(true);
-        }
-        else {
+        } else {
             saveButton.setEnabled(false);
         }
     }
 
     /**
      * Adjusts the view for a new objective.
-     * (renames button to 'add', disables aView (...)
+     * (renames button to 'add', disables aView, ...)
      */
     private void setViewOnNewObjective() {
         this.saveButton.setCaption("Add");
         this.aView.setEnabled(false);
     }
 
-    /**
-     * Does the opposite of setViewOnExistingObjective()
-     *
-     */
     private void setViewOnExistingObjective() {
         this.saveButton.setCaption("Save");
         this.aView.setEnabled(true);
@@ -160,19 +147,13 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
     }
 
     @Override
-    public void setIscomplete(String iscomplete) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
     public void setName(String name) {
         lblName.setValue(name);
         nameTextField.setValue(name);
     }
 
     /**
-     *
+     * Shows a notification popup to inform the user, that an objective has been added.
      */
     @Override
     public void addedObjective() {
@@ -193,14 +174,10 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
 
     @Override
     public void enter(ViewChangeEvent event) {
-
         if (event.getParameters() == null || event.getParameters().isEmpty()) {
             this.patientAndObjectiveNotFound();
         } else {
-
             String parameter = event.getParameters();
-
-
             String[] params = parameter.split("/");
 
             // todo this whole else if needs to be reviewed and rewritten.
@@ -209,7 +186,6 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
             }
             // if a new objective is getting added
             else if (params[1].equals(NavigationUI.NEW)) {
-
                 presenter.initNewObjective(Integer.parseInt(params[0]));
                 setViewOnNewObjective();
             } else {
@@ -238,7 +214,6 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
     public void clearView() {
         lblName.setValue("");
         descriptionArea.setValue("");
-
         aView.clearView();
     }
 
@@ -249,15 +224,11 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
 
 	@Override
 	public void setSubPresenter(Objective model) {
-
 		   new ActivityListPresenter(model, aView);
-		
 	}
 
 	@Override
 	public void sendToActivityList(Patient patient, Objective model) {
-
 		this.aView.setPatientAndObjective(patient, model);
-		
 	}
 }

@@ -7,7 +7,6 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 public interface ActivityView {
 	
 	void setDescription(String description);
-	void setIscomplete(String isComplete);
 	void setSubPresenter(Activity model);
 	void setName(String name);
 

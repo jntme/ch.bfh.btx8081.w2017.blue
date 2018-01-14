@@ -1,8 +1,13 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  * The class DrugList provides dummy-data for drugs to display in patient
@@ -13,7 +18,10 @@ import javax.persistence.*;
  * @since 29.11.2017
  */
 @Entity
-public class DrugList {
+public class DrugList implements Serializable {
+
+	private static final long serialVersionUID = -497510382119394655L;
+
 	// Variables for class - use
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)

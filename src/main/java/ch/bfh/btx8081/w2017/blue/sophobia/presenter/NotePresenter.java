@@ -1,5 +1,7 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
+import java.io.Serializable;
+
 import com.vaadin.ui.UI;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.DangerNote;
@@ -17,7 +19,10 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.NoteView.NoteClickList
  *
  */
 
-public class NotePresenter implements NoteClickListener {
+public class NotePresenter implements NoteClickListener, Serializable {
+
+	private static final long serialVersionUID = -8960552905171073622L;
+	
 	private Patient pat = new Patient();
 	private Note note = new Note();
 	private NoteViewImpl noteView = new NoteViewImpl();

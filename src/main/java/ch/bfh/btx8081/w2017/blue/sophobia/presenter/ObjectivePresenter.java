@@ -1,5 +1,6 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
+import java.io.Serializable;
 import java.util.List;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityList;
@@ -13,14 +14,15 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ObjectiveView;
  *
  * @author ziegm1
  */
-public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener {
+public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener, Serializable {
 
+	private static final long serialVersionUID = -750261196162245751L;
+	
 	private Objective model = null;
 	private ObjectiveView view;
 	private Patient patient = null;
 	private boolean isNewObjective = false;
-	private ActivityList actList;
-
+	
 	public ObjectivePresenter(ObjectiveView view) {
 		this.view = view;
 		view.setPresenter(this);
@@ -38,12 +40,10 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener {
 	}
 
 	/**
-	 * Requests an Object with a specific id and oid and returns it
+	 * Loads a specific objective by oid from a patient, if both exist and actualizes the view.
 	 *
-	 * @param pid:
-	 *            the patient id
-	 * @param oid:
-	 *            the objective id
+	 * @param pid:	the patient id
+	 * @param oid:	the objective id
 	 */
 	@Override
 	public void requestObjectiveWithPatientAndId(int pid, int oid) {
@@ -78,8 +78,7 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener {
 	 * Prepares the presenter for a new Objective. saves the pid on this for
 	 * later use.
 	 *
-	 * @param pid:
-	 *            the corresponding patient id
+	 * @param pid:	the corresponding patient id
 	 */
 	@Override
 	public void initNewObjective(int pid) {

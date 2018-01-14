@@ -1,9 +1,5 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces;
 
-import java.util.Date;
-
-import com.vaadin.ui.Image;
-
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 
 /**
@@ -13,7 +9,6 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
  * @author gfels6
  *
  */
-
 public interface PatientView {
 
 	void setSubPresenter(Patient model);

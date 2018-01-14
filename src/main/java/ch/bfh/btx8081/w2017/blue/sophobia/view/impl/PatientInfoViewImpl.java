@@ -1,9 +1,5 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import com.vaadin.event.MouseEvents.DoubleClickListener;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.Accordion;
 import com.vaadin.ui.Button;
@@ -28,15 +24,11 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientInfoView;
  * @author kybup1
  *
  */
-
 public class PatientInfoViewImpl extends CustomComponent implements PatientInfoView, ClickListener, ItemClickListener<Note>{
 	
+	private static final long serialVersionUID = -4387466349287712696L;
+
 	private Accordion acc = new Accordion();
-	
-	//private Accordion accP = new Accordion();
-	
-	
-	
 	
 	private GridLayout noteGrid = new GridLayout(4, 2);
 	private TextArea txaDiagnosis = new TextArea();
@@ -45,12 +37,9 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 	private Button btnAddNote = new Button(VaadinIcons.PLUS_CIRCLE);
 	private Button btnDeleteNote = new Button(VaadinIcons.TRASH);
 	private PatientInfoClickListener listener;
-	
-	
 
 	public PatientInfoViewImpl() {
 		this.setCompositionRoot(acc);
-
 		
 		txaDiagnosis.setEnabled(false);
 		txaDiagnosis.setRows(3);//---------- just a textField of 3 rows.
@@ -72,8 +61,7 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 		notes.addColumn(Note::getTitle).setCaption("Titel");
 		notes.addColumn(Note::getContent).setCaption("Inhalt");
 		notes.addColumn(Note::getDate).setCaption("Erstellt");
-
-		}
+	}
 
 	/**
 	 * Sets the content in the diagnosis field
@@ -103,9 +91,7 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 	 */
 	@Override
 	public void fillNoteList(NoteList noteList) {
-
 		notes.setItems(noteList.getNotes());
-
 		notes.setSelectionMode(SelectionMode.SINGLE);
 	}
 
@@ -126,13 +112,10 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 
 	@Override
 	public void buttonClick(com.vaadin.ui.Button.ClickEvent event) {
-
-
 		if(event.getButton().getIcon().equals(VaadinIcons.PLUS_CIRCLE)){
 			// for adding a note
 			listener.buttonClick(1);
-		}
-		else if (event.getButton().getIcon().equals(VaadinIcons.TRASH)){
+		} else if (event.getButton().getIcon().equals(VaadinIcons.TRASH)){
 			// for deleting a note
 			listener.buttonClick(2);
 		}

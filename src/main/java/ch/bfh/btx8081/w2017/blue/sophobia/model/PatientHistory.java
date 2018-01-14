@@ -1,24 +1,17 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 /**
- * Contains Patient history  list
+ * Contains Patient history list
  * @author Jemal Oda
  */
-
-public class PatientHistory {
+public class PatientHistory implements Serializable {
 	
-	
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.TABLE)
-	//private int diagID;
+	private static final long serialVersionUID = 8172949595927202415L;
 	
 	private ArrayList<String> history = new ArrayList<>();
 	
@@ -37,10 +30,8 @@ public class PatientHistory {
 						"25.02.2017: Niedergeschlagen, keine Aktivitäten seit zwei Tagen"
 						));
 
-		
 		Random random = new Random();
-		int sizeArray = historyDummyList .size();
-
+		int sizeArray = historyDummyList.size();
 
 		ArrayList<String> phl = new ArrayList<String>();
 		for(int i = 0; i< numElement;i++){
@@ -48,22 +39,22 @@ public class PatientHistory {
 			String element = historyDummyList .get(rdmPhl);
 			phl.add(element);
 		}
+		
 		return phl ;
 	}
-/**
-// * Displays the list of patient's histories
-// */	
+	
+	/**
+	 * Displays the list of patient's histories
+	 */
 	public String toString() {
 		return	getPatientHistory().toString();
 	}
+	
 	/**
 	 * Displays two of the randomly selected patient histories from the List of Dummy patient history
-	  */
-	// 
+	 */
 	public ArrayList<String> getPatientHistory(){
 		this.history = initPatientHistory(2); //new history for demo, remove for real use
 		return history;
 	}
-	
-	
 }

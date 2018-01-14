@@ -7,12 +7,10 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.CheckBox;
-import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
-import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
@@ -30,6 +28,9 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.NoteView;
  */
 
 public class NoteViewImpl extends Window implements NoteView, ClickListener {
+
+	private static final long serialVersionUID = 7432762097763836018L;
+	
 	ArrayList<NoteClickListener> listeners = new ArrayList<NoteClickListener>();
 //	Components:
 	Label lblTitle = new Label("Titel");

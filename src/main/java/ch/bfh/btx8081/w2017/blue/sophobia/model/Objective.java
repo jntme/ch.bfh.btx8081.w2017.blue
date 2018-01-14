@@ -1,11 +1,21 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.model;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 
-import javax.persistence.*;
-
 @Entity
-public class Objective {
+public class Objective implements Serializable {
+
+	private static final long serialVersionUID = 8935434372674375377L;
 
 	@Id
 	@GeneratedValue
