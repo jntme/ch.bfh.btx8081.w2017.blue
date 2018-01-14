@@ -12,11 +12,11 @@ import org.junit.Test;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 
-/**
- * @author ziegm
- */
 public class ActivityRecordTest {
 
+	/**
+	 * @author ziegm
+	 */
 	@Test(expected = NoResultException.class)
 	public void deleteAnActivityRecord() {
 		// given
