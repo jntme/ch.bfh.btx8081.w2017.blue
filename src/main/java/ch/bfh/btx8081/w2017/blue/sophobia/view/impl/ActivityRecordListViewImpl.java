@@ -33,7 +33,6 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ActivityRecordListView
 
 /**
  * @author ziegm
- *
  */
 public class ActivityRecordListViewImpl extends Panel implements ActivityRecordListView, ClickListener {
 	private static final long serialVersionUID = -3140144466857083444L;
@@ -60,6 +59,7 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
 		hLayout2.setWidth(100.0f, Unit.PERCENTAGE);
 		hLayout2.addComponent(grid);
 		
+		// format date for usage in the date column of the grid.
 		ValueProvider<ActivityRecord, String> activityRecordDate = (activityRecord) -> {
 			Date date = activityRecord.getDate();
 			DateFormat df = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
@@ -68,7 +68,6 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
 
 		grid.addColumn(activityRecordDate).setCaption("Datum");
 		grid.addColumn(ActivityRecord::getSuccess).setCaption("Erfolg");
-
 		
 		grid.addItemClickListener(new ItemClickListener<ActivityRecord>() {
 			private static final long serialVersionUID = -9107765887521817876L;
@@ -79,7 +78,6 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
 //				}
 			}
 		});
-
 		
 		bDelete.addClickListener(event -> {
             grid.getSelectedItems().forEach(activityRecord -> this.presenter.deleteActivityRecord(activityRecord));
@@ -90,9 +88,7 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
             notification.show(navUI.getPage());
         });
 		
-		
 		this.setContent(vLayout);
-
 	}
 
 	@Override
@@ -123,19 +119,8 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
 	
 	@Override
 	public void buttonClick(ClickEvent event) {
-//		for (ActivityRecordListViewListener listener : listeners) {
-//			listener.buttonClick(event.getButton().getCaption().charAt(0));
-//		}
-
 	}
-
-//	@Override
-//	public void setIsEnabled(boolean isEnabled) {
-//		this.setEnabled(isEnabled);
-//	}
 
 	public void setPatientAndObjectiveAndActivity(Patient patient, Objective model, Activity activity) {
 	}
-
-	
 }

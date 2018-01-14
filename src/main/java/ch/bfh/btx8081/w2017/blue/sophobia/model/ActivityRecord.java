@@ -81,7 +81,4 @@ public class ActivityRecord implements Serializable {
 		em.remove(this);
 		em.getTransaction().commit();
 	}
-
-	
-	
 }

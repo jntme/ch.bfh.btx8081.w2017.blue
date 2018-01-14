@@ -8,7 +8,6 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ActivityRecordListView
 
 /**
  * @author ziegm1
- *
  */
 public class ActivityRecordListPresenter implements ActivityRecordListView.ActivityRecordListViewListener, Serializable {
 	

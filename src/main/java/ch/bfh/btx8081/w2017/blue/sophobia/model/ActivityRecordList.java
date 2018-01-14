@@ -42,31 +42,18 @@ public class ActivityRecordList implements Serializable {
 		activityRecords.add(activityRecord);
 	}
 	
-	
-	/**
-	 * @return the arId
-	 */
 	public int getArLId() {
 		return arLId;
 	}
 
-	/**
-	 * @param arId the arId to set
-	 */
 	public void setArLId(int arLId) {
 		this.arLId = arLId;
 	}
 
-	/**
-	 * @return the activityRecord
-	 */
 	public List<ActivityRecord> getActivityRecord() {
 		return activityRecords;
 	}
 
-	/**
-	 * @param activityRecord the activityRecord to set
-	 */
 	public void setActivityRecord(List<ActivityRecord> activityRecords) {
 		this.activityRecords = activityRecords;
 	}
@@ -79,5 +66,4 @@ public class ActivityRecordList implements Serializable {
 		activityRecords.remove(activityRecord);
 		activityRecord.delete();
 	}
-	
 }
