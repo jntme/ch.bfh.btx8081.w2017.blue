@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 
 import com.vaadin.data.ValueProvider;
@@ -37,6 +38,8 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ActivityRecordListView
 public class ActivityRecordListViewImpl extends Panel implements ActivityRecordListView, ClickListener {
 	private static final long serialVersionUID = -3140144466857083444L;
 
+	private NavigationUI navUI = null;
+
 	private final Label header = new Label("Verlaufsdokumentation");
 	private Button bAdd = new Button(VaadinIcons.PLUS_CIRCLE);
 	private Button bDelete = new Button(VaadinIcons.TRASH);
@@ -45,6 +48,8 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
 	private Grid<ActivityRecord> grid = new Grid<>();
 	
 	public ActivityRecordListViewImpl(NavigationUI navUI) {
+		this.navUI = navUI;
+
 		VerticalLayout vLayout = new VerticalLayout();
 		HorizontalLayout hLayout1 = new HorizontalLayout();
 		HorizontalLayout hLayout2 = new HorizontalLayout();
@@ -73,9 +78,9 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
 			private static final long serialVersionUID = -9107765887521817876L;
 
 			public void itemClick(ItemClick<ActivityRecord> event) {
-//				if (event.getMouseEventDetails().isDoubleClick()) {
-//					navUI.getNavigator().navigateTo(NavigationUI.ACTIVITYRECORDVIEW + "/" + patient.getPid() + "/" + objective.getOid() + "/" + activity.getAid() + "/" + event.getItem().getArId());
-//				}
+				if (event.getMouseEventDetails().isDoubleClick()) {
+					navUI.getNavigator().navigateTo(NavigationUI.ACTIVITYRECORDVIEW + getUrl() + event.getItem().getArId());
+				}
 			}
 		});
 		
@@ -88,6 +93,11 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
             notification.show(navUI.getPage());
         });
 		
+		bAdd.addClickListener(event -> {
+			navUI.getNavigator().navigateTo(NavigationUI.ACTIVITYRECORDVIEW + getUrl() + navUI.NEW);
+        });
+		
+		
 		this.setContent(vLayout);
 	}
 
@@ -95,6 +105,16 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
 	public void fillActivityRecordList(ActivityRecordList activityRecordList) {
 		grid.setItems(activityRecordList.getActivityRecord());
 
+	}
+	
+	//Workaround to get url to open activity record without the need to request pat, obj, act
+	/**
+	 * Retrieves and trimms the url
+	 * @return part of url: /pid/oid/
+	 */
+	private String getUrl(){
+		String url = navUI.getPage().getUriFragment();
+		return url.substring(navUI.ACTIVITYVIEW.length()+1, url.length()) + "/";
 	}
 
 	@Override
@@ -121,6 +141,8 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
 	public void buttonClick(ClickEvent event) {
 	}
 
+	// Is obsolete when using url workaround
+	// TODO discuss workaround
 	public void setPatientAndObjectiveAndActivity(Patient patient, Objective model, Activity activity) {
 	}
 }

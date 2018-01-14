@@ -35,11 +35,13 @@ public class ActivityRecordList implements Serializable {
 	 * @param date
 	 * @param success
 	 * @param description
+	 * @return 
 	 */
-	public void createActivityRecord(Date date, int success, String description) {
+	public ActivityRecord createActivityRecord(Date date, int success, String description) {
 		ActivityRecord activityRecord = new ActivityRecord(date, success, description);
 		
 		activityRecords.add(activityRecord);
+		return activityRecord;
 	}
 	
 	public int getArLId() {

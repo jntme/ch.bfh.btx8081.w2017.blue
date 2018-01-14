@@ -15,9 +15,12 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ActivityPresenter;
+import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ActivityRecordListPresenter;
+import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ActivityRecordPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ObjectivePresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.SelectPatientPresenter;
+import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.ActivityRecordViewImpl;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.ActivityViewImpl;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.ObjectiveViewImpl;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.PatientViewImpl;
@@ -47,6 +50,7 @@ public class NavigationUI extends UI {
 	public static final String PATIENTVIEW = "patient";
 	public static final String OBJECTIVEVIEW = "objective";
 	public static final String ACTIVITYVIEW = "activity";
+	public static final String ACTIVITYRECORDVIEW = "activityrecord";
 
 	// these strings are for special navigation purposes
 	public static final String NEW = "new";
@@ -55,6 +59,7 @@ public class NavigationUI extends UI {
 	private PatientPresenter patientPresenter = null;
 	private ObjectivePresenter objPresenter = null;
 	private ActivityPresenter actPresenter = null;
+	private ActivityRecordPresenter actRecPresenter = null;
 
 	protected void init(VaadinRequest vaadinRequest) {
 		
@@ -96,6 +101,10 @@ public class NavigationUI extends UI {
 		ActivityViewImpl actViewImpl = new ActivityViewImpl(this);
 		this.actPresenter = new ActivityPresenter(actViewImpl);
 		navigator.addView(ACTIVITYVIEW, actViewImpl);
+		
+		ActivityRecordViewImpl actRecViewImpl = new ActivityRecordViewImpl(this);
+		this.actRecPresenter = new ActivityRecordPresenter(actRecViewImpl);
+		navigator.addView(ACTIVITYRECORDVIEW, actRecViewImpl);
 		
 		
 		this.btnHome.addClickListener(new ClickListener() {
