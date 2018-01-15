@@ -10,4 +10,6 @@ public class DBTest {
 	public void testGetEntityManager() {
 		assertNotNull("Entitymanager should not be NULL.", DB.getEntityManager());
 	}
+
+
 }

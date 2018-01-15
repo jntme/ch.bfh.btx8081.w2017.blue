@@ -94,7 +94,6 @@ public class Patient implements Serializable {
 	
 	public void delete() { // note: at the moment only used for test cases
 		EntityManager em = DB.getEntityManager();
-		EntityTransaction trans = em.getTransaction();
 		em.getTransaction().begin();
 		em.remove(this);
 		em.getTransaction().commit();

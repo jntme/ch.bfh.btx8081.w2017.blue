@@ -29,121 +29,112 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.impl.SelectPatientViewImpl;
 /**
  * The Navigation is the entrypoint and the 'canvas' of the application.
  * All other views are getting set and diplayed inside this class, it also
- * provides the functionality to select other views and by that, switch between 
+ * provides the functionality to select other views and by that, switch between
  * them.
- * ##### gfels6 Mir müesse wahrschinlech am beschte e Main Class mit Container u so mache
- * ##### und eini nume mitem Navigator dinne, isch aues zimli vermischt hie ergo niso geil
+ *
+ * @author jntme
  */
 @Theme("mytheme")
 public class NavigationUI extends UI {
 
-	private static final long serialVersionUID = -7908495433511088212L;
+    // these strings provide the URI for a configured view
+    // e.g. '/#!patient' resolves to the PATIENTVIEW
+    public static final String MAIN = "";
+    public static final String SELECTPATIENTVIEW = "selectPatient";
+    public static final String PATIENTVIEW = "patient";
+    public static final String OBJECTIVEVIEW = "objective";
+    public static final String ACTIVITYVIEW = "activity";
+    public static final String ACTIVITYRECORDVIEW = "activityrecord";
+    // these strings are for special navigation purposes
+    public static final String NEW = "new";
+    private static final long serialVersionUID = -7908495433511088212L;
+    private Navigator navigator = null;
+    private Button btnHome;
+    private SelectPatientPresenter selectPatientPresenter = null;
+    private PatientPresenter patientPresenter = null;
+    private ObjectivePresenter objPresenter = null;
+    private ActivityPresenter actPresenter = null;
+    private ActivityRecordPresenter actRecPresenter = null;
 
-	private Navigator navigator = null;
-	
-	private Button btnHome; 
+    protected void init(VaadinRequest vaadinRequest) {
 
-	// these strings provide the URI for a configured view
-	// e.g. '/#!patient' resolves to the PATIENTVIEW
-	public static final String MAIN = "";
-	public static final String SELECTPATIENTVIEW = "selectPatient";
-	public static final String PATIENTVIEW = "patient";
-	public static final String OBJECTIVEVIEW = "objective";
-	public static final String ACTIVITYVIEW = "activity";
-	public static final String ACTIVITYRECORDVIEW = "activityrecord";
+        btnHome = new Button(VaadinIcons.HOME);
 
-	// these strings are for special navigation purposes
-	public static final String NEW = "new";
+        final VerticalLayout container = new VerticalLayout();
+        final VerticalLayout content = new VerticalLayout();
+        this.addStyleName("containerStyle");
+        content.addStyleName("noPadding");
+        container.addComponent(btnHome);
+        container.addComponent(content);
+        setContent(container);
 
-	private SelectPatientPresenter selectPatientPresenter = null;
-	private PatientPresenter patientPresenter = null;
-	private ObjectivePresenter objPresenter = null;
-	private ActivityPresenter actPresenter = null;
-	private ActivityRecordPresenter actRecPresenter = null;
-
-	protected void init(VaadinRequest vaadinRequest) {
-		
-		btnHome = new Button(VaadinIcons.HOME);
-		
-		final VerticalLayout container = new VerticalLayout();
-		final VerticalLayout content = new VerticalLayout();
-		this.addStyleName("containerStyle");
-		content.addStyleName("noPadding");
-		container.addComponent(btnHome);
-		container.addComponent(content);
-		setContent(container);
-		
-		getPage().setTitle("Sophobia - finally free.");
+        getPage().setTitle("Sophobia - finally free.");
 
         // take a look at the following class
-		HowToUseDB.howToUseDb();
-		
+        HowToUseDB.howToUseDb();
 
 
-		// Create a navigator to control the views
-		navigator = new Navigator(this, content);
+        // Create a navigator to control the views
+        navigator = new Navigator(this, content);
 
-		// Initiating the different views and their presenters and
-		// adding the views on the navigator
-		SelectPatientViewImpl selPatViewImpl = new SelectPatientViewImpl(this);
-		this.selectPatientPresenter = new SelectPatientPresenter(selPatViewImpl);
-		navigator.addView(MAIN, selPatViewImpl);
-		navigator.addView(SELECTPATIENTVIEW, selPatViewImpl);
+        // Initiating the different views and their presenters and
+        // adding the views on the navigator
+        SelectPatientViewImpl selPatViewImpl = new SelectPatientViewImpl(this);
+        this.selectPatientPresenter = new SelectPatientPresenter(selPatViewImpl);
+        navigator.addView(MAIN, selPatViewImpl);
+        navigator.addView(SELECTPATIENTVIEW, selPatViewImpl);
 
-		PatientViewImpl patientViewImpl = new PatientViewImpl(this);
-		this.patientPresenter = new PatientPresenter(patientViewImpl);
-		navigator.addView(PATIENTVIEW, patientViewImpl);
+        PatientViewImpl patientViewImpl = new PatientViewImpl(this);
+        this.patientPresenter = new PatientPresenter(patientViewImpl);
+        navigator.addView(PATIENTVIEW, patientViewImpl);
 
-		ObjectiveViewImpl objViewImpl = new ObjectiveViewImpl(this);
-		this.objPresenter = new ObjectivePresenter(objViewImpl);
-		navigator.addView(OBJECTIVEVIEW, objViewImpl);
-		
-		ActivityViewImpl actViewImpl = new ActivityViewImpl(this);
-		this.actPresenter = new ActivityPresenter(actViewImpl);
-		navigator.addView(ACTIVITYVIEW, actViewImpl);
-		
-		ActivityRecordViewImpl actRecViewImpl = new ActivityRecordViewImpl(this);
-		this.actRecPresenter = new ActivityRecordPresenter(actRecViewImpl);
-		navigator.addView(ACTIVITYRECORDVIEW, actRecViewImpl);
-		
-		
-		this.btnHome.addClickListener(new ClickListener() {
-			private static final long serialVersionUID = -6917620301709928610L;
+        ObjectiveViewImpl objViewImpl = new ObjectiveViewImpl(this);
+        this.objPresenter = new ObjectivePresenter(objViewImpl);
+        navigator.addView(OBJECTIVEVIEW, objViewImpl);
 
-			@Override
-			public void buttonClick(ClickEvent event) {
-				navigator.navigateTo(NavigationUI.SELECTPATIENTVIEW);
-			}
-		});
-	}
+        ActivityViewImpl actViewImpl = new ActivityViewImpl(this);
+        this.actPresenter = new ActivityPresenter(actViewImpl);
+        navigator.addView(ACTIVITYVIEW, actViewImpl);
 
-	public Navigator getNavigator() {
-		return navigator;
-	}
+        ActivityRecordViewImpl actRecViewImpl = new ActivityRecordViewImpl(this);
+        this.actRecPresenter = new ActivityRecordPresenter(actRecViewImpl);
+        navigator.addView(ACTIVITYRECORDVIEW, actRecViewImpl);
 
-	public PatientPresenter getPatientPresenter() {
-		return patientPresenter;
-	}
 
-	public SelectPatientPresenter getSelectPatientPresenter() {
-		return selectPatientPresenter;
-	}
+        this.btnHome.addClickListener(new ClickListener() {
+            private static final long serialVersionUID = -6917620301709928610L;
 
-	public ObjectivePresenter getObjPresenter() {
-		return objPresenter;
-	}
-	
-	public ActivityPresenter getActPresenter() {
-		return actPresenter;
-	}
+            @Override
+            public void buttonClick(ClickEvent event) {
+                navigator.navigateTo(NavigationUI.SELECTPATIENTVIEW);
+            }
+        });
+    }
 
-	@WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
-	@VaadinServletConfiguration(ui = NavigationUI.class, productionMode = false)
-	public static class MyUIServlet extends VaadinServlet {
+    public Navigator getNavigator() {
+        return navigator;
+    }
 
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = -9075165526789382344L;
-	}
+    public PatientPresenter getPatientPresenter() {
+        return patientPresenter;
+    }
+
+    public SelectPatientPresenter getSelectPatientPresenter() {
+        return selectPatientPresenter;
+    }
+
+    public ObjectivePresenter getObjPresenter() {
+        return objPresenter;
+    }
+
+    public ActivityPresenter getActPresenter() {
+        return actPresenter;
+    }
+
+    @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
+    @VaadinServletConfiguration(ui = NavigationUI.class, productionMode = false)
+    public static class MyUIServlet extends VaadinServlet {
+
+        private static final long serialVersionUID = -9075165526789382344L;
+    }
 }

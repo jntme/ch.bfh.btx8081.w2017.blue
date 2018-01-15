@@ -47,7 +47,7 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener, 
 	 */
 	@Override
 	public void requestObjectiveWithPatientAndId(int pid, int oid) {
-		this.patient = DB.getPatient(Integer.toString(pid));
+		this.patient = DB.getObjectById(Integer.toString(pid), Patient.class, "pid");
 		Objective objective = null;
 
 		if (this.patient != null) {
@@ -82,7 +82,7 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener, 
 	 */
 	@Override
 	public void initNewObjective(int pid) {
-		this.patient = DB.getPatient(Integer.toString(pid));
+		this.patient = DB.getObjectById(Integer.toString(pid), Patient.class, "pid");
 		this.isNewObjective = true;
 		ActivityList actList = new ActivityList();
 		Objective newObj = new Objective();

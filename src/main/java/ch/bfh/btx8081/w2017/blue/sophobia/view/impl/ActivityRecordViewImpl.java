@@ -21,40 +21,40 @@ import ch.bfh.btx8081.w2017.blue.sophobia.NavigationUI;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ActivityRecordView;
 
 /**
- * Activity Records can be displayed, changed and created with this view. 
- * @author kybup1
+ * Activity Records can be displayed, changed and created with this view.
  *
+ * @author kybup1
  */
 public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRecordView, View {
-	
-	private static final long serialVersionUID = 1L;
 
-	private ActivityRecordViewListener presenter;
-	
-	private NavigationUI navUi;
-	
-	private DateField txdDate = new DateField("Erstellt am:");
-	private TextArea txaDescription = new TextArea("Beschreibung");
-	private Slider sldSuccess = new Slider("Erfolg");
-	private FormLayout form = new FormLayout();
-	
-	private Button btnSave = new Button(VaadinIcons.CHECK);
-	
-	public ActivityRecordViewImpl(NavigationUI navUi) {
-		this.navUi = navUi;
-		this.presenter = null;
-		
-		setupForm();
-		setupSaveButton();
-		
-	}
-	
-	/**
-	 * Initializes the form to edit the activity record data
-	 */
-	private void setupForm() {
-		
-		form.setWidth(100.0f, Unit.PERCENTAGE);
+    private static final long serialVersionUID = 1L;
+
+    private ActivityRecordViewListener presenter;
+
+    private NavigationUI navUi;
+
+    private DateField txdDate = new DateField("Erstellt am:");
+    private TextArea txaDescription = new TextArea("Beschreibung");
+    private Slider sldSuccess = new Slider("Erfolg");
+    private FormLayout form = new FormLayout();
+
+    private Button btnSave = new Button(VaadinIcons.CHECK);
+
+    public ActivityRecordViewImpl(NavigationUI navUi) {
+        this.navUi = navUi;
+        this.presenter = null;
+
+        setupForm();
+        setupSaveButton();
+
+    }
+
+    /**
+     * Initializes the form to edit the activity record data
+     */
+    private void setupForm() {
+
+        form.setWidth(100.0f, Unit.PERCENTAGE);
 
         txdDate.setIcon(VaadinIcons.CALENDAR);
         txdDate.setRequiredIndicatorVisible(true);
@@ -66,9 +66,9 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
         txaDescription.setIcon(VaadinIcons.COMMENT);
         txaDescription.setRequiredIndicatorVisible(true);
         txaDescription.setWidth(100.0f, Unit.PERCENTAGE);
-        
+
         form.addComponent(txaDescription);
-        
+
         sldSuccess.setMin(1);
         sldSuccess.setMax(10);
         sldSuccess.setValue(5.0);
@@ -77,142 +77,143 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
         form.addComponent(sldSuccess);
 
         this.addComponent(form);
-	}
-	
-	/**
-	 * Sets up the save button and adds a click listener to it.
-	 */
-	private void setupSaveButton(){
-		btnSave.addClickListener(event -> this.presenter.save());
+    }
+
+    /**
+     * Sets up the save button and adds a click listener to it.
+     */
+    private void setupSaveButton() {
+        btnSave.addClickListener(event -> this.presenter.save());
 
         this.addComponent(btnSave);
         this.setComponentAlignment(btnSave, Alignment.MIDDLE_RIGHT);
-	}
+    }
 
-	@Override
-	public void setDate(Date date) {
-		LocalDate localDate = Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
-		txdDate.setValue(localDate);
-	}
-	
-	@Override
-	public void setDescription(String description){
-		txaDescription.setValue(description);
-	}
+    @Override
+    public Date getDate() {
+        return Date.from(txdDate.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+    }
 
-	@Override
-	public void setSuccess(int success) {
-		sldSuccess.setValue((double) success);
-	}
+    @Override
+    public void setDate(Date date) {
+        LocalDate localDate = Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+        txdDate.setValue(localDate);
+    }
 
-	@Override
-	public Date getDate() {
-		return Date.from(txdDate.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-	}
-	
-	@Override
-	public String getDescription(){
-		return txaDescription.getValue();
-	}
+    @Override
+    public String getDescription() {
+        return txaDescription.getValue();
+    }
 
-	@Override
-	public int getSuccess() {
-		return sldSuccess.getValue().intValue();
-	}
+    @Override
+    public void setDescription(String description) {
+        txaDescription.setValue(description);
+    }
 
-	@Override
-	public void setNewActivityRecord() {
-		txdDate.setEnabled(true);
-		btnSave.setCaption("Hinzufügen");
-		
-	}
-	
-	/**
-	 * Clears the fields in the form and resets the view to the original state.
-	 */
-	@Override
-	public void clearView() {
-		txdDate.clear();
-		txaDescription.setValue("");
-		sldSuccess.setValue(5.0);
-		btnSave.setCaption("");
-		txdDate.setEnabled(false);
-		
-	}
-	
-	/**
-	 * Should be called if the url has errors
-	 */
-	private void urlParseError(){
-		 this.navUi.getNavigator().navigateTo(NavigationUI.SELECTPATIENTVIEW);
-	}
-	
-	@Override
-	public void addListener(ActivityRecordViewListener listener){
-		this.presenter = listener;
-	}
-	
-	/**
-	 * Parses the url and saves the different IDs in corresponding variables. The IDs are than forwarded to the presenter.
-	 * The presenter than resolves them into the corresponding objects.
-	 */
-	 @Override
-	 public void enter(ViewChangeEvent event) {
-		 int pid = -1;
-         int oid = -1;
-         int aid = -1;
-         int arid = -1;
-         
-		 if (event.getParameters() == null || event.getParameters().isEmpty()) {
-			 this.urlParseError();;
-		 } else {
-			 String url = event.getParameters();
-			 String[] params = url.split("/");
-			 
-			 // todo this whole else if needs to be reviewed and rewritten.
-			 if (params.length != 4) {
-				 this.urlParseError();
-			 } else if (params[3].equals(navUi.NEW)){
-				 try {
-	                 pid = Integer.parseInt(params[0]);
-	                 oid = Integer.parseInt(params[1]);
-	                 aid = Integer.parseInt(params[2]);
-	             } catch (NumberFormatException ex) {
-	                 this.urlParseError();
-	             }
-				 setNewActivityRecord();
-			 }
-	         else {
-	             try {
-	                 pid = Integer.parseInt(params[0]);
-	                 oid = Integer.parseInt(params[1]);
-	                 aid = Integer.parseInt(params[2]);
-	                 arid = Integer.parseInt(params[3]);
-	             } catch (NumberFormatException ex) {
-	                 this.urlParseError();
-	             }
-	           }
-	        }
-		 presenter.resolveIds(pid, oid, aid, arid);
-	    }
-	 
-	 /**
-	  * Changes the form after a new Activity Record is created and saved.
-	  */
-	 @Override
-	 public void changeToExistingActRec(int arid){
-		 navUi.getNavigator().navigateTo(NavigationUI.ACTIVITYRECORDVIEW + getUrl() + arid);
-		 txdDate.setEnabled(false);
-		 btnSave.setCaption("");
-	 }
-	 
-	 /**
-	  * Retrieves the url and trims it.
-	  * @return part of url: /pid/oid/aid/
-	  */
-	 private String getUrl(){
-		 String url = navUi.getPage().getUriFragment();
-		 return url.substring(navUi.ACTIVITYRECORDVIEW.length()+1, url.length()-3);
-	 }
-	
+    @Override
+    public int getSuccess() {
+        return sldSuccess.getValue().intValue();
+    }
+
+    @Override
+    public void setSuccess(int success) {
+        sldSuccess.setValue((double) success);
+    }
+
+    @Override
+    public void setNewActivityRecord() {
+        txdDate.setEnabled(true);
+        btnSave.setCaption("Hinzufügen");
+
+    }
+
+    /**
+     * Clears the fields in the form and resets the view to the original state.
+     */
+    @Override
+    public void clearView() {
+        txdDate.clear();
+        txaDescription.setValue("");
+        sldSuccess.setValue(5.0);
+        btnSave.setCaption("");
+        txdDate.setEnabled(false);
+
+    }
+
+    /**
+     * Should be called if the url has errors
+     */
+    private void urlParseError() {
+        this.navUi.getNavigator().navigateTo(NavigationUI.SELECTPATIENTVIEW);
+    }
+
+    @Override
+    public void addListener(ActivityRecordViewListener listener) {
+        this.presenter = listener;
+    }
+
+    /**
+     * Parses the url and saves the different IDs in corresponding variables. The IDs are than forwarded to the presenter.
+     * The presenter than resolves them into the corresponding objects.
+     */
+    @Override
+    public void enter(ViewChangeEvent event) {
+        int pid = -1;
+        int oid = -1;
+        int aid = -1;
+        int arid = -1;
+
+        if (event.getParameters() == null || event.getParameters().isEmpty()) {
+            this.urlParseError();
+            ;
+        } else {
+            String url = event.getParameters();
+            String[] params = url.split("/");
+
+            // todo this whole else if needs to be reviewed and rewritten.
+            if (params.length != 4) {
+                this.urlParseError();
+            } else if (params[3].equals(navUi.NEW)) {
+                try {
+                    pid = Integer.parseInt(params[0]);
+                    oid = Integer.parseInt(params[1]);
+                    aid = Integer.parseInt(params[2]);
+                } catch (NumberFormatException ex) {
+                    this.urlParseError();
+                }
+                setNewActivityRecord();
+            } else {
+                try {
+                    pid = Integer.parseInt(params[0]);
+                    oid = Integer.parseInt(params[1]);
+                    aid = Integer.parseInt(params[2]);
+                    arid = Integer.parseInt(params[3]);
+                } catch (NumberFormatException ex) {
+                    this.urlParseError();
+                }
+            }
+        }
+        presenter.resolveIds(pid, oid, aid, arid);
+    }
+
+    /**
+     * Changes the form after a new Activity Record is created and saved.
+     */
+    @Override
+    public void changeToExistingActRec(int arid) {
+        navUi.getNavigator().navigateTo(NavigationUI.ACTIVITYRECORDVIEW + getUrl() + arid);
+        txdDate.setEnabled(false);
+        btnSave.setCaption("");
+    }
+
+    /**
+     * Retrieves the url and trims it.
+     *
+     * @return part of url: /pid/oid/aid/
+     */
+    private String getUrl() {
+        String url = navUi.getPage().getUriFragment();
+        return url.substring(navUi.ACTIVITYRECORDVIEW.length() + 1, url.length() - 3);
+    }
+
 }

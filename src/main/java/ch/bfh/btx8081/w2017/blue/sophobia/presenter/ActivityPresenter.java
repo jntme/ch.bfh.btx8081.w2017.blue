@@ -36,7 +36,7 @@ public class ActivityPresenter implements ActivityView.ActivityViewListener, Ser
 
     @Override
     public void requestActivity(int pid, int oid, int aid) {
-        this.patient = DB.getPatient(Integer.toString(pid));
+        this.patient = DB.getObjectById(Integer.toString(pid), Patient.class, "pid");
         Objective objective = null;
         Activity activity = null;
 
@@ -80,8 +80,8 @@ public class ActivityPresenter implements ActivityView.ActivityViewListener, Ser
      */
     @Override
     public void initNewActivity(int pid, int oid) {
-        this.patient = DB.getPatient(Integer.toString(pid));
-        this.objective = DB.<Objective>getObjectById(Integer.toString(oid), "Objective");
+        this.patient = DB.getObjectById(Integer.toString(pid), Patient.class, "pid");
+        this.objective = DB.getObjectById(Integer.toString(oid), Objective.class, "oid");
         this.isNewActivity = true;
 
         ActivityRecordList activityRecordList = new ActivityRecordList();

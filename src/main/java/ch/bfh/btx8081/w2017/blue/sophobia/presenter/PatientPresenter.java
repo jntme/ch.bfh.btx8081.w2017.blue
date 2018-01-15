@@ -38,7 +38,7 @@ public class PatientPresenter implements PatientView.PatientViewListener, Serial
 		
 		
 		
-		Patient p = DB.getPatient(patientId);
+		Patient p = DB.getObjectById(patientId, Patient.class, "pid");
 		if(p != null) {
 			this.displayPatient(p);
 

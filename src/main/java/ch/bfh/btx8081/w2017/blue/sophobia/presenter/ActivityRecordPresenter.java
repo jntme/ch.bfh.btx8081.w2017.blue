@@ -62,7 +62,7 @@ public class ActivityRecordPresenter implements ActivityRecordView.ActivityRecor
 	
 	@Override
 	public void resolveIds(int pid, int oid, int aid, int arid) {
-		pat = DB.getPatient(Integer.toString(pid));
+		pat = DB.getObjectById(Integer.toString(pid), Patient.class, "pid");
 		
 		if (this.pat != null) {
             List<Objective> objList = this.pat.getObjectiveList().getObjectives();
