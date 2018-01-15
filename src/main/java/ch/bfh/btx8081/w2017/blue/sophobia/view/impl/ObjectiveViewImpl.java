@@ -132,12 +132,12 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
      * (renames button to 'add', disables aView, ...)
      */
     private void setViewOnNewObjective() {
-        this.saveButton.setCaption("Add");
+        //this.saveButton.setCaption("Add");
         this.aView.setEnabled(false);
     }
 
     private void setViewOnExistingObjective() {
-        this.saveButton.setCaption("Save");
+        //this.saveButton.setCaption("Save");
         this.aView.setEnabled(true);
     }
 
