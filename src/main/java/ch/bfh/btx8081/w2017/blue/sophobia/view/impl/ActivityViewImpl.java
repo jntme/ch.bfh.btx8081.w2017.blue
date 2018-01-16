@@ -108,7 +108,7 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
                 this.presenter.getObjective().getOid() + "/" +
                 this.presenter.getModel().getAid());
 
-        Notification notification = new Notification("New Activity added!", "Successful");
+        Notification notification = new Notification("Neue Aktivität hinzugefügt!", "Erfolg");
         notification.setDelayMsec(1000);
         notification.show(navUI.getPage());
     }
@@ -183,7 +183,7 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
      * (renames button to 'add', disables aView (...)
      */
     private void setViewOnExistingActivity() {
-        this.saveButton.setCaption("Save");
+        //this.saveButton.setCaption("Save");
         this.aView.setEnabled(true);
     }
 

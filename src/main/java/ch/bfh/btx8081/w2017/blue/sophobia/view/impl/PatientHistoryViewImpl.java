@@ -25,7 +25,7 @@ public class PatientHistoryViewImpl extends CustomComponent implements PatientHi
         txaPatientHistory.setRows(2);
         txaPatientHistory.setSizeFull();
 
-        acc.addTab(txaPatientHistory, "Patient History");
+        acc.addTab(txaPatientHistory, "Patientenverlauf");
     }
 
     @Override

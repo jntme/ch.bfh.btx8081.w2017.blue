@@ -23,12 +23,12 @@ public class PatientHistory implements Serializable {
 
         ArrayList<String> historyDummyList = new ArrayList<>(
                 Arrays.asList(
-                        "12.12.2017: Medikamentenwechsel",
-                        "10.12.2017: Erste Kognitive Verhaltenstherapie (CBT)",
-                        "11.11.2017: Arztbesuch mit Spitex",
-                        "08.06.2017: Spitalbesuch wegen Suizidversuch",
-                        "15.03.2017: Psychische Krise",
-                        "25.02.2017: Niedergeschlagen, keine Aktivitäten seit zwei Tagen"
+                		"08.11.2017: Neues Ziel 'Wohnung sauber halten'",
+						"10.11.2017: Neue Aktivität 'Wischen' zum Ziel 'Wohnung sauber halten'",     
+						"20.11.2017: Arztbesuch mit Spitex",
+						"30.11.2017: Spitalbesuch wegen Suizidversuch",
+						"17.12.2017: Psychische Krise",
+						"04.01.2018: Ziel 'Wohnung sauber halten' erfolgreich abgeschlossen."
                 ));
 
         Random random = new Random();

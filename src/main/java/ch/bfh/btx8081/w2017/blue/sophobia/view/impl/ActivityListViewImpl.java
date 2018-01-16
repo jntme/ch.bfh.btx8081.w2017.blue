@@ -82,6 +82,17 @@ public class ActivityListViewImpl extends Panel implements ActivityListView {
             }
         });
 
+
+		// the delete button click event handler
+		btnDelete.addClickListener(event -> {
+			grid.getSelectedItems().forEach(activity -> this.presenter.deleteActivity(activity));
+			grid.getSelectedItems().forEach(activity -> grid.getSelectedItems().remove(activity));
+			grid.clearSortOrder();
+			Notification notification = new Notification("Erolgreich gelöscht!", "Löschen");
+			notification.setDelayMsec(1000);
+			notification.show(navUI.getPage());
+		});
+
         // the delete button click event handler
         btnDelete.addClickListener(event -> {
             grid.getSelectedItems().forEach(activity -> this.presenter.deleteActivity(activity));
