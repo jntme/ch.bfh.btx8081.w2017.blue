@@ -3,6 +3,7 @@ package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 import java.util.ArrayList;
 
 import com.vaadin.icons.VaadinIcons;
+import com.vaadin.server.Sizeable;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
@@ -53,9 +54,12 @@ public class NoteViewImpl extends Window implements NoteView, ClickListener {
         chkActive.setVisible(false);
         chkHLay.addComponents(chkDanger, chkActive);
         btnHLay.addComponents(btnSave, btnCancel);
-
+        txaContent.setSizeFull();
+        txfTitle.setSizeFull();
+        
         vLay.addComponents(lblTitle, txfTitle, lblContent, txaContent, chkHLay, btnHLay);
-
+        
+        this.setWidth(25, Unit.PERCENTAGE);
         this.setContent(vLay);
         this.setModal(true);
     }
@@ -122,11 +126,7 @@ public class NoteViewImpl extends Window implements NoteView, ClickListener {
                 listener.buttonClick();
             }
         }
-		/*
-		 * found by FindBug - does nothing - kybup1 
-		else if(event.getButton().getIcon().equals(VaadinIcons.CLOSE_BIG)){
-			
-		} */
+		
         this.close();
     }
 }

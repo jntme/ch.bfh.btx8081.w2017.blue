@@ -9,8 +9,10 @@ import com.vaadin.ui.Grid;
 import com.vaadin.ui.Grid.ItemClick;
 import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.GridLayout;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextArea;
+import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.components.grid.ItemClickListener;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Note;
@@ -31,7 +33,7 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 
     private GridLayout noteGrid = new GridLayout(4, 2);
     private TextArea txaDiagnosis = new TextArea();
-    private Label txaDrugs = new Label();
+    private TextArea txaDrugs = new TextArea();
     private Grid<Note> notes = new Grid<Note>();
     private Button btnAddNote = new Button(VaadinIcons.PLUS_CIRCLE);
     private Button btnDeleteNote = new Button(VaadinIcons.TRASH);
@@ -40,12 +42,17 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
     public PatientInfoViewImpl() {
         this.setCompositionRoot(acc);
 
-        txaDiagnosis.setEnabled(false);
-        txaDiagnosis.setRows(3);//---------- just a textField of 3 rows.
-        txaDiagnosis.setSizeFull();//------- I added this to extend the text area to the right.
-
-        noteGrid.addComponent(btnAddNote, 0, 0, 0, 0);
-        noteGrid.addComponent(btnDeleteNote, 1, 0, 1, 0);
+        txaDiagnosis.setReadOnly(true);
+        txaDiagnosis.setRows(3);
+        txaDiagnosis.setSizeFull();
+        
+        txaDrugs.setReadOnly(true);
+        txaDrugs.setRows(3);
+        txaDrugs.setSizeFull();
+        
+        HorizontalLayout hLay = new HorizontalLayout();
+        hLay.addComponents(btnAddNote, btnDeleteNote);
+        noteGrid.addComponent(hLay, 0, 0, 0, 0);
         noteGrid.addComponent(notes, 0, 1, 2, 1);
 
         btnDeleteNote.addClickListener(this);

@@ -21,7 +21,7 @@ public class PatientHistoryViewImpl extends CustomComponent implements PatientHi
     public PatientHistoryViewImpl() {
         this.setCompositionRoot(acc);
 
-        txaPatientHistory.setEnabled(false);
+        txaPatientHistory.setReadOnly(true);
         txaPatientHistory.setRows(2);
         txaPatientHistory.setSizeFull();
 

@@ -1,9 +1,12 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Locale;
 
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
@@ -13,6 +16,8 @@ import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.FormLayout;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.Slider;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
@@ -34,7 +39,8 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
     private NavigationUI navUi;
 
     private DateField txdDate = new DateField("Datum:");
-    private TextArea txaDescription = new TextArea("Beschreibung");
+    private TextArea txaDescription = new TextArea("Beschreibung:");
+    private Label lblTitle = new Label();
     private Slider sldSuccess = new Slider("Erfolg");
     private FormLayout form = new FormLayout();
 
@@ -43,6 +49,9 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
     public ActivityRecordViewImpl(NavigationUI navUi) {
         this.navUi = navUi;
         this.presenter = null;
+        
+        lblTitle.setStyleName("header");
+        this.addComponent(lblTitle);
 
         setupForm();
         setupSaveButton();
@@ -58,8 +67,9 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
 
         txdDate.setIcon(VaadinIcons.CALENDAR);
         txdDate.setRequiredIndicatorVisible(true);
-        txdDate.setEnabled(false);
+        txdDate.setReadOnly(true);
         txdDate.setWidth(100.0f, Unit.PERCENTAGE);
+        txdDate.setDateFormat("dd. MM. yyyy");
 
         form.addComponent(txdDate);
 
@@ -91,13 +101,22 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
 
     @Override
     public Date getDate() {
-        return Date.from(txdDate.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+    	try{
+    		return Date.from(txdDate.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+    	} catch(Exception e){
+    		Notification notification = new Notification("Bitte wählen sie das Datum über die Auswahlfunktion aus", "Fehler");
+            notification.setDelayMsec(1000);
+            notification.show(navUi.getPage());
+            return null;
+    	}
     }
 
     @Override
     public void setDate(Date date) {
         LocalDate localDate = Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
         txdDate.setValue(localDate);
+        DateFormat df = new SimpleDateFormat("dd. MM. yyyy", Locale.GERMAN);
+        lblTitle.setValue(df.format(date));
     }
 
     @Override
@@ -122,7 +141,7 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
 
     @Override
     public void setNewActivityRecord() {
-        txdDate.setEnabled(true);
+        txdDate.setReadOnly(false);
         //btnSave.setCaption("Hinzufügen");
 
     }
@@ -132,11 +151,12 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
      */
     @Override
     public void clearView() {
+    	lblTitle.setValue("");
         txdDate.clear();
         txaDescription.setValue("");
         sldSuccess.setValue(5.0);
         btnSave.setCaption("");
-        txdDate.setEnabled(false);
+        txdDate.setReadOnly(true);
 
     }
 
@@ -201,8 +221,12 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
     @Override
     public void changeToExistingActRec(int arid) {
         navUi.getNavigator().navigateTo(NavigationUI.ACTIVITYRECORDVIEW + getUrl() + arid);
-        txdDate.setEnabled(false);
+        txdDate.setReadOnly(true);
         btnSave.setCaption("");
+        
+        Notification notification = new Notification("Verlaufsdokumentation wurde erstellt und gespeichert", "Erstellung");
+        notification.setDelayMsec(1000);
+        notification.show(navUi.getPage());
     }
 
     /**

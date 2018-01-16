@@ -47,16 +47,18 @@ public class ActivityRecordPresenter implements ActivityRecordView.ActivityRecor
     public void save() {
 
         if (newActRec == false) {
-            actRec.setDate(view.getDate());
-            actRec.setDescription(view.getDescription());
+        	actRec.setDate(view.getDate());
+        	actRec.setDescription(view.getDescription());
             actRec.setSuccess(view.getSuccess());
             pat.persist();
         } else {
-            actRec = act.getActRecList().createActivityRecord(view.getDate(), view.getSuccess(), view.getDescription());
-            pat.persist();
-            newActRec = false;
-            view.clearView();
-            view.changeToExistingActRec(actRec.getArId());
+            if(!view.getDate().equals(null)){
+				actRec = act.getActRecList().createActivityRecord(view.getDate(), view.getSuccess(), view.getDescription());
+				pat.persist();
+				newActRec = false;
+				view.clearView();
+				view.changeToExistingActRec(actRec.getArId());
+			} 
         }
     }
 
