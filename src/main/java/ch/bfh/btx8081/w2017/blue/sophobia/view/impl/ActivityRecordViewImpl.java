@@ -33,7 +33,7 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
 
     private NavigationUI navUi;
 
-    private DateField txdDate = new DateField("Erstellt am:");
+    private DateField txdDate = new DateField("Datum:");
     private TextArea txaDescription = new TextArea("Beschreibung");
     private Slider sldSuccess = new Slider("Erfolg");
     private FormLayout form = new FormLayout();

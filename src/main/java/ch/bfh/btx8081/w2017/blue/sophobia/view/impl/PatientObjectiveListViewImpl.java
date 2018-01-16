@@ -89,7 +89,7 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
             grid.getSelectedItems().forEach(objective -> this.presenter.deleteObjective(objective));
             grid.getSelectedItems().forEach(objective -> grid.getSelectedItems().remove(objective));
             grid.clearSortOrder();
-            Notification notification = new Notification("Deleted successful.", "deletion");
+            Notification notification = new Notification("Erolgreich gelöscht!", "Löschen");
             notification.setDelayMsec(1000);
             notification.show(navUI.getPage());
         });

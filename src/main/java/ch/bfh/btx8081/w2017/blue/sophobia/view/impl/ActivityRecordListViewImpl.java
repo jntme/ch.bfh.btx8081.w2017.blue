@@ -88,7 +88,7 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
             grid.getSelectedItems().forEach(activityRecord -> this.presenter.deleteActivityRecord(activityRecord));
             grid.getSelectedItems().forEach(activityRecord -> grid.getSelectedItems().remove(activityRecord));
             grid.clearSortOrder();
-            Notification notification = new Notification("Deleted successful.", "deletion");
+            Notification notification = new Notification("Erolgreich gelöscht!", "Löschen");
             notification.setDelayMsec(1000);
             notification.show(navUI.getPage());
         });
