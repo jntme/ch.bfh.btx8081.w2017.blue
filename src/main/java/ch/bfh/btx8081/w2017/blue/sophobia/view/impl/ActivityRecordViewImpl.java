@@ -170,7 +170,6 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
             String url = event.getParameters();
             String[] params = url.split("/");
 
-            // todo this whole else if needs to be reviewed and rewritten.
             if (params.length != 4) {
                 this.urlParseError();
             } else if (params[3].equals(navUi.NEW)) {

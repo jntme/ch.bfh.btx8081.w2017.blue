@@ -75,8 +75,7 @@ public class PatientContactViewImpl extends Window implements PatientContactView
 
     @Override
     public void setPicture(Image image) {
-        // TODO Auto-generated method stub
-
+        // TODO set pictures
     }
 
     @Override

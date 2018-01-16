@@ -144,7 +144,6 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
     }
 
     // Is obsolete when using url workaround
-    // TODO discuss workaround
     public void setPatientAndObjectiveAndActivity(Patient patient, Objective model, Activity activity) {
     }
 }

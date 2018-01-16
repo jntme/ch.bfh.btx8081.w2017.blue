@@ -34,7 +34,6 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
     private Label lblTitle = new Label("");
     private Button btnShowContact = new Button(VaadinIcons.INFO_CIRCLE);
 
-    // todo: naming should be specific and clear!
     private PatientObjectiveListViewImpl oView;
     private PatientHistoryViewImpl pHistory = new PatientHistoryViewImpl();
     private PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
