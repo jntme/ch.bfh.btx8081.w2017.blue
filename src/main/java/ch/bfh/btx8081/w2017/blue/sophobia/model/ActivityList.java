@@ -16,52 +16,53 @@ import javax.persistence.OneToMany;
  * Manages all Activities for an Object
  *
  * @author petim1
- * @version 1.5
- * @since 07.12.2017
  */
 @Entity
 public class ActivityList implements Serializable {
 
-	private static final long serialVersionUID = -575968600997966395L;
+    private static final long serialVersionUID = -575968600997966395L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
-	private int alid;
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private int alid;
 
-	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-	private List<Activity> activities = new ArrayList<Activity>();
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    private List<Activity> activities = new ArrayList<Activity>();
 
-	/**
-	 * Creates a new Activity in this list
-	 * @param name is the name of the activity
-	 * @param description describes the activity
-	 */
-	public void createAct(String name, String description) {
-		Activity act = new Activity(name, description);
+    /**
+     * Creates a new Activity in this list
+     *
+     * @param name        is the name of the activity
+     * @param description describes the activity
+     */
+    public void createAct(String name, String description) {
+        Activity act = new Activity(name, description);
 
-		activities.add(act);
-	}
+        activities.add(act);
+    }
 
-	public int getAlid() {
-		return alid;
-	}
+    public int getAlid() {
+        return alid;
+    }
 
-	public void setAlid(int alid) {
-		this.alid = alid;
-	}
+    public void setAlid(int alid) {
+        this.alid = alid;
+    }
 
-	public List<Activity> getActivities() {
-		return activities;
-	}
+    public List<Activity> getActivities() {
+        return activities;
+    }
 
-	public void setActivities(List<Activity> activities) {
-		this.activities = activities;
-	}
+    public void setActivities(List<Activity> activities) {
+        this.activities = activities;
+    }
 
-	public void addActivity(Activity activity) { this.activities.add(activity); }
+    public void addActivity(Activity activity) {
+        this.activities.add(activity);
+    }
 
-	public void removeActivity(Activity activity) {
-		this.activities.remove(activity);
-		activity.delete();
-	}
+    public void removeActivity(Activity activity) {
+        this.activities.remove(activity);
+        activity.delete();
+    }
 }

@@ -4,18 +4,21 @@ import java.util.List;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 
+/**
+ * @author gfels6
+ */
 public interface SelectPatientView {
 
-	void fillObjectiveList(List<Patient> patientList);
-	
-	void addListener(SelectPatientClickListener listener);
-	
-	interface SelectPatientClickListener{
-		
-		/**
-		 * This method is called when a patient is clicked
-		 */
+    void fillObjectiveList(List<Patient> patientList);
+
+    void addListener(SelectPatientClickListener listener);
+
+    interface SelectPatientClickListener {
+
+        /**
+         * This method is called when a patient is clicked
+         */
         void buttonClick();
-	}
+    }
 
 }

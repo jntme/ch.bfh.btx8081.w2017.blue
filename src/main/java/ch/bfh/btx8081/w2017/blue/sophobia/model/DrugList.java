@@ -14,51 +14,46 @@ import javax.persistence.Transient;
  * information.
  *
  * @author petim1
- * @version 1.5
- * @since 29.11.2017
  */
 @Entity
 public class DrugList implements Serializable {
 
-	private static final long serialVersionUID = -497510382119394655L;
+    private static final long serialVersionUID = -497510382119394655L;
+    @Transient
+    ArrayList<String> drugs = new ArrayList<String>();
+    @Transient
+    int randNo, minimum = 0, maximum = 6;
+    // Variables for class - use
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private int did;
+    private String med;
 
-	// Variables for class - use
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
-	private int did;
-	
-	@Transient ArrayList<String> drugs = new ArrayList<String>();
-	@Transient int randNo, minimum = 0, maximum = 6;
+    public DrugList() {
+        initdrugs();
+    }
 
-	private String med;
-	
-	public DrugList(){
-		initdrugs();
-	}
-	
-	
 
-	/**
-	 * The method {@code initdrugs()} fills the ArrayList with dummy-data and
-	 * the random generator generates a number to add 3 drugs to a list that
-	 * will be given back.
-	 */
-	public void initdrugs() {
-		drugs.add("Medikament: Citalopram / Wirkstoff: Citalopram  / Dosis: 40mg");
-		drugs.add("Medikament: Cipralex / Wirkstoff: Escitalopram / Dosis: 20mg");
-		drugs.add("Medikament: Lyrica / Wirkstoff: Pregabalin / Dosis: 300mg");
-		drugs.add("Medikament: Cymbalta / Wirkstoff: Duloxetin / Dosis: 60mg");
-		drugs.add("Medikament: Sertralin / Wirkstoff: Sertralin / Dosis: 50mg");
-		drugs.add("Medikament: EFEXOR ER / Wirkstoff: Venlafaxin / Dosis: 150mg");
-		drugs.add("Medikament: Escitalopram / Wirkstoff: Escitalopram / Dosis: 20mg");
-		
+    /**
+     * The method {@code initdrugs()} fills the ArrayList with dummy-data and
+     * the random generator generates a number to add 3 drugs to a list that
+     * will be given back.
+     */
+    public void initdrugs() {
+        drugs.add("Medikament: Citalopram / Wirkstoff: Citalopram  / Dosis: 40mg");
+        drugs.add("Medikament: Cipralex / Wirkstoff: Escitalopram / Dosis: 20mg");
+        drugs.add("Medikament: Lyrica / Wirkstoff: Pregabalin / Dosis: 300mg");
+        drugs.add("Medikament: Cymbalta / Wirkstoff: Duloxetin / Dosis: 60mg");
+        drugs.add("Medikament: Sertralin / Wirkstoff: Sertralin / Dosis: 50mg");
+        drugs.add("Medikament: EFEXOR ER / Wirkstoff: Venlafaxin / Dosis: 150mg");
+        drugs.add("Medikament: Escitalopram / Wirkstoff: Escitalopram / Dosis: 20mg");
 
-		
-		// Generate random number and add to String (1x)
-		randNo = minimum + (int) (Math.random() * maximum);
-		this.med = drugs.get(randNo);
-		
-		// Generate random number and add to String (2x)
+
+        // Generate random number and add to String (1x)
+        randNo = minimum + (int) (Math.random() * maximum);
+        this.med = drugs.get(randNo);
+
+        // Generate random number and add to String (2x)
 //		for (int i = 0; i < 3; i++) {
 //			randNo = minimum + (int) (Math.random() * maximum);
 //			med += drugs.get(randNo);
@@ -66,14 +61,14 @@ public class DrugList implements Serializable {
 //
 //		}
 
-	}
+    }
 
-	/**
-	 * Overrides the {@code toString()} Method for our specific use
-	 */
-	@Override
-	public String toString() {
-		return this.med;
+    /**
+     * Overrides the {@code toString()} Method for our specific use
+     */
+    @Override
+    public String toString() {
+        return this.med;
 
-	}
+    }
 }

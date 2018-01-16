@@ -9,71 +9,62 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 /**
  * Manages list of patient Diagnosis
- * @author Odaoj1
  *
+ * @author Odaoj1
  */
 @Entity
 public class DiagnosisList implements Serializable {
 
-	private static final long serialVersionUID = -7448485478047526501L;
+    private static final long serialVersionUID = -7448485478047526501L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
-	private int diagID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private int diagID;
 
-	/**
-	 * Contains Diagnosis list
-	 */
+    // Contains Diagnosis list
+    private ArrayList<String> diagnosisList = new ArrayList<>(
+            Arrays.asList("Feeling that mind has gone blank",
+                    "Dizziness and lightheadedness"));
 
-	private ArrayList<String> diagnosisList = new ArrayList<>(
-			Arrays.asList("Feeling that mind has gone blank",
-					"Dizziness and lightheadedness"));
-	
-
-	/**
-	 * generates the random list of patient Diagnosis from the existing Array list of Diagnosis
-	 */
-	public ArrayList<String> getDiagnosisList(int numElement){
-		Random random = new Random();
-		int sizeArray = diagnosisList.size();
+    /**
+     * generates the random list of patient Diagnosis from the existing Array list of Diagnosis
+     *
+     * @param numElement
+     * @return ArrayList<String> with diagnoses
+     */
+    public ArrayList<String> getDiagnosisList(int numElement) {
+        Random random = new Random();
+        int sizeArray = diagnosisList.size();
 
 
-		ArrayList<String> arl = new ArrayList<String>();
-		for(int i = 0; i< numElement;i++){
-			int randNum = random.nextInt(sizeArray);
-			String element = diagnosisList.get(randNum);
-			arl.add(element);
-		}
-		return arl;
-	}
-/**
- * Displays the list of patient's diagnosis
- */	
-	/*public String toString() {
-		//return this.diagnosisList.toString();¨
-	return	getDiagnosisList(3).toString();
-		
-	}
-	*/
-	/**
-	 * Displays the list of patient's diagnosis
-	 * The two major diagnosis will be appearing always.
-	 * One other accompanying diagnosis follows these two.
-	 */
-	public String toString() {
-		String text0 = "Social Anxiety Disorder A, Persistent Depressive Disorder";
-		StringBuffer buf = new StringBuffer();
-		ArrayList<String> diagnosisList = getDiagnosisList(1);
-		
-		for (int i=0; i< diagnosisList.size(); i++) {
-			if(i != 0){
-				buf.append(", ");
-			}
-			buf.append(diagnosisList.get(i));
-		}
-		return text0 + "," + buf.toString();
-	}
+        ArrayList<String> arl = new ArrayList<String>();
+        for (int i = 0; i < numElement; i++) {
+            int randNum = random.nextInt(sizeArray);
+            String element = diagnosisList.get(randNum);
+            arl.add(element);
+        }
+        return arl;
+    }
 
+    /**
+     * Displays the list of patient's diagnosis
+     * The two major diagnosis will be appearing always.
+     * One other accompanying diagnosis follows these two.
+     */
+    public String toString() {
+        String text0 = "Social Anxiety Disorder A, Persistent Depressive Disorder";
+        StringBuffer buf = new StringBuffer();
+        ArrayList<String> diagnosisList = getDiagnosisList(1);
+
+        for (int i = 0; i < diagnosisList.size(); i++) {
+            if (i != 0) {
+                buf.append(", ");
+            }
+            buf.append(diagnosisList.get(i));
+        }
+        return text0 + "," + buf.toString();
+    }
 }

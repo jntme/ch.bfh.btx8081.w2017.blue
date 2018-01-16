@@ -10,16 +10,21 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ActivityView;
 
+/**
+ * Presenter for Activity.
+ *
+ * @author gfels6, jntme
+ */
 public class ActivityPresenter implements ActivityView.ActivityViewListener, Serializable {
 
-	private static final long serialVersionUID = -2999064597709591945L;
+    private static final long serialVersionUID = -2999064597709591945L;
 
-	private Activity model = null;
+    private Activity model = null;
     private ActivityView view;
     private Patient patient = null;
     private Objective objective = null;
     private boolean isNewActivity = false;
-    
+
     public ActivityPresenter(ActivityView view) {
         this.view = view;
         view.setPresenter(this);

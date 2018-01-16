@@ -38,8 +38,8 @@ public class DB {
      * class it should use. Because it is not possible to get the class name of a generic, it is needed
      * to deliver the actual class type as well, so it can be queried from the DB.
      *
-     * @param oid       eg. 112
-     * @param classType the actuall ClassType
+     * @param oid          eg. 112
+     * @param classType    the actuall ClassType
      * @param objectIDName the name of the id of the class
      * @return the Object or null if there is nothing found
      */

@@ -4,13 +4,21 @@ import java.util.Date;
 
 import com.vaadin.ui.Image;
 
+/**
+ * @author gfels6
+ */
 public interface PatientContactView {
-	
-	void setAddress(String city, String street, String zip);
-	void setBirthdate(Date date);
-	void setPicture(Image image);
-	void setName(String name, String prename);
-	void setGender(String gender);
-	void clearView();
+
+    void setAddress(String city, String street, String zip);
+
+    void setBirthdate(Date date);
+
+    void setPicture(Image image);
+
+    void setName(String name, String prename);
+
+    void setGender(String gender);
+
+    void clearView();
 
 }

@@ -11,6 +11,11 @@ import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.SelectPatientView;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.SelectPatientView.SelectPatientClickListener;
 
+/**
+ * Presenter for PatientSelector.
+ *
+ * @author gfels6
+ */
 public class SelectPatientPresenter implements SelectPatientClickListener, Serializable {
 
 	private static final long serialVersionUID = 4423698583918640850L;

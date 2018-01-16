@@ -22,45 +22,42 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ActivityView;
 /**
  * Implements the view for an Activity.
  *
- * @author jntme, ziegm1
+ * @author gfels6, jntme, ziegm1
  */
 public class ActivityViewImpl extends VerticalLayout implements ActivityView, View {
-	private static final long serialVersionUID = 5021837901974634127L;
+    private static final long serialVersionUID = 5021837901974634127L;
+    private final ActivityRecordListViewImpl aView;
+    private NavigationUI navUI;
+    private ActivityViewListener presenter;
+    private Label lblName = new Label();
+    private FormLayout form = new FormLayout();
+    private TextField nameTextField = new TextField("Name");
+    private TextArea descriptionArea = new TextArea("Beschreibung");
 
-	private NavigationUI navUI;
+    private Button saveButton = new Button(VaadinIcons.CHECK);
 
-	private ActivityViewListener presenter;
-	private Label lblName = new Label();
-	private final ActivityRecordListViewImpl aView;
+    public ActivityViewImpl(NavigationUI navUI) {
 
-	private FormLayout form = new FormLayout();
-	private TextField nameTextField = new TextField("Name");
-	private TextArea descriptionArea = new TextArea("Beschreibung");
+        // the reference back to the navigation to communicate with the other
+        // view components
+        this.navUI = navUI;
+        this.presenter = null;
+        this.aView = new ActivityRecordListViewImpl(navUI);
 
-	private Button saveButton = new Button(VaadinIcons.CHECK);
+        lblName.setStyleName("header");
+        this.addStyleName("noPadding");
+        this.addComponent(lblName);
 
-	public ActivityViewImpl(NavigationUI navUI) {
-
-		// the reference back to the navigation to communicate with the other
-		// view components
-		this.navUI = navUI;
-		this.presenter = null;
-		this.aView = new ActivityRecordListViewImpl(navUI);
-
-		lblName.setStyleName("header");
-		this.addStyleName("noPadding");
-		this.addComponent(lblName);
-
-		setupForm();
+        setupForm();
 
         setupSaveButton();
 
-		this.setComponentAlignment(saveButton, Alignment.MIDDLE_RIGHT);
+        this.setComponentAlignment(saveButton, Alignment.MIDDLE_RIGHT);
 
-		this.addComponent(aView);
-	}
+        this.addComponent(aView);
+    }
 
-	private void setupForm() {
+    private void setupForm() {
 
         form.setWidth(100.0f, Unit.PERCENTAGE);
 
@@ -69,8 +66,8 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
         nameTextField.setWidth(100.0f, Unit.PERCENTAGE);
 
         nameTextField.addValueChangeListener(event -> {
-          this.presenter.setActivityName(event.getValue());
-          this.lblName.setValue(event.getValue());
+            this.presenter.setActivityName(event.getValue());
+            this.lblName.setValue(event.getValue());
         });
 
         form.addComponent(nameTextField);
@@ -86,29 +83,29 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
         this.addComponent(form);
     }
 
-	@Override
-	public void setDescription(String description) {
-		descriptionArea.setValue(description);
-	}
+    @Override
+    public void setDescription(String description) {
+        descriptionArea.setValue(description);
+    }
 
-	@Override
-	public void setSubPresenter(Activity model) {
-		new ActivityRecordListPresenter(model, aView);
-	}
+    @Override
+    public void setSubPresenter(Activity model) {
+        new ActivityRecordListPresenter(model, aView);
+    }
 
-	@Override
-	public void setName(String name) {
-		lblName.setValue(name);
-		nameTextField.setValue(name);
-	}
+    @Override
+    public void setName(String name) {
+        lblName.setValue(name);
+        nameTextField.setValue(name);
+    }
 
     @Override
     public void addedActivity() {
-       setViewOnExistingActivity();
+        setViewOnExistingActivity();
 
         navUI.getNavigator().navigateTo(NavigationUI.ACTIVITYVIEW + "/" +
                 this.presenter.getPatient().getPid() + "/" +
-                this.presenter.getObjective().getOid()+ "/" +
+                this.presenter.getObjective().getOid() + "/" +
                 this.presenter.getModel().getAid());
 
         Notification notification = new Notification("New Activity added!", "Successful");
@@ -119,13 +116,13 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
     /**
      * Clears the view
      */
-	@Override
-	public void clearView() {
-	    lblName.setValue("");
-	    descriptionArea.setValue("");
+    @Override
+    public void clearView() {
+        lblName.setValue("");
+        descriptionArea.setValue("");
 
-		aView.clearView();
-	}
+        aView.clearView();
+    }
 
     /**
      * Gets called when the view is called. The event contains information about the
@@ -134,52 +131,52 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
      *
      * @param event
      */
-	@Override
-	public void enter(ViewChangeEvent event) {
+    @Override
+    public void enter(ViewChangeEvent event) {
 
-		if (event.getParameters() == null || event.getParameters().isEmpty()) {
-			this.patientAndObjectiveNotFound();
-		} else {
+        if (event.getParameters() == null || event.getParameters().isEmpty()) {
+            this.patientAndObjectiveNotFound();
+        } else {
 
-			String parameter = event.getParameters();
+            String parameter = event.getParameters();
 
-			String[] params = parameter.split("/");
+            String[] params = parameter.split("/");
 
-			if (params.length != 3) {
-				this.patientAndObjectiveNotFound();
+            if (params.length != 3) {
+                this.patientAndObjectiveNotFound();
 
-			} else if (params[2].equals(NavigationUI.NEW)) {
+            } else if (params[2].equals(NavigationUI.NEW)) {
 
-				presenter.initNewActivity(Integer.parseInt(params[0]), Integer.parseInt(params[1]));
-				setViewOnNewActivity();
-			} else {
-				int pid = -1;
-				int oid = -1;
-				int aid = -1;
+                presenter.initNewActivity(Integer.parseInt(params[0]), Integer.parseInt(params[1]));
+                setViewOnNewActivity();
+            } else {
+                int pid = -1;
+                int oid = -1;
+                int aid = -1;
 
-				try {
-					pid = Integer.parseInt(params[0]);
-					oid = Integer.parseInt(params[1]);
-					aid = Integer.parseInt(params[2]);
-				} catch (NumberFormatException ex) {
-					this.patientAndObjectiveNotFound();
-				}
+                try {
+                    pid = Integer.parseInt(params[0]);
+                    oid = Integer.parseInt(params[1]);
+                    aid = Integer.parseInt(params[2]);
+                } catch (NumberFormatException ex) {
+                    this.patientAndObjectiveNotFound();
+                }
 
-				setViewOnExistingActivity();
-				presenter.requestActivity(pid, oid, aid);
-			}
-		}
-	}
+                setViewOnExistingActivity();
+                presenter.requestActivity(pid, oid, aid);
+            }
+        }
+    }
 
 
     /**
      * Adjusts the view for a new activity.
      * (renames button to 'add', disables aView (...)
      */
-	private void setViewOnNewActivity() {
-		this.saveButton.setCaption("Add");
-		this.aView.setEnabled(false);
-	}
+    private void setViewOnNewActivity() {
+        this.saveButton.setCaption("Add");
+        this.aView.setEnabled(false);
+    }
 
     /**
      * Adjusts the view for a new activity.
@@ -190,28 +187,28 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
         this.aView.setEnabled(true);
     }
 
-	@Override
-	public void patientAndObjectiveNotFound() {
-		this.navUI.getNavigator().navigateTo(NavigationUI.SELECTPATIENTVIEW);
-	}
+    @Override
+    public void patientAndObjectiveNotFound() {
+        this.navUI.getNavigator().navigateTo(NavigationUI.SELECTPATIENTVIEW);
+    }
 
-	@Override
-	public void setPresenter(ActivityViewListener presenter) {
-		this.presenter = presenter;
+    @Override
+    public void setPresenter(ActivityViewListener presenter) {
+        this.presenter = presenter;
 
-	}
+    }
 
-	@Override
-	public void sendToActivityRecordList(Patient patient, Objective model, Activity activity) {
+    @Override
+    public void sendToActivityRecordList(Patient patient, Objective model, Activity activity) {
 
-		this.aView.setPatientAndObjectiveAndActivity(patient, model, activity);
+        this.aView.setPatientAndObjectiveAndActivity(patient, model, activity);
 
-	}
+    }
 
-	private void setupSaveButton() {
-		saveButton.addClickListener(event -> this.presenter.save());
+    private void setupSaveButton() {
+        saveButton.addClickListener(event -> this.presenter.save());
 
-		this.addComponent(saveButton);
-		this.setComponentAlignment(saveButton, Alignment.MIDDLE_RIGHT);
-	}
+        this.addComponent(saveButton);
+        this.setComponentAlignment(saveButton, Alignment.MIDDLE_RIGHT);
+    }
 }

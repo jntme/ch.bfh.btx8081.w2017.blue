@@ -18,55 +18,57 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.SelectPatientView;
 
 /**
+ * View for PatientSelector.
+ *
  * @author gfels6, jntme
  */
 public class SelectPatientViewImpl extends VerticalLayout implements SelectPatientView, ClickListener, View {
-	
-	private static final long serialVersionUID = 8987109623796160883L;
 
-	ArrayList<SelectPatientClickListener> listeners = new ArrayList<SelectPatientClickListener>();
-	private Grid<Patient> grid = new Grid<>();
-	private Label lblTitle = new Label("Patientenauswahl");
+    private static final long serialVersionUID = 8987109623796160883L;
 
-	public SelectPatientViewImpl(NavigationUI navUI) {
-		this.addStyleName("noPadding");
+    ArrayList<SelectPatientClickListener> listeners = new ArrayList<SelectPatientClickListener>();
+    private Grid<Patient> grid = new Grid<>();
+    private Label lblTitle = new Label("Patientenauswahl");
 
-		this.addComponent(lblTitle);
-		this.addComponent(grid);
-		lblTitle.setStyleName("header");
-		
-		grid.setSizeFull();
+    public SelectPatientViewImpl(NavigationUI navUI) {
+        this.addStyleName("noPadding");
 
-		grid.setSelectionMode(SelectionMode.SINGLE);
+        this.addComponent(lblTitle);
+        this.addComponent(grid);
+        lblTitle.setStyleName("header");
 
-		grid.addColumn(Patient::getPrename).setCaption("Vorname");
-		grid.addColumn(Patient::getName).setCaption("Nachname");
-		grid.addColumn(Patient::getFormattedBirthdate).setCaption("Geburtstag");
-		
-		// if someone clicks on an item in the grid, it should forward the patient to the PatientPresenter.
-		grid.addItemClickListener(new ItemClickListener<Patient>() {
-			private static final long serialVersionUID = -1899074000682972066L;
+        grid.setSizeFull();
 
-			@Override
-			public void itemClick(ItemClick<Patient> event) {
-				navUI.getNavigator().navigateTo(NavigationUI.PATIENTVIEW + "/" + event.getItem().getPid().toString());
-			}
-		});
-		
-	}
+        grid.setSelectionMode(SelectionMode.SINGLE);
 
-	@Override
-	public void fillObjectiveList(List<Patient> patientList) {
-		grid.setItems(patientList);
-	}
+        grid.addColumn(Patient::getPrename).setCaption("Vorname");
+        grid.addColumn(Patient::getName).setCaption("Nachname");
+        grid.addColumn(Patient::getFormattedBirthdate).setCaption("Geburtstag");
 
-	@Override
-	public void addListener(SelectPatientClickListener listener) {
-		listeners.add(listener);		
-	}
+        // if someone clicks on an item in the grid, it should forward the patient to the PatientPresenter.
+        grid.addItemClickListener(new ItemClickListener<Patient>() {
+            private static final long serialVersionUID = -1899074000682972066L;
 
-	@Override
-	public void buttonClick(ClickEvent event) {
-	}
+            @Override
+            public void itemClick(ItemClick<Patient> event) {
+                navUI.getNavigator().navigateTo(NavigationUI.PATIENTVIEW + "/" + event.getItem().getPid().toString());
+            }
+        });
+
+    }
+
+    @Override
+    public void fillObjectiveList(List<Patient> patientList) {
+        grid.setItems(patientList);
+    }
+
+    @Override
+    public void addListener(SelectPatientClickListener listener) {
+        listeners.add(listener);
+    }
+
+    @Override
+    public void buttonClick(ClickEvent event) {
+    }
 
 }

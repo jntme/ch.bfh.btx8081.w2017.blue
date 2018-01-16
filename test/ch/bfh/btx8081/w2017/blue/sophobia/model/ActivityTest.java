@@ -18,7 +18,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 public class ActivityTest {
 
 	/**
-	 * @author johnny, ziegm
+	 * @author jntme, ziegm
 	 */
 	@Test
 	public void addActivity() {

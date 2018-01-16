@@ -33,58 +33,58 @@ import ch.bfh.btx8081.w2017.blue.sophobia.presenter.ActivityRecordListPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ActivityRecordListView;
 
 /**
- * @author ziegm
+ * View for ActivityRecordList.
+ *
+ * @author ziegm1, kybup1
  */
 public class ActivityRecordListViewImpl extends Panel implements ActivityRecordListView, ClickListener {
-	private static final long serialVersionUID = -3140144466857083444L;
+    private static final long serialVersionUID = -3140144466857083444L;
+    private final Label header = new Label("Verlaufsdokumentation");
+    private NavigationUI navUI = null;
+    private Button bAdd = new Button(VaadinIcons.PLUS_CIRCLE);
+    private Button bDelete = new Button(VaadinIcons.TRASH);
 
-	private NavigationUI navUI = null;
+    private ActivityRecordListViewListener presenter = null;
+    private Grid<ActivityRecord> grid = new Grid<>();
 
-	private final Label header = new Label("Verlaufsdokumentation");
-	private Button bAdd = new Button(VaadinIcons.PLUS_CIRCLE);
-	private Button bDelete = new Button(VaadinIcons.TRASH);
+    public ActivityRecordListViewImpl(NavigationUI navUI) {
+        this.navUI = navUI;
 
-	private ActivityRecordListViewListener presenter = null;
-	private Grid<ActivityRecord> grid = new Grid<>();
-	
-	public ActivityRecordListViewImpl(NavigationUI navUI) {
-		this.navUI = navUI;
+        VerticalLayout vLayout = new VerticalLayout();
+        HorizontalLayout hLayout1 = new HorizontalLayout();
+        HorizontalLayout hLayout2 = new HorizontalLayout();
 
-		VerticalLayout vLayout = new VerticalLayout();
-		HorizontalLayout hLayout1 = new HorizontalLayout();
-		HorizontalLayout hLayout2 = new HorizontalLayout();
+        vLayout.addComponents(hLayout1, hLayout2);
 
-		vLayout.addComponents(hLayout1, hLayout2);
+        hLayout1.addComponents(header, bAdd, bDelete);
 
-		hLayout1.addComponents(header, bAdd, bDelete);
+        grid.setSelectionMode(SelectionMode.SINGLE);
+        grid.setWidth(100.0f, Unit.PERCENTAGE);
 
-		grid.setSelectionMode(SelectionMode.SINGLE);
-		grid.setWidth(100.0f, Unit.PERCENTAGE);
+        hLayout2.setWidth(100.0f, Unit.PERCENTAGE);
+        hLayout2.addComponent(grid);
 
-		hLayout2.setWidth(100.0f, Unit.PERCENTAGE);
-		hLayout2.addComponent(grid);
-		
-		// format date for usage in the date column of the grid.
-		ValueProvider<ActivityRecord, String> activityRecordDate = (activityRecord) -> {
-			Date date = activityRecord.getDate();
-			DateFormat df = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
-			return df.format(date);
-		};
+        // format date for usage in the date column of the grid.
+        ValueProvider<ActivityRecord, String> activityRecordDate = (activityRecord) -> {
+            Date date = activityRecord.getDate();
+            DateFormat df = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
+            return df.format(date);
+        };
 
-		grid.addColumn(activityRecordDate).setCaption("Datum");
-		grid.addColumn(ActivityRecord::getSuccess).setCaption("Erfolg");
-		
-		grid.addItemClickListener(new ItemClickListener<ActivityRecord>() {
-			private static final long serialVersionUID = -9107765887521817876L;
+        grid.addColumn(activityRecordDate).setCaption("Datum");
+        grid.addColumn(ActivityRecord::getSuccess).setCaption("Erfolg");
 
-			public void itemClick(ItemClick<ActivityRecord> event) {
-				if (event.getMouseEventDetails().isDoubleClick()) {
-					navUI.getNavigator().navigateTo(NavigationUI.ACTIVITYRECORDVIEW + getUrl() + event.getItem().getArId());
-				}
-			}
-		});
-		
-		bDelete.addClickListener(event -> {
+        grid.addItemClickListener(new ItemClickListener<ActivityRecord>() {
+            private static final long serialVersionUID = -9107765887521817876L;
+
+            public void itemClick(ItemClick<ActivityRecord> event) {
+                if (event.getMouseEventDetails().isDoubleClick()) {
+                    navUI.getNavigator().navigateTo(NavigationUI.ACTIVITYRECORDVIEW + getUrl() + event.getItem().getArId());
+                }
+            }
+        });
+
+        bDelete.addClickListener(event -> {
             grid.getSelectedItems().forEach(activityRecord -> this.presenter.deleteActivityRecord(activityRecord));
             grid.getSelectedItems().forEach(activityRecord -> grid.getSelectedItems().remove(activityRecord));
             grid.clearSortOrder();
@@ -92,57 +92,59 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
             notification.setDelayMsec(1000);
             notification.show(navUI.getPage());
         });
-		
-		bAdd.addClickListener(event -> {
-			navUI.getNavigator().navigateTo(NavigationUI.ACTIVITYRECORDVIEW + getUrl() + navUI.NEW);
+
+        bAdd.addClickListener(event -> {
+            navUI.getNavigator().navigateTo(NavigationUI.ACTIVITYRECORDVIEW + getUrl() + navUI.NEW);
         });
-		
-		
-		this.setContent(vLayout);
-	}
 
-	@Override
-	public void fillActivityRecordList(ActivityRecordList activityRecordList) {
-		grid.setItems(activityRecordList.getActivityRecord());
 
-	}
-	
-	//Workaround to get url to open activity record without the need to request pat, obj, act
-	/**
-	 * Retrieves and trimms the url
-	 * @return part of url: /pid/oid/
-	 */
-	private String getUrl(){
-		String url = navUI.getPage().getUriFragment();
-		return url.substring(navUI.ACTIVITYVIEW.length()+1, url.length()) + "/";
-	}
+        this.setContent(vLayout);
+    }
 
-	@Override
-	public ActivityRecord getSelectedActivityRecord() {
-		Iterator<ActivityRecord> itr = grid.getSelectedItems().iterator();
-		return itr.next();
-	}
+    @Override
+    public void fillActivityRecordList(ActivityRecordList activityRecordList) {
+        grid.setItems(activityRecordList.getActivityRecord());
 
-	@Override
-	public void clearView() {
-		this.grid.setItems(new ArrayList<>());
-	}
+    }
 
-	@Override
-	public void addListener(ActivityRecordListViewListener presenter) {
-		this.presenter = presenter;
-	}
+    //Workaround to get url to open activity record without the need to request pat, obj, act
 
-	@Override
-	public void setPresenter(ActivityRecordListPresenter presenter) {
-	}
-	
-	@Override
-	public void buttonClick(ClickEvent event) {
-	}
+    /**
+     * Retrieves and trimms the url
+     *
+     * @return part of url: /pid/oid/
+     */
+    private String getUrl() {
+        String url = navUI.getPage().getUriFragment();
+        return url.substring(navUI.ACTIVITYVIEW.length() + 1, url.length()) + "/";
+    }
 
-	// Is obsolete when using url workaround
-	// TODO discuss workaround
-	public void setPatientAndObjectiveAndActivity(Patient patient, Objective model, Activity activity) {
-	}
+    @Override
+    public ActivityRecord getSelectedActivityRecord() {
+        Iterator<ActivityRecord> itr = grid.getSelectedItems().iterator();
+        return itr.next();
+    }
+
+    @Override
+    public void clearView() {
+        this.grid.setItems(new ArrayList<>());
+    }
+
+    @Override
+    public void addListener(ActivityRecordListViewListener presenter) {
+        this.presenter = presenter;
+    }
+
+    @Override
+    public void setPresenter(ActivityRecordListPresenter presenter) {
+    }
+
+    @Override
+    public void buttonClick(ClickEvent event) {
+    }
+
+    // Is obsolete when using url workaround
+    // TODO discuss workaround
+    public void setPatientAndObjectiveAndActivity(Patient patient, Objective model, Activity activity) {
+    }
 }

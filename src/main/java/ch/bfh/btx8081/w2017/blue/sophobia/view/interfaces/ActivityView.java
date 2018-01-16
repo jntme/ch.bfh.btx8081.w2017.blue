@@ -4,6 +4,9 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.Activity;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 
+/**
+ * @author gfels6, jntme
+ */
 public interface ActivityView {
 	
 	void setDescription(String description);

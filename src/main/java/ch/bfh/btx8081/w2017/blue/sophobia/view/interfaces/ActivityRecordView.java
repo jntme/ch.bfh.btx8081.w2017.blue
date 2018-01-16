@@ -2,6 +2,9 @@ package ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces;
 
 import java.util.Date;
 
+/**
+ * @author kybup1
+ */
 public interface ActivityRecordView {
 
     public Date getDate();

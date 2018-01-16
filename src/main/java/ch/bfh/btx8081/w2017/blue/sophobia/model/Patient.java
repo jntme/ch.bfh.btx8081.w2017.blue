@@ -26,196 +26,197 @@ import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
  * @author jntme, petim1
  */
 @Entity
-@NamedQuery(name="Patient.findAll", query="SELECT p FROM Patient p")
+@NamedQuery(name = "Patient.findAll", query = "SELECT p FROM Patient p")
 public class Patient implements Serializable {
-	
-	private static final long serialVersionUID = -4821852383079861366L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
-	private int pid;
+    private static final long serialVersionUID = -4821852383079861366L;
 
-	@Temporal(TemporalType.DATE)
-	private Date birthdate;
-	private String city;
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private int pid;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private DiagnosisList diagnosisList;
-	
-	@Transient
-	private PatientHistory history = new PatientHistory();
+    @Temporal(TemporalType.DATE)
+    private Date birthdate;
+    private String city;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private DrugList drugList = new DrugList();
+    @OneToOne(cascade = CascadeType.ALL)
+    private DiagnosisList diagnosisList;
 
-	private String gender;
+    @Transient
+    private PatientHistory history = new PatientHistory();
 
-	private String name;
+    @OneToOne(cascade = CascadeType.ALL)
+    private DrugList drugList = new DrugList();
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private NoteList noteList = new NoteList();
+    private String gender;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private ObjectiveList objectiveList = new ObjectiveList();
+    private String name;
 
-	private byte[] picture;
+    @OneToOne(cascade = CascadeType.ALL)
+    private NoteList noteList = new NoteList();
 
-	private String prename;
+    @OneToOne(cascade = CascadeType.ALL)
+    private ObjectiveList objectiveList = new ObjectiveList();
 
-	private String street;
+    private byte[] picture;
 
-	private String zip;
+    private String prename;
 
-	public Patient(int pid, Date birthdate, String city, String gender, String name, byte[] picture, String prename,
-			String street, String zip) {
-		super();
-		this.pid = pid;
-		this.birthdate = birthdate;
-		this.city = city;
-		this.gender = gender;
-		this.name = name;
-		this.picture = picture;
-		this.prename = prename;
-		this.street = street;
-		this.zip = zip;
-	}
+    private String street;
 
-	public Patient() {
-		
-	}
+    private String zip;
 
-	public void persist() {
-		EntityManager em = DB.getEntityManager();
-		EntityTransaction trans = em.getTransaction();
-		trans.begin();
-		em.persist(this);
-		trans.commit();
-	}
-	
-	
-	public void delete() { // note: at the moment only used for test cases
-		EntityManager em = DB.getEntityManager();
-		em.getTransaction().begin();
-		em.remove(this);
-		em.getTransaction().commit();
-	}
+    public Patient(int pid, Date birthdate, String city, String gender, String name, byte[] picture, String prename,
+                   String street, String zip) {
+        super();
+        this.pid = pid;
+        this.birthdate = birthdate;
+        this.city = city;
+        this.gender = gender;
+        this.name = name;
+        this.picture = picture;
+        this.prename = prename;
+        this.street = street;
+        this.zip = zip;
+    }
 
-	public Integer getPid() {
-		return this.pid;
-	}
+    public Patient() {
 
-	public void setPid(Integer pid) {
-		this.pid = pid;
-	}
+    }
 
-	public Date getBirthdate() {
-		return this.birthdate;
-	}
-
-	public void setBirthdate(Date birthdate) {
-		this.birthdate = birthdate;
-	}
-
-	public String getCity() {
-		return this.city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public void persist() {
+        EntityManager em = DB.getEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        trans.begin();
+        em.persist(this);
+        trans.commit();
+    }
 
 
-	public String getGender() {
-		return this.gender;
-	}
+    public void delete() { // note: at the moment only used for test cases
+        EntityManager em = DB.getEntityManager();
+        em.getTransaction().begin();
+        em.remove(this);
+        em.getTransaction().commit();
+    }
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+    public Integer getPid() {
+        return this.pid;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public void setPid(Integer pid) {
+        this.pid = pid;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Date getBirthdate() {
+        return this.birthdate;
+    }
 
-	public byte[] getPicture() {
-		return this.picture;
-	}
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
+    }
 
-	public DiagnosisList getDiagnosisList() {
-		return diagnosisList;
-	}
+    public String getCity() {
+        return this.city;
+    }
 
-	public void setDiagnosisList(DiagnosisList diagnosisList) {
-		this.diagnosisList = diagnosisList;
-	}
-	public PatientHistory getHistory() {
-		return history;
-	}
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-	public void setHistory(PatientHistory history) {
-		this.history = history;
-	}
 
-	public DrugList getDrugList() {
-		return drugList;
-	}
+    public String getGender() {
+        return this.gender;
+    }
 
-	public void setDrugList(DrugList drugList) {
-		this.drugList = drugList;
-	}
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
-	public NoteList getNoteList() {
-		return noteList;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public void setNoteList(NoteList noteList) {
-		this.noteList = noteList;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public ObjectiveList getObjectiveList() {
-		return objectiveList;
-	}
+    public byte[] getPicture() {
+        return this.picture;
+    }
 
-	public void setObjectiveList(ObjectiveList objectiveList) {
-		this.objectiveList = objectiveList;
-	}
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
+    }
 
-	public void setPicture(byte[] picture) {
-		this.picture = picture;
-	}
+    public DiagnosisList getDiagnosisList() {
+        return diagnosisList;
+    }
 
-	public String getPrename() {
-		return this.prename;
-	}
+    public void setDiagnosisList(DiagnosisList diagnosisList) {
+        this.diagnosisList = diagnosisList;
+    }
 
-	public void setPrename(String prename) {
-		this.prename = prename;
-	}
+    public PatientHistory getHistory() {
+        return history;
+    }
 
-	public String getStreet() {
-		return this.street;
-	}
+    public void setHistory(PatientHistory history) {
+        this.history = history;
+    }
 
-	public void setStreet(String street) {
-		this.street = street;
-	}
+    public DrugList getDrugList() {
+        return drugList;
+    }
 
-	public String getZip() {
-		return this.zip;
-	}
+    public void setDrugList(DrugList drugList) {
+        this.drugList = drugList;
+    }
 
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
-	
-	public String getFormattedBirthdate() {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-		String formatedDate = formatter.format(this.birthdate);		
-		return formatedDate;
-	}
+    public NoteList getNoteList() {
+        return noteList;
+    }
+
+    public void setNoteList(NoteList noteList) {
+        this.noteList = noteList;
+    }
+
+    public ObjectiveList getObjectiveList() {
+        return objectiveList;
+    }
+
+    public void setObjectiveList(ObjectiveList objectiveList) {
+        this.objectiveList = objectiveList;
+    }
+
+    public String getPrename() {
+        return this.prename;
+    }
+
+    public void setPrename(String prename) {
+        this.prename = prename;
+    }
+
+    public String getStreet() {
+        return this.street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getZip() {
+        return this.zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public String getFormattedBirthdate() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        String formatedDate = formatter.format(this.birthdate);
+        return formatedDate;
+    }
 
 }

@@ -21,107 +21,109 @@ import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresente
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
 
 /**
- * @author  gfels6, jntme
+ * View for patient.
+ *
+ * @author gfels6, jntme
  */
 public class PatientViewImpl extends VerticalLayout implements PatientView, View {
 
-	private static final long serialVersionUID = 2452620374969048563L;
+    private static final long serialVersionUID = 2452620374969048563L;
 
-	private NavigationUI navUI = null;
-	private PatientViewListener listener = null;
-	private Label lblTitle = new Label("");
-	private Button btnShowContact = new Button(VaadinIcons.INFO_CIRCLE);
+    private NavigationUI navUI = null;
+    private PatientViewListener listener = null;
+    private Label lblTitle = new Label("");
+    private Button btnShowContact = new Button(VaadinIcons.INFO_CIRCLE);
 
-	// todo: naming should be specific and clear!
-	private PatientObjectiveListViewImpl oView;
-	private PatientHistoryViewImpl pHistory = new PatientHistoryViewImpl();
-	private PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
-	private PatientContactViewImpl pContactView = new PatientContactViewImpl();
-	private GridLayout gridLayout = new GridLayout(5, 6);
+    // todo: naming should be specific and clear!
+    private PatientObjectiveListViewImpl oView;
+    private PatientHistoryViewImpl pHistory = new PatientHistoryViewImpl();
+    private PatientInfoViewImpl pInfoView = new PatientInfoViewImpl();
+    private PatientContactViewImpl pContactView = new PatientContactViewImpl();
+    private GridLayout gridLayout = new GridLayout(5, 6);
 
-	public PatientViewImpl(NavigationUI navUI) {
+    public PatientViewImpl(NavigationUI navUI) {
 
-		// the reference back to the navigation to communicate with the other
-		// view components
-		this.navUI = navUI;
+        // the reference back to the navigation to communicate with the other
+        // view components
+        this.navUI = navUI;
 
-		this.oView = new PatientObjectiveListViewImpl(navUI);
+        this.oView = new PatientObjectiveListViewImpl(navUI);
 
-		lblTitle.setStyleName("header");
-		this.addStyleName("noPadding");
+        lblTitle.setStyleName("header");
+        this.addStyleName("noPadding");
 
-		gridLayout.setSpacing(true);
+        gridLayout.setSpacing(true);
 
-		this.btnShowContact.addClickListener(new ClickListener() {
-			private static final long serialVersionUID = -1610492227149824003L;
+        this.btnShowContact.addClickListener(new ClickListener() {
+            private static final long serialVersionUID = -1610492227149824003L;
 
-			@Override
-			public void buttonClick(ClickEvent event) {
+            @Override
+            public void buttonClick(ClickEvent event) {
 
-				pContactView.center();
-				UI.getCurrent().addWindow(pContactView);
+                pContactView.center();
+                UI.getCurrent().addWindow(pContactView);
 
-			}
-		});
+            }
+        });
 
-		gridLayout.addComponent(lblTitle, 0, 0);
-		gridLayout.addComponent(btnShowContact, 1, 0);
+        gridLayout.addComponent(lblTitle, 0, 0);
+        gridLayout.addComponent(btnShowContact, 1, 0);
 
-		gridLayout.setComponentAlignment(btnShowContact, Alignment.MIDDLE_CENTER);
+        gridLayout.setComponentAlignment(btnShowContact, Alignment.MIDDLE_CENTER);
 
-		this.addComponent(gridLayout);
-		this.addComponent(pHistory);
-		this.addComponent(pInfoView);
-		this.addComponent(oView);
-	}
+        this.addComponent(gridLayout);
+        this.addComponent(pHistory);
+        this.addComponent(pInfoView);
+        this.addComponent(oView);
+    }
 
-	@Override
-	public void setSubPresenter(Patient model) {
-		new PatientHistoryPresenter(model, pHistory);
-		new PatientInfoPresenter(model, pInfoView);
-		new PatientContactPresenter(model, pContactView);
-		new PatientObjectiveListPresenter(model, oView);
-	}
+    @Override
+    public void setSubPresenter(Patient model) {
+        new PatientHistoryPresenter(model, pHistory);
+        new PatientInfoPresenter(model, pInfoView);
+        new PatientContactPresenter(model, pContactView);
+        new PatientObjectiveListPresenter(model, oView);
+    }
 
-	@Override
-	public void setTitle(String name, String prename) {
-		lblTitle.setValue(prename + " " + name);
+    @Override
+    public void setTitle(String name, String prename) {
+        lblTitle.setValue(prename + " " + name);
 
-	}
+    }
 
-	@Override
-	public void enter(ViewChangeEvent event) {
-		if (event.getParameters() == null || event.getParameters().isEmpty()) {
-			patientNotFound();
-		} else {
-			listener.requestPatientWithId(event.getParameters());
-		}
-	}
+    @Override
+    public void enter(ViewChangeEvent event) {
+        if (event.getParameters() == null || event.getParameters().isEmpty()) {
+            patientNotFound();
+        } else {
+            listener.requestPatientWithId(event.getParameters());
+        }
+    }
 
-	@Override
-	public void setListener(PatientViewListener listener) {
-		this.listener = listener;
-	}
+    @Override
+    public void setListener(PatientViewListener listener) {
+        this.listener = listener;
+    }
 
-	@Override
-	public void patientNotFound() {
-		this.navUI.getNavigator().navigateTo(NavigationUI.SELECTPATIENTVIEW);
-	}
+    @Override
+    public void patientNotFound() {
+        this.navUI.getNavigator().navigateTo(NavigationUI.SELECTPATIENTVIEW);
+    }
 
-	public void setPatient(Patient patient) {
-		this.oView.setPatient(patient);
-	}
+    public void setPatient(Patient patient) {
+        this.oView.setPatient(patient);
+    }
 
-	/**
-	 * Clears the view, so a next
-	 */
-	@Override
-	public void clearView() {
+    /**
+     * Clears the view, so a next
+     */
+    @Override
+    public void clearView() {
 
-		this.lblTitle.setValue("");
-		this.oView.clearView();
-		this.pHistory.clearView();
-		this.pInfoView.clearView();
-		// this.pContactView.clearView();
-	}
+        this.lblTitle.setValue("");
+        this.oView.clearView();
+        this.pHistory.clearView();
+        this.pInfoView.clearView();
+        // this.pContactView.clearView();
+    }
 }

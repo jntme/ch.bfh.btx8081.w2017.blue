@@ -7,6 +7,8 @@ import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
 
 /**
+ * Presenter for Patient.
+ *
  * @author gfels6, jntme
  */
 public class PatientPresenter implements PatientView.PatientViewListener, Serializable {

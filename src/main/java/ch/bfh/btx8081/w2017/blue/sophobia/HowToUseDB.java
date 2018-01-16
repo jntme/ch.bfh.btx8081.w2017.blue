@@ -31,13 +31,12 @@ import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
  * and how we handle DB requests and persistence. It also adds dummy data to
  * the tool so there is initial data to display and process.
  *
- * @author jntme
+ * @author jntme, petim1
  */
 public class HowToUseDB {
     final static DateFormat SDF = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
     final static String basepath = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
     final static Path path = Paths.get(basepath + "/WEB-INF/images/dummyUserPic.jpg");
-
 
     public static void howToUseDb() {
 
@@ -47,36 +46,10 @@ public class HowToUseDB {
         // HOW TO READ SOMETHING OUT OF THE DB
         Query q1 = em.createQuery("select m from Patient m"); // this is JPQL language! -> take a look at the slides if you don't remember how to do it :)
 
-        //get the first entry of the list
-//		List<Patient> patientList = q1.getResultList();
-//		Patient p = null;
-//		if(!patientList.isEmpty()) {
-//			p = patientList.get(0);
-//
-//			System.out.println("Patient: " + p.getPrename()  + " " + p.getName() + "; " + p.getBirthdate() + "\n\n");
-//		}
-
-
-        //do something with the full list
-//		if(!patientList.isEmpty()) {
-//			for(Patient pat : patientList) {
-//
-//				System.out.println("Patient: " + pat.getPrename()  + " " + pat.getName() + "; " + pat.getBirthdate());
-//			}
-//		}
 
         // HOW TO PERSIST SOMETHING IN THE DB
-
         Query q2 = em.createQuery("select p from Patient p");
         List<Patient> patients = q2.getResultList();
-
-        //				 delete all patients
-//		if(!patients.isEmpty()) {
-//			for(Patient p1 : patients) {
-//				p1.delete();
-//				System.out.println(p1.getPrename() + " deleted from DB.");
-//			}
-//		}
 
         // create two new patients
         if (patients.isEmpty()) {
@@ -117,25 +90,11 @@ public class HowToUseDB {
             notel.createNote("Aggressivität", "Tim kann manchmal bei Überforderung sehr aggressiv werden.", true);
             notel.createNote("Note3", "Hier steht ein anderer, nicht allzuwichtiger Text", false);
 
-            //WORKAROUND!!!!!!
-//			List<Note> tryHard1 = notel.getNotes();
-//			tryHard1.get(0).setNoteList(notel);
-//			tryHard1.get(1).setNoteList(notel);
-//			tryHard1.get(2).setNoteList(notel);
-            //WORKAROUND END!!!!!
-
             babbel.setNoteList(notel);
 
             ObjectiveList objl = new ObjectiveList();
             objl.createObj("Einkaufen", "Kann alleine Einkaufen gehen", 9);
             objl.createObj("Aufräumen", "Kann Wohnung alleine sauber halten.", 10);
-
-            //WORKAROUND!!!!!!
-//			List<Objective> tryHard2 = objl.getObjectives();
-//			tryHard2.get(0).setObjList(objl);
-//			tryHard2.get(1).setObjList(objl);
-            //WORKAROUND END!!!!!
-
 
             babbel.setObjectiveList(objl);
 
@@ -148,7 +107,6 @@ public class HowToUseDB {
             actl2.createAct("Irgwass machen", "MACH WAS!!!!!!");
             actl2.createAct("Test", "Dies ist ein Test");
             objl.getObjectives().get(1).setActList(actl2);
-
 
             ActivityRecordList actRecList1 = new ActivityRecordList();
 
@@ -240,7 +198,6 @@ public class HowToUseDB {
             actl2.getActivities().get(4).setActRecList(actRecList2);
 
             zimmermann.persist();
-
 
             System.out.println("Added Tim Babbel & Monika Zimmermann as Patients!");
         }

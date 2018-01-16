@@ -45,6 +45,7 @@ public class NavigationUI extends UI {
     public static final String OBJECTIVEVIEW = "objective";
     public static final String ACTIVITYVIEW = "activity";
     public static final String ACTIVITYRECORDVIEW = "activityrecord";
+
     // these strings are for special navigation purposes
     public static final String NEW = "new";
     private static final long serialVersionUID = -7908495433511088212L;

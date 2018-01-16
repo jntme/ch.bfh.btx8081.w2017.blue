@@ -8,26 +8,26 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientObjectiveListVi
 
 /**
  * Delegates the data from the model to the view
- * @author ziegm1
  *
+ * @author ziegm1
  */
 public class PatientObjectiveListPresenter implements PatientObjectiveListView.PatientObjectiveListViewListener, Serializable {
-	
-	private static final long serialVersionUID = 5588706514516096460L;
-	
-	private Patient model;
+
+    private static final long serialVersionUID = 5588706514516096460L;
+
+    private Patient model;
 
     public PatientObjectiveListPresenter(Patient model, PatientObjectiveListView view) {
         this.model = model;
 
-		view.fillObjectiveList(model.getObjectiveList());
-		
-		view.addListener(this);
-		view.setPresenter(this);
-	}
+        view.fillObjectiveList(model.getObjectiveList());
 
-	@Override
-	public void deleteObjective(Objective objective) {
-    	this.model.getObjectiveList().removeObjective(objective);
-	}
+        view.addListener(this);
+        view.setPresenter(this);
+    }
+
+    @Override
+    public void deleteObjective(Objective objective) {
+        this.model.getObjectiveList().removeObjective(objective);
+    }
 }

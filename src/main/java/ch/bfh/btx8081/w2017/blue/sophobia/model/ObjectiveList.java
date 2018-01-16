@@ -14,52 +14,56 @@ import javax.persistence.OneToMany;
 
 /**
  * Manages all objectives for a Patient
- * @author kybup1
  *
+ * @author kybup1
  */
 @Entity
 public class ObjectiveList implements Serializable {
-	
-	private static final long serialVersionUID = 5378381756557378278L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
-	private int olid;
-	
-	@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
-	private List<Objective> objectives = new ArrayList<>();
+    private static final long serialVersionUID = 5378381756557378278L;
 
-	/**
-	 * Creates a new Objective in this List
-	 * @param name of the new objective
-	 * @param description of the new objective
-	 * @param  difficulty of the objective as Integer from 1 to 10
-	 */
-	public void createObj(String name, String description, int difficulty){
-		Objective obj = new Objective(name, description, difficulty);
-		
-		objectives.add(obj);
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private int olid;
 
-	public int getOlid() {
-		return olid;
-	}
-	public void setOlid(int olid) {
-		this.olid = olid;
-	}
-	public List<Objective> getObjectives() {
-		return objectives;
-	}
-	public void setObjectives(List<Objective> objectives) {
-		this.objectives = objectives;
-	}
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    private List<Objective> objectives = new ArrayList<>();
 
-	public void addObjective(Objective objective) {
-		this.objectives.add(objective);
-	}
+    /**
+     * Creates a new Objective in this List
+     *
+     * @param name        of the new objective
+     * @param description of the new objective
+     * @param difficulty  of the objective as Integer from 1 to 10
+     */
+    public void createObj(String name, String description, int difficulty) {
+        Objective obj = new Objective(name, description, difficulty);
+
+        objectives.add(obj);
+    }
+
+    public int getOlid() {
+        return olid;
+    }
+
+    public void setOlid(int olid) {
+        this.olid = olid;
+    }
+
+    public List<Objective> getObjectives() {
+        return objectives;
+    }
+
+    public void setObjectives(List<Objective> objectives) {
+        this.objectives = objectives;
+    }
+
+    public void addObjective(Objective objective) {
+        this.objectives.add(objective);
+    }
 
     public void removeObjective(Objective objective) {
-		objectives.remove(objective);
-		objective.delete();
+        objectives.remove(objective);
+        objective.delete();
     }
 }

@@ -15,57 +15,58 @@ import javax.persistence.OneToMany;
 
 /**
  * Manages all activity records for the specific activity
- * @author ziegm
  *
+ * @author ziegm
  */
 @Entity
 public class ActivityRecordList implements Serializable {
 
-	private static final long serialVersionUID = -415499546716909188L;
+    private static final long serialVersionUID = -415499546716909188L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
-	private int arLId;
-	
-	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-	private List<ActivityRecord> activityRecords = new ArrayList<ActivityRecord>();
-	
-	/**
-	 * Creates a new activity record in this list
-	 * @param date
-	 * @param success
-	 * @param description
-	 * @return 
-	 */
-	public ActivityRecord createActivityRecord(Date date, int success, String description) {
-		ActivityRecord activityRecord = new ActivityRecord(date, success, description);
-		
-		activityRecords.add(activityRecord);
-		return activityRecord;
-	}
-	
-	public int getArLId() {
-		return arLId;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private int arLId;
 
-	public void setArLId(int arLId) {
-		this.arLId = arLId;
-	}
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    private List<ActivityRecord> activityRecords = new ArrayList<ActivityRecord>();
 
-	public List<ActivityRecord> getActivityRecord() {
-		return activityRecords;
-	}
+    /**
+     * Creates a new activity record in this list
+     *
+     * @param date
+     * @param success
+     * @param description
+     * @return
+     */
+    public ActivityRecord createActivityRecord(Date date, int success, String description) {
+        ActivityRecord activityRecord = new ActivityRecord(date, success, description);
 
-	public void setActivityRecord(List<ActivityRecord> activityRecords) {
-		this.activityRecords = activityRecords;
-	}
-	
-	public void addActivityRecord(ActivityRecord activityRecord) {
-		this.activityRecords.add(activityRecord);
-	}
-	
-	public void removeActivityRecord(ActivityRecord activityRecord) {
-		activityRecords.remove(activityRecord);
-		activityRecord.delete();
-	}
+        activityRecords.add(activityRecord);
+        return activityRecord;
+    }
+
+    public int getArLId() {
+        return arLId;
+    }
+
+    public void setArLId(int arLId) {
+        this.arLId = arLId;
+    }
+
+    public List<ActivityRecord> getActivityRecord() {
+        return activityRecords;
+    }
+
+    public void setActivityRecord(List<ActivityRecord> activityRecords) {
+        this.activityRecords = activityRecords;
+    }
+
+    public void addActivityRecord(ActivityRecord activityRecord) {
+        this.activityRecords.add(activityRecord);
+    }
+
+    public void removeActivityRecord(ActivityRecord activityRecord) {
+        activityRecords.remove(activityRecord);
+        activityRecord.delete();
+    }
 }

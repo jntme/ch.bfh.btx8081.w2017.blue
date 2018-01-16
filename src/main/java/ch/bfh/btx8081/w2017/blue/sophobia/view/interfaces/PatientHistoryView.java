@@ -1,10 +1,11 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces;
+
 /**
- * 
- * @author Jemal Oda
+ * @author odaoj1
  */
 public interface PatientHistoryView {
-	public void setPatientHistory(String history);
-	void clearView();
+    public void setPatientHistory(String history);
+
+    void clearView();
 
 }

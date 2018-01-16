@@ -26,9 +26,9 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ObjectiveView;
  */
 public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, View {
 
-	private static final long serialVersionUID = 298168717435855242L;
+    private static final long serialVersionUID = 298168717435855242L;
 
-	private NavigationUI navUI;
+    private NavigationUI navUI;
 
     private ObjectiveViewListener presenter;
     private Label lblName = new Label();
@@ -46,10 +46,10 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
         // the reference back to the navigation to communicate with the other
         // view components
         this.navUI = navUI;
-        
+
         this.presenter = null;
         this.aView = new ActivityListViewImpl(navUI);
-        
+
         lblName.setStyleName("header");
         this.addStyleName("noPadding");
 
@@ -115,7 +115,7 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
         this.addComponent(saveButton);
         this.setComponentAlignment(saveButton, Alignment.MIDDLE_RIGHT);
     }
- 
+
     /**
      * validates the form for empty and wrong occurrences
      */
@@ -222,13 +222,13 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
         this.presenter = presenter;
     }
 
-	@Override
-	public void setSubPresenter(Objective model) {
-		   new ActivityListPresenter(model, aView);
-	}
+    @Override
+    public void setSubPresenter(Objective model) {
+        new ActivityListPresenter(model, aView);
+    }
 
-	@Override
-	public void sendToActivityList(Patient patient, Objective model) {
-		this.aView.setPatientAndObjective(patient, model);
-	}
+    @Override
+    public void sendToActivityList(Patient patient, Objective model) {
+        this.aView.setPatientAndObjective(patient, model);
+    }
 }

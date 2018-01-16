@@ -6,21 +6,24 @@ import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresente
 
 /**
  * Defines the behavior of the PatientObjectiveList
- * @author ziegm1
  *
+ * @author ziegm1
  */
 public interface PatientObjectiveListView {
-	
-	void fillObjectiveList(ObjectiveList objectiveList);
-	Objective getSelectedObjective();
-	void setPresenter(PatientObjectiveListPresenter presenter);
-	
-	// Listener for the event handling
-	interface PatientObjectiveListViewListener {
-		void deleteObjective(Objective objective);
-	}
-	
-	void addListener(PatientObjectiveListViewListener listener);
-	void clearView();
-	
+
+    void fillObjectiveList(ObjectiveList objectiveList);
+
+    Objective getSelectedObjective();
+
+    void setPresenter(PatientObjectiveListPresenter presenter);
+
+    void addListener(PatientObjectiveListViewListener listener);
+
+    void clearView();
+
+    // Listener for the event handling
+    interface PatientObjectiveListViewListener {
+        void deleteObjective(Objective objective);
+    }
+
 }
