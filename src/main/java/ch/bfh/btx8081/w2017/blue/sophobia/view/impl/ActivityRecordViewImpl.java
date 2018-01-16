@@ -123,7 +123,7 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
     @Override
     public void setNewActivityRecord() {
         txdDate.setEnabled(true);
-        btnSave.setCaption("Hinzufügen");
+        //btnSave.setCaption("Hinzufügen");
 
     }
 
