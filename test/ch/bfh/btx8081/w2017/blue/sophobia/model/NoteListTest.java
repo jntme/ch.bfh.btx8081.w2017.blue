@@ -10,6 +10,10 @@ import org.junit.Test;
 
 public class NoteListTest {
 	
+	/**
+	 * @author kybup1
+	 */
+	
 	@Test
 	public void isDangerNote(){
 		Note note = new DangerNote("Test", "New Test note");

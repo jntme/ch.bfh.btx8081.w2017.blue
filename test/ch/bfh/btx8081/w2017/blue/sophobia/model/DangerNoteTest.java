@@ -8,7 +8,11 @@ import java.util.Calendar;
 import org.junit.Test;
 
 public class DangerNoteTest {
-
+	
+	/**
+	 * @author kybup1
+	 */
+	
 	@Test
 	public void checkIsDanger(){
 		DangerNote note = new DangerNote("Test", "Uuuh Dangerous");
