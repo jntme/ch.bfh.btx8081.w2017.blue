@@ -34,14 +34,17 @@ public class NoteList implements Serializable {
      * Depending on the value of the boolean a different kind of note will be created
      * true = DangerNote, false=Note
      * Furthermore the Systemtime is captured and saved
+     * @return 
      */
-    public void createNote(String title, String content, boolean danger) {
+    public Note createNote(String title, String content, boolean danger) {
         if (danger) {
             DangerNote note = new DangerNote(title, content);
             notes.add(note);
+            return note;
         } else {
             Note note = new Note(title, content);
             notes.add(note);
+            return note;
         }
     }
 
