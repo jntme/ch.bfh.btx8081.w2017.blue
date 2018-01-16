@@ -13,6 +13,9 @@ import com.vaadin.ui.Window;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientContactView;
 
+/**
+ * @author gfels6, jntme, ziegm
+ */
 public class PatientContactViewImpl extends Window implements PatientContactView{
 	
 	private static final long serialVersionUID = -7218135020495638066L;

@@ -12,7 +12,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.ObjectiveView;
 /**
  * Delegates the data from the model to the view
  *
- * @author ziegm1
+ * @author ziegm1, jntme
  */
 public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener, Serializable {
 

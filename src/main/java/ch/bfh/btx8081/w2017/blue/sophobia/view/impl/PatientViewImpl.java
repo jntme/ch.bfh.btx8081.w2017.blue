@@ -20,6 +20,9 @@ import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientInfoPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.presenter.PatientObjectiveListPresenter;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
 
+/**
+ * @author  gfels6, jntme
+ */
 public class PatientViewImpl extends VerticalLayout implements PatientView, View {
 
 	private static final long serialVersionUID = 2452620374969048563L;

@@ -25,7 +25,7 @@ public interface ActivityRecordView {
      * Changes the form after a new Activity Record is created and saved.
      * Adds the new id to the url.
      *
-     * @param The id of the new activity record
+     * @param arid The id of the new activity record
      */
     public void changeToExistingActRec(int arid);
 

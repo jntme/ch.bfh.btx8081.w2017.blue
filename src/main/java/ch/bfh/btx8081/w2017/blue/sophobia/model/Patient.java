@@ -22,7 +22,8 @@ import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 
 /**
  * The persistent class for the patient database table.
- * 
+ *
+ * @author jntme, petim1
  */
 @Entity
 @NamedQuery(name="Patient.findAll", query="SELECT p FROM Patient p")

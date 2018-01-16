@@ -7,48 +7,46 @@ import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
 
 /**
- * 
- * @author gfels6
- *
+ * @author gfels6, jntme
  */
 public class PatientPresenter implements PatientView.PatientViewListener, Serializable {
 
-	private static final long serialVersionUID = -1115951198091997322L;
-	
-	private Patient model = null;
-	private PatientView view;
-	
-	public PatientPresenter(PatientView view) {
-		this.view = view;
-		view.setListener(this);
-	}
-	
-	public void displayPatient(Patient patient) {
-		this.model = patient;
+    private static final long serialVersionUID = -1115951198091997322L;
 
-		view.setTitle(model.getName(), model.getPrename());
+    private Patient model = null;
+    private PatientView view;
 
-		//view.setPicture(model.getPicture());
-		
-		view.setSubPresenter(model);
-	}
+    public PatientPresenter(PatientView view) {
+        this.view = view;
+        view.setListener(this);
+    }
 
-	@Override
-	public void requestPatientWithId(String patientId) {
-		
-		
-		
-		Patient p = DB.getObjectById(patientId, Patient.class, "pid");
-		if(p != null) {
-			this.displayPatient(p);
+    public void displayPatient(Patient patient) {
+        this.model = patient;
 
-		//todo
-		//not nice! should be revised and changed soon
-			
-		view.setPatient(p);
+        view.setTitle(model.getName(), model.getPrename());
 
-		} else {
-			view.patientNotFound();
-		}
-	}
+        //todo add pictures!
+        //view.setPicture(model.getPicture());
+
+        view.setSubPresenter(model);
+    }
+
+    /**
+     * Gets called by the view to reqest a certain patient.
+     *
+     * @param patientId
+     */
+    @Override
+    public void requestPatientWithId(String patientId) {
+
+        Patient p = DB.getObjectById(patientId, Patient.class, "pid");
+        if (p != null) {
+            this.displayPatient(p);
+            view.setPatient(p);
+
+        } else {
+            view.patientNotFound();
+        }
+    }
 }

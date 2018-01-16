@@ -12,6 +12,7 @@ import javax.persistence.OneToOne;
 
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 
+
 @Entity
 public class Objective implements Serializable {
 
@@ -29,7 +30,7 @@ public class Objective implements Serializable {
 
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private  ActivityList actList;
+	private ActivityList actList = new ActivityList();
 	
 	public Objective(){
 		

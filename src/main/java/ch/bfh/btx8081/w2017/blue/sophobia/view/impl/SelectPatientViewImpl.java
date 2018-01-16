@@ -17,6 +17,9 @@ import ch.bfh.btx8081.w2017.blue.sophobia.NavigationUI;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.SelectPatientView;
 
+/**
+ * @author gfels6, jntme
+ */
 public class SelectPatientViewImpl extends VerticalLayout implements SelectPatientView, ClickListener, View {
 	
 	private static final long serialVersionUID = 8987109623796160883L;
