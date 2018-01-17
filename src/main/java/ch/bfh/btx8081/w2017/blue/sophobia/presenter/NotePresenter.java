@@ -44,7 +44,7 @@ public class NotePresenter implements NoteClickListener, Serializable {
 
         noteView.setTitle(note.getTitle());
         noteView.setContent(note.getContent());
-        if (DangerNote.class.isInstance(note)) {
+        if (pat.getNoteList().isDangerNote(note)) {
             DangerNote dNote = (DangerNote) note;
             noteView.setDanger(true);
             noteView.enableActive();
@@ -82,9 +82,10 @@ public class NotePresenter implements NoteClickListener, Serializable {
     private void updateNote() {
         note.setTitle(noteView.getTitle());
         note.setContent(noteView.getNoteContent());
-        if (DangerNote.class.isInstance(note)) {
+        if (pat.getNoteList().isDangerNote(note)) {
             DangerNote dNote = (DangerNote) note;
-            dNote.setActive(dNote.isActive());
+            note = dNote;
+            dNote.setActive(noteView.getActive());
         }
         pat.persist();
     }
