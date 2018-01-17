@@ -67,7 +67,7 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
 
         nameTextField.addValueChangeListener(event -> {
             this.presenter.setActivityName(event.getValue());
-            this.lblName.setValue(event.getValue());
+            this.lblName.setValue("Aktivität: " + event.getValue());
         });
 
         form.addComponent(nameTextField);
@@ -95,7 +95,7 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
 
     @Override
     public void setName(String name) {
-        lblName.setValue(name);
+        lblName.setValue("Aktivität: " + name);
         nameTextField.setValue(name);
     }
 

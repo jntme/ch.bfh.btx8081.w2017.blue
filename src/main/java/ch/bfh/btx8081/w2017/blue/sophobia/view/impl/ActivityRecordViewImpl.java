@@ -51,7 +51,10 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
         this.presenter = null;
         
         lblTitle.setStyleName("header");
+        lblTitle.setValue("Verlaufseintrag");
         this.addComponent(lblTitle);
+        
+        this.addStyleName("noPadding");
 
         setupForm();
         setupSaveButton();
@@ -116,8 +119,8 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
         LocalDate localDate = Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
         txdDate.setValue(localDate);
         DateFormat df = new SimpleDateFormat("dd. MM. yyyy", Locale.GERMAN);
-        lblTitle.setValue(df.format(date));
-    }
+        
+        }
 
     @Override
     public String getDescription() {
@@ -151,7 +154,7 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
      */
     @Override
     public void clearView() {
-    	lblTitle.setValue("");
+    	//lblTitle.setValue("");
         txdDate.clear();
         txaDescription.setValue("");
         sldSuccess.setValue(5.0);

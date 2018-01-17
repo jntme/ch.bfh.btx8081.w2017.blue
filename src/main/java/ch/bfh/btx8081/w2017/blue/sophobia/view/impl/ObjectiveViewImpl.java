@@ -81,7 +81,7 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
 
         nameTextField.addValueChangeListener(event -> {
             this.presenter.setObjectiveName(event.getValue());
-            this.lblName.setValue(event.getValue());
+            this.lblName.setValue("Ziel: " + event.getValue());
 
             validateForm();
         });
@@ -148,7 +148,7 @@ public class ObjectiveViewImpl extends VerticalLayout implements ObjectiveView, 
 
     @Override
     public void setName(String name) {
-        lblName.setValue(name);
+        lblName.setValue("Ziel: " + name);
         nameTextField.setValue(name);
     }
 
