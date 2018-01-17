@@ -2,6 +2,7 @@ package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Set;
 
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.Button;
@@ -82,25 +83,20 @@ public class ActivityListViewImpl extends Panel implements ActivityListView {
             }
         });
 
-
-		// the delete button click event handler
-		btnDelete.addClickListener(event -> {
-			grid.getSelectedItems().forEach(activity -> this.presenter.deleteActivity(activity));
-			grid.getSelectedItems().forEach(activity -> grid.getSelectedItems().remove(activity));
-			grid.clearSortOrder();
-			Notification notification = new Notification("Erolgreich gelöscht!", "Löschen");
-			notification.setDelayMsec(1000);
-			notification.show(navUI.getPage());
-		});
-
         // the delete button click event handler
         btnDelete.addClickListener(event -> {
-            grid.getSelectedItems().forEach(activity -> this.presenter.deleteActivity(activity));
-            grid.getSelectedItems().forEach(activity -> grid.getSelectedItems().remove(activity));
+            Set<Activity> set = grid.getSelectedItems();
+
+            if (set.size() > 0) {
+                grid.getSelectedItems().forEach(activity -> this.presenter.deleteActivity(activity));
+                grid.getSelectedItems().forEach(activity -> grid.getSelectedItems().remove(activity));
+                Notification notification = new Notification("Deleted successful.", "deletion");
+                notification.setDelayMsec(1000);
+                notification.show(navUI.getPage());
+            }
+
             grid.clearSortOrder();
-            Notification notification = new Notification("Deleted successful.", "deletion");
-            notification.setDelayMsec(1000);
-            notification.show(navUI.getPage());
+            grid.deselectAll();
         });
 
         this.setContent(vLayout);

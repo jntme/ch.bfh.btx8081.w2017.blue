@@ -2,11 +2,7 @@ package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 import com.vaadin.data.ValueProvider;
 import com.vaadin.icons.VaadinIcons;
@@ -85,12 +81,19 @@ public class ActivityRecordListViewImpl extends Panel implements ActivityRecordL
         });
 
         bDelete.addClickListener(event -> {
-            grid.getSelectedItems().forEach(activityRecord -> this.presenter.deleteActivityRecord(activityRecord));
-            grid.getSelectedItems().forEach(activityRecord -> grid.getSelectedItems().remove(activityRecord));
+            Set<ActivityRecord> set = grid.getSelectedItems();
+            if (set.size() > 0) {
+
+                grid.getSelectedItems().forEach(activityRecord -> this.presenter.deleteActivityRecord(activityRecord));
+                grid.getSelectedItems().forEach(activityRecord -> grid.getSelectedItems().remove(activityRecord));
+
+                Notification notification = new Notification("Erolgreich gelöscht!", "Löschen");
+                notification.setDelayMsec(1000);
+                notification.show(navUI.getPage());
+            }
+
             grid.clearSortOrder();
-            Notification notification = new Notification("Erolgreich gelöscht!", "Löschen");
-            notification.setDelayMsec(1000);
-            notification.show(navUI.getPage());
+            grid.deselectAll();
         });
 
         bAdd.addClickListener(event -> {

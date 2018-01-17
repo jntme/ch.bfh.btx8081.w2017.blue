@@ -1,6 +1,7 @@
 package ch.bfh.btx8081.w2017.blue.sophobia.view.impl;
 
 import java.util.Iterator;
+import java.util.Set;
 
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.Button;
@@ -86,12 +87,20 @@ public class PatientObjectiveListViewImpl extends Panel implements PatientObject
         });
 
         btnDelete.addClickListener(event -> {
-            grid.getSelectedItems().forEach(objective -> this.presenter.deleteObjective(objective));
-            grid.getSelectedItems().forEach(objective -> grid.getSelectedItems().remove(objective));
+            Set<Objective> set = grid.getSelectedItems();
+
+            if (set.size() > 0) {
+
+                set.forEach(objective -> this.presenter.deleteObjective(objective));
+                set.forEach(objective -> grid.getSelectedItems().remove(objective));
+
+                Notification notification = new Notification("Erolgreich gelöscht!", "Löschen");
+                notification.setDelayMsec(1000);
+                notification.show(navUI.getPage());
+            }
+
             grid.clearSortOrder();
-            Notification notification = new Notification("Erolgreich gelöscht!", "Löschen");
-            notification.setDelayMsec(1000);
-            notification.show(navUI.getPage());
+            grid.deselectAll();
         });
 
 
