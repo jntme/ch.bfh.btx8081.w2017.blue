@@ -214,7 +214,7 @@ public class Patient implements Serializable {
     }
 
     public String getFormattedBirthdate() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
         String formatedDate = formatter.format(this.birthdate);
         return formatedDate;
     }
