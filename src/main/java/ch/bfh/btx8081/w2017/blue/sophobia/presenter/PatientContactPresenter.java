@@ -12,6 +12,8 @@ public class PatientContactPresenter {
         view.setName(model.getName(), model.getPrename());
         view.setAddress(model.getCity(), model.getStreet(), model.getZip());
         view.setBirthdate(model.getBirthdate());
+
+        view.setPicture(model.getPicture());
         view.setGender(model.getGender());
     }
 }

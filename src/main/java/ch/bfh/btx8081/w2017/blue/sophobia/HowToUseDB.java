@@ -69,7 +69,7 @@ public class HowToUseDB {
             babbel.setCity("Bern");
 
             String basepath = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
-            Path path = Paths.get(basepath + "/WEB-INF/images/dummyUserPic.jpg");
+            Path path = Paths.get(basepath + "/WEB-INF/images/avatar1.png");
             try {
                 byte[] data = Files.readAllBytes(path);
                 babbel.setPicture(data);
@@ -140,7 +140,11 @@ public class HowToUseDB {
 
             zimmermann.persist();
 
+
+
             //Add image to profile
+
+            path = Paths.get(basepath + "/WEB-INF/images/avatar2.png");
             try {
                 byte[] data = Files.readAllBytes(path);
                 zimmermann.setPicture(data);

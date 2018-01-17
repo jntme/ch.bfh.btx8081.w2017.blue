@@ -13,7 +13,7 @@ public interface PatientContactView {
 
     void setBirthdate(Date date);
 
-    void setPicture(Image image);
+    void setPicture(byte[] imageLocal);
 
     void setName(String name, String prename);
 
