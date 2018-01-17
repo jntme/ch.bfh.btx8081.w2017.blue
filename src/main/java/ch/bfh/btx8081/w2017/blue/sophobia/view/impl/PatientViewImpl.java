@@ -59,14 +59,19 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
             @Override
             public void buttonClick(ClickEvent event) {
 
-                pContactView.center();
-                UI.getCurrent().addWindow(pContactView);
-
+            	if(pContactView.getParent() == null){
+                    pContactView.center();
+                    UI.getCurrent().addWindow(pContactView);
+            	} else {
+            		// Window is still open
+            		// Do Nothing
+            	}
             }
         });
 
         gridLayout.addComponent(lblTitle, 0, 0);
         gridLayout.addComponent(btnShowContact, 1, 0);
+        gridLayout.setHeight("90");
 
         gridLayout.setComponentAlignment(btnShowContact, Alignment.MIDDLE_CENTER);
 

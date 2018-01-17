@@ -14811,3 +14811,7 @@ body {
 .mytheme .addPadding {
 	padding: 10px !important;
 }
+
+.mytheme .v-textarea {
+	background-color: white;
+}
