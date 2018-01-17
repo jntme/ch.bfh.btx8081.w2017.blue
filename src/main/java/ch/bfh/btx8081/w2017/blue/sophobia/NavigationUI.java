@@ -63,7 +63,7 @@ public class NavigationUI extends UI {
 
         final VerticalLayout container = new VerticalLayout();
         final VerticalLayout content = new VerticalLayout();
-        this.addStyleName("containerStyle");
+        container.addStyleName("containerStyle");
         content.addStyleName("noPadding");
         container.addComponent(btnHome);
         container.addComponent(content);
