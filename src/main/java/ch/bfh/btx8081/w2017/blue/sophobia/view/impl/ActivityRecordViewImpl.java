@@ -227,7 +227,7 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
         txdDate.setReadOnly(true);
         btnSave.setCaption("");
         
-        Notification notification = new Notification("Verlaufsdokumentation wurde erstellt und gespeichert", "Erstellung");
+        Notification notification = new Notification("Verlaufsdokumentation wurde erstellt und gespeichert!", "Erstellung");
         notification.setDelayMsec(1000);
         notification.show(navUi.getPage());
     }

@@ -174,7 +174,7 @@ public class ActivityViewImpl extends VerticalLayout implements ActivityView, Vi
      * (renames button to 'add', disables aView (...)
      */
     private void setViewOnNewActivity() {
-        this.saveButton.setCaption("Add");
+        //this.saveButton.setCaption("Add");
         this.aView.setEnabled(false);
     }
 
