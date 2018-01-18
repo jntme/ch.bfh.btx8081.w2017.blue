@@ -25,10 +25,12 @@ public class NoteTest {
 	
 	@Test
 	public void checkTimeStamp(){
-		Date today = new Date(Calendar.getInstance().getTime().getTime());
-		Note note = new Note("Test", "Note for a test");
+		Calendar cal1 = Calendar.getInstance();
+		Note note = new Note("Test", "Just a test");
+		Calendar cal2 = Calendar.getInstance();
+		cal2.setTimeInMillis(note.getDate().getTime());		
 		
-		assertTrue("Date of the created note is today", note.getDate().compareTo(today)==0);	
+		assertTrue("Date of the created note is today", cal1.get(Calendar.DATE)==cal2.get(Calendar.DATE));	
 	}
 	
 	@Test(expected = NoResultException.class)

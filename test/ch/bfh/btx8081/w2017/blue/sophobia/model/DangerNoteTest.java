@@ -30,10 +30,12 @@ public class DangerNoteTest {
 	
 	@Test
 	public void checkTimeStamp(){
-		Date today = new Date(Calendar.getInstance().getTime().getTime());
-		DangerNote note = new DangerNote("Test", "Aaaahh even more danger");
+		Calendar cal1 = Calendar.getInstance();
+		DangerNote dNote = new DangerNote("Test", "Uuuhh even more danger!");
+		Calendar cal2 = Calendar.getInstance();
+		cal2.setTimeInMillis(dNote.getDate().getTime());		
 		
-		assertTrue("Date of the created note is today", note.getDate().compareTo(today)==0);	
+		assertTrue("Date of the created note is today", cal1.get(Calendar.DATE)==cal2.get(Calendar.DATE));	
 	}
 
 }
