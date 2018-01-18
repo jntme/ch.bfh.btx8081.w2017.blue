@@ -27,9 +27,7 @@ public class PatientContactViewImpl extends Window implements PatientContactView
 
     private static final long serialVersionUID = -7218135020495638066L;
     final GridLayout popUpLayout = new GridLayout(6, 6);
-    String basepath = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
-    FileResource resource = new FileResource(new File(basepath + "/WEB-INF/images/avatar1.png"));
-    Image image = new Image(null, resource);
+    Image image = new Image();
     private Label lblStreet = new Label("Dummy Street 12");
     private Label lblCity = new Label("Dummyhausen");
     private Label lblZip = new Label("3000");
@@ -78,7 +76,7 @@ public class PatientContactViewImpl extends Window implements PatientContactView
         lblBirthdate.setValue(formatedDate);
     }
 
-    public static Image convertToImage(final byte[] imageData)
+    public static StreamResource convertToImage(final byte[] imageData)
     {
         StreamResource.StreamSource streamSource = new StreamResource.StreamSource() {
             public InputStream getStream()
@@ -88,20 +86,12 @@ public class PatientContactViewImpl extends Window implements PatientContactView
             }
         };
 
-        return new Image(
-                null, new StreamResource(
-                streamSource, "streamedSourceFromByteArray"));
+        return new StreamResource(streamSource, "streamedSourceFromByteArray");
     }
 
     @Override
     public void setPicture(byte[] imageLocal) {
-//        image = convertToImage(imageLocal);
-//
-//        image.setHeight("150");
-//        image.setWidth("150");
-//
-//        popUpLayout.addComponent(image, 0, 1, 1, 3);
-//        this.setContent(popUpLayout);
+        image.setSource(convertToImage(imageLocal));
     }
 
     @Override
