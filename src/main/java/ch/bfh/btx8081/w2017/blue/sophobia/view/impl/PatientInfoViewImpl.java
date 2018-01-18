@@ -31,7 +31,7 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
 
     private Accordion acc = new Accordion();
 
-    private GridLayout noteGrid = new GridLayout(4, 2);
+    private GridLayout noteGrid = new GridLayout(2, 2);
     private TextArea txaDiagnosis = new TextArea();
     private TextArea txaDrugs = new TextArea();
     private Grid<Note> notes = new Grid<Note>();
@@ -54,7 +54,7 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
         hLay.addComponents(btnAddNote, btnDeleteNote);
         noteGrid.setSizeFull();
         noteGrid.addComponent(hLay, 0, 0, 0, 0);
-        noteGrid.addComponent(notes, 0, 1, 2, 1);
+        noteGrid.addComponent(notes, 0, 1, 1, 1);
 
         btnDeleteNote.addClickListener(this);
         btnAddNote.addClickListener(this);
