@@ -13,7 +13,7 @@ import javax.persistence.Id;
 /**
  * Manages list of patient Diagnosis
  *
- * @author Odaoj1
+ * @author Odaoj1, petim1
  */
 @Entity
 public class DiagnosisList implements Serializable {
@@ -26,8 +26,8 @@ public class DiagnosisList implements Serializable {
 
     // Contains Diagnosis list
     private ArrayList<String> diagnosisList = new ArrayList<>(
-            Arrays.asList("Feeling that mind has gone blank",
-                    "Dizziness and lightheadedness"));
+            Arrays.asList("Generalisierte Angststörung",
+                    "Abwesenheit und Unaufmerksamkeit"));
 
     /**
      * generates the random list of patient Diagnosis from the existing Array list of Diagnosis
@@ -54,8 +54,9 @@ public class DiagnosisList implements Serializable {
      * The two major diagnosis will be appearing always.
      * One other accompanying diagnosis follows these two.
      */
+    @Override
     public String toString() {
-        String text0 = "Social Anxiety Disorder A, Persistent Depressive Disorder";
+        String text0 = "Sozialphobie Typ A\nDepressive Störung";
         StringBuffer buf = new StringBuffer();
         ArrayList<String> diagnosisList = getDiagnosisList(1);
 
@@ -65,6 +66,6 @@ public class DiagnosisList implements Serializable {
             }
             buf.append(diagnosisList.get(i));
         }
-        return text0 + "," + buf.toString();
+        return text0 + "\n" + buf.toString();
     }
 }

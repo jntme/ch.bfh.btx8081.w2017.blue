@@ -50,8 +50,11 @@ public class HowToUseDB {
         // HOW TO PERSIST SOMETHING IN THE DB
         Query q2 = em.createQuery("select p from Patient p");
         List<Patient> patients = q2.getResultList();
+     
+        //**********************************************************************
+        //first patient
 
-        // create two new patients
+        //Set basic data for patient 1
         if (patients.isEmpty()) {
             Patient babbel = new Patient();
             babbel.setName("Babbel");
@@ -76,46 +79,46 @@ public class HowToUseDB {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+            
+            //Set diagnoses
             DiagnosisList dl = new DiagnosisList();
             babbel.setDiagnosisList(dl);
 
+            //Set medication
             DrugList drugl = new DrugList();
             drugl.initdrugs();
             babbel.setDrugList(drugl);
 
+            //Set init notes
             NoteList notel = new NoteList();
-
             notel.createNote("Aufräumen", "Wenn mal jemand Zeit hat, sollte man bei Tim zuhause mal wieder aufräumen", false);
             notel.createNote("Aggressivität", "Tim kann manchmal bei Überforderung sehr aggressiv werden.", true);
-            notel.createNote("Note3", "Hier steht ein anderer, nicht allzuwichtiger Text", false);
-
             babbel.setNoteList(notel);
 
+            //Init objectives
             ObjectiveList objl = new ObjectiveList();
-            objl.createObj("Einkaufen", "Kann alleine Einkaufen gehen", 9);
-            objl.createObj("Aufräumen", "Kann Wohnung alleine sauber halten.", 10);
-
+            objl.createObj("Einkaufen", "Kann alleine Einkaufen gehen", 10);
+            objl.createObj("Aufräumen", "Kann Wohnung alleine sauber halten.", 6);
             babbel.setObjectiveList(objl);
 
+            //Init activities for objective 1
             ActivityList actl1 = new ActivityList();
-            actl1.createAct("Peinliche Situation", "Wasserglas im Restaurant umschütten");
+            actl1.createAct("Peinliche Situation", "Gurkenglas im Shop fallen lassen");
             actl1.createAct("Fragen", "Nach einer anderen Schuhgrösse im Shop fragen");
             objl.getObjectives().get(0).setActList(actl1);
 
+            //Init activities for objective 2
             ActivityList actl2 = new ActivityList();
-            actl2.createAct("Irgwass machen", "MACH WAS!!!!!!");
-            actl2.createAct("Test", "Dies ist ein Test");
+            actl2.createAct("Staubwischen", "Drei Mal die Woche Staub abwischen");
+            actl2.createAct("Staubsaugen", "Ein Mal die Woche staubsaugen");
             objl.getObjectives().get(1).setActList(actl2);
 
+            //Init ACtivity Record
             ActivityRecordList actRecList1 = new ActivityRecordList();
-
             Instant instant1 = Instant.parse("2017-12-03T10:15:30.00Z");
             actRecList1.createActivityRecord(Date.from(instant1), 2, "Tim konnte nicht nachfragen, er musste den Shop verlassen");
-
             Instant instant2 = Instant.parse("2017-12-10T10:15:30.00Z");
             actRecList1.createActivityRecord(Date.from(instant2), 5, "Als wir heute im Shop waren, getraute sich Tim nach einer anderen Schuhgrösse zu fragen");
-
             actl1.getActivities().get(1).setActRecList(actRecList1);
 
             babbel.persist();

@@ -53,14 +53,6 @@ public class DrugList implements Serializable {
         randNo = minimum + (int) (Math.random() * maximum);
         this.med = drugs.get(randNo);
 
-        // Generate random number and add to String (2x)
-//		for (int i = 0; i < 3; i++) {
-//			randNo = minimum + (int) (Math.random() * maximum);
-//			med += drugs.get(randNo);
-//
-//
-//		}
-
     }
 
     /**

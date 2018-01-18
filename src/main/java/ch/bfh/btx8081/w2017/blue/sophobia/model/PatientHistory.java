@@ -3,12 +3,11 @@ package ch.bfh.btx8081.w2017.blue.sophobia.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * Contains Patient history list
  *
- * @author Odaoj1
+ * @author Odaoj1, petim1
  */
 public class PatientHistory implements Serializable {
 
@@ -17,45 +16,43 @@ public class PatientHistory implements Serializable {
     private ArrayList<String> history = new ArrayList<>();
 
     /**
-     * generates the random list of patient histories from the existing Array list of Patient history
+     * generates the list of patient history from Array list
+     * @return hist as ArrayList with patient history
      */
-    public ArrayList<String> initPatientHistory(int numElement) {
+    public ArrayList<String> initPatientHistory() {
 
-        ArrayList<String> historyDummyList = new ArrayList<>(
+        ArrayList<String> hist = new ArrayList<>(
                 Arrays.asList(
-                		"08.11.2017: Neues Ziel 'Wohnung sauber halten'",
-						"10.11.2017: Neue Aktivität 'Wischen' zum Ziel 'Wohnung sauber halten'",     
-						"20.11.2017: Arztbesuch mit Spitex",
-						"30.11.2017: Spitalbesuch wegen Suizidversuch",
-						"17.12.2017: Psychische Krise",
-						"04.01.2018: Ziel 'Wohnung sauber halten' erfolgreich abgeschlossen."
+                		" 08.11.2017:\t Neues Ziel 'Wohnung sauber halten'\n",
+						"10.11.2017:\t Neue Aktivität 'Wischen' zum Ziel 'Wohnung sauber halten'\n",     
+						"20.11.2017:\t Arztbesuch mit Spitex\n",
+						"30.11.2017:\t Spitalbesuch wegen Suizidversuch\n",
+						"17.12.2017:\t Psychische Krise\n",
+						"04.01.2018:\t Ziel 'Wohnung sauber halten' erfolgreich abgeschlossen."
                 ));
 
-        Random random = new Random();
-        int sizeArray = historyDummyList.size();
-
-        ArrayList<String> phl = new ArrayList<String>();
-        for (int i = 0; i < numElement; i++) {
-            int rdmPhl = random.nextInt(sizeArray);
-            String element = historyDummyList.get(rdmPhl);
-            phl.add(element);
-        }
-
-        return phl;
+        return hist;
     }
 
     /**
      * Displays the list of patient's histories
      */
+    @Override
     public String toString() {
-        return getPatientHistory().toString();
+    	String ret = getPatientHistory().toString();
+    	StringBuilder sb = new StringBuilder(ret);
+    	sb.deleteCharAt(0);
+    	sb.deleteCharAt(sb.length()-1);
+    	ret = sb.toString();
+    	ret = ret.replaceAll("[',']","");
+        return ret;
     }
 
     /**
      * Displays two of the randomly selected patient histories from the List of Dummy patient history
      */
     public ArrayList<String> getPatientHistory() {
-        this.history = initPatientHistory(2); //new history for demo, remove for real use
+        this.history = initPatientHistory(); //new history for demo, remove for real use
         return history;
     }
 }
