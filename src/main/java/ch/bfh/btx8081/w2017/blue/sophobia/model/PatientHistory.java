@@ -25,9 +25,9 @@ public class PatientHistory implements Serializable {
                 Arrays.asList(
                 		" 08.11.2017:\t Neues Ziel 'Wohnung sauber halten'\n",
 						"10.11.2017:\t Neue Aktivität 'Wischen' zum Ziel 'Wohnung sauber halten'\n",     
-						"20.11.2017:\t Arztbesuch mit Spitex\n",
-						"30.11.2017:\t Spitalbesuch wegen Suizidversuch\n",
-						"17.12.2017:\t Psychische Krise\n",
+						"20.11.2017:\t Neue Notiz: Arztbesuch mit Spitex\n",
+						"30.11.2017:\t Neue Notiz: Spitalbesuch wegen Suizidversuch\n",
+						"17.12.2017:\t Neue Notiz: Psychische Krise\n",
 						"04.01.2018:\t Ziel 'Wohnung sauber halten' erfolgreich abgeschlossen."
                 ));
 
