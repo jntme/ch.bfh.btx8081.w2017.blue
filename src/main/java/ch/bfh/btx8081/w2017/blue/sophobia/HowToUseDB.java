@@ -35,8 +35,7 @@ import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
  */
 public class HowToUseDB {
     final static DateFormat SDF = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
-    final static String basepath = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
-    final static Path path = Paths.get(basepath + "/WEB-INF/images/dummyUserPic.jpg");
+    final static String BASEPATH = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
 
     public static void howToUseDb() {
 
@@ -71,18 +70,17 @@ public class HowToUseDB {
             babbel.setZip("3000");
             babbel.setCity("Bern");
 
-            String basepath = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
-            Path path = Paths.get(basepath + "/WEB-INF/images/avatar1.png");
+            Path path1 = Paths.get(BASEPATH + "/WEB-INF/images/avatar1.png");
             try {
-                byte[] data = Files.readAllBytes(path);
+                byte[] data = Files.readAllBytes(path1);
                 babbel.setPicture(data);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             
             //Set diagnoses
-            DiagnosisList dl = new DiagnosisList();
-            babbel.setDiagnosisList(dl);
+            DiagnosisList dl1 = new DiagnosisList();
+            babbel.setDiagnosisList(dl1);
 
             //Set medication
             DrugList drugl = new DrugList();
@@ -141,15 +139,11 @@ public class HowToUseDB {
             zimmermann.setZip("3020");
             zimmermann.setCity("Bern");
 
-            zimmermann.persist();
-
-
-
             //Add image to profile
 
-            path = Paths.get(basepath + "/WEB-INF/images/avatar2.png");
+            Path path2 = Paths.get(BASEPATH + "/WEB-INF/images/avatar2.png");
             try {
-                byte[] data = Files.readAllBytes(path);
+                byte[] data = Files.readAllBytes(path2);
                 zimmermann.setPicture(data);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -199,10 +193,10 @@ public class HowToUseDB {
             //Verlauf der Aktivitäten
             ActivityRecordList actRecList2 = new ActivityRecordList();
             Instant instant3 = Instant.parse("2017-12-03T10:15:30.00Z");
-            actRecList1.createActivityRecord(Date.from(instant3), 2, "Frage bezüglich dem zusätzlichen Leiden wurde nicht gestellt. Patientin zu verängstigt");
+            actRecList2.createActivityRecord(Date.from(instant3), 2, "Frage bezüglich dem zusätzlichen Leiden wurde nicht gestellt. Patientin zu verängstigt");
             Instant instant4 = Instant.parse("2017-12-10T10:15:30.00Z");
-            actRecList1.createActivityRecord(Date.from(instant4), 6, "Telefonat und zusätzlichen Termin wegen Kopfschmerzen vereinbart (mit Hilfe!).");
-            actl2.getActivities().get(1).setActRecList(actRecList2);
+            actRecList2.createActivityRecord(Date.from(instant4), 6, "Telefonat und zusätzlichen Termin wegen Kopfschmerzen vereinbart (mit Hilfe!).");
+            actl3.getActivities().get(0).setActRecList(actRecList2);
 
             zimmermann.persist();
 
