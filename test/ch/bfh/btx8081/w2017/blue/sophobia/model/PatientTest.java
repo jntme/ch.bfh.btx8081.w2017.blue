@@ -14,12 +14,15 @@ import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 
 public class PatientTest {
 
+	/**
+	 * @author petim1, gfels6
+	 */
 	@Test
 	public void saveAPatient() {
 		
 		Patient p1 = new Patient();
-		p1.setName("Leia2");
-		p1.setPrename("Organa2");
+		p1.setName("PatientTester");
+		p1.setPrename("PatientTest");
 		
 		p1.persist();
 		
@@ -27,7 +30,7 @@ public class PatientTest {
 
 		Query q2 = em.createQuery("select p from Patient p");
 		List<Patient> patients = q2.getResultList();
-		patients = patients.stream().filter(p -> p.getName().equals("Leia2")).collect(Collectors.toList());
+		patients = patients.stream().filter(p -> p.getName().equals("PatientTester")).collect(Collectors.toList());
 		
 		p1.delete();
 
