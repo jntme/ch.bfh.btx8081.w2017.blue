@@ -56,16 +56,7 @@ public class DB {
 
         String queryString = String.format("select o from %s o where o.%s = :oid", classType.getSimpleName(), objectIDName);
         Query query = em.createQuery(queryString);
-
         query.setParameter("oid", oidInt);
-        List<D> objects = query.getResultList();
-
-        if (objects.isEmpty()) return null;
-        else if (objects.size() > 1) {
-            System.err.println("Database inconsistent!");
-            return null;
-        } else {
-            return objects.get(0);
-        }
+        return (D) query.getSingleResult();
     }
 }
