@@ -71,9 +71,13 @@ public class PatientInfoPresenter implements PatientInfoClickListener, Serializa
     }
 
     private void deleteNote() {
-        Note note = patInfoView.getSelectedNote();
-        pat.getNoteList().getNotes().remove(note);
-        note.delete();
+    		try {
+				Note note = patInfoView.getSelectedNote();
+				pat.getNoteList().getNotes().remove(note);
+				note.delete();
+			} catch (Exception e) {
+				
+			}
     }
 
     private void openNote() {
