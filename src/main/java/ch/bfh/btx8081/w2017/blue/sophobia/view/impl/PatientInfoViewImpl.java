@@ -52,6 +52,7 @@ public class PatientInfoViewImpl extends CustomComponent implements PatientInfoV
         
         HorizontalLayout hLay = new HorizontalLayout();
         hLay.addComponents(btnAddNote, btnDeleteNote);
+        noteGrid.setSizeFull();
         noteGrid.addComponent(hLay, 0, 0, 0, 0);
         noteGrid.addComponent(notes, 0, 1, 2, 1);
 
