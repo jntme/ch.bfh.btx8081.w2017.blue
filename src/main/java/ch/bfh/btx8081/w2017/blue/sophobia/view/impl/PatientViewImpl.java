@@ -82,6 +82,10 @@ public class PatientViewImpl extends VerticalLayout implements PatientView, View
 		this.addComponent(oView);
 	}
 
+    /**
+     * Sets the presenter for the subviews
+     * @param model Model to set presenter
+     */
 	@Override
 	public void setSubPresenter(Patient model) {
 		new PatientHistoryPresenter(model, pHistory);

@@ -12,6 +12,12 @@ import ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityRecord;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 
+/**
+ * First version of the breadcrumb navigation. To implement or fix: - refresh
+ * buttons on change, - design, - change to MVP
+ * 
+ * @author gfels6
+ */
 public class Breadcrumb extends HorizontalLayout {
 
 	private static final long serialVersionUID = -8202299071305818976L;
@@ -41,6 +47,9 @@ public class Breadcrumb extends HorizontalLayout {
 
 	}
 
+	/**
+	 * Initializes the buttons and add listener for home button
+	 */
 	private void setup() {
 
 		btnHome = new Button("Patientenselektion");
@@ -71,6 +80,12 @@ public class Breadcrumb extends HorizontalLayout {
 
 	}
 
+	/**
+	 * set patient, fill button and add clicklistener with ids
+	 * 
+	 * @param patient
+	 *            model
+	 */
 	public void setPatLoc(Patient patient) {
 		this.pat = patient;
 		btnPatient.setVisible(true);
@@ -87,6 +102,12 @@ public class Breadcrumb extends HorizontalLayout {
 		});
 	}
 
+	/**
+	 * set objective, fill button and add clicklistener with ids
+	 * 
+	 * @param objective
+	 *             model
+	 */
 	public void setObjLoc(Objective objective) {
 		this.obj = objective;
 		btnObjective.setVisible(true);
@@ -104,6 +125,12 @@ public class Breadcrumb extends HorizontalLayout {
 
 	}
 
+	/**
+	 * set activity, fill button and add clicklistener with ids
+	 * 
+	 * @param activity
+	 *             model
+	 */
 	public void setActLoc(Activity activity) {
 		this.act = activity;
 		btnActivity.setVisible(true);
@@ -121,6 +148,12 @@ public class Breadcrumb extends HorizontalLayout {
 		});
 	}
 
+	/**
+	 * set activtyRecord, fill button and add clicklistener with ids
+	 * 
+	 * @param actRecord
+	 *             model
+	 */
 	public void setActRecLoc(ActivityRecord actRecord) {
 		this.actRec = actRecord;
 		btnActivityRecord.setVisible(true);
