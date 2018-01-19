@@ -14816,3 +14816,7 @@ body {
 .mytheme .v-textarea {
 	background-color: white;
 }
+
+.mytheme .v-slot-borderless .v-button {
+	padding-left: 0px;
+}

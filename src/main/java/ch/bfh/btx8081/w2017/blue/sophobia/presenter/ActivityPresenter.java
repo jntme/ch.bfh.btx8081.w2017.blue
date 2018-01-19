@@ -3,6 +3,7 @@ package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 import java.io.Serializable;
 import java.util.List;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.Breadcrumb;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Activity;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityRecordList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
@@ -23,10 +24,12 @@ public class ActivityPresenter implements ActivityView.ActivityViewListener, Ser
     private ActivityView view;
     private Patient patient = null;
     private Objective objective = null;
+    private Breadcrumb breadcrumb = null;
     private boolean isNewActivity = false;
 
-    public ActivityPresenter(ActivityView view) {
+    public ActivityPresenter(ActivityView view, Breadcrumb bc) {
         this.view = view;
+        this.breadcrumb = bc;
         view.setPresenter(this);
     }
 
@@ -47,6 +50,9 @@ public class ActivityPresenter implements ActivityView.ActivityViewListener, Ser
 
         if (this.patient != null) {
             List<Objective> objList = this.patient.getObjectiveList().getObjectives();
+            
+            //set breadcrumb for patient
+            breadcrumb.setPatLoc(this.patient);
 
             // look for objective
             for (Objective obj : objList) {
@@ -55,6 +61,9 @@ public class ActivityPresenter implements ActivityView.ActivityViewListener, Ser
                     break;
                 }
             }
+            
+            //set breadcrumb for objective
+            breadcrumb.setObjLoc(objective);
 
             List<Activity> actList = objective.getActList().getActivities();
 
@@ -68,6 +77,8 @@ public class ActivityPresenter implements ActivityView.ActivityViewListener, Ser
 
             // if found, display it
             if (activity != null) {
+            	
+            	breadcrumb.setActLoc(activity);
                 this.setActivity(activity);
                 this.isNewActivity = false;
                 return; // do not continue, if found & set

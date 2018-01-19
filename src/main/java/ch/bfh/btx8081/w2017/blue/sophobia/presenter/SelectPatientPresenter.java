@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.Breadcrumb;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.SelectPatientView;
@@ -19,8 +20,12 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.SelectPatientView.Sele
 public class SelectPatientPresenter implements SelectPatientClickListener, Serializable {
 
 	private static final long serialVersionUID = 4423698583918640850L;
+	private Breadcrumb breadcrumb = null;
 
-	public SelectPatientPresenter(SelectPatientView view) {
+	public SelectPatientPresenter(SelectPatientView view, Breadcrumb bc) {
+		
+		this.breadcrumb = bc;
+		breadcrumb.clearBtn();
 		List<Patient> model = initializePatients();
 
 		view.fillObjectiveList(model);
@@ -28,7 +33,7 @@ public class SelectPatientPresenter implements SelectPatientClickListener, Seria
 
 	private List<Patient> initializePatients() {
 		EntityManager em = DB.getEntityManager();
-
+		
 		TypedQuery<Patient> q1 = em.createQuery("select m from Patient m", Patient.class);
 
 		List<Patient> patientList = q1.getResultList();

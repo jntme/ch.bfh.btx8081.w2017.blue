@@ -43,7 +43,7 @@ public class HowToUseDB {
         EntityManager em = DB.getEntityManager();
 
         // HOW TO READ SOMETHING OUT OF THE DB
-        Query q1 = em.createQuery("select m from Patient m"); // this is JPQL language! -> take a look at the slides if you don't remember how to do it :)
+        // Query q1 = em.createQuery("select m from Patient m"); // this is JPQL language! -> take a look at the slides if you don't remember how to do it :)
 
 
         // HOW TO PERSIST SOMETHING IN THE DB

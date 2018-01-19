@@ -50,7 +50,7 @@ public class NavigationUI extends UI {
     public static final String NEW = "new";
     private static final long serialVersionUID = -7908495433511088212L;
     private Navigator navigator = null;
-    private Button btnHome;
+        
     private SelectPatientPresenter selectPatientPresenter = null;
     private PatientPresenter patientPresenter = null;
     private ObjectivePresenter objPresenter = null;
@@ -59,13 +59,12 @@ public class NavigationUI extends UI {
 
     protected void init(VaadinRequest vaadinRequest) {
 
-        btnHome = new Button(VaadinIcons.HOME);
-
         final VerticalLayout container = new VerticalLayout();
         final VerticalLayout content = new VerticalLayout();
         container.addStyleName("containerStyle");
         content.addStyleName("noPadding");
-        container.addComponent(btnHome);
+        Breadcrumb breadcrumb = new Breadcrumb(this);
+        container.addComponent(breadcrumb);
         container.addComponent(content);
         setContent(container);
 
@@ -81,35 +80,25 @@ public class NavigationUI extends UI {
         // Initiating the different views and their presenters and
         // adding the views on the navigator
         SelectPatientViewImpl selPatViewImpl = new SelectPatientViewImpl(this);
-        this.selectPatientPresenter = new SelectPatientPresenter(selPatViewImpl);
+        this.selectPatientPresenter = new SelectPatientPresenter(selPatViewImpl, breadcrumb);
         navigator.addView(MAIN, selPatViewImpl);
         navigator.addView(SELECTPATIENTVIEW, selPatViewImpl);
 
         PatientViewImpl patientViewImpl = new PatientViewImpl(this);
-        this.patientPresenter = new PatientPresenter(patientViewImpl);
+        this.patientPresenter = new PatientPresenter(patientViewImpl, breadcrumb);
         navigator.addView(PATIENTVIEW, patientViewImpl);
 
         ObjectiveViewImpl objViewImpl = new ObjectiveViewImpl(this);
-        this.objPresenter = new ObjectivePresenter(objViewImpl);
+        this.objPresenter = new ObjectivePresenter(objViewImpl, breadcrumb);
         navigator.addView(OBJECTIVEVIEW, objViewImpl);
 
         ActivityViewImpl actViewImpl = new ActivityViewImpl(this);
-        this.actPresenter = new ActivityPresenter(actViewImpl);
+        this.actPresenter = new ActivityPresenter(actViewImpl, breadcrumb);
         navigator.addView(ACTIVITYVIEW, actViewImpl);
 
         ActivityRecordViewImpl actRecViewImpl = new ActivityRecordViewImpl(this);
-        this.actRecPresenter = new ActivityRecordPresenter(actRecViewImpl);
+        this.actRecPresenter = new ActivityRecordPresenter(actRecViewImpl, breadcrumb);
         navigator.addView(ACTIVITYRECORDVIEW, actRecViewImpl);
-
-
-        this.btnHome.addClickListener(new ClickListener() {
-            private static final long serialVersionUID = -6917620301709928610L;
-
-            @Override
-            public void buttonClick(ClickEvent event) {
-                navigator.navigateTo(NavigationUI.SELECTPATIENTVIEW);
-            }
-        });
     }
 
     public Navigator getNavigator() {

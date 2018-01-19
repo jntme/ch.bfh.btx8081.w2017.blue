@@ -2,6 +2,7 @@ package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
 import java.util.List;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.Breadcrumb;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Activity;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityRecord;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
@@ -21,11 +22,13 @@ public class ActivityRecordPresenter implements ActivityRecordView.ActivityRecor
     private Objective obj;
     private Activity act;
     private ActivityRecord actRec;
+    private Breadcrumb breadcrumb = null;
 
     private boolean newActRec = false;
 
 
-    public ActivityRecordPresenter(ActivityRecordView view) {
+    public ActivityRecordPresenter(ActivityRecordView view, Breadcrumb bc) {
+    	this.breadcrumb = bc;
         this.view = view;
         view.addListener(this);
     }
@@ -40,7 +43,7 @@ public class ActivityRecordPresenter implements ActivityRecordView.ActivityRecor
     }
 
     /**
-     * Is called when the save Button is pressed. Different actions are perfomred depending if the activity record is nwely created
+     * Is called when the save Button is pressed. Different actions are performed depending if the activity record is newly created
      * or an existing one is been modified.
      */
     @Override
@@ -65,9 +68,12 @@ public class ActivityRecordPresenter implements ActivityRecordView.ActivityRecor
     @Override
     public void resolveIds(int pid, int oid, int aid, int arid) {
         pat = DB.getObjectById(Integer.toString(pid), Patient.class, "pid");
-
+        
         if (this.pat != null) {
             List<Objective> objList = this.pat.getObjectiveList().getObjectives();
+            
+            //set breadcrumb for patient
+            breadcrumb.setPatLoc(this.pat);
 
             // look for objective
             for (Objective obj : objList) {
@@ -76,6 +82,9 @@ public class ActivityRecordPresenter implements ActivityRecordView.ActivityRecor
                     break;
                 }
             }
+            
+            //set breadcrumb for objective
+            breadcrumb.setObjLoc(obj);
 
             List<Activity> actList = obj.getActList().getActivities();
 
@@ -86,6 +95,8 @@ public class ActivityRecordPresenter implements ActivityRecordView.ActivityRecor
                     break;
                 }
             }
+            
+        	breadcrumb.setActLoc(act);
 
             List<ActivityRecord> actRecList = act.getActRecList().getActivityRecord();
 
@@ -97,7 +108,8 @@ public class ActivityRecordPresenter implements ActivityRecordView.ActivityRecor
             } else {
                 for (ActivityRecord actRec : actRecList) {
                     if (actRec.getArId() == arid) {
-                        this.actRec = actRec;
+                    	this.actRec = actRec;
+                    	breadcrumb.setActRecLoc(actRec);
                         break;
                     }
                 }

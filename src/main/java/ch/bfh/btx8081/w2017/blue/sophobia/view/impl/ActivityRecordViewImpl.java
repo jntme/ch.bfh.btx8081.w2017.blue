@@ -117,9 +117,7 @@ public class ActivityRecordViewImpl extends VerticalLayout implements ActivityRe
     @Override
     public void setDate(Date date) {
         LocalDate localDate = Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
-        txdDate.setValue(localDate);
-        DateFormat df = new SimpleDateFormat("dd. MM. yyyy", Locale.GERMAN);
-        
+        txdDate.setValue(localDate);        
         }
 
     @Override

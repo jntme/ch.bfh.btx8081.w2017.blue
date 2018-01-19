@@ -3,6 +3,7 @@ package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 import java.io.Serializable;
 import java.util.List;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.Breadcrumb;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.ActivityList;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Objective;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
@@ -21,11 +22,14 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener, 
     private Objective model = null;
     private ObjectiveView view;
     private Patient patient = null;
+    private Breadcrumb breadcrumb = null;
     private boolean isNewObjective = false;
 
-    public ObjectivePresenter(ObjectiveView view) {
+    public ObjectivePresenter(ObjectiveView view, Breadcrumb bc) {
         this.view = view;
+        this.breadcrumb = bc;
         view.setPresenter(this);
+        
     }
 
     public void setObjective(Objective objective) {
@@ -52,6 +56,7 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener, 
 
         if (this.patient != null) {
             List<Objective> objList = this.patient.getObjectiveList().getObjectives();
+            breadcrumb.setPatLoc(this.patient);
 
             // look for objective
             for (Objective obj : objList) {
@@ -64,6 +69,7 @@ public class ObjectivePresenter implements ObjectiveView.ObjectiveViewListener, 
             // if found, display it
             if (objective != null) {
 
+            	breadcrumb.setObjLoc(objective);
                 this.setObjective(objective);
                 this.isNewObjective = false;
                 return; // do not continue, if found & set

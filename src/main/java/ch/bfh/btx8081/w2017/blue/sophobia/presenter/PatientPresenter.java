@@ -2,6 +2,7 @@ package ch.bfh.btx8081.w2017.blue.sophobia.presenter;
 
 import java.io.Serializable;
 
+import ch.bfh.btx8081.w2017.blue.sophobia.Breadcrumb;
 import ch.bfh.btx8081.w2017.blue.sophobia.model.Patient;
 import ch.bfh.btx8081.w2017.blue.sophobia.persistence.DB;
 import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
@@ -13,42 +14,41 @@ import ch.bfh.btx8081.w2017.blue.sophobia.view.interfaces.PatientView;
  */
 public class PatientPresenter implements PatientView.PatientViewListener, Serializable {
 
-    private static final long serialVersionUID = -1115951198091997322L;
+	private static final long serialVersionUID = -1115951198091997322L;
 
-    private Patient model = null;
-    private PatientView view;
+	private Patient model = null;
+	private Breadcrumb breadcrumb = null;
+	private PatientView view;
 
-    public PatientPresenter(PatientView view) {
-        this.view = view;
-        view.setListener(this);
-    }
+	public PatientPresenter(PatientView view, Breadcrumb bc) {
+		this.view = view;
+		this.breadcrumb = bc;
+		view.setListener(this);
+	}
 
-    public void displayPatient(Patient patient) {
-        this.model = patient;
+	public void displayPatient(Patient patient) {
+		this.model = patient;
 
-        view.setTitle(model.getName(), model.getPrename());
+		view.setTitle(model.getName(), model.getPrename());
+		view.setSubPresenter(model);
+	}
 
-        //todo add pictures!
-        //view.setPicture(model.getPicture());
+	/**
+	 * Gets called by the view to reqest a certain patient.
+	 *
+	 * @param patientId
+	 */
+	@Override
+	public void requestPatientWithId(String patientId) {
 
-        view.setSubPresenter(model);
-    }
+		Patient p = DB.getObjectById(patientId, Patient.class, "pid");
+		if (p != null) {
+			this.displayPatient(p);
+			breadcrumb.setPatLoc(p);
+			view.setPatient(p);
 
-    /**
-     * Gets called by the view to reqest a certain patient.
-     *
-     * @param patientId
-     */
-    @Override
-    public void requestPatientWithId(String patientId) {
-
-        Patient p = DB.getObjectById(patientId, Patient.class, "pid");
-        if (p != null) {
-            this.displayPatient(p);
-            view.setPatient(p);
-
-        } else {
-            view.patientNotFound();
-        }
-    }
+		} else {
+			view.patientNotFound();
+		}
+	}
 }

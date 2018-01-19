@@ -70,11 +70,4 @@ public class ObjectiveTest {
 		query.getSingleResult();
 	}
 	
-	private void persist(Objective objective) {
-		EntityManager em = DB.getEntityManager();
-		EntityTransaction trans = em.getTransaction();
-		trans.begin();
-		em.persist(objective);
-		trans.commit();
-	}
 }
